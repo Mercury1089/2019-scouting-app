@@ -120,8 +120,8 @@ public class MainActivity extends AppCompatActivity {
     public void setMatchNumber(String newString) {
         this.matchNumber = newString;
     }
-    public void setTeamNumber(String newString) {
-        this.scouterName = newString;
+    public void setTeamNumber(int newInt) {
+        this.teamNumber = newInt;
     }
     public void setFirstAlliancePartner(int newInt) {
         this.firstAlliancePartner = newInt;
@@ -147,6 +147,22 @@ public class MainActivity extends AppCompatActivity {
     public void setisResetLocalStorageClicked(boolean newBool) {
         this.isResetLocalStorageClicked = newBool;
     }
+    public void setStartL1 (int newInt) {
+        this.startL1 = newInt;
+    }
+    public void setStartC1 (int newInt) {
+        this.startC1 = newInt;
+    }
+    public void setStartR1 (int newInt) {
+        this.startR1 = newInt;
+    }
+    public void setStartL2 (int newInt) {
+        this.startL2 = newInt;
+    }
+    public void setStartR2 (int newInt) {
+        this.startR2 = newInt;
+    }
+
     //call methods
     public void blueDefault () {
         isBlueAlliance = 0;

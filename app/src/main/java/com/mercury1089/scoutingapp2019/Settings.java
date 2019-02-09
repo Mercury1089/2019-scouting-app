@@ -85,13 +85,36 @@ public class Settings extends MainActivity {
             isLocalStorageClicked = true;
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
+            setScouterName("");
+            setMatchNumber("");
+            setTeamNumber(0);
+            setFirstAlliancePartner(0);
+            setSecondAlliancePartner(0);
+            setIsSetupPanel(0);
+            setIsSetupCargo(0);
+            setStartL1(0);
+            setStartC1(0);
+            setStartR1(0);
+            setStartL2(0);
+            setStartR2(0);
+                    /* for main activity
+              scouterName - populated by data entered in Scouter name field
+            » matchNumber - populated by data entered in Match # field
+            » teamNumber - populated by data entered in Team # field
+            » partner1 - populated by data entered in 1st alliance partner field
+            » partner2 - populated by data entered in 2nd alliance partner field
+            » noShowStatus - populated by state of no show toggle (0 if off, 1 if on)
+            » blueAlliance - populated by state of blue alliance color button (0 if off, 1 if on)
+            » redAlliance - populated by state of red alliance color button (0 if off, 1 if on)
+            » prepopPanel - populated by state of panel button (0 if off, 1 if on)
+            » prepopCargo - populated by state of cargo button (0 if off, 1 if on)
+            » start1L - populated by the state of the 1L square location on the diagram (0 if off, 1 if on)
+            » start1C - populated by the state of the 1C square location on the diagram (0 if off, 1 if on)
+            » start1R - populated by the state of the 1R square location on the diagram (0 if off, 1 if on)
+            » start2L - populated by the state of the 2L square location on the diagram (0 if off, 1 if on)
+            » start2R - populated by the state of the 2R square location on the diagram (0 if off, 1 if on)
+         */
         }
-        else {
-            isLocalStorageClicked = false;
-            localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
-            localStorageResetButton.setTextColor(getResources().getColor(R.color.grey));
-        }
-        //setters here
     }
 
     public void startClick (View view) {
