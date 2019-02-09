@@ -1,5 +1,6 @@
 package com.mercury1089.scoutingapp2019;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     TextView prepopulatedTitle;
     Button startButton;
     Button generateQRButton;
+    boolean isResetLocalStorageClicked;
 
 
 
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked) {
                         noShowStatus = 1;
                         panelButton.setEnabled(false);
-                        cargoButton.setEnabled(true);
+                        cargoButton.setEnabled(false);
                         prepopulatedDirections = (findViewById(R.id.IDPrepopulatedDirections));
                         prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
                         prepopulatedTitle = findViewById(R.id.IDPrepopulatedTitle);
@@ -106,8 +108,83 @@ public class MainActivity extends AppCompatActivity {
         redButton.setTextColor(getResources().getColor(R.color.grey));
         panelButton = findViewById(R.id.PanelButton);
         cargoButton = findViewById(R.id.CargoButton);
-    }
+        //get intent from settings screen and the variable that says whether it is left or right
+        Intent intent = getIntent();
+        String leftOrRight = intent.getStringExtra(Settings.);
 
+    }
+    //setters
+    public void setScouterName(String newString) {
+        this.scouterName = newString;
+    }
+    public void setMatchNumber(String newString) {
+        this.matchNumber = newString;
+    }
+    public void setTeamNumber(String newString) {
+        this.scouterName = newString;
+    }
+    public void setFirstAlliancePartner(int newInt) {
+        this.firstAlliancePartner = newInt;
+    }
+    public void setSecondAlliancePartner(int newInt) {
+        this.secondAlliancePartner = newInt;
+    }
+    public void setNoShowStatus(int newInt) {
+        this.noShowStatus = newInt;
+    }
+    public void setIsBlueAlliance(int newInt) {
+        this.isBlueAlliance = newInt;
+    }
+    public void setIsRedAlliance(int newInt) {
+        this.isRedAlliance = newInt;
+    }
+    public void setIsSetupPanel(int newInt) {
+        this.isSetupPanel = newInt;
+    }
+    public void setIsSetupCargo(int newInt) {
+        this.isSetupCargo = newInt;
+    }
+    public void setisResetLocalStorageClicked(boolean newBool) {
+        this.isResetLocalStorageClicked = newBool;
+    }
+    //call methods
+    public void blueDefault () {
+        isBlueAlliance = 0;
+        blueButton.setBackgroundColor(getResources().getColor(R.color.light));
+        blueButton.setTextColor(getResources().getColor(R.color.grey));
+    }
+    public void redDefault () {
+        isRedAlliance = 0;
+        redButton.setBackgroundColor(getResources().getColor(R.color.light));
+        redButton.setTextColor(getResources().getColor(R.color.grey));
+    }
+    public void panelDefault () {
+        panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+        panelButton.setTextColor(getResources().getColor(R.color.grey));
+        isSetupPanel = 0;
+    }
+    public void cargoDefault () {
+        cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+        cargoButton.setTextColor(getResources().getColor(R.color.grey));
+        isSetupCargo = 0;
+    }
+    //click methods
+    public void SettingClick (View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
+    public void ClearClick (View view) {
+        scouterNameInput.setText("");
+        matchNumberInput.setText("");
+        teamNumberInput.setText("");
+        firstAlliancePartnerInput.setText("");
+        secondAlliancePartnerInput.setText("");
+        blueDefault();
+        redDefault();
+        panelDefault();
+        cargoDefault();
+    }
+    //do color stuff for this
     public void L1Click (View view) {
         startL1 = 1;
         startC1 = 0;
@@ -152,31 +229,23 @@ public class MainActivity extends AppCompatActivity {
         if (isBlueAlliance == 0) {
             blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
             blueButton.setTextColor(getResources().getColor(R.color.light));
-            isRedAlliance = 0;
-            redButton.setBackgroundColor(getResources().getColor(R.color.light));
-            redButton.setTextColor(getResources().getColor(R.color.grey));
+            redDefault();
             isBlueAlliance = 1;
         }
         else {
-            isBlueAlliance = 0;
-            blueButton.setBackgroundColor(getResources().getColor(R.color.light));
-            blueButton.setTextColor(getResources().getColor(R.color.grey));
+            blueDefault();
         }
     }
 
     public void redClick (View view) {
         if (isRedAlliance == 0) {
-            blueButton.setBackgroundColor(getResources().getColor(R.color.light));
-            blueButton.setTextColor(getResources().getColor(R.color.grey));
-            isBlueAlliance = 0;
+            blueDefault();
             redButton.setBackgroundColor(getResources().getColor(R.color.red));
             redButton.setTextColor(getResources().getColor(R.color.light));
             isRedAlliance = 1;
         }
         else {
-            isRedAlliance = 0;
-            redButton.setBackgroundColor(getResources().getColor(R.color.light));
-            redButton.setTextColor(getResources().getColor(R.color.grey));
+            redDefault();
         }
 
     }
@@ -186,30 +255,22 @@ public class MainActivity extends AppCompatActivity {
             isSetupPanel = 1;
             panelButton.setBackgroundColor(getResources().getColor(R.color.orange));
             panelButton.setTextColor(getResources().getColor(R.color.light));
-            isSetupCargo = 0;
-            cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
-            cargoButton.setTextColor(getResources().getColor(R.color.grey));
+            cargoDefault();
         }
         else {
-            isSetupPanel = 0;
-            panelButton.setBackgroundColor(getResources().getColor(R.color.light));
-            panelButton.setTextColor(getResources().getColor(R.color.grey));
+            panelDefault();
         }
     }
 
     public void cargoClick (View view) {
         if (isSetupCargo == 0) {
-            isSetupPanel = 0;
-            panelButton.setBackgroundColor(getResources().getColor(R.color.light));
-            panelButton.setTextColor(getResources().getColor(R.color.grey));
+            panelDefault();
             isSetupCargo = 1;
             cargoButton.setBackgroundColor(getResources().getColor(R.color.orange));
             cargoButton.setTextColor(getResources().getColor(R.color.light));
         }
         else {
-            isSetupCargo = 0;
-            cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
-            cargoButton.setTextColor(getResources().getColor(R.color.grey));
+            cargoDefault();
         }
     }
 

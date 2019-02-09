@@ -80,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@color/bootstrap_dropdown_divider"
+        android:onClick="localStorageResetClick"
         android:text="   RESET LOCAL STORAGE   "
         android:textColor="@color/bootstrap_gray_light"
         android:textSize="30sp"

@@ -1,11 +1,13 @@
 package com.mercury1089.scoutingapp2019;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Settings extends AppCompatActivity {
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
+public class Settings extends MainActivity {
     /* for main activity
   scouterName - populated by data entered in Scouter name field
 » matchNumber - populated by data entered in Match # field
@@ -28,26 +30,26 @@ public class Settings extends AppCompatActivity {
     Button localStorageResetButton;
     boolean isLeft = false;
     boolean isRight = true;
+    String leftOrRight = "";
     boolean isLocalStorageClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        fieldSideLeftButton = findViewById(R.id.blueButton);
+        fieldSideLeftButton = findViewById(R.id.FieldSideLeft);
         fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
         fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
-
         fieldSideRightButton = findViewById(R.id.FieldSideRight);
         fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
         fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
-
         localStorageResetButton = findViewById(R.id.localStorageResetButton);
     }
 
     public void rightClick (View view) {
         if (isRight == false) {
             isRight = true;
+            leftOrRight = "Right";
             fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
@@ -55,6 +57,7 @@ public class Settings extends AppCompatActivity {
         }
         else {
             isRight = false;
+            leftOrRight = "";
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
             fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
         }
@@ -63,6 +66,7 @@ public class Settings extends AppCompatActivity {
     public void leftClick (View view) {
         if (isLeft == false) {
             isLeft = true;
+            leftOrRight = "Left";
             fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
@@ -70,6 +74,7 @@ public class Settings extends AppCompatActivity {
         }
         else {
             isLeft = false;
+            leftOrRight = "";
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
             fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
         }
@@ -86,5 +91,12 @@ public class Settings extends AppCompatActivity {
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
             localStorageResetButton.setTextColor(getResources().getColor(R.color.grey));
         }
+        //setters here
+    }
+
+    public void startClick (View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(EXTRA_MESSAGE, leftOrRight);
+        startActivity(intent);
     }
 }

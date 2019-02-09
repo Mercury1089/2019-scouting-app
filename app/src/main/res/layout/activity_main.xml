@@ -271,6 +271,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:onClick="SettingClick"
         android:text="</>"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="24dp" />
@@ -280,6 +281,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:onClick="ClearClick"
         android:text="Clear"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="132dp" />
