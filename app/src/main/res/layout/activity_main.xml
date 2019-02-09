@@ -155,37 +155,38 @@
         tools:layout_editor_absoluteY="180dp" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/TeamNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         android:textColor="@color/bootstrap_dropdown_divider"
+        android:maxLength="4"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="244dp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/FirstAlliancePartner"
         android:layout_width="90dp"
         android:layout_height="43dp"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:maxLength="4"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="437dp" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/SecondAlliancePartner"
         android:layout_width="95dp"
         android:layout_height="41dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:maxLength="4"
         tools:layout_editor_absoluteX="122dp"
         tools:layout_editor_absoluteY="439dp" />
 
@@ -246,22 +247,20 @@
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/IDPrepopulatedDirections"
         android:layout_width="108dp"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:text="TextView"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="500dp" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/IDPrepopulatedTitle"
         android:layout_width="108dp"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:text="TextView"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
@@ -380,4 +379,29 @@
         android:onClick="L1Click"
         tools:layout_editor_absoluteX="381dp"
         tools:layout_editor_absoluteY="322dp" />
+
+    <View
+        android:id="@+id/coverView"
+        android:layout_width="264dp"
+        android:layout_height="154dp"
+        android:background="@drawable/ic_launcher_background"
+        tools:layout_editor_absoluteX="305dp"
+        tools:layout_editor_absoluteY="657dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="264dp"
+        android:layout_height="151dp"
+        android:text="You must select an alliance color (above) before you can access the map."
+        tools:layout_editor_absoluteX="309dp"
+        tools:layout_editor_absoluteY="660dp" />
+
+    <Button
+        android:id="@+id/generateQRButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="GENERATE QR CODE"
+        android:visibility="invisible"
+        tools:layout_editor_absoluteX="255dp"
+        tools:layout_editor_absoluteY="551dp" />
 </android.support.constraint.ConstraintLayout>

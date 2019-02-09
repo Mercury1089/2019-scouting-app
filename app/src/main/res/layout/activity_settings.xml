@@ -60,6 +60,7 @@
             android:id="@+id/FieldSideLeft"
             android:layout_width="82dp"
             android:layout_height="match_parent"
+            android:onClick="leftClick"
             android:text="Left"
             android:textSize="24sp" />
 
@@ -68,6 +69,7 @@
             android:layout_width="82dp"
             android:layout_height="match_parent"
             android:background="@color/bootstrap_brand_success"
+            android:onClick="rightClick"
             android:text="Right"
             android:textSize="24sp" />
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>

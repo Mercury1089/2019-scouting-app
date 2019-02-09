@@ -23,18 +23,68 @@ public class Settings extends AppCompatActivity {
 » start2L - populated by the state of the 2L square location on the diagram (0 if off, 1 if on)
 » start2R - populated by the state of the 2R square location on the diagram (0 if off, 1 if on)
      */
+    Button fieldSideLeftButton;
+    Button fieldSideRightButton;
+    Button localStorageResetButton;
+    boolean isLeft = false;
+    boolean isRight = true;
+    boolean isLocalStorageClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        Button fieldSideLeft = View.findViewById(R.id.FieldSideLeft);
-        fieldSideLeft.setBackgroundColor(getResources().getColor(R.color.light));
-        fieldSideLeft.setTextColor(getResources().getColor(R.color.grey));
+        fieldSideLeftButton = findViewById(R.id.blueButton);
+        fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+        fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
 
-        Button fieldSideRight = View.findViewById(R.id.FieldSideRight);
-        fieldSideRight.setBackgroundColor(getResources().getColor(R.color.light));
-        fieldSideRight.setTextColor(getResources().getColor(R.color.grey));
+        fieldSideRightButton = findViewById(R.id.FieldSideRight);
+        fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
+        fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
 
+        localStorageResetButton = findViewById(R.id.localStorageResetButton);
+    }
+
+    public void rightClick (View view) {
+        if (isRight == false) {
+            isRight = true;
+            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+        }
+        else {
+            isRight = false;
+            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
+            fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
+        }
+    }
+
+    public void leftClick (View view) {
+        if (isLeft == false) {
+            isLeft = true;
+            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+        }
+        else {
+            isLeft = false;
+            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
+            fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
+        }
+    }
+
+    public void localStorageResetClick (View view) {
+        if (isLocalStorageClicked == false) {
+            isLocalStorageClicked = true;
+            localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
+        }
+        else {
+            isLocalStorageClicked = false;
+            localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
+            localStorageResetButton.setTextColor(getResources().getColor(R.color.grey));
+        }
     }
 }

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     int startL2 = 0; //0 or 1
     int startR2 = 0; //0 or 1
 
-    //variables that store elements of the screen
+    //variables that store elements of the screen for the output variables
     EditText scouterNameInput;
     EditText matchNumberInput;
     EditText teamNumberInput;
@@ -39,6 +39,14 @@ public class MainActivity extends AppCompatActivity {
     Button redButton;
     Button panelButton;
     Button cargoButton;
+
+
+    //other variables
+    TextView prepopulatedDirections;
+    TextView prepopulatedTitle;
+    Button startButton;
+    Button generateQRButton;
+
 
 
 
@@ -75,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                         noShowStatus = 1;
+                        panelButton.setEnabled(false);
+                        cargoButton.setEnabled(true);
+                        prepopulatedDirections = (findViewById(R.id.IDPrepopulatedDirections));
+                        prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
+                        prepopulatedTitle = findViewById(R.id.IDPrepopulatedTitle);
+                        prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
+                        startButton = findViewById(R.id.startButton);
+                        generateQRButton = findViewById(R.id.generateQRButton);
+                        startButton.setVisibility(View.GONE);
+                        generateQRButton.setVisibility(View.VISIBLE);
                 } else {
                        noShowStatus = 0;
                 }
@@ -131,39 +149,68 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void blueClick (View view) {
-        isBlueAlliance = 1;
-        blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
-        blueButton.setTextColor(getResources().getColor(R.color.light));
-        isRedAlliance = 0;
-        redButton.setBackgroundColor(getResources().getColor(R.color.light));
-        redButton.setTextColor(getResources().getColor(R.color.grey));
+        if (isBlueAlliance == 0) {
+            blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
+            blueButton.setTextColor(getResources().getColor(R.color.light));
+            isRedAlliance = 0;
+            redButton.setBackgroundColor(getResources().getColor(R.color.light));
+            redButton.setTextColor(getResources().getColor(R.color.grey));
+            isBlueAlliance = 1;
+        }
+        else {
+            isBlueAlliance = 0;
+            blueButton.setBackgroundColor(getResources().getColor(R.color.light));
+            blueButton.setTextColor(getResources().getColor(R.color.grey));
+        }
     }
 
     public void redClick (View view) {
-        isBlueAlliance = 1;
-        blueButton.setBackgroundColor(getResources().getColor(R.color.light));
-        blueButton.setTextColor(getResources().getColor(R.color.grey));
-        isRedAlliance = 0;
-        redButton.setBackgroundColor(getResources().getColor(R.color.red));
-        redButton.setTextColor(getResources().getColor(R.color.light));
+        if (isRedAlliance == 0) {
+            blueButton.setBackgroundColor(getResources().getColor(R.color.light));
+            blueButton.setTextColor(getResources().getColor(R.color.grey));
+            isBlueAlliance = 0;
+            redButton.setBackgroundColor(getResources().getColor(R.color.red));
+            redButton.setTextColor(getResources().getColor(R.color.light));
+            isRedAlliance = 1;
+        }
+        else {
+            isRedAlliance = 0;
+            redButton.setBackgroundColor(getResources().getColor(R.color.light));
+            redButton.setTextColor(getResources().getColor(R.color.grey));
+        }
+
     }
 
     public void panelClick (View view) {
-        isSetupPanel = 1;
-        panelButton.setBackgroundColor(getResources().getColor(R.color.orange));
-        panelButton.setTextColor(getResources().getColor(R.color.light));
-        isSetupCargo = 0;
-        cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
-        cargoButton.setTextColor(getResources().getColor(R.color.grey));
+        if (isSetupPanel == 0) {
+            isSetupPanel = 1;
+            panelButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            panelButton.setTextColor(getResources().getColor(R.color.light));
+            isSetupCargo = 0;
+            cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+            cargoButton.setTextColor(getResources().getColor(R.color.grey));
+        }
+        else {
+            isSetupPanel = 0;
+            panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+            panelButton.setTextColor(getResources().getColor(R.color.grey));
+        }
     }
 
     public void cargoClick (View view) {
-        isSetupPanel = 0;
-        panelButton.setBackgroundColor(getResources().getColor(R.color.light));
-        panelButton.setTextColor(getResources().getColor(R.color.grey));
-        isSetupCargo = 1;
-        cargoButton.setBackgroundColor(getResources().getColor(R.color.orange));
-        cargoButton.setTextColor(getResources().getColor(R.color.light));
+        if (isSetupCargo == 0) {
+            isSetupPanel = 0;
+            panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+            panelButton.setTextColor(getResources().getColor(R.color.grey));
+            isSetupCargo = 1;
+            cargoButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            cargoButton.setTextColor(getResources().getColor(R.color.light));
+        }
+        else {
+            isSetupCargo = 0;
+            cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+            cargoButton.setTextColor(getResources().getColor(R.color.grey));
+        }
     }
 
     public void startClick (View view) {
