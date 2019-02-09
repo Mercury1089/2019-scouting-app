@@ -31,10 +31,9 @@
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:id="@+id/bootstrapButtonGroup2"
-        android:layout_width="166dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
         android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
         android:orientation="horizontal"
         app:bootstrapBrand="success"
         app:bootstrapSize="lg"
@@ -43,18 +42,21 @@
         tools:layout_editor_absoluteY="573dp">
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/firstBootstrapButton2"
+            android:id="@+id/PanelButton"
             android:layout_width="84dp"
             android:layout_height="match_parent"
-            android:background="@color/bootstrap_brand_success"
-            android:text="Left"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="panelClick"
+            android:text="Panel"
             android:textSize="12sp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/secondBootstrapButton2"
-            android:layout_width="match_parent"
+            android:id="@+id/CargoButton"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Right"
+            android:background="@color/bootstrap_brand_danger"
+            android:onClick="cargoClick"
+            android:text="Cargo"
             android:textSize="12sp" />
 
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
@@ -188,11 +190,10 @@
         tools:layout_editor_absoluteY="439dp" />
 
     <Switch
-        android:id="@+id/switch2"
+        android:id="@+id/Switch"
         android:layout_width="148dp"
         android:layout_height="55dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:text="No Show"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="parent"
@@ -223,19 +224,21 @@
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/firstBootstrapButton"
+            android:id="@+id/redButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/bootstrap_brand_success"
+            android:onClick="redClick"
             android:text="Red"
             android:visibility="visible"
             tools:layout_editor_absoluteX="250dp"
             tools:layout_editor_absoluteY="439dp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/secondBootstrapButton"
+            android:id="@+id/blueButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:onClick="blueClick"
             android:text="Blue"
             android:textSize="12sp"
             tools:layout_editor_absoluteX="301dp"
@@ -293,4 +296,88 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="105dp" />
+
+    <EditText
+        android:id="@+id/numeditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="720dp" />
+
+    <EditText
+        android:id="@+id/numeditText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="798dp" />
+
+    <EditText
+        android:id="@+id/numeditText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="873dp" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:onClick="startClick"
+        android:text="START"
+        tools:layout_editor_absoluteX="369dp"
+        tools:layout_editor_absoluteY="850dp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        tools:layout_editor_absoluteX="381dp"
+        tools:layout_editor_absoluteY="431dp" />
+
+    <View
+        android:id="@+id/C1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="C1Click"
+        tools:layout_editor_absoluteX="381dp"
+        tools:layout_editor_absoluteY="431dp" />
+
+    <View
+        android:id="@+id/R1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="R1Click"
+        tools:layout_editor_absoluteX="381dp"
+        tools:layout_editor_absoluteY="542dp" />
+
+    <View
+        android:id="@+id/R2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="R2Click"
+        tools:layout_editor_absoluteX="496dp"
+        tools:layout_editor_absoluteY="542dp" />
+
+    <View
+        android:id="@+id/L2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="L2Click"
+        tools:layout_editor_absoluteX="496dp"
+        tools:layout_editor_absoluteY="322dp" />
+
+    <View
+        android:id="@+id/L1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:onClick="L1Click"
+        tools:layout_editor_absoluteX="381dp"
+        tools:layout_editor_absoluteY="322dp" />
 </android.support.constraint.ConstraintLayout>
