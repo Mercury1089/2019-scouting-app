@@ -9,5 +9,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //set color of bootstrap buttons to @color/bootstrap_dropdown_divider and set text color to @color/bootstrap_dropdown_divider
     }
 }
