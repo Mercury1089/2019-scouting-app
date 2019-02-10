@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     Button startButton;
     Button generateQRButton;
     boolean isResetLocalStorageClicked;
+    boolean hasBeenSaved = false;
+    int i;
+    String leftOrRight;
 
 
 
@@ -74,6 +77,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //setting variables equal to elements
+        i++;
+        if (i<1) {
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+        }
         scouterNameInput = findViewById(R.id.editText);
         matchNumberInput = findViewById(R.id.editText2);
         teamNumberInput = findViewById(R.id.numeditText);
@@ -110,8 +118,7 @@ public class MainActivity extends AppCompatActivity {
         cargoButton = findViewById(R.id.CargoButton);
         //get intent from settings screen and the variable that says whether it is left or right
         Intent intent = getIntent();
-        String leftOrRight = intent.getStringExtra(Settings.);
-
+        leftOrRight = intent.getStringExtra(Settings.EXTRA_MESSAGE);
     }
     //setters
     public void setScouterName(String newString) {
@@ -247,7 +254,13 @@ public class MainActivity extends AppCompatActivity {
             blueButton.setTextColor(getResources().getColor(R.color.light));
             redDefault();
             isBlueAlliance = 1;
-        }
+            if (leftOrRight == "Left") {
+                    //field is left orientated
+                }
+                else {
+                    //field is right orientated
+                }
+            }
         else {
             blueDefault();
         }

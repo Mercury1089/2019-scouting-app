@@ -5,32 +5,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 
 public class Settings extends MainActivity {
-    /* for main activity
-  scouterName - populated by data entered in Scouter name field
-» matchNumber - populated by data entered in Match # field
-» teamNumber - populated by data entered in Team # field
-» partner1 - populated by data entered in 1st alliance partner field
-» partner2 - populated by data entered in 2nd alliance partner field
-» noShowStatus - populated by state of no show toggle (0 if off, 1 if on)
-» blueAlliance - populated by state of blue alliance color button (0 if off, 1 if on)
-» redAlliance - populated by state of red alliance color button (0 if off, 1 if on)
-» prepopPanel - populated by state of panel button (0 if off, 1 if on)
-» prepopCargo - populated by state of cargo button (0 if off, 1 if on)
-» start1L - populated by the state of the 1L square location on the diagram (0 if off, 1 if on)
-» start1C - populated by the state of the 1C square location on the diagram (0 if off, 1 if on)
-» start1R - populated by the state of the 1R square location on the diagram (0 if off, 1 if on)
-» start2L - populated by the state of the 2L square location on the diagram (0 if off, 1 if on)
-» start2R - populated by the state of the 2R square location on the diagram (0 if off, 1 if on)
-     */
+    //for intent (going to Settings Activity)
+    public static final String EXTRA_MESSAGE = "com.mercury1089.scoutingapp2019.MESSAGE";
+
+    //variables to be used in the Settings Activity
     Button fieldSideLeftButton;
     Button fieldSideRightButton;
     Button localStorageResetButton;
+    Button saveButton;
+    Button cancelButton;
     boolean isLeft = false;
     boolean isRight = true;
     String leftOrRight = "";
+
+
+
+    //variables to be passed on to the MainActivity Activity
     boolean isLocalStorageClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +36,27 @@ public class Settings extends MainActivity {
         fieldSideRightButton = findViewById(R.id.FieldSideRight);
         fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
         fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
-        localStorageResetButton = findViewById(R.id.localStorageResetButton);
+        localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
+        saveButton = findViewById(R.id.SaveButton);
+        cancelButton = findViewById(R.id.CancelButton);
+
+        if (hasBeenSaved) {
+            cancelButton.setEnabled(false);
+        }
     }
 
     public void rightClick (View view) {
         if (isRight == false) {
             isRight = true;
             leftOrRight = "Right";
-            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
-            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+            leftDefault();
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
             fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+            saveButton.setEnabled(true);
         }
         else {
-            isRight = false;
-            leftOrRight = "";
-            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
-            fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
+            rightDefault();
+            saveButton.setEnabled(false);
         }
     }
 
@@ -71,12 +68,13 @@ public class Settings extends MainActivity {
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
             fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+            saveButton.setEnabled(true);
         }
         else {
             isLeft = false;
             leftOrRight = "";
-            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
-            fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
+            leftDefault();
+            saveButton.setEnabled(false);
         }
     }
 
@@ -85,41 +83,70 @@ public class Settings extends MainActivity {
             isLocalStorageClicked = true;
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
+        }
+    }
+
+    public void saveClick (View view) {
+        hasBeenSaved = true;
+        if (isLocalStorageClicked == true) {
             setScouterName("");
             setMatchNumber("");
             setTeamNumber(0);
             setFirstAlliancePartner(0);
             setSecondAlliancePartner(0);
+            setNoShowStatus(0);
+            setIsBlueAlliance(0);
+            setIsRedAlliance(0);
             setIsSetupPanel(0);
             setIsSetupCargo(0);
+            setisResetLocalStorageClicked(false);
             setStartL1(0);
             setStartC1(0);
             setStartR1(0);
             setStartL2(0);
             setStartR2(0);
-                    /* for main activity
-              scouterName - populated by data entered in Scouter name field
-            » matchNumber - populated by data entered in Match # field
-            » teamNumber - populated by data entered in Team # field
-            » partner1 - populated by data entered in 1st alliance partner field
-            » partner2 - populated by data entered in 2nd alliance partner field
-            » noShowStatus - populated by state of no show toggle (0 if off, 1 if on)
-            » blueAlliance - populated by state of blue alliance color button (0 if off, 1 if on)
-            » redAlliance - populated by state of red alliance color button (0 if off, 1 if on)
-            » prepopPanel - populated by state of panel button (0 if off, 1 if on)
-            » prepopCargo - populated by state of cargo button (0 if off, 1 if on)
-            » start1L - populated by the state of the 1L square location on the diagram (0 if off, 1 if on)
-            » start1C - populated by the state of the 1C square location on the diagram (0 if off, 1 if on)
-            » start1R - populated by the state of the 1R square location on the diagram (0 if off, 1 if on)
-            » start2L - populated by the state of the 2L square location on the diagram (0 if off, 1 if on)
-            » start2R - populated by the state of the 2R square location on the diagram (0 if off, 1 if on)
-         */
         }
-    }
-
-    public void startClick (View view) {
+        else if (leftOrRight != "") {
+            if (leftOrRight == "Left") {
+                if (isBlueAlliance == 1) {
+                    //field is blue left orientated
+                }
+                else if (isRedAlliance == 1) {
+                    //field is red left orientated
+                }
+            }
+            else {
+                if (isBlueAlliance == 1) {
+                    //field is blue right orientated
+                }
+                else if (isRedAlliance == 1) {
+                    //field is red right orientated
+                }
+            }
+        }
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra(EXTRA_MESSAGE, leftOrRight);
         startActivity(intent);
+    }
+
+
+    public void cancelClick (View view) {
+        leftOrRight = "";
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void rightDefault () {
+        fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
+        fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
+        isRight = false;
+        leftOrRight = "";
+    }
+
+    public void leftDefault () {
+        fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+        fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+        isLeft = false;
+        leftOrRight = "";
     }
 }
