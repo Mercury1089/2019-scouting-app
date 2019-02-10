@@ -14,7 +14,7 @@ import android.widget.ToggleButton;
 public class MainActivity extends AppCompatActivity {
     //variables that should be outputted
     String scouterName = "";
-    String matchNumber = "";
+    int matchNumber = 0;
     int teamNumber = 0;
     int firstAlliancePartner = 0;
     int secondAlliancePartner = 0;
@@ -78,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //setting variables equal to elements
         i++;
-        if (i<1) {
+        if (i < 1) {
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
         }
         scouterNameInput = findViewById(R.id.editText);
-        matchNumberInput = findViewById(R.id.editText2);
+        matchNumberInput = findViewById(R.id.numedittext5);
         teamNumberInput = findViewById(R.id.numeditText);
         firstAlliancePartnerInput = findViewById(R.id.numeditText2);
         secondAlliancePartnerInput = findViewById(R.id.numeditText3);
@@ -124,8 +124,8 @@ public class MainActivity extends AppCompatActivity {
     public void setScouterName(String newString) {
         this.scouterName = newString;
     }
-    public void setMatchNumber(String newString) {
-        this.matchNumber = newString;
+    public void setMatchNumber(int newInt) {
+        this.matchNumber = newInt;
     }
     public void setTeamNumber(int newInt) {
         this.teamNumber = newInt;
@@ -249,12 +249,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void blueClick (View view) {
+        scouterName = scouterNameInput.getText().toString();
+        matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+        teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
+        firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
+        secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
         if (isBlueAlliance == 0) {
             blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
             blueButton.setTextColor(getResources().getColor(R.color.light));
             redDefault();
             isBlueAlliance = 1;
-            if (leftOrRight == "Left") {
+            if (teamNumber != 0 && matchNumber != 0) {
+                startButton.setEnabled(true);
+            }
+            if (leftOrRight.equals("Left")) {
                     //field is left orientated
                 }
                 else {
@@ -263,18 +271,37 @@ public class MainActivity extends AppCompatActivity {
             }
         else {
             blueDefault();
+            startButton.setEnabled(false);
         }
     }
 
     public void redClick (View view) {
+        scouterName = scouterNameInput.getText().toString();
+        matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+        teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
+        firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
+        secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
         if (isRedAlliance == 0) {
             blueDefault();
             redButton.setBackgroundColor(getResources().getColor(R.color.red));
             redButton.setTextColor(getResources().getColor(R.color.light));
             isRedAlliance = 1;
+            if (teamNumber != 0 && matchNumber != 0) {
+                startButton.setEnabled(true);
+            }
+            if (teamNumber != 0 && matchNumber != 0) {
+                startButton.setEnabled(true);
+            }
+            if (leftOrRight.equals("Left")) {
+                //field is left orientated
+            }
+            else {
+                //field is right orientated
+            }
         }
         else {
-            redDefault();
+            blueDefault();
+            startButton.setEnabled(false);
         }
 
     }
@@ -305,11 +332,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void startClick (View view) {
         scouterName = scouterNameInput.getText().toString();
-        matchNumber = matchNumberInput.getText().toString();
+        matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
         teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
         firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
         secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
     }
-
-
 }

@@ -409,4 +409,13 @@
         android:visibility="invisible"
         tools:layout_editor_absoluteX="255dp"
         tools:layout_editor_absoluteY="551dp" />
+
+    <EditText
+        android:id="@+id/numedittext5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="324dp" />
 </android.support.constraint.ConstraintLayout>
