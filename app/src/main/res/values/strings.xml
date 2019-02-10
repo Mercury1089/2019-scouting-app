@@ -1,5 +1,8 @@
 <resources>
+    <!-- MainActivity-->
     <string name="app_name">ScoutingApp2019</string>
+    <string name="Settings">&lt;/&gt;</string>
+    <string name="Clear"> CLEAR </string>
     <string name="SetupTitle">SETUP</string>
     <string name="SetupDirections">Complete the fields below before the start of each match.</string>
     <string name="ScouterName">Scouter Name:</string>
@@ -20,5 +23,12 @@
     <string name="Start">START</string>
     <string name="GenerateQRCode">GENERATE QR CODE</string>
 
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="LeftRightDirections">Which side of the field is blue?</string>
+    <string name="Left">Left</string>
+    <string name="Right">Right</string>
+    <string name="QRProblems">Having QR problems?</string>
+    <string name="ResetLocalStorage">RESET LOCAL STORAGE</string>
 
 </resources>

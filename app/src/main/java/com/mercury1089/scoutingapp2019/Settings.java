@@ -94,7 +94,7 @@ public class Settings extends MainActivity {
 
     public void rightClick (View view) {
 
-        if (isRight == false) {
+        if (!isRight) {
 
             isRight = true;
 
@@ -124,7 +124,7 @@ public class Settings extends MainActivity {
 
     public void leftClick (View view) {
 
-        if (isLeft == false) {
+        if (!isLeft) {
 
             isLeft = true;
 
@@ -160,7 +160,7 @@ public class Settings extends MainActivity {
 
     public void localStorageResetClick (View view) {
 
-        if (isLocalStorageClicked == false) {
+        if (!isLocalStorageClicked) {
 
             isLocalStorageClicked = true;
 
@@ -178,7 +178,7 @@ public class Settings extends MainActivity {
 
         hasBeenSaved = true;
 
-        if (isLocalStorageClicked == true) {
+        if (isLocalStorageClicked) {
 
             setScouterName("");
 
@@ -211,42 +211,6 @@ public class Settings extends MainActivity {
             setStartL2(0);
 
             setStartR2(0);
-
-        }
-
-        else if (leftOrRight != "") {
-
-            if (leftOrRight == "Left") {
-
-                if (isBlueAlliance == 1) {
-
-                    //field is blue left orientated
-
-                }
-
-                else if (isRedAlliance == 1) {
-
-                    //field is red left orientated
-
-                }
-
-            }
-
-            else {
-
-                if (isBlueAlliance == 1) {
-
-                    //field is blue right orientated
-
-                }
-
-                else if (isRedAlliance == 1) {
-
-                    //field is red right orientated
-
-                }
-
-            }
 
         }
 

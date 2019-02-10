@@ -11,154 +11,179 @@
         android:id="@+id/SettingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:onClick="SettingClick"
-        android:text="</>"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:text="@string/Settings"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ClearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
         android:enabled="false"
         android:onClick="ClearClick"
-        android:text="Clear"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:text="@string/Clear"
+        app:layout_constraintStart_toEndOf="@+id/SettingsButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/IDSetup"
         android:layout_width="74dp"
         android:layout_height="0dp"
-        android:text="SETUP"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/SetupTitle"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:fontFamily="sans-serif-black"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SettingsButton" />
 
     <TextView
         android:id="@+id/IDSetupDirections"
         android:layout_width="386dp"
         android:layout_height="23dp"
-        android:text="Complete the fields below before the start of each match."
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/SetupDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textSize="14sp"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="82dp" />
+        app:layout_constraintBottom_toTopOf="@+id/IDScouterName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDSetup" />
 
     <TextView
         android:id="@+id/IDScouterName"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:text="Scouter Name:"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/ScouterName"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="121dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDSetup" />
 
     <EditText
         android:id="@+id/ScouterNameInput"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="154dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDScouterName" />
 
     <TextView
         android:id="@+id/IDMatchNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Match #:"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/MatchNumber"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="207dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ScouterNameInput" />
 
     <EditText
         android:id="@+id/MatchNumberInput"
         android:layout_width="379dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="214dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDMatchNumber" />
 
     <TextView
         android:id="@+id/IDTeamNumber"
         android:layout_width="wrap_content"
         android:layout_height="17dp"
-        android:text="Team #:"
+        android:layout_marginStart="16dp"
+        android:text="@string/TeamNumber"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="267dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MatchNumberInput" />
 
     <EditText
         android:id="@+id/TeamNumberInput"
         android:layout_width="211dp"
-        android:layout_height="51dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:inputType="numberSigned"
-        tools:layout_editor_absoluteY="267dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/MatchNumberInput" />
 
     <Switch
         android:id="@+id/NoShowSwitch"
         android:layout_width="148dp"
         android:layout_height="55dp"
+        android:layout_marginStart="128dp"
         android:backgroundTint="@android:color/holo_orange_dark"
-        android:text="No Show"
+        android:text="@string/NoShow"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="417dp"
-        tools:layout_editor_absoluteY="267dp" />
+        app:layout_constraintStart_toEndOf="@+id/TeamNumberInput"
+        app:layout_constraintTop_toBottomOf="@+id/MatchNumberInput" />
 
     <TextView
         android:id="@+id/IDAlliancePartners"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alliance Partners"
+        android:layout_marginStart="16dp"
+        android:text="@string/AlliancePartners"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="327dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TeamNumberInput" />
 
     <EditText
         android:id="@+id/FirstAlliancePartnerInput"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:inputType="numberSigned"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="351dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
     <EditText
         android:id="@+id/SecondAlliancePartnerInput"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:ems="10"
         android:inputType="numberSigned"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="351dp" />
+        app:layout_constraintStart_toEndOf="@+id/FirstAlliancePartnerInput"
+        app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
     <TextView
         android:id="@+id/IDAllianceColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alliance Color"
+        android:layout_marginStart="256dp"
+        android:text="@string/AllianceColor"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="273dp"
-        tools:layout_editor_absoluteY="327dp" />
+        app:layout_constraintStart_toEndOf="@+id/IDAlliancePartners"
+        app:layout_constraintTop_toTopOf="@+id/IDAlliancePartners" />
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:id="@+id/AllianceColors"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="36dp"
         android:orientation="horizontal"
         app:bootstrapBrand="success"
         app:bootstrapSize="lg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:roundedCorners="true"
-        tools:layout_editor_absoluteY="351dp">
+        app:layout_constraintTop_toTopOf="@+id/IDAllianceColor"
+        app:roundedCorners="true">
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -186,20 +211,23 @@
         android:id="@+id/IDPrepopulated"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="sans-serif-black"
-        android:text="PREPOPULATED"
+        android:text="@string/PrepopulatedTitle"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="403dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SecondAlliancePartnerInput" />
 
     <TextView
         android:id="@+id/IDPrepopulatedDirections"
         android:layout_width="576dp"
         android:layout_height="wrap_content"
-        android:text='Tap "PANEL" or "CARGO" to mark which element is in the robot at the start of the match.'
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/PrepopulatedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="422dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDPrepopulated" />
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
         android:id="@+id/PanelOrCargo"
@@ -220,7 +248,7 @@
             android:layout_height="match_parent"
             android:background="@color/bootstrap_brand_success"
             android:onClick="panelClick"
-            android:text="Panel"
+            android:text="@string/Panel"
             android:textSize="12sp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -228,7 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:onClick="cargoClick"
-            android:text="Cargo"
+            android:text="@string/Cargo"
             android:textSize="12sp" />
 
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
@@ -237,31 +265,35 @@
         android:id="@+id/IDStartingPosition"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-black"
-        android:text="STARTING POSITION"
+        android:text="@string/StartingPositionTitle"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="524dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
 
     <TextView
         android:id="@+id/IDStartingPositionDirections"
         android:layout_width="601dp"
         android:layout_height="24dp"
-        android:text="Tap on the platform to mark the robot's starting position."
+        android:layout_marginStart="16dp"
+        android:text="@string/SetupDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="542dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPosition" />
 
     <View
         android:id="@+id/LL2"
         android:layout_width="87dp"
         android:layout_height="87dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="L2Click"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections"
-        tools:layout_editor_absoluteX="28dp" />
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
     <View
         android:id="@+id/RR2"
@@ -271,7 +303,7 @@
         android:layout_marginTop="8dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="R2Click"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/RR1"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
@@ -279,11 +311,12 @@
         android:id="@+id/L2M'"
         android:layout_width="87dp"
         android:layout_height="87dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:background="@color/bootstrap_brand_info"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/LL2"
-        tools:layout_editor_absoluteX="28dp" />
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LL2" />
 
     <View
         android:id="@+id/R2M"
@@ -292,7 +325,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:background="@color/bootstrap_brand_info"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/RC1"
         app:layout_constraintTop_toBottomOf="@+id/RR2" />
 
@@ -300,12 +333,13 @@
         android:id="@+id/LR2"
         android:layout_width="87dp"
         android:layout_height="87dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="R2Click"
-        android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@+id/L2M'"
-        tools:layout_editor_absoluteX="28dp" />
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/L2M'" />
 
     <View
         android:id="@+id/RL2"
@@ -315,7 +349,7 @@
         android:layout_marginTop="12dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="L2Click"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/RL1"
         app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
@@ -323,21 +357,23 @@
         android:id="@+id/LL1"
         android:layout_width="87dp"
         android:layout_height="95dp"
+        android:layout_marginStart="12dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="L1Click"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="574dp" />
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/LL2"
+        app:layout_constraintTop_toTopOf="@+id/LL2" />
 
     <View
         android:id="@+id/RR1"
         android:layout_width="87dp"
         android:layout_height="95dp"
+        android:layout_marginStart="64dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="R1Click"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="278dp"
-        tools:layout_editor_absoluteY="574dp" />
+        android:visibility="visible"
+        app:layout_constraintStart_toEndOf="@+id/LL1"
+        app:layout_constraintTop_toTopOf="@+id/RR2" />
 
     <View
         android:id="@+id/LC1"
@@ -346,7 +382,7 @@
         android:layout_marginStart="12dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="C1Click"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/L2M'"
         app:layout_constraintTop_toBottomOf="@+id/LL1" />
 
@@ -357,7 +393,7 @@
         android:layout_marginStart="64dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="C1Click"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/LC1"
         app:layout_constraintTop_toBottomOf="@+id/LL1" />
 
@@ -368,7 +404,7 @@
         android:layout_marginStart="12dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="R1Click"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/LR2"
         app:layout_constraintTop_toBottomOf="@+id/LC1" />
 
@@ -379,7 +415,7 @@
         android:layout_marginStart="64dp"
         android:background="@color/bootstrap_brand_info"
         android:onClick="L1Click"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/LR1"
         app:layout_constraintTop_toBottomOf="@+id/LC1" />
 
@@ -388,27 +424,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="DO NOT press the START button until you hear the charge sound!"
+        android:text="@string/StartButtonDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintTop_toBottomOf="@+id/RL1"
-        tools:layout_editor_absoluteX="104dp" />
+        app:layout_constraintEnd_toStartOf="@+id/StartButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/StartButton"
+        app:layout_constraintTop_toBottomOf="@+id/RL1" />
 
     <Button
         android:id="@+id/StartButton"
         android:layout_width="473dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:enabled="false"
         android:onClick="startClick"
-        android:text="START"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="898dp" />
+        android:text="@string/Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/GenerateQRCodeButton"
         android:layout_width="473dp"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="GENERATE QR CODE"
+        android:text="@string/GenerateQRCode"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

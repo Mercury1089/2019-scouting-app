@@ -246,12 +246,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } else {
-
                     noShowStatus = 0;
                 }
-
             }
-
         });
 
         blueButton = findViewById(R.id.BlueButton);
@@ -301,12 +298,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String RedOrBlue = "";
-                if (isBlueAlliance == 1) {
+                if (isBlueAlliance == 1)
                     RedOrBlue = "Blue";
-                }
-                else if (isRedAlliance == 1) {
+
+                else if (isRedAlliance == 1)
                     RedOrBlue = "Red";
-                }
+
                 QRValue = scouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
                         + "+" + matchNumberInput.getText().toString() + "+" + firstAlliancePartnerInput.getText().toString()
                         + "+" + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
@@ -641,11 +638,8 @@ public class MainActivity extends AppCompatActivity {
         else {
 
             blueDefault();
-
             startButton.setEnabled(false);
-
         }
-
     }
 
 
