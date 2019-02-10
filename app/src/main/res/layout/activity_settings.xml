@@ -1,124 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
+
     android:background="@color/bootstrap_gray_dark"
+
     tools:context=".Settings">
 
+
+
     <TextView
+
         android:id="@+id/IDSettings"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
+
         android:layout_marginStart="32dp"
+
         android:layout_marginTop="32dp"
+
         android:text="Settings"
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
         android:textSize="36sp"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <TextView
+
         android:id="@+id/IDFieldSizeDirections"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
+
         android:layout_marginStart="32dp"
+
         android:layout_marginTop="64dp"
+
         android:text="Which side of the field is blue?"
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
         android:textSize="24sp"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDSettings" />
 
+
+
     <TextView
+
         android:id="@+id/IDLocalStorageReset"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
+
         android:layout_marginStart="32dp"
+
         android:layout_marginTop="64dp"
+
         android:text="Having QR problems?"
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
         android:textSize="24sp"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bootstrapButtonGroup2" />
+
+        app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
+
+
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
-        android:id="@+id/bootstrapButtonGroup2"
+
+        android:id="@+id/PanelOrCargo"
+
         android:layout_width="163dp"
+
         android:layout_height="52dp"
+
         android:layout_marginStart="32dp"
+
         android:layout_marginTop="16dp"
+
         android:orientation="horizontal"
+
         app:bootstrapBrand="success"
+
         app:bootstrapSize="lg"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDFieldSizeDirections"
+
         app:roundedCorners="true">>
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/FieldSideLeft"
-            android:layout_width="82dp"
-            android:layout_height="match_parent"
-            android:onClick="leftClick"
-            android:text="Left"
-            android:textSize="24sp" />
+
 
         <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/FieldSideRight"
+
+            android:id="@+id/FieldSideLeft"
+
             android:layout_width="82dp"
+
             android:layout_height="match_parent"
-            android:background="@color/bootstrap_brand_success"
-            android:onClick="rightClick"
-            android:text="Right"
+
+            android:onClick="leftClick"
+
+            android:text="Left"
+
             android:textSize="24sp" />
+
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+
+            android:id="@+id/FieldSideRight"
+
+            android:layout_width="82dp"
+
+            android:layout_height="match_parent"
+
+            android:background="@color/bootstrap_brand_success"
+
+            android:onClick="rightClick"
+
+            android:text="Right"
+
+            android:textSize="24sp" />
+
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
+
+
     <Button
+
         android:id="@+id/LocalStorageResetButton"
+
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
+
         android:layout_marginTop="16dp"
+
         android:background="@color/bootstrap_dropdown_divider"
+
         android:onClick="localStorageResetClick"
+
         android:text="   RESET LOCAL STORAGE   "
+
         android:textColor="@color/bootstrap_gray_light"
+
         android:textSize="30sp"
+
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.5"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDLocalStorageReset" />
 
+
     <Button
+
         android:id="@+id/SaveButton"
+
         android:layout_width="569dp"
+
         android:layout_height="wrap_content"
+
         android:layout_marginTop="128dp"
+
         android:background="@color/bootstrap_dropdown_divider"
+
         android:enabled="false"
+
         android:onClick="saveClick"
+
         android:text="Save"
+
         android:textColor="@color/bootstrap_gray_light"
+
         android:textSize="30sp"
+
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintHorizontal_bias="0.5"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/LocalStorageResetButton" />
 
-    <Button
-        android:id="@+id/CancelButton"
-        android:layout_width="569dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/bootstrap_dropdown_divider"
-        android:enabled="false"
-        android:onClick="cancelClick"
-        android:text="Cancel"
-        android:textColor="@color/bootstrap_gray_light"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SaveButton" />
 
+
+    <Button
+
+        android:id="@+id/CancelButton"
+
+        android:layout_width="569dp"
+
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+
+        android:background="@color/bootstrap_dropdown_divider"
+
+        android:enabled="false"
+
+        android:onClick="cancelClick"
+
+        android:text="Cancel"
+
+        android:textColor="@color/bootstrap_gray_light"
+
+        android:textSize="30sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.5"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/SaveButton" />
 </android.support.constraint.ConstraintLayout>

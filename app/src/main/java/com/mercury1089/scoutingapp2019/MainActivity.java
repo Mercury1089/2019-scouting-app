@@ -5,7 +5,6 @@ package com.mercury1089.scoutingapp2019;
 import android.content.Intent;
 
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -86,6 +85,26 @@ public class MainActivity extends AppCompatActivity {
     Button panelButton;
 
     Button cargoButton;
+
+    View LL1;
+
+    View LC1;
+
+    View LR1;
+
+    View LL2;
+
+    View LR2;
+
+    View RL1;
+
+    View RC1;
+
+    View RR1;
+
+    View RL2;
+
+    View RR2;
 
 
 
@@ -222,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
 
                     generateQRButton.setVisibility(View.VISIBLE);
 
+                    if (isBlueAlliance == 1 || isRedAlliance == 1) {
+                        generateQRButton.setEnabled(true);
+                    }
+
                 } else {
 
                     noShowStatus = 0;
@@ -246,6 +269,26 @@ public class MainActivity extends AppCompatActivity {
         panelButton = findViewById(R.id.PanelButton);
 
         cargoButton = findViewById(R.id.CargoButton);
+
+        LL1 = findViewById(R.id.LL1);
+
+        LC1 = findViewById(R.id.LC1);
+
+        LR1 = findViewById(R.id.LR1);
+
+        LL2 = findViewById(R.id.LL2);
+
+        LR2 = findViewById(R.id.LR2);
+
+        RL1 = findViewById(R.id.RL1);
+
+        RC1 = findViewById(R.id.RC1);
+
+        RR1 = findViewById(R.id.RR1);
+
+        RL2 = findViewById(R.id.RL2);
+
+        RR2 = findViewById(R.id.RR2);
 
         //get intent from settings screen and the variable that says whether it is left or right
 
@@ -555,26 +598,44 @@ public class MainActivity extends AppCompatActivity {
 
             redDefault();
 
+
+
+
+
             isBlueAlliance = 1;
 
-            if (teamNumber != 0 && matchNumber != 0) {
-
+            if (!scouterName.equals("") && teamNumber!= 0 && matchNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner != 0)
                 startButton.setEnabled(true);
 
-            }
-
             if (leftOrRight.equals("Left")) {
-
-                //field is left orientated
-
+                //set left boxes to blue
+                LL1.setBackgroundColor(getResources().getColor(R.color.blue));
+                LC1.setBackgroundColor(getResources().getColor(R.color.blue));
+                LR1.setBackgroundColor(getResources().getColor(R.color.blue));
+                LL2.setBackgroundColor(getResources().getColor(R.color.blue));
+                LR2.setBackgroundColor(getResources().getColor(R.color.blue));
+                //make the boxes visible
+                LL1.setVisibility(View.VISIBLE);
+                LC1.setVisibility(View.VISIBLE);
+                LR1.setVisibility(View.VISIBLE);
+                LL2.setVisibility(View.VISIBLE);
+                LR2.setVisibility(View.VISIBLE);
             }
 
-            else {
-
-                //field is right orientated
-
+            else if (leftOrRight.equals("Right")) {
+                //set right boxes to blue
+                RL1.setBackgroundColor(getResources().getColor(R.color.blue));
+                RC1.setBackgroundColor(getResources().getColor(R.color.blue));
+                RR1.setBackgroundColor(getResources().getColor(R.color.blue));
+                RL2.setBackgroundColor(getResources().getColor(R.color.blue));
+                RR2.setBackgroundColor(getResources().getColor(R.color.blue));
+                //make the boxes visible
+                RL1.setVisibility(View.VISIBLE);
+                RC1.setVisibility(View.VISIBLE);
+                RR1.setVisibility(View.VISIBLE);
+                RL2.setVisibility(View.VISIBLE);
+                RR2.setVisibility(View.VISIBLE);
             }
-
         }
 
         else {
@@ -624,15 +685,32 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (leftOrRight.equals("Left")) {
-
-                //field is left orientated
-
+                //set left boxes to red
+                LL1.setBackgroundColor(getResources().getColor(R.color.red));
+                LC1.setBackgroundColor(getResources().getColor(R.color.red));
+                LR1.setBackgroundColor(getResources().getColor(R.color.red));
+                LL2.setBackgroundColor(getResources().getColor(R.color.red));
+                LR2.setBackgroundColor(getResources().getColor(R.color.red));
+                //make the boxes visible
+                LL1.setVisibility(View.VISIBLE);
+                LC1.setVisibility(View.VISIBLE);
+                LR1.setVisibility(View.VISIBLE);
+                LL2.setVisibility(View.VISIBLE);
+                LR2.setVisibility(View.VISIBLE);
             }
-
             else {
-
-                //field is right orientated
-
+                //set right boxes to red
+                RL1.setBackgroundColor(getResources().getColor(R.color.red));
+                RC1.setBackgroundColor(getResources().getColor(R.color.red));
+                RR1.setBackgroundColor(getResources().getColor(R.color.red));
+                RL2.setBackgroundColor(getResources().getColor(R.color.red));
+                RR2.setBackgroundColor(getResources().getColor(R.color.red));
+                //make the boxes visible
+                RL1.setVisibility(View.VISIBLE);
+                RC1.setVisibility(View.VISIBLE);
+                RR1.setVisibility(View.VISIBLE);
+                RL2.setVisibility(View.VISIBLE);
+                RR2.setVisibility(View.VISIBLE);
             }
 
         }
@@ -692,6 +770,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 
     public void startClick (View view) {
         scouterName = scouterNameInput.getText().toString();
