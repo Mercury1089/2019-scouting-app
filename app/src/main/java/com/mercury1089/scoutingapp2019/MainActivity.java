@@ -32,79 +32,79 @@ public class MainActivity extends AppCompatActivity {
 
     //variables that should be outputted
 
-    String scouterName = "";
+    private String scouterName = "";
 
-    int matchNumber = 0;
+    private int matchNumber = 0;
 
-    int teamNumber = 0;
+    private int teamNumber = 0;
 
-    int firstAlliancePartner = 0;
+    private int firstAlliancePartner = 0;
 
-    int secondAlliancePartner = 0;
+    private int secondAlliancePartner = 0;
 
-    int noShowStatus = 0; //0 or 1
+    private int noShowStatus = 0; //0 or 1
 
-    int isBlueAlliance = 0; //0 or 1
+    private int isBlueAlliance = 0; //0 or 1
 
-    int isRedAlliance = 0; //0 or 1
+    private int isRedAlliance = 0; //0 or 1
 
-    int isSetupPanel = 0;  //0 or 1
+    private int isSetupPanel = 0;  //0 or 1
 
-    int isSetupCargo = 0; //0 or 1
+    private int isSetupCargo = 0; //0 or 1
 
-    int startL1 = 0; //0 or 1
+    private int startL1 = 0; //0 or 1
 
-    int startC1 = 0; //0 or 1
+    private int startC1 = 0; //0 or 1
 
-    int startR1 = 0; //0 or 1
+    private int startR1 = 0; //0 or 1
 
-    int startL2 = 0; //0 or 1
+    private int startL2 = 0; //0 or 1
 
-    int startR2 = 0; //0 or 1
+    private int startR2 = 0; //0 or 1
 
 
 
     //variables that store elements of the screen for the output variables
 
-    EditText scouterNameInput;
+    private EditText scouterNameInput;
 
-    EditText matchNumberInput;
+    private EditText matchNumberInput;
 
-    EditText teamNumberInput;
+    private EditText teamNumberInput;
 
-    EditText firstAlliancePartnerInput;
+    private EditText firstAlliancePartnerInput;
 
-    EditText secondAlliancePartnerInput;
+    private EditText secondAlliancePartnerInput;
 
-    Switch NoShowSwitch;
+    private Switch NoShowSwitch;
 
-    Button blueButton;
+    private Button blueButton;
 
-    Button redButton;
+    private Button redButton;
 
-    Button panelButton;
+    private Button panelButton;
 
-    Button cargoButton;
+    private Button cargoButton;
 
-    View LL1;
+    private View LL1;
 
-    View LC1;
+    private View LC1;
 
-    View LR1;
+    private View LR1;
 
-    View LL2;
+    private View LL2;
 
-    View LR2;
+    private View LR2;
 
-    View RL1;
+    private View RL1;
 
-    View RC1;
+    private View RC1;
 
-    View RR1;
+    private View RR1;
 
-    View RL2;
+    private View RL2;
 
-    View RR2;
+    private View RR2;
 
 
 
@@ -679,20 +679,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if (leftOrRight.equals("Left")) {
-                //set left boxes to red
-                LL1.setBackgroundColor(getResources().getColor(R.color.red));
-                LC1.setBackgroundColor(getResources().getColor(R.color.red));
-                LR1.setBackgroundColor(getResources().getColor(R.color.red));
-                LL2.setBackgroundColor(getResources().getColor(R.color.red));
-                LR2.setBackgroundColor(getResources().getColor(R.color.red));
-                //make the boxes visible
-                LL1.setVisibility(View.VISIBLE);
-                LC1.setVisibility(View.VISIBLE);
-                LR1.setVisibility(View.VISIBLE);
-                LL2.setVisibility(View.VISIBLE);
-                LR2.setVisibility(View.VISIBLE);
-            }
-            else {
                 //set right boxes to red
                 RL1.setBackgroundColor(getResources().getColor(R.color.red));
                 RC1.setBackgroundColor(getResources().getColor(R.color.red));
@@ -705,6 +691,21 @@ public class MainActivity extends AppCompatActivity {
                 RR1.setVisibility(View.VISIBLE);
                 RL2.setVisibility(View.VISIBLE);
                 RR2.setVisibility(View.VISIBLE);
+            }
+            else {
+                //set left boxes to red
+                LL1.setBackgroundColor(getResources().getColor(R.color.red));
+                LC1.setBackgroundColor(getResources().getColor(R.color.red));
+                LR1.setBackgroundColor(getResources().getColor(R.color.red));
+                LL2.setBackgroundColor(getResources().getColor(R.color.red));
+                LR2.setBackgroundColor(getResources().getColor(R.color.red));
+                //make the boxes visible
+                LL1.setVisibility(View.VISIBLE);
+                LC1.setVisibility(View.VISIBLE);
+                LR1.setVisibility(View.VISIBLE);
+                LL2.setVisibility(View.VISIBLE);
+                LR2.setVisibility(View.VISIBLE);
+
             }
 
         }

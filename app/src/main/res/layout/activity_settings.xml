@@ -15,7 +15,6 @@
     tools:context=".Settings">
 
 
-
     <TextView
 
         android:id="@+id/IDSettings"
@@ -28,7 +27,7 @@
 
         android:layout_marginTop="32dp"
 
-        android:text="Settings"
+        android:text="@string/settings"
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
@@ -108,7 +107,7 @@
 
         app:layout_constraintTop_toBottomOf="@+id/IDFieldSizeDirections"
 
-        app:roundedCorners="true">>
+        app:roundedCorners="true">
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -190,7 +189,7 @@
 
         android:onClick="saveClick"
 
-        android:text="Save"
+        android:text="@string/Save"
 
         android:textColor="@color/bootstrap_gray_light"
 
@@ -220,7 +219,7 @@
 
         android:onClick="cancelClick"
 
-        android:text="Cancel"
+        android:text="@android:string/cancel"
 
         android:textColor="@color/bootstrap_gray_light"
 

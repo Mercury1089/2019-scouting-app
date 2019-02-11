@@ -29,6 +29,7 @@
     <string name="Left">Left</string>
     <string name="Right">Right</string>
     <string name="QRProblems">Having QR problems?</string>
-    <string name="ResetLocalStorage">RESET LOCAL STORAGE</string>
+    <string name="ResetLocalStorage">.   RESET LOCAL STORAGE   .</string>
+    <string name="Save">Save</string>
 
 </resources>
