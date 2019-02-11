@@ -167,7 +167,14 @@ public class Settings extends MainActivity {
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
 
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
+        }
+        else {
 
+            isLocalStorageClicked = false;
+
+            localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+            localStorageResetButton.setTextColor(getResources().getColor(R.color.dark));
         }
 
     }
@@ -211,7 +218,6 @@ public class Settings extends MainActivity {
             setStartL2(0);
 
             setStartR2(0);
-
         }
 
         Intent intent = new Intent(this, MainActivity.class);

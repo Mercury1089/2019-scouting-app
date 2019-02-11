@@ -417,7 +417,101 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //getters
 
+    public String getScouterName() {
+        return this.scouterName;
+    }
+
+    public int getMatchNumber() {
+
+        return this.matchNumber;
+
+    }
+
+    public int getTeamNumber() {
+
+        return this.teamNumber;
+
+    }
+
+    public int getFirstAlliancePartner() {
+
+        return this.firstAlliancePartner;
+
+    }
+
+    public int getSecondAlliancePartner() {
+
+        return this.secondAlliancePartner;
+
+    }
+
+    public int getNoShowStatus() {
+
+        return this.noShowStatus;
+
+    }
+
+    public int getIsBlueAlliance() {
+
+        return this.isBlueAlliance;
+
+    }
+
+    public int setIsRedAlliance() {
+
+        return this.isRedAlliance;
+
+    }
+
+    public int setIsSetupPanel() {
+
+        return this.isSetupPanel;
+
+    }
+
+    public int getIsSetupCargo() {
+
+        return this.isSetupCargo;
+
+    }
+
+    public boolean getIsResetLocalStorageClicked() {
+
+        return this.isResetLocalStorageClicked;
+
+    }
+
+    public int getStartL1 () {
+
+        return this.startL1;
+
+    }
+
+    public int getStartC1 () {
+
+        return this.startC1;
+
+    }
+
+    public int getStartR1 () {
+
+        return this.startR1;
+
+    }
+
+    public int getStartL2 () {
+
+        return this.startL2;
+
+    }
+
+    public int getStartR2 () {
+
+        return this.startR2;
+
+    }
 
     //call methods
 
