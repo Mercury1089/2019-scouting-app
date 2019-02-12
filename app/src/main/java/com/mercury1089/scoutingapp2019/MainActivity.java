@@ -54,8 +54,6 @@ import com.google.zxing.WriterException;
 
 import com.google.zxing.common.BitMatrix;
 
-import java.util.logging.Logger;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -153,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private Switch NoShowSwitch;
 
 
     private BootstrapButton blueButton;
@@ -262,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    int i;
+    int i = 1;
 
 
 
@@ -271,24 +268,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     String sendMessage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -378,7 +357,21 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        //going to Settings screen at startup (only once from onCreate)
+        if (i < 1) {
 
+
+
+            Intent intent = new Intent(this, Settings.class);
+
+
+
+            startActivity(intent);
+
+
+
+        }
+        i++;
 
         //setting variables equal to elements
         ScouterNameInput = findViewById(R.id.ScouterNameInput);
@@ -428,24 +421,7 @@ public class MainActivity extends AppCompatActivity {
         blueButton = findViewById(R.id.BlueButton);
 
 
-
-        blueButton.setBackgroundColor(getResources().getColor(R.color.light));
-
-
-
-        blueButton.setTextColor(getResources().getColor(R.color.grey));
-
-
-
         redButton = findViewById(R.id.RedButton);
-
-
-
-        redButton.setBackgroundColor(getResources().getColor(R.color.light));
-
-
-
-        redButton.setTextColor(getResources().getColor(R.color.grey));
 
 
 
@@ -455,9 +431,16 @@ public class MainActivity extends AppCompatActivity {
 
         cargoButton = findViewById(R.id.CargoButton);
 
+        blueDefault();
+
+        redDefault();
+
+        panelDefault();
+
+        cargoDefault();
 
 
-        NoShowSwitch = findViewById(R.id.NoShowSwitch);
+        Switch NoShowSwitch = findViewById(R.id.NoShowSwitch);
 
 
 
@@ -500,22 +483,7 @@ public class MainActivity extends AppCompatActivity {
         RR2 = findViewById(R.id.RR2);
 
 
-        i++;
 
-
-        if (i < 1) {
-
-
-
-            Intent intent = new Intent(this, Settings.class);
-
-
-
-            startActivity(intent);
-
-
-
-        }
 
 
 
@@ -586,32 +554,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         sendMessage = intent.getStringExtra(Settings.EXTRA_MESSAGE);
-        String matchNumberString, teamNumberString, firstAlliancePartnerString, secondAlliancePartnerString, noShowStatusString, isBlueAllianceString, isRedAllianceString, isSetupPanelString, isSetupCargoString, startL1String, startC1String, startR1String, startL2String, startR2String;
-        matchNumberString = "" + matchNumber;
-        teamNumberString = "" + teamNumber;
-        firstAlliancePartnerString = "" + firstAlliancePartner;
-        secondAlliancePartnerString = "" + secondAlliancePartner;
-        noShowStatusString = "" + noShowStatus;
-        isBlueAllianceString = "" + isBlueAlliance;
-        isRedAllianceString = "" + isRedAlliance;
-        isSetupPanelString = "" + isSetupPanel;
-        isSetupCargoString = "" + isSetupCargo;
-        startL1String = "" + startL1;
-        startC1String = "" + startC1;
-        startR1String = "" + startR1;
-        startL2String = "" + startL2;
-        startR2String = "" + startR2;
-        String arr[] = {leftOrRight, scouterName, matchNumberString, teamNumberString, firstAlliancePartnerString, secondAlliancePartnerString, noShowStatusString, isBlueAllianceString, isRedAllianceString, isSetupPanelString, isSetupCargoString, startL1String, startC1String, startR1String, startL2String, startR2String};
-        int counter = 0;
-        int initIndex = 0;
-//        for (int i = 0; i < arr.length; i++) {
-//            if (sendMessage.charAt(i) == '+') {
-//                //fix logic error here, sets array position as substring, not value in array position
-//                arr[counter] = sendMessage.substring(initIndex,i+1);
-//                initIndex = i;
-//                counter++;
-//            }
-//        }
 
 
         //set listener for QR Code generator
@@ -663,7 +605,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 
     //setters
@@ -1041,7 +982,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     //call methods
 
 
@@ -1130,13 +1070,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    public void SettingClick (View view) {
-
+    public void SettingsClick (View view) {
 
 
         Intent intent = new Intent(this, Settings.class);
-
-
 
         startActivity(intent);
 
@@ -1391,15 +1328,6 @@ public class MainActivity extends AppCompatActivity {
 
 
             redDefault();
-
-
-
-
-
-
-
-
-
 
 
             isBlueAlliance = 1;
