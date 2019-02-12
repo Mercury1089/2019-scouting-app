@@ -537,6 +537,21 @@ public class MainActivity extends AppCompatActivity {
 
                     noShowStatus = 0;
 
+
+
+                    panelButton.setEnabled(true);
+
+
+
+                    cargoButton.setEnabled(true);
+
+
+                    startButton.setVisibility(View.VISIBLE);
+
+
+
+                    generateQRButton.setVisibility(View.GONE);
+
                 }
 
             }
