@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
+
 <resources>
+
+
 
     <color name="colorPrimary">#008577</color>
 
+
+
     <color name="colorPrimaryDark">#00574B</color>
+
+
 
     <color name="colorAccent">#D81B60</color>
 
+
+
     <color name="light"> @color/bootstrap_dropdown_divider </color>
+
+
 
     <color name="grey"> @color/bootstrap_gray_light </color>
 
+
+
     <color name="blue"> @color/bootstrap_brand_info </color>
+
+
 
     <color name="red"> @color/bootstrap_brand_danger </color>
 
+
+
     <color name="orange"> @android:color/holo_orange_dark </color>
+
+
 
 </resources>

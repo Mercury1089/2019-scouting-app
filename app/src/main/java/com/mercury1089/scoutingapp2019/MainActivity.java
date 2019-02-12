@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private EditText scouterNameInput;
+    private EditText ScouterNameInput;
 
 
 
@@ -154,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Switch NoShowSwitch;
-
 
 
     private BootstrapButton blueButton;
@@ -382,29 +381,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //setting variables equal to elements
-
-
-
-        i++;
-
-
-        if (i < 1) {
-
-
-
-            Intent intent = new Intent(this, Settings.class);
-
-
-
-            startActivity(intent);
-
-
-
-        }
-
-
-
-        scouterNameInput = findViewById(R.id.ScouterNameInput);
+        ScouterNameInput = findViewById(R.id.ScouterNameInput);
 
 
 
@@ -424,86 +401,27 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        NoShowSwitch = findViewById(R.id.NoShowSwitch);
+        prepopulatedTitle = findViewById(R.id.IDPrepopulated);
 
 
 
-        //starting listener to check the status of the switch
+        prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
 
 
 
-        NoShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        prepopulatedDirections = (findViewById(R.id.IDPrepopulatedDirections));
 
 
 
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
 
 
 
-                if (isChecked) {
+        startButton = findViewById(R.id.StartButton);
 
 
 
-                    noShowStatus = 1;
-
-
-
-                    panelButton.setEnabled(false);
-
-
-
-                    cargoButton.setEnabled(false);
-
-
-
-                    prepopulatedTitle = findViewById(R.id.IDPrepopulated);
-
-
-
-                    prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
-
-
-
-                    prepopulatedDirections = (findViewById(R.id.IDPrepopulatedDirections));
-
-
-
-                    prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
-
-
-
-                    startButton = findViewById(R.id.StartButton);
-
-
-
-                    generateQRButton = findViewById(R.id.GenerateQRCodeButton);
-
-
-                    startButton.setVisibility(View.GONE);
-
-
-
-                    generateQRButton.setVisibility(View.VISIBLE);
-
-
-
-                    if (isBlueAlliance == 1 || isRedAlliance == 1) {
-
-                        generateQRButton.setEnabled(true);
-
-                    }
-
-
-
-                } else {
-
-                    noShowStatus = 0;
-
-                }
-
-            }
-
-        });
+        generateQRButton = findViewById(R.id.GenerateQRCodeButton);
 
 
 
@@ -536,6 +454,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         cargoButton = findViewById(R.id.CargoButton);
+
+
+
+        NoShowSwitch = findViewById(R.id.NoShowSwitch);
 
 
 
@@ -578,6 +500,82 @@ public class MainActivity extends AppCompatActivity {
         RR2 = findViewById(R.id.RR2);
 
 
+        i++;
+
+
+        if (i < 1) {
+
+
+
+            Intent intent = new Intent(this, Settings.class);
+
+
+
+            startActivity(intent);
+
+
+
+        }
+
+
+
+
+
+
+        //starting listener to check the status of the switch
+
+
+
+        NoShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+
+
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+
+
+                if (isChecked) {
+
+
+
+                    noShowStatus = 1;
+
+
+
+                    panelButton.setEnabled(false);
+
+
+
+                    cargoButton.setEnabled(false);
+
+
+                    startButton.setVisibility(View.GONE);
+
+
+
+                    generateQRButton.setVisibility(View.VISIBLE);
+
+
+
+                    if (isBlueAlliance == 1 || isRedAlliance == 1) {
+
+                        generateQRButton.setEnabled(true);
+
+                    }
+
+
+
+                } else {
+
+                    noShowStatus = 0;
+
+                }
+
+            }
+
+        });
+
+
 
         //get intent from settings screen and the variable that says whether it is left or right
 
@@ -606,14 +604,14 @@ public class MainActivity extends AppCompatActivity {
         String arr[] = {leftOrRight, scouterName, matchNumberString, teamNumberString, firstAlliancePartnerString, secondAlliancePartnerString, noShowStatusString, isBlueAllianceString, isRedAllianceString, isSetupPanelString, isSetupCargoString, startL1String, startC1String, startR1String, startL2String, startR2String};
         int counter = 0;
         int initIndex = 0;
-        for (int i = 0; i < arr.length; i++) {
-            if (sendMessage.charAt(i) == '+') {
-                //fix logic error here, sets array position as substring, not value in array position
-                arr[counter] = sendMessage.substring(initIndex,i+1);
-                initIndex = i;
-                counter++;
-            }
-        }
+//        for (int i = 0; i < arr.length; i++) {
+//            if (sendMessage.charAt(i) == '+') {
+//                //fix logic error here, sets array position as substring, not value in array position
+//                arr[counter] = sendMessage.substring(initIndex,i+1);
+//                initIndex = i;
+//                counter++;
+//            }
+//        }
 
 
         //set listener for QR Code generator
@@ -638,7 +636,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                QRValue = scouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
+                QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
 
                         + "+" + matchNumberInput.getText().toString() + "+" + firstAlliancePartnerInput.getText().toString()
 
@@ -1152,7 +1150,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        scouterNameInput.setText("");
+        ScouterNameInput.setText("");
 
 
 
@@ -1360,7 +1358,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        scouterName = scouterNameInput.getText().toString();
+        scouterName = ScouterNameInput.getText().toString();
 
 
 
@@ -1498,7 +1496,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        scouterName = scouterNameInput.getText().toString();
+        scouterName = ScouterNameInput.getText().toString();
 
 
 
@@ -1744,7 +1742,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void startClick (View view) {
 
-        scouterName = scouterNameInput.getText().toString();
+        scouterName = ScouterNameInput.getText().toString();
 
 
 

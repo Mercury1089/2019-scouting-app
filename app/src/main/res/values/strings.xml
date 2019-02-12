@@ -1,35 +1,69 @@
 <resources>
+
     <!-- MainActivity-->
+
     <string name="app_name">ScoutingApp2019</string>
+
     <string name="Settings">&lt;/&gt;</string>
+
     <string name="Clear"> CLEAR </string>
+
     <string name="SetupTitle">SETUP</string>
+
     <string name="SetupDirections">Complete the fields below before the start of each match.</string>
+
     <string name="ScouterName">Scouter Name:</string>
+
     <string name="MatchNumber">Match Number:</string>
+
     <string name="TeamNumber">Team Number:</string>
+
     <string name="NoShow">No Show</string>
+
     <string name="AlliancePartners">Alliance Partners</string>
+
     <string name="AllianceColor">Alliance Color</string>
+
     <string name="Red">Red</string>
+
     <string name="Blue">Blue</string>
+
     <string name="PrepopulatedTitle">PREPOPULATED</string>
+
     <string name="PrepopulatedDirections">Tap \"PANEL\" or \"CARGO\" to mark which element is in the robot at the start of the match.</string>
+
     <string name="Panel">Panel</string>
+
     <string name="Cargo">Cargo</string>
+
     <string name="StartingPositionTitle">STARTING POSITION</string>
+
     <string name="StartingPositionDirections">Tap on the platform to mark the robot\'s starting position.</string>
+
     <string name="StartButtonDirections">DO NOT press the START button until you hear the charge sound!</string>
+
     <string name="Start">START</string>
+
     <string name="GenerateQRCode">GENERATE QR CODE</string>
 
+
+
     <!-- Settings -->
+
     <string name="settings">Settings</string>
+
     <string name="LeftRightDirections">Which side of the field is blue?</string>
+
     <string name="Left">Left</string>
+
     <string name="Right">Right</string>
+
     <string name="QRProblems">Having QR problems?</string>
+
     <string name="ResetLocalStorage">.   RESET LOCAL STORAGE   .</string>
+
     <string name="Save">Save</string>
+
+
 
 </resources>
