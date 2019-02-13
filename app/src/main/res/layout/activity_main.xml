@@ -867,28 +867,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-    <Button
-
-        android:id="@+id/GenerateQRCodeButton"
-
-        android:layout_width="473dp"
-
-        android:layout_height="wrap_content"
-
-        android:enabled="false"
-
-        android:text="@string/GenerateQRCode"
-
-        android:visibility="invisible"
-
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.5"
-
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/IDStartButtonDirections" />
-
-
-
 </android.support.constraint.ConstraintLayout>
