@@ -77,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
     //other variables
     TextView prepopulatedDirections;
     TextView prepopulatedTitle;
+    Button clearButton;
     Button startButton;
     Button generateQRButton;
     boolean isResetLocalStorageClicked;
     boolean hasBeenSaved = false;
     int i = 1;
     String leftOrRight;
-    String sendMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         if (i < 1) {
             Intent intent = new Intent(this, Settings.class);
             startActivity(intent);
+            startActivityForResult(intent, 1);
         }
         i++;
 
@@ -107,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
         prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
         prepopulatedDirections = (findViewById(R.id.IDPrepopulatedDirections));
         prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
+        clearButton = findViewById(R.id.ClearButton);
         startButton = findViewById(R.id.StartButton);
         generateQRButton = findViewById(R.id.GenerateQRCodeButton);
         blueButton = findViewById(R.id.BlueButton);
@@ -159,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         //get intent from settings screen and the variable that says whether it is left or right
         Intent intent = getIntent();
-        sendMessage = intent.getStringExtra(Settings.EXTRA_MESSAGE);
+        onActivityResult(1,RESULT_OK,intent);
 
         //set listener for QR Code generator
         generateQRButton.setOnClickListener(new View.OnClickListener() {
@@ -246,8 +248,6 @@ public class MainActivity extends AppCompatActivity {
 
     public int getStartL2 () { return this.startL2; }
 
-
-
     public int getStartR2 () { return this.startR2; }
 
     //call methods
@@ -275,11 +275,21 @@ public class MainActivity extends AppCompatActivity {
         isSetupCargo = 0;
     }
 
+    //for receiving data from settings screen
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                leftOrRight = data.getStringExtra("editTextValue");
+            }
+        }
+    }
+
     //click methods
 
     public void SettingsClick (View view) {
         Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
     public void ClearClick (View view) {
