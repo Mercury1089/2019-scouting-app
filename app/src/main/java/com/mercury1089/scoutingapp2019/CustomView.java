@@ -15,15 +15,13 @@ public class CustomView extends View {
     private final Paint drawPaint;
     private int size;
 
-    public CircleView(final Context context, final AttributeSet attrs) {
+    public CustomView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         drawPaint = new Paint();
         drawPaint.setColor(Color.parseColor(COLOR_HEX));
         drawPaint.setAntiAlias(true);
         setOnMeasureCallback();
     }
-
-    public DBManager (){return null;}
 
     @Override
     protected void onDraw(final Canvas canvas) {

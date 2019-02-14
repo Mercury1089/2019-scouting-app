@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.NavUtils;
 
+import android.util.Log;
 import android.view.View;
 
 
@@ -105,6 +106,10 @@ public class Settings extends MainActivity {
 
             fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
 
+            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+
             saveButton.setEnabled(true);
 
         }
@@ -112,6 +117,8 @@ public class Settings extends MainActivity {
 
 
         else {
+
+            isRight = false;
 
             rightDefault();
 
@@ -124,20 +131,20 @@ public class Settings extends MainActivity {
 
 
     public void leftClick (View view) {
-
+        Log.d("LEFTCLICK", "The left button has been clicked!!!!");
         if (!isLeft) {
 
             isLeft = true;
 
             leftOrRight = "Left";
 
-            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
 
-            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+            fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
 
-            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.orange));
 
-            fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
 
             saveButton.setEnabled(true);
 
@@ -281,7 +288,7 @@ public class Settings extends MainActivity {
 
         Intent intent = new Intent(this, MainActivity.class);
 
-        // intent.putExtra(EXTRA_MESSAGE, SendMessage);
+         intent.putExtra("LEFTORRIGHT", "" + leftOrRight);
 
         startActivity(intent);
 

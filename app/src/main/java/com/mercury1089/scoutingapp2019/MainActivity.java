@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 
 
-
+import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 
 
@@ -19,6 +19,7 @@ import android.os.Bundle;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 
 
@@ -261,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
 
         cargoDefault();
 
+        setButtonsToFalse();
+
 
 
         //starting listener to check the status of the switch
@@ -274,19 +277,16 @@ public class MainActivity extends AppCompatActivity {
                     noShowStatus = 1;
 
 
-
-                    panelButton.setEnabled(false);
-
-                    cargoButton.setEnabled(false);
-
-                    startButton.setEnabled(false);
-
-
-
                     startButton.setText(R.string.GenerateQRCode);
                     isQRButton = true;
 
+                    panelButton.setEnabled(false);
+                    panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+                    panelButton.setTextColor(getResources().getColor(R.color.grey));
 
+                    cargoButton.setEnabled(false);
+                    cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+                    cargoButton.setTextColor(getResources().getColor(R.color.grey));
 
 
                     if (isBlueAlliance == 1 || isRedAlliance == 1 && matchNumber != 0 &&
@@ -317,10 +317,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                scouterName = ScouterNameInput.getText().toString();
-                if (!scouterName.isEmpty()) {
-                    if (teamNumber!= 0 && matchNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner != 0)
+                if (ScouterNameInput.getText().length() > 0) {
+                    if (teamNumberInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
+                    && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
+                }
+                else {
+                    startButton.setEnabled(false);
                 }
             }
 
@@ -334,10 +337,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
-                if (matchNumber != 0) {
-                    if (!scouterName.isEmpty() && teamNumber!= 0 && firstAlliancePartner != 0 && secondAlliancePartner != 0)
+                if (matchNumberInput.getText().length() > 0) {
+                    if (ScouterNameInput.getText().length() > 0 && teamNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
+                            && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
+                }
+                else {
+                    startButton.setEnabled(false);
                 }
             }
 
@@ -351,10 +357,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
-                if (teamNumber != 0) {
-                    if (!scouterName.isEmpty() && matchNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner != 0)
+                if (teamNumberInput.getText().length() > 0) {
+                    if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
+                            && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
+                }
+                else {
+                    startButton.setEnabled(false);
                 }
             }
 
@@ -368,10 +377,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
-                if (firstAlliancePartner != 0) {
-                    if (!scouterName.isEmpty() && matchNumber != 0 && teamNumber != 0 && secondAlliancePartner != 0)
+                if (firstAlliancePartnerInput.getText().length() > 0) {
+                    if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && teamNumberInput.getText().length() > 0
+                            && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
+                }
+                else {
+                    startButton.setEnabled(false);
                 }
             }
 
@@ -385,10 +397,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
-                if (secondAlliancePartner != 0) {
-                    if (!scouterName.isEmpty() && matchNumber != 0 && teamNumber != 0 && firstAlliancePartner != 0)
+                if (secondAlliancePartnerInput.getText().length() > 0) {
+                    if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && teamNumberInput.getText().length() > 0
+                            && firstAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
+                }
+                else {
+                    startButton.setEnabled(false);
                 }
             }
 
@@ -638,7 +653,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(resultCode == RESULT_OK) {
 
-                leftOrRight = data.getStringExtra("editTextValue");
+                leftOrRight = getIntent().getStringExtra("LEFTORRIGHT");
 
             }
 
@@ -685,6 +700,7 @@ public class MainActivity extends AppCompatActivity {
         cargoDefault();
 
     }
+
 
 
 
@@ -855,8 +871,6 @@ public class MainActivity extends AppCompatActivity {
 
             startButton.setEnabled(false);
 
-
-
             //make boxes invisible
 
             RL1.setVisibility(View.INVISIBLE);
@@ -885,19 +899,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void redClick (View view) {
-
-        scouterName = ScouterNameInput.getText().toString();
-
-        matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
-
-        teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
-
-        firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
-
-        secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
-
-
-
         if (isRedAlliance == 0) {
 
             blueDefault();
@@ -1051,7 +1052,6 @@ public class MainActivity extends AppCompatActivity {
             cargoButton.setTextColor(getResources().getColor(R.color.light));
 
         }
-
         else {
 
             cargoDefault();
@@ -1060,6 +1060,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+        public void setButtonsToFalse() {
+
+            panelButton.setEnabled(true);
+
+            cargoButton.setEnabled(true);
+
+            startButton.setEnabled(false);
+        }
 
 
     public void startClick (View view) {
