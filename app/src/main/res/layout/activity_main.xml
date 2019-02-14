@@ -582,6 +582,300 @@
 
     <View
 
+        android:id="@+id/CircleLL2"
+
+        android:layout_width="87dp"
+
+        android:layout_height="87dp"
+
+        android:layout_marginStart="64dp"
+
+        android:layout_marginTop="8dp"
+
+        android:visibility="visible"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
+
+    <View
+
+        android:id="@+id/L2M1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="87dp"
+
+        android:layout_marginStart="64dp"
+
+        android:layout_marginTop="12dp"
+
+        android:background="@color/bootstrap_brand_info"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/LL2" />
+
+    <View
+
+        android:id="@+id/LR2"
+
+        android:layout_width="87dp"
+
+        android:layout_height="87dp"
+
+        android:layout_marginStart="64dp"
+
+        android:layout_marginTop="12dp"
+
+        android:background="@color/bootstrap_brand_info"
+
+        android:onClick="R2Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/L2M1" />
+
+    <View
+
+        android:id="@+id/CircleLR2"
+
+        android:layout_width="87dp"
+
+        android:layout_height="87dp"
+
+        android:layout_marginStart="64dp"
+
+        android:layout_marginTop="12dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/L2M1" />
+
+    <View
+
+        android:id="@+id/LL1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="12dp"
+
+        android:background="@color/bootstrap_brand_info"
+
+        android:onClick="L1Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LL2"
+
+        app:layout_constraintTop_toTopOf="@+id/LL2" />
+
+    <View
+
+        android:id="@+id/CircleLL1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="12dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LL2"
+
+        app:layout_constraintTop_toTopOf="@+id/LL2" />
+
+    <View
+
+        android:id="@+id/LC1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="12dp"
+
+        android:background="@color/bootstrap_brand_info"
+
+        android:onClick="C1Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/L2M1"
+
+        app:layout_constraintTop_toBottomOf="@+id/LL1" />
+
+    <View
+
+        android:id="@+id/CircleLC1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="12dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/L2M1"
+
+        app:layout_constraintTop_toBottomOf="@+id/LL1" />
+
+    <View
+
+        android:id="@+id/LR1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="12dp"
+
+        android:background="@color/bootstrap_brand_info"
+
+        android:onClick="R1Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LR2"
+
+        app:layout_constraintTop_toBottomOf="@+id/LC1" />
+
+    <View
+
+        android:id="@+id/CircleLR1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="12dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LR2"
+
+        app:layout_constraintTop_toBottomOf="@+id/LC1" />
+
+    <View
+
+        android:id="@+id/RR1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="64dp"
+
+        android:background="@color/bootstrap_brand_danger"
+
+        android:onClick="R1Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LL1"
+
+        app:layout_constraintTop_toTopOf="@+id/RR2" />
+
+    <View
+
+        android:id="@+id/CircleRR1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="64dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LL1"
+
+        app:layout_constraintTop_toTopOf="@+id/RR2" />
+
+    <View
+
+        android:id="@+id/RC1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="64dp"
+
+        android:background="@color/bootstrap_brand_danger"
+
+        android:onClick="C1Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LC1"
+
+        app:layout_constraintTop_toBottomOf="@+id/LL1" />
+
+    <View
+
+        android:id="@+id/CircleRC1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="64dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LC1"
+
+        app:layout_constraintTop_toBottomOf="@+id/LL1" />
+
+    <View
+
+        android:id="@+id/RL1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="64dp"
+
+        android:background="@color/bootstrap_brand_danger"
+
+        android:onClick="L1Click"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LR1"
+
+        app:layout_constraintTop_toBottomOf="@+id/LC1" />
+
+    <View
+
+        android:id="@+id/CircleRL1"
+
+        android:layout_width="87dp"
+
+        android:layout_height="95dp"
+
+        android:layout_marginStart="64dp"
+
+        android:visibility="invisible"
+
+        app:layout_constraintStart_toEndOf="@+id/LR1"
+
+        app:layout_constraintTop_toBottomOf="@+id/LC1" />
+
+    <View
+
         android:id="@+id/RR2"
 
         android:layout_width="87dp"
@@ -605,24 +899,21 @@
 
     <View
 
-        android:id="@+id/L2M1"
+        android:id="@+id/CircleRR2"
 
         android:layout_width="87dp"
 
         android:layout_height="87dp"
 
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="12dp"
 
-        android:layout_marginTop="12dp"
-
-        android:background="@color/bootstrap_brand_info"
+        android:layout_marginTop="8dp"
 
         android:visibility="invisible"
 
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/RR1"
 
-        app:layout_constraintTop_toBottomOf="@+id/LL2" />
-
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
     <View
 
@@ -643,29 +934,6 @@
         app:layout_constraintStart_toEndOf="@+id/RC1"
 
         app:layout_constraintTop_toBottomOf="@+id/RR2" />
-
-
-    <View
-
-        android:id="@+id/LR2"
-
-        android:layout_width="87dp"
-
-        android:layout_height="87dp"
-
-        android:layout_marginStart="64dp"
-
-        android:layout_marginTop="12dp"
-
-        android:background="@color/bootstrap_brand_info"
-
-        android:onClick="R2Click"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/L2M1" />
 
 
     <View
@@ -693,129 +961,21 @@
 
     <View
 
-        android:id="@+id/LL1"
+        android:id="@+id/CircleRL2"
 
         android:layout_width="87dp"
 
-        android:layout_height="95dp"
+        android:layout_height="87dp"
 
         android:layout_marginStart="12dp"
 
-        android:background="@color/bootstrap_brand_info"
-
-        android:onClick="L1Click"
+        android:layout_marginTop="12dp"
 
         android:visibility="invisible"
 
-        app:layout_constraintStart_toEndOf="@+id/LL2"
+        app:layout_constraintStart_toEndOf="@+id/RL1"
 
-        app:layout_constraintTop_toTopOf="@+id/LL2" />
-
-
-    <View
-
-        android:id="@+id/RR1"
-
-        android:layout_width="87dp"
-
-        android:layout_height="95dp"
-
-        android:layout_marginStart="64dp"
-
-        android:background="@color/bootstrap_brand_danger"
-
-        android:onClick="R1Click"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toEndOf="@+id/LL1"
-
-        app:layout_constraintTop_toTopOf="@+id/RR2" />
-
-
-    <View
-
-        android:id="@+id/LC1"
-
-        android:layout_width="87dp"
-
-        android:layout_height="95dp"
-
-        android:layout_marginStart="12dp"
-
-        android:background="@color/bootstrap_brand_info"
-
-        android:onClick="C1Click"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toEndOf="@+id/L2M1"
-
-        app:layout_constraintTop_toBottomOf="@+id/LL1" />
-
-
-    <View
-
-        android:id="@+id/RC1"
-
-        android:layout_width="87dp"
-
-        android:layout_height="95dp"
-
-        android:layout_marginStart="64dp"
-
-        android:background="@color/bootstrap_brand_danger"
-
-        android:onClick="C1Click"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toEndOf="@+id/LC1"
-
-        app:layout_constraintTop_toBottomOf="@+id/LL1" />
-
-
-    <View
-
-        android:id="@+id/LR1"
-
-        android:layout_width="87dp"
-
-        android:layout_height="95dp"
-
-        android:layout_marginStart="12dp"
-
-        android:background="@color/bootstrap_brand_info"
-
-        android:onClick="R1Click"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toEndOf="@+id/LR2"
-
-        app:layout_constraintTop_toBottomOf="@+id/LC1" />
-
-
-    <View
-
-        android:id="@+id/RL1"
-
-        android:layout_width="87dp"
-
-        android:layout_height="95dp"
-
-        android:layout_marginStart="64dp"
-
-        android:background="@color/bootstrap_brand_danger"
-
-        android:onClick="L1Click"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toEndOf="@+id/LR1"
-
-        app:layout_constraintTop_toBottomOf="@+id/LC1" />
-
+        app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
 
     <TextView
