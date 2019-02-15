@@ -186,6 +186,8 @@
 
         android:inputType="number"
 
+        android:maxLength="4"
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -227,6 +229,8 @@
         android:ems="10"
 
         android:inputType="number"
+
+        android:maxLength="4"
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
@@ -288,6 +292,8 @@
 
         android:inputType="number"
 
+        android:maxLength="4"
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -307,6 +313,8 @@
         android:ems="10"
 
         android:inputType="number"
+
+        android:maxLength="4"
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
@@ -572,9 +580,11 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="10dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/L2M1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections"
+        app:layout_constraintVertical_bias="0.0" />
 
     <View
 
@@ -584,12 +594,11 @@
 
         android:layout_height="87dp"
 
+        android:layout_marginEnd="12dp"
         android:background="@color/bootstrap_brand_info"
-
         android:visibility="invisible"
-
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="679dp" />
+        app:layout_constraintEnd_toStartOf="@+id/CircleLC1"
+        tools:layout_editor_absoluteY="677dp" />
 
     <View
 
@@ -619,6 +628,9 @@
         android:layout_height="87dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="12dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toStartOf="@+id/CircleLR1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/L2M1" />
 
@@ -648,6 +660,7 @@
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
@@ -676,6 +689,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/CircleLL1" />
 
@@ -704,8 +718,9 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
-        app:layout_constraintTop_toBottomOf="@+id/CircleLL1" />
+        app:layout_constraintTop_toBottomOf="@+id/CircleLC1" />
 
     <View
 
@@ -824,6 +839,15 @@
         app:layout_constraintStart_toEndOf="@+id/CircleRR1"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/CircleRL2"
+        android:layout_width="87dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/CircleRR1"
+        app:layout_constraintTop_toBottomOf="@+id/R2M" />
+
     <View
 
         android:id="@+id/R2M"
@@ -863,37 +887,8 @@
 
         android:visibility="invisible"
 
-        app:layout_constraintStart_toEndOf="@+id/RL1"
-
-        app:layout_constraintTop_toBottomOf="@+id/circleRR2" />
-
-
-    <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/circleRR2"
-        android:layout_width="87dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CircleRR1"
-        app:layout_constraintTop_toBottomOf="@+id/CircleRR2" />
-
-    <View
-
-        android:id="@+id/CircleRL2"
-
-        android:layout_width="87dp"
-
-        android:layout_height="87dp"
-
-        android:layout_marginStart="12dp"
-
-        android:layout_marginTop="10dp"
-
-        android:visibility="invisible"
-
-        app:layout_constraintStart_toEndOf="@+id/RL1"
-
-        app:layout_constraintTop_toBottomOf="@+id/circleRR2" />
+        app:layout_constraintStart_toEndOf="@+id/CircleRL1"
+        app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
 
     <TextView

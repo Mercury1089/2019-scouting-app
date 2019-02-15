@@ -15,7 +15,7 @@ public class CustomView extends View {
     private final Paint drawPaint;
     private int size;
 
-    public CustomView(final Context context, final AttributeSet attrs) {
+    public CustomView (final Context context, final AttributeSet attrs) {
         super(context, attrs);
         drawPaint = new Paint();
         drawPaint.setColor(Color.parseColor(COLOR_HEX));

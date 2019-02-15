@@ -2,14 +2,11 @@ package com.mercury1089.scoutingapp2019;
 
 
 
-import android.content.Intent;
 
-
-
+import android.app.Activity;
 import android.graphics.Bitmap;
 
-
-import android.graphics.Canvas;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 
 
@@ -19,7 +16,6 @@ import android.os.Bundle;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 
 
@@ -58,7 +54,7 @@ import com.google.zxing.common.BitMatrix;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     //variables that should be outputted
 
     private String scouterName = "";
@@ -133,6 +129,26 @@ public class MainActivity extends AppCompatActivity {
 
     private View RR2;
 
+    private CustomView LL1Circle;
+
+    private CustomView LC1Circle;
+
+    private CustomView LR1Circle;
+
+    private CustomView LL2Circle;
+
+    private CustomView LR2Circle;
+
+    private CustomView RL1Circle;
+
+    private CustomView RC1Circle;
+
+    private CustomView RR1Circle;
+
+    private CustomView RL2Circle;
+
+    private CustomView RR2Circle;
+
 
 
     //for QR code generator
@@ -163,8 +179,6 @@ public class MainActivity extends AppCompatActivity {
 
     boolean isQRButton = false;
 
-    int i = 1;
-
     String leftOrRight;
 
 
@@ -179,21 +193,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        LL1Circle = findViewById(R.id.CircleLL1);
 
-        //going to Settings screen at startup (only once from onCreate)
+        LC1Circle = findViewById(R.id.CircleLC1);
 
-        if (i < 1) {
+        LR1Circle = findViewById(R.id.CircleLR1);
 
-            Intent intent = new Intent(this, Settings.class);
+        LL2Circle = findViewById(R.id.CircleLL2);
 
-            startActivity(intent);
+        LR2Circle = findViewById(R.id.CircleLR2);
 
-            startActivityForResult(intent, 1);
+        RL1Circle = findViewById(R.id.CircleRL1);
 
-        }
+        RC1Circle = findViewById(R.id.CircleRC1);
 
-        i++;
+        RR1Circle = findViewById(R.id.CircleRR1);
 
+        RL2Circle = findViewById(R.id.CircleRL2);
+
+        RR2Circle = findViewById(R.id.CircleRR2);
+
+        //send circles to front
+
+        LL1Circle.bringToFront();
+        LC1Circle.bringToFront();
+        LR1Circle.bringToFront();
+        LL2Circle.bringToFront();
+        LR2Circle.bringToFront();
 
 
         //setting variables equal to elements via their ID
@@ -276,7 +302,6 @@ public class MainActivity extends AppCompatActivity {
 
                     noShowStatus = 1;
 
-
                     startButton.setText(R.string.GenerateQRCode);
                     isQRButton = true;
 
@@ -318,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (ScouterNameInput.getText().length() > 0) {
+                    clearButton.setEnabled(true);
                     if (teamNumberInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
                     && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
@@ -338,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (matchNumberInput.getText().length() > 0) {
+                    clearButton.setEnabled(true);
                     if (ScouterNameInput.getText().length() > 0 && teamNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
                             && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
@@ -358,6 +385,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (teamNumberInput.getText().length() > 0) {
+                    clearButton.setEnabled(true);
                     if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
                             && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
@@ -378,6 +406,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (firstAlliancePartnerInput.getText().length() > 0) {
+                    clearButton.setEnabled(true);
                     if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && teamNumberInput.getText().length() > 0
                             && secondAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
@@ -398,6 +427,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (secondAlliancePartnerInput.getText().length() > 0) {
+                    clearButton.setEnabled(true);
                     if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && teamNumberInput.getText().length() > 0
                             && firstAlliancePartnerInput.getText().length() > 0)
                         startButton.setEnabled(true);
@@ -410,12 +440,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) { }
         });
-
-        //get intent from settings screen and the variable that says whether it is left or right
-
-        Intent intent = getIntent();
-
-        onActivityResult(1,RESULT_OK,intent);
 
 
 
@@ -464,7 +488,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    /*
     //setters
 
     public void setScouterName(String newString) { this.scouterName = newString; }
@@ -590,7 +614,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public int getStartR2 () { return this.startR2; }
-
+    */
 
 
     //call methods
@@ -643,35 +667,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //for receiving data from settings screen
-
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1) {
-
-            if(resultCode == RESULT_OK) {
-
-                leftOrRight = getIntent().getStringExtra("LEFTORRIGHT");
-
-            }
-
-        }
-
-    }
-
-
-
     //click methods
 
 
 
     public void SettingsClick (View view) {
 
-        Intent intent = new Intent(this, Settings.class);
-
-        startActivityForResult(intent, 1);
+        NavUtils.navigateUpFromSameTask(this);
 
     }
 

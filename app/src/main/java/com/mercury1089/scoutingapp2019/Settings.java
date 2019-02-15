@@ -12,6 +12,7 @@ import android.os.Bundle;
 
 import android.support.v4.app.NavUtils;
 
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -22,7 +23,7 @@ import android.widget.Button;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 
-public class Settings extends MainActivity {
+public class Settings extends AppCompatActivity {
 
     //for intent (going to Settings Activity)
 
@@ -44,7 +45,10 @@ public class Settings extends MainActivity {
 
     boolean isLocalStorageClicked = false;
 
+    boolean hasBeenSaved = false;
+
     String leftOrRight = "";
+
 
 
 
@@ -61,8 +65,6 @@ public class Settings extends MainActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_settings);
-
-
 
         fieldSideLeftButton = findViewById(R.id.FieldSideLeft);
 
@@ -84,7 +86,7 @@ public class Settings extends MainActivity {
 
         if (hasBeenSaved) {
 
-            cancelButton.setEnabled(false);
+            //cancelButton.setEnabled(false);
 
         }
 
@@ -110,8 +112,9 @@ public class Settings extends MainActivity {
 
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
 
-            saveButton.setEnabled(true);
+            localStorageResetDefault();
 
+            saveButton.setEnabled(true);
         }
 
 
@@ -131,7 +134,6 @@ public class Settings extends MainActivity {
 
 
     public void leftClick (View view) {
-        Log.d("LEFTCLICK", "The left button has been clicked!!!!");
         if (!isLeft) {
 
             isLeft = true;
@@ -147,6 +149,8 @@ public class Settings extends MainActivity {
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
 
             saveButton.setEnabled(true);
+
+            localStorageResetDefault();
 
         }
 
@@ -184,14 +188,17 @@ public class Settings extends MainActivity {
 
         else {
 
-            isLocalStorageClicked = false;
-
-            localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
-
-            localStorageResetButton.setTextColor(getResources().getColor(R.color.grey));
-
+            localStorageResetDefault();
         }
 
+    }
+
+    public void localStorageResetDefault () {
+        isLocalStorageClicked = false;
+
+        localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+        localStorageResetButton.setTextColor(getResources().getColor(R.color.grey));
     }
 
 
@@ -244,6 +251,7 @@ public class Settings extends MainActivity {
 
         */
 
+        /*
         if (isLocalStorageClicked) {
 
             setScouterName("");
@@ -285,8 +293,9 @@ public class Settings extends MainActivity {
             setisResetLocalStorageClicked(false);
 
         }
+        */
 
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(Settings.this, MainActivity.class);
 
          intent.putExtra("LEFTORRIGHT", "" + leftOrRight);
 
@@ -297,13 +306,9 @@ public class Settings extends MainActivity {
 
 
     public void cancelClick (View view) {
-
         leftOrRight = "";
-
-        //put the parent thing here
-
-        NavUtils.navigateUpFromSameTask(this);
-
+        Intent intent = new Intent(Settings.this,MainActivity.class);
+        startActivity(intent);
     }
 
 
