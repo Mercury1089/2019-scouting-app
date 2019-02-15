@@ -580,7 +580,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="10dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/L2M1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections"
@@ -629,7 +629,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/CircleLR1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/L2M1" />
@@ -660,7 +660,7 @@
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
@@ -689,7 +689,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/CircleLL1" />
 
@@ -718,7 +718,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/CircleLC1" />
 
@@ -748,6 +748,7 @@
         android:layout_height="95dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
@@ -776,6 +777,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="64dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
         app:layout_constraintTop_toBottomOf="@+id/CircleRR1" />
 
@@ -804,6 +806,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="64dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
         app:layout_constraintTop_toBottomOf="@+id/CircleRC1" />
 
@@ -836,17 +839,9 @@
         android:layout_height="87dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleRR1"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
-
-    <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/CircleRL2"
-        android:layout_width="87dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CircleRR1"
-        app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
     <View
 
@@ -890,6 +885,16 @@
         app:layout_constraintStart_toEndOf="@+id/CircleRL1"
         app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/CircleRL2"
+        android:layout_width="87dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toEndOf="@+id/CircleRR1"
+        app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
     <TextView
 
