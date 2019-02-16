@@ -988,182 +988,85 @@ public class MainActivity extends Activity {
 
     public void blueClick (View view) {
 
+        if (leftOrRight.equals("Left") || leftOrRight.equals("Right")) {
+            if (isBlueAlliance == 0) {
 
-        if (isBlueAlliance == 0) {
+                blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
 
-            blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
+                blueButton.setTextColor(getResources().getColor(R.color.light));
 
-            blueButton.setTextColor(getResources().getColor(R.color.light));
+                isBlueAlliance = 1;
 
-            isBlueAlliance = 1;
+                redDefault();
 
-            redDefault();
+                if (noShowStatus == 0) {
+                    if (leftOrRight.equals("Left")) {
 
-            if (noShowStatus == 0) {
-                if (leftOrRight.equals("Left")) {
+                        //set left boxes to blue
 
-                    //set left boxes to blue
+                        LL1.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    LL1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        LC1.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    LC1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        LR1.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    LR1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        LL2.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    LL2.setBackgroundColor(getResources().getColor(R.color.blue));
+                        LR2.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    LR2.setBackgroundColor(getResources().getColor(R.color.blue));
 
+                        //make the boxes visible
 
-                    //make the boxes visible
+                        LL1.setVisibility(View.VISIBLE);
 
-                    LL1.setVisibility(View.VISIBLE);
+                        LC1.setVisibility(View.VISIBLE);
 
-                    LC1.setVisibility(View.VISIBLE);
+                        LR1.setVisibility(View.VISIBLE);
 
-                    LR1.setVisibility(View.VISIBLE);
+                        LL2.setVisibility(View.VISIBLE);
 
-                    LL2.setVisibility(View.VISIBLE);
+                        LR2.setVisibility(View.VISIBLE);
 
-                    LR2.setVisibility(View.VISIBLE);
+                    } else if (leftOrRight.equals("Right")) {
 
-                } else if (leftOrRight.equals("Right")) {
+                        //set right boxes to blue
 
-                    //set right boxes to blue
+                        RL1.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    RL1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        RC1.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    RC1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        RR1.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    RR1.setBackgroundColor(getResources().getColor(R.color.blue));
+                        RL2.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    RL2.setBackgroundColor(getResources().getColor(R.color.blue));
+                        RR2.setBackgroundColor(getResources().getColor(R.color.blue));
 
-                    RR2.setBackgroundColor(getResources().getColor(R.color.blue));
 
+                        //make the boxes visible
 
-                    //make the boxes visible
+                        RL1.setVisibility(View.VISIBLE);
 
-                    RL1.setVisibility(View.VISIBLE);
+                        RC1.setVisibility(View.VISIBLE);
 
-                    RC1.setVisibility(View.VISIBLE);
+                        RR1.setVisibility(View.VISIBLE);
 
-                    RR1.setVisibility(View.VISIBLE);
+                        RL2.setVisibility(View.VISIBLE);
 
-                    RL2.setVisibility(View.VISIBLE);
+                        RR2.setVisibility(View.VISIBLE);
 
-                    RR2.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    LL1Circle.setVisibility(View.INVISIBLE);
+                    LC1Circle.setVisibility(View.INVISIBLE);
+                    LR1Circle.setVisibility(View.INVISIBLE);
+                    LL2Circle.setVisibility(View.INVISIBLE);
+                    LR2Circle.setVisibility(View.INVISIBLE);
 
-                }
-            }
-            else {
-                LL1Circle.setVisibility(View.INVISIBLE);
-                LC1Circle.setVisibility(View.INVISIBLE);
-                LR1Circle.setVisibility(View.INVISIBLE);
-                LL2Circle.setVisibility(View.INVISIBLE);
-                LR2Circle.setVisibility(View.INVISIBLE);
-
-                RL1Circle.setVisibility(View.INVISIBLE);
-                RC1Circle.setVisibility(View.INVISIBLE);
-                RR1Circle.setVisibility(View.INVISIBLE);
-                RL2Circle.setVisibility(View.INVISIBLE);
-                RR2Circle.setVisibility(View.INVISIBLE);
-
-                LL1.setVisibility(View.INVISIBLE);
-                LC1.setVisibility(View.INVISIBLE);
-                LR1.setVisibility(View.INVISIBLE);
-                LL2.setVisibility(View.INVISIBLE);
-                LR2.setVisibility(View.INVISIBLE);
-
-                RL1.setVisibility(View.INVISIBLE);
-                RC1.setVisibility(View.INVISIBLE);
-                RR1.setVisibility(View.INVISIBLE);
-                RL2.setVisibility(View.INVISIBLE);
-                RR2.setVisibility(View.INVISIBLE);
-            }
-
-        }
-
-
-
-        else {
-
-            blueDefault();
-
-            startButton.setEnabled(false);
-
-            //make boxes invisible
-
-            RL1.setVisibility(View.INVISIBLE);
-
-            RC1.setVisibility(View.INVISIBLE);
-
-            RR1.setVisibility(View.INVISIBLE);
-
-            RL2.setVisibility(View.INVISIBLE);
-
-            RR2.setVisibility(View.INVISIBLE);
-
-            LL1.setVisibility(View.INVISIBLE);
-
-            LC1.setVisibility(View.INVISIBLE);
-
-            LR1.setVisibility(View.INVISIBLE);
-
-            LL2.setVisibility(View.INVISIBLE);
-
-            LR2.setVisibility(View.INVISIBLE);
-
-        }
-
-    }
-
-
-    public void redClick (View view) {
-        if (isRedAlliance == 0) {
-
-            blueDefault();
-
-            redButton.setBackgroundColor(getResources().getColor(R.color.red));
-
-            redButton.setTextColor(getResources().getColor(R.color.light));
-
-            isRedAlliance = 1;
-
-            if (teamNumber != 0 && matchNumber != 0) {
-
-                startButton.setEnabled(true);
-
-            }
-
-
-            if (noShowStatus == 0) {
-                if (leftOrRight.equals("Left")) {
-
-                    //set right boxes to red
-
-                    RL1.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    RC1.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    RR1.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    RL2.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    RR2.setBackgroundColor(getResources().getColor(R.color.red));
-
-
-                    //make the boxes visible
-
-                    RL1.setVisibility(View.VISIBLE);
-
-                    RC1.setVisibility(View.VISIBLE);
-
-                    RR1.setVisibility(View.VISIBLE);
-
-                    RL2.setVisibility(View.VISIBLE);
-
-                    RR2.setVisibility(View.VISIBLE);
+                    RL1Circle.setVisibility(View.INVISIBLE);
+                    RC1Circle.setVisibility(View.INVISIBLE);
+                    RR1Circle.setVisibility(View.INVISIBLE);
+                    RL2Circle.setVisibility(View.INVISIBLE);
+                    RR2Circle.setVisibility(View.INVISIBLE);
 
                     LL1.setVisibility(View.INVISIBLE);
                     LC1.setVisibility(View.INVISIBLE);
@@ -1171,42 +1074,41 @@ public class MainActivity extends Activity {
                     LL2.setVisibility(View.INVISIBLE);
                     LR2.setVisibility(View.INVISIBLE);
 
-                } else {
-
-                    //set left boxes to red
-
-                    LL1.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    LC1.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    LR1.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    LL2.setBackgroundColor(getResources().getColor(R.color.red));
-
-                    LR2.setBackgroundColor(getResources().getColor(R.color.red));
-
-
-                    //make the boxes visible
-
-                    LL1.setVisibility(View.VISIBLE);
-
-                    LC1.setVisibility(View.VISIBLE);
-
-                    LR1.setVisibility(View.VISIBLE);
-
-                    LL2.setVisibility(View.VISIBLE);
-
-                    LR2.setVisibility(View.VISIBLE);
-
                     RL1.setVisibility(View.INVISIBLE);
                     RC1.setVisibility(View.INVISIBLE);
                     RR1.setVisibility(View.INVISIBLE);
                     RL2.setVisibility(View.INVISIBLE);
                     RR2.setVisibility(View.INVISIBLE);
-
                 }
-            }
-            else {
+
+            } else {
+
+                blueDefault();
+
+                startButton.setEnabled(false);
+
+                //make boxes invisible
+
+                RL1.setVisibility(View.INVISIBLE);
+
+                RC1.setVisibility(View.INVISIBLE);
+
+                RR1.setVisibility(View.INVISIBLE);
+
+                RL2.setVisibility(View.INVISIBLE);
+
+                RR2.setVisibility(View.INVISIBLE);
+
+                LL1.setVisibility(View.INVISIBLE);
+
+                LC1.setVisibility(View.INVISIBLE);
+
+                LR1.setVisibility(View.INVISIBLE);
+
+                LL2.setVisibility(View.INVISIBLE);
+
+                LR2.setVisibility(View.INVISIBLE);
+
                 LL1Circle.setVisibility(View.INVISIBLE);
                 LC1Circle.setVisibility(View.INVISIBLE);
                 LR1Circle.setVisibility(View.INVISIBLE);
@@ -1219,51 +1121,173 @@ public class MainActivity extends Activity {
                 RL2Circle.setVisibility(View.INVISIBLE);
                 RR2Circle.setVisibility(View.INVISIBLE);
 
-                LL1.setVisibility(View.INVISIBLE);
-                LC1.setVisibility(View.INVISIBLE);
-                LR1.setVisibility(View.INVISIBLE);
-                LL2.setVisibility(View.INVISIBLE);
-                LR2.setVisibility(View.INVISIBLE);
-
-                RL1.setVisibility(View.INVISIBLE);
-                RC1.setVisibility(View.INVISIBLE);
-                RR1.setVisibility(View.INVISIBLE);
-                RL2.setVisibility(View.INVISIBLE);
-                RR2.setVisibility(View.INVISIBLE);
             }
-
+        }
+        else {
+            Toast.makeText(MainActivity.this, "You haven't selected \"Left\" or \"Right\" in the Settings screen", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+
+    public void redClick (View view) {
+        if (leftOrRight.equals("Left") || leftOrRight.equals("Right")) {
+            if (isRedAlliance == 0) {
+
+                blueDefault();
+
+                redButton.setBackgroundColor(getResources().getColor(R.color.red));
+
+                redButton.setTextColor(getResources().getColor(R.color.light));
+
+                isRedAlliance = 1;
+
+                if (teamNumber != 0 && matchNumber != 0) {
+
+                    startButton.setEnabled(true);
+
+                }
+
+
+                if (noShowStatus == 0) {
+                    if (leftOrRight.equals("Left")) {
+
+                        //set right boxes to red
+
+                        RL1.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        RC1.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        RR1.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        RL2.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        RR2.setBackgroundColor(getResources().getColor(R.color.red));
+
+
+                        //make the boxes visible
+
+                        RL1.setVisibility(View.VISIBLE);
+
+                        RC1.setVisibility(View.VISIBLE);
+
+                        RR1.setVisibility(View.VISIBLE);
+
+                        RL2.setVisibility(View.VISIBLE);
+
+                        RR2.setVisibility(View.VISIBLE);
+
+                        LL1.setVisibility(View.INVISIBLE);
+                        LC1.setVisibility(View.INVISIBLE);
+                        LR1.setVisibility(View.INVISIBLE);
+                        LL2.setVisibility(View.INVISIBLE);
+                        LR2.setVisibility(View.INVISIBLE);
+
+                    } else {
+
+                        //set left boxes to red
+
+                        LL1.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        LC1.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        LR1.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        LL2.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        LR2.setBackgroundColor(getResources().getColor(R.color.red));
+
+
+                        //make the boxes visible
+
+                        LL1.setVisibility(View.VISIBLE);
+
+                        LC1.setVisibility(View.VISIBLE);
+
+                        LR1.setVisibility(View.VISIBLE);
+
+                        LL2.setVisibility(View.VISIBLE);
+
+                        LR2.setVisibility(View.VISIBLE);
+
+                        RL1.setVisibility(View.INVISIBLE);
+                        RC1.setVisibility(View.INVISIBLE);
+                        RR1.setVisibility(View.INVISIBLE);
+                        RL2.setVisibility(View.INVISIBLE);
+                        RR2.setVisibility(View.INVISIBLE);
+
+                    }
+                } else {
+                    LL1Circle.setVisibility(View.INVISIBLE);
+                    LC1Circle.setVisibility(View.INVISIBLE);
+                    LR1Circle.setVisibility(View.INVISIBLE);
+                    LL2Circle.setVisibility(View.INVISIBLE);
+                    LR2Circle.setVisibility(View.INVISIBLE);
+
+                    RL1Circle.setVisibility(View.INVISIBLE);
+                    RC1Circle.setVisibility(View.INVISIBLE);
+                    RR1Circle.setVisibility(View.INVISIBLE);
+                    RL2Circle.setVisibility(View.INVISIBLE);
+                    RR2Circle.setVisibility(View.INVISIBLE);
+
+                    LL1.setVisibility(View.INVISIBLE);
+                    LC1.setVisibility(View.INVISIBLE);
+                    LR1.setVisibility(View.INVISIBLE);
+                    LL2.setVisibility(View.INVISIBLE);
+                    LR2.setVisibility(View.INVISIBLE);
+
+                    RL1.setVisibility(View.INVISIBLE);
+                    RC1.setVisibility(View.INVISIBLE);
+                    RR1.setVisibility(View.INVISIBLE);
+                    RL2.setVisibility(View.INVISIBLE);
+                    RR2.setVisibility(View.INVISIBLE);
+                }
+
+            } else {
+
+                redDefault();
+
+                startButton.setEnabled(false);
+
+
+                //make boxes invisible
+
+                RL1.setVisibility(View.INVISIBLE);
+
+                RC1.setVisibility(View.INVISIBLE);
+
+                RR1.setVisibility(View.INVISIBLE);
+
+                RL2.setVisibility(View.INVISIBLE);
+
+                RR2.setVisibility(View.INVISIBLE);
+
+                LL1.setVisibility(View.INVISIBLE);
+
+                LC1.setVisibility(View.INVISIBLE);
+
+                LR1.setVisibility(View.INVISIBLE);
+
+                LL2.setVisibility(View.INVISIBLE);
+
+                LR2.setVisibility(View.INVISIBLE);
+
+                LL1Circle.setVisibility(View.INVISIBLE);
+                LC1Circle.setVisibility(View.INVISIBLE);
+                LR1Circle.setVisibility(View.INVISIBLE);
+                LL2Circle.setVisibility(View.INVISIBLE);
+                LR2Circle.setVisibility(View.INVISIBLE);
+
+                RL1Circle.setVisibility(View.INVISIBLE);
+                RC1Circle.setVisibility(View.INVISIBLE);
+                RR1Circle.setVisibility(View.INVISIBLE);
+                RL2Circle.setVisibility(View.INVISIBLE);
+                RR2Circle.setVisibility(View.INVISIBLE);
+
+            }
+        }
         else {
-
-            redDefault();
-
-            startButton.setEnabled(false);
-
-
-
-            //make boxes invisible
-
-            RL1.setVisibility(View.INVISIBLE);
-
-            RC1.setVisibility(View.INVISIBLE);
-
-            RR1.setVisibility(View.INVISIBLE);
-
-            RL2.setVisibility(View.INVISIBLE);
-
-            RR2.setVisibility(View.INVISIBLE);
-
-            LL1.setVisibility(View.INVISIBLE);
-
-            LC1.setVisibility(View.INVISIBLE);
-
-            LR1.setVisibility(View.INVISIBLE);
-
-            LL2.setVisibility(View.INVISIBLE);
-
-            LR2.setVisibility(View.INVISIBLE);
-
+            Toast.makeText(MainActivity.this, "You haven't selected \"Left\" or \"Right\" in the Settings screen", Toast.LENGTH_LONG).show();
         }
 
     }
@@ -1336,6 +1360,25 @@ public class MainActivity extends Activity {
         firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
 
         secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
+
+        String startPosition = "";
+
+        if (startL1 == 1) {
+            startPosition = "L1";
+        }
+        else if (startC1 == 1) {
+            startPosition = "C1";
+        }
+        else if (startR1 == 1) {
+            startPosition = "R1";
+        }
+        else if (startL2 == 1) {
+            startPosition = "L2";
+        }
+        else if (startR2 == 1) {
+            startPosition = "R2";
+        }
+
 
     }
 
