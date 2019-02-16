@@ -708,84 +708,241 @@ public class MainActivity extends Activity {
 
     //do circle stuff for this
 
-    public void L1Click (View view) {
+    public void LL1Click (View view) {
 
         startL1 = 1;
-
         startC1 = 0;
-
         startR1 = 0;
-
         startL2 = 0;
-
         startR2 = 0;
 
+        //make circle visible
+        LL1Circle.setVisibility(View.VISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
     }
 
 
 
-    public void C1Click (View view) {
+    public void LC1Click (View view) {
 
         startL1 = 0;
-
         startC1 = 1;
-
         startR1 = 0;
-
         startL2 = 0;
-
         startR2 = 0;
 
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.VISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
     }
 
 
 
-    public void R1Click (View view) {
+    public void LR1Click (View view) {
 
         startL1 = 0;
-
         startC1 = 0;
-
         startR1 = 1;
-
         startL2 = 0;
-
         startR2 = 0;
 
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.VISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
     }
 
 
 
-    public void L2Click (View view) {
+    public void LL2Click (View view) {
 
         startL1 = 0;
-
         startC1 = 0;
-
         startR1 = 0;
-
         startL2 = 1;
-
         startR2 = 0;
 
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.VISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
     }
 
 
 
-    public void R2Click (View view) {
+    public void LR2Click (View view) {
 
         startL1 = 0;
-
         startC1 = 0;
-
         startR1 = 0;
-
         startL2 = 0;
-
         startR2 = 1;
 
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.VISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
     }
 
+    public void RL1Click (View view) {
+
+        startL1 = 1;
+        startC1 = 0;
+        startR1 = 0;
+        startL2 = 0;
+        startR2 = 0;
+
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.VISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
+    }
+
+
+
+    public void RC1Click (View view) {
+
+        startL1 = 0;
+        startC1 = 1;
+        startR1 = 0;
+        startL2 = 0;
+        startR2 = 0;
+
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.VISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
+    }
+
+
+
+    public void RR1Click (View view) {
+
+        startL1 = 0;
+        startC1 = 0;
+        startR1 = 1;
+        startL2 = 0;
+        startR2 = 0;
+
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.VISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
+    }
+
+
+
+    public void RL2Click (View view) {
+
+        startL1 = 0;
+        startC1 = 0;
+        startR1 = 0;
+        startL2 = 1;
+        startR2 = 0;
+
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.VISIBLE);
+        RR2Circle.setVisibility(View.INVISIBLE);
+    }
+
+
+
+    public void RR2Click (View view) {
+
+        startL1 = 0;
+        startC1 = 0;
+        startR1 = 0;
+        startL2 = 0;
+        startR2 = 1;
+
+        //make circle visible
+        LL1Circle.setVisibility(View.INVISIBLE);
+        LC1Circle.setVisibility(View.INVISIBLE);
+        LR1Circle.setVisibility(View.INVISIBLE);
+        LL2Circle.setVisibility(View.INVISIBLE);
+        LR2Circle.setVisibility(View.INVISIBLE);
+
+        RL1Circle.setVisibility(View.INVISIBLE);
+        RC1Circle.setVisibility(View.INVISIBLE);
+        RR1Circle.setVisibility(View.INVISIBLE);
+        RL2Circle.setVisibility(View.INVISIBLE);
+        RR2Circle.setVisibility(View.VISIBLE);
+    }
 
 
     public void blueClick (View view) {
