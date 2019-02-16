@@ -186,7 +186,7 @@
 
         android:inputType="number"
 
-        android:maxLength="4"
+        android:maxLength="3"
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
