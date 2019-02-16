@@ -954,9 +954,10 @@ public class MainActivity extends Activity {
 
             blueButton.setTextColor(getResources().getColor(R.color.light));
 
+            isBlueAlliance = 1;
+
             redDefault();
 
-            isBlueAlliance = 1;
 
             if (leftOrRight.equals("Left")) {
 

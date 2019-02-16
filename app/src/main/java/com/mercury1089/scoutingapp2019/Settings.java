@@ -84,11 +84,11 @@ public class Settings extends AppCompatActivity {
 
         cancelButton = findViewById(R.id.CancelButton);
 
-        if (hasBeenSaved) {
+        /* if (hasBeenSaved) {
 
-            //cancelButton.setEnabled(false);
+            cancelButton.setEnabled(false);
 
-        }
+        } */
 
     }
 
@@ -297,7 +297,7 @@ public class Settings extends AppCompatActivity {
 
         Intent intent = new Intent(Settings.this, MainActivity.class);
 
-         intent.putExtra("LEFTORRIGHT", "" + leftOrRight);
+         intent.putExtra("LEFTORRIGHT", leftOrRight);
 
         startActivity(intent);
 

@@ -378,8 +378,6 @@
 
             android:text="@string/Blue"
 
-            android:visibility="visible"
-
             tools:layout_editor_absoluteX="250dp"
 
             tools:layout_editor_absoluteY="439dp" />
