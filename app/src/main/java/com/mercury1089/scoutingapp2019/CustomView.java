@@ -11,14 +11,13 @@ import android.view.ViewTreeObserver;
 //need default constructor here???? pls search it up
 public class CustomView extends View {
 
-    private static final String COLOR_HEX = "#E74300";
     private final Paint drawPaint;
     private int size;
 
     public CustomView (final Context context, final AttributeSet attrs) {
         super(context, attrs);
         drawPaint = new Paint();
-        drawPaint.setColor(Color.parseColor(COLOR_HEX));
+        drawPaint.setColor(getResources().getColor(R.color.orange));
         drawPaint.setAntiAlias(true);
         setOnMeasureCallback();
     }

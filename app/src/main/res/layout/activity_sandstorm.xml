@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bootstrap_brand_secondary_text"
+    tools:context=".Sandstorm">
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+
+        android:id="@+id/TopToggle"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="56dp"
+
+        android:layout_marginStart="32dp"
+
+        android:layout_marginTop="16dp"
+
+        android:orientation="horizontal"
+
+        app:bootstrapBrand="success"
+
+        app:bootstrapSize="lg"
+
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.5"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:roundedCorners="true">
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+
+            android:id="@+id/GoToSetup"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent"
+
+            android:text="Setup"
+
+            android:textSize="36sp" />
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+
+            android:id="@+id/GoToSandstorm"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent"
+
+            android:text="Sandstorm"
+
+            android:textSize="36sp" />
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+
+            android:id="@+id/FieldSideRight"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent"
+
+            android:background="@color/bootstrap_brand_success"
+
+            android:text="Teleop"
+
+            android:textSize="36sp" />
+
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:fontFamily="sans-serif-black"
+        android:text="POSSESSION"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="88dp" />
+
+    <TextView
+        android:id="@+id/scoring"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="SCORING"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap “PANEL” or “CARGO” any time the robot picks up the corresponding game element."
+        android:textColor="@color/bootstrap_dropdown_divider"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="113dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap the “P” or “C” on the diagram to mark where the robot scored their PANEL or CARGO."
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintTop_toBottomOf="@+id/scoring"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Tap the “MISSED” button on the diagram if the robot attempted to score, but was not successful."
+        android:textColor="@color/bootstrap_dropdown_divider"
+        android:textSize="13.2sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tap “DROPPED” if the robot drops any game element (game element falls out of the robot)."
+        android:textColor="@color/bootstrap_dropdown_divider"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="137dp" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+
+        android:id="@+id/PanelOrCargo"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="45dp"
+
+        android:layout_marginStart="16dp"
+
+        android:layout_marginTop="16dp"
+
+        android:orientation="horizontal"
+
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:roundedCorners="true">
+
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+
+            android:id="@+id/Panel"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent"
+
+            android:text="Panel"
+
+            android:textSize="36sp" />
+
+        <com.beardedhen.androidbootstrap.BootstrapButton
+
+            android:id="@+id/Cargo"
+
+            android:layout_width="wrap_content"
+
+            android:layout_height="match_parent"
+
+            android:text="Cargo"
+
+            android:textSize="36sp" />
+
+
+    </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+
+        android:id="@+id/Dropped"
+
+        android:layout_width="88dp"
+
+        android:layout_height="42dp"
+
+        android:layout_marginStart="72dp"
+
+        android:layout_marginTop="16dp"
+        android:text="Dropped"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/PanelOrCargo"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+
+        android:id="@+id/Missed"
+
+        android:layout_width="88dp"
+
+        android:layout_height="42dp"
+
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Missed"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="128dp"
+        app:layout_constraintStart_toEndOf="@+id/Missed"
+        app:layout_constraintTop_toTopOf="@+id/Missed" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/Missed"
+        app:layout_constraintTop_toBottomOf="@+id/customView" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView10"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/Missed"
+        app:layout_constraintTop_toBottomOf="@+id/customView4" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView11"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/customView10"
+        app:layout_constraintTop_toBottomOf="@+id/customView4" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView12"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:layout_editor_absoluteX="372dp"
+        tools:layout_editor_absoluteY="448dp" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/customView4"
+        app:layout_constraintTop_toBottomOf="@+id/customView" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/customView5"
+        app:layout_constraintTop_toBottomOf="@+id/customView" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/customView"
+        app:layout_constraintTop_toTopOf="@+id/Missed" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/customView2"
+        app:layout_constraintTop_toTopOf="@+id/Missed" />
+</android.support.constraint.ConstraintLayout>

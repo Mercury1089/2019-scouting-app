@@ -3,6 +3,7 @@
     <words>
       <w>leftclick</w>
       <w>leftorright</w>
+      <w>loadingdialog</w>
     </words>
   </dictionary>
 </component>
