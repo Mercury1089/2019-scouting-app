@@ -988,7 +988,9 @@ public class MainActivity extends Activity {
 
     public void blueClick (View view) {
 
-
+        if (leftOrRight != "Left" && leftOrRight != "Right") {
+            Toast.makeText(MainActivity.this, );
+        }
         if (isBlueAlliance == 0) {
 
             blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
@@ -1027,6 +1029,18 @@ public class MainActivity extends Activity {
 
                     LR2.setVisibility(View.VISIBLE);
 
+                    LL1Circle.setVisibility(View.INVISIBLE);
+                    LC1Circle.setVisibility(View.INVISIBLE);
+                    LR1Circle.setVisibility(View.INVISIBLE);
+                    LL2Circle.setVisibility(View.INVISIBLE);
+                    LR2Circle.setVisibility(View.INVISIBLE);
+
+                    RL1Circle.setVisibility(View.INVISIBLE);
+                    RC1Circle.setVisibility(View.INVISIBLE);
+                    RR1Circle.setVisibility(View.INVISIBLE);
+                    RL2Circle.setVisibility(View.INVISIBLE);
+                    RR2Circle.setVisibility(View.INVISIBLE);
+
                 } else if (leftOrRight.equals("Right")) {
 
                     //set right boxes to blue
@@ -1053,6 +1067,18 @@ public class MainActivity extends Activity {
                     RL2.setVisibility(View.VISIBLE);
 
                     RR2.setVisibility(View.VISIBLE);
+
+                    LL1Circle.setVisibility(View.INVISIBLE);
+                    LC1Circle.setVisibility(View.INVISIBLE);
+                    LR1Circle.setVisibility(View.INVISIBLE);
+                    LL2Circle.setVisibility(View.INVISIBLE);
+                    LR2Circle.setVisibility(View.INVISIBLE);
+
+                    RL1Circle.setVisibility(View.INVISIBLE);
+                    RC1Circle.setVisibility(View.INVISIBLE);
+                    RR1Circle.setVisibility(View.INVISIBLE);
+                    RL2Circle.setVisibility(View.INVISIBLE);
+                    RR2Circle.setVisibility(View.INVISIBLE);
 
                 }
             }
@@ -1113,6 +1139,18 @@ public class MainActivity extends Activity {
             LL2.setVisibility(View.INVISIBLE);
 
             LR2.setVisibility(View.INVISIBLE);
+
+            LL1Circle.setVisibility(View.INVISIBLE);
+            LC1Circle.setVisibility(View.INVISIBLE);
+            LR1Circle.setVisibility(View.INVISIBLE);
+            LL2Circle.setVisibility(View.INVISIBLE);
+            LR2Circle.setVisibility(View.INVISIBLE);
+
+            RL1Circle.setVisibility(View.INVISIBLE);
+            RC1Circle.setVisibility(View.INVISIBLE);
+            RR1Circle.setVisibility(View.INVISIBLE);
+            RL2Circle.setVisibility(View.INVISIBLE);
+            RR2Circle.setVisibility(View.INVISIBLE);
 
         }
 
@@ -1171,6 +1209,18 @@ public class MainActivity extends Activity {
                     LL2.setVisibility(View.INVISIBLE);
                     LR2.setVisibility(View.INVISIBLE);
 
+                    LL1Circle.setVisibility(View.INVISIBLE);
+                    LC1Circle.setVisibility(View.INVISIBLE);
+                    LR1Circle.setVisibility(View.INVISIBLE);
+                    LL2Circle.setVisibility(View.INVISIBLE);
+                    LR2Circle.setVisibility(View.INVISIBLE);
+
+                    RL1Circle.setVisibility(View.INVISIBLE);
+                    RC1Circle.setVisibility(View.INVISIBLE);
+                    RR1Circle.setVisibility(View.INVISIBLE);
+                    RL2Circle.setVisibility(View.INVISIBLE);
+                    RR2Circle.setVisibility(View.INVISIBLE);
+
                 } else {
 
                     //set left boxes to red
@@ -1203,6 +1253,18 @@ public class MainActivity extends Activity {
                     RR1.setVisibility(View.INVISIBLE);
                     RL2.setVisibility(View.INVISIBLE);
                     RR2.setVisibility(View.INVISIBLE);
+
+                    LL1Circle.setVisibility(View.INVISIBLE);
+                    LC1Circle.setVisibility(View.INVISIBLE);
+                    LR1Circle.setVisibility(View.INVISIBLE);
+                    LL2Circle.setVisibility(View.INVISIBLE);
+                    LR2Circle.setVisibility(View.INVISIBLE);
+
+                    RL1Circle.setVisibility(View.INVISIBLE);
+                    RC1Circle.setVisibility(View.INVISIBLE);
+                    RR1Circle.setVisibility(View.INVISIBLE);
+                    RL2Circle.setVisibility(View.INVISIBLE);
+                    RR2Circle.setVisibility(View.INVISIBLE);
 
                 }
             }
@@ -1263,6 +1325,18 @@ public class MainActivity extends Activity {
             LL2.setVisibility(View.INVISIBLE);
 
             LR2.setVisibility(View.INVISIBLE);
+
+            LL1Circle.setVisibility(View.INVISIBLE);
+            LC1Circle.setVisibility(View.INVISIBLE);
+            LR1Circle.setVisibility(View.INVISIBLE);
+            LL2Circle.setVisibility(View.INVISIBLE);
+            LR2Circle.setVisibility(View.INVISIBLE);
+
+            RL1Circle.setVisibility(View.INVISIBLE);
+            RC1Circle.setVisibility(View.INVISIBLE);
+            RR1Circle.setVisibility(View.INVISIBLE);
+            RL2Circle.setVisibility(View.INVISIBLE);
+            RR2Circle.setVisibility(View.INVISIBLE);
 
         }
 
