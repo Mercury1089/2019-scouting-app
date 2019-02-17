@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Sandstorm"></activity>
+        <activity android:name=".SandstormRight"></activity>
+        <activity android:name=".Sandstorm" />
         <activity
             android:name=".MainActivity"
-            android:parentActivityName=".Settings"></activity>
+            android:parentActivityName=".Settings" />
         <activity android:name=".Settings">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
