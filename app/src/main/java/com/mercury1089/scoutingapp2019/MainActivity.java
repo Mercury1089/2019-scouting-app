@@ -57,307 +57,117 @@ import com.google.zxing.common.BitMatrix;
 
 
 public class MainActivity extends Activity {
+
     //variables that should be outputted
-
     private String scouterName = "";
-
     private int matchNumber = 0;
-
     private int teamNumber = 0;
-
     private int firstAlliancePartner = 0;
-
     private int secondAlliancePartner = 0;
-
     private int noShowStatus = 0; //0 or 1
-
     private int isBlueAlliance = 0; //0 or 1
-
     private int isRedAlliance = 0; //0 or 1
-
     private int isSetupPanel = 0;  //0 or 1
-
     private int isSetupCargo = 0; //0 or 1
-
     private int startL1 = 0; //0 or 1
-
     private int startC1 = 0; //0 or 1
-
     private int startR1 = 0; //0 or 1
-
     private int startL2 = 0; //0 or 1
-
     private int startR2 = 0; //0 or 1
 
-
-
     //variables that store elements of the screen for the output variables
+    private EditText ScouterNameInput = findViewById(R.id.ScouterNameInput);
+    private EditText matchNumberInput = findViewById(R.id.MatchNumberInput);
+    private EditText teamNumberInput = findViewById(R.id.TeamNumberInput);
+    private EditText firstAlliancePartnerInput = findViewById(R.id.FirstAlliancePartnerInput);
+    private EditText secondAlliancePartnerInput = findViewById(R.id.SecondAlliancePartnerInput);
+    private BootstrapButton blueButton = findViewById(R.id.BlueButton);
+    private BootstrapButton redButton = findViewById(R.id.RedButton);
+    private BootstrapButton panelButton = findViewById(R.id.PanelButton);
+    private BootstrapButton cargoButton = findViewById(R.id.CargoButton);
 
-    private EditText ScouterNameInput;
+    //rectangles
+    private View LL1 = findViewById(R.id.LL1);
+    private View LC1 = findViewById(R.id.LC1);
+    private View LR1 = findViewById(R.id.LR1);
+    private View LL2 = findViewById(R.id.LL2);
+    private View LR2 = findViewById(R.id.LR2);
+    private View RL1 = findViewById(R.id.RL1);
+    private View RC1 = findViewById(R.id.RC1);
+    private View RR1 = findViewById(R.id.RR1);
+    private View RL2 = findViewById(R.id.RL2);
+    private View RR2 = findViewById(R.id.RR2);
 
-    private EditText matchNumberInput;
-
-    private EditText teamNumberInput;
-
-    private EditText firstAlliancePartnerInput;
-
-    private EditText secondAlliancePartnerInput;
-
-    private BootstrapButton blueButton;
-
-    private BootstrapButton redButton;
-
-    private BootstrapButton panelButton;
-
-    private BootstrapButton cargoButton;
-
-    private View LL1;
-
-    private View LC1;
-
-    private View LR1;
-
-    private View LL2;
-
-    private View LR2;
-
-    private View RL1;
-
-    private View RC1;
-
-    private View RR1;
-
-    private View RL2;
-
-    private View RR2;
-
-    private CustomView LL1Circle;
-
-    private CustomView LC1Circle;
-
-    private CustomView LR1Circle;
-
-    private CustomView LL2Circle;
-
-    private CustomView LR2Circle;
-
-    private CustomView RL1Circle;
-
-    private CustomView RC1Circle;
-
-    private CustomView RR1Circle;
-
-    private CustomView RL2Circle;
-
-    private CustomView RR2Circle;
-
-
+    //circles
+    private CustomView LL1Circle = findViewById(R.id.CircleLL1);
+    private CustomView LC1Circle = findViewById(R.id.CircleLC1);
+    private CustomView LR1Circle = findViewById(R.id.CircleLR1);
+    private CustomView LL2Circle = findViewById(R.id.CircleLL2);
+    private CustomView LR2Circle = findViewById(R.id.CircleLR2);
+    private CustomView RL1Circle = findViewById(R.id.CircleRL1);
+    private CustomView RC1Circle = findViewById(R.id.CircleRC1);
+    private CustomView RR1Circle = findViewById(R.id.CircleRR1);
+    private CustomView RL2Circle = findViewById(R.id.CircleRL2);
+    private CustomView RR2Circle = findViewById(R.id.CircleRR2);
 
     //for QR code generator
-
+    public final static int QRCodeSize = 500;
+    Bitmap bitmap;
     String QRValue;
 
-    public final static int QRCodeSize = 500;
-
-    ImageView imageView;
-
-    Bitmap bitmap;
-
-
-
     //other variables
-
-    TextView prepopulatedDirections;
-
-    TextView prepopulatedTitle;
-
-    Button clearButton;
-
-    Button startButton;
-
-    boolean isResetLocalStorageClicked;
-
-    boolean hasBeenSaved = false;
+    Button clearButton = findViewById(R.id.ClearButton);
+    Button startButton = findViewById(R.id.StartButton);
+    TextView prepopulatedTitle = findViewById(R.id.IDPrepopulated);
+    TextView prepopulatedDirections = findViewById(R.id.IDPrepopulatedDirections);
 
     boolean isQRButton = false;
-
     String leftOrRight;
-
-
 
 
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
-
-        LL1Circle = findViewById(R.id.CircleLL1);
-
-        LC1Circle = findViewById(R.id.CircleLC1);
-
-        LR1Circle = findViewById(R.id.CircleLR1);
-
-        LL2Circle = findViewById(R.id.CircleLL2);
-
-        LR2Circle = findViewById(R.id.CircleLR2);
-
-        RL1Circle = findViewById(R.id.CircleRL1);
-
-        RC1Circle = findViewById(R.id.CircleRC1);
-
-        RR1Circle = findViewById(R.id.CircleRR1);
-
-        RL2Circle = findViewById(R.id.CircleRL2);
-
-        RR2Circle = findViewById(R.id.CircleRR2);
-
         //send circles to front
-
         LL1Circle.bringToFront();
         LC1Circle.bringToFront();
         LR1Circle.bringToFront();
         LL2Circle.bringToFront();
         LR2Circle.bringToFront();
 
-
-        //setting variables equal to elements via their ID
-
-        ScouterNameInput = findViewById(R.id.ScouterNameInput);
-
-        matchNumberInput = findViewById(R.id.MatchNumberInput);
-
-        teamNumberInput = findViewById(R.id.TeamNumberInput);
-
-        firstAlliancePartnerInput = findViewById(R.id.FirstAlliancePartnerInput);
-
-        secondAlliancePartnerInput = findViewById(R.id.SecondAlliancePartnerInput);
-
-        prepopulatedTitle = findViewById(R.id.IDPrepopulated);
-
-        prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
-
-        prepopulatedDirections = (findViewById(R.id.IDPrepopulatedDirections));
-
-        prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
-
-        clearButton = findViewById(R.id.ClearButton);
-
-        startButton = findViewById(R.id.StartButton);
-
-        blueButton = findViewById(R.id.BlueButton);
-
-        redButton = findViewById(R.id.RedButton);
-
-        panelButton = findViewById(R.id.PanelButton);
-
-        cargoButton = findViewById(R.id.CargoButton);
-
-        Switch NoShowSwitch = findViewById(R.id.NoShowSwitch);
-
-        LL1 = findViewById(R.id.LL1);
-
-        LC1 = findViewById(R.id.LC1);
-
-        LR1 = findViewById(R.id.LR1);
-
-        LL2 = findViewById(R.id.LL2);
-
-        LR2 = findViewById(R.id.LR2);
-
-        RL1 = findViewById(R.id.RL1);
-
-        RC1 = findViewById(R.id.RC1);
-
-        RR1 = findViewById(R.id.RR1);
-
-        RL2 = findViewById(R.id.RL2);
-
-        RR2 = findViewById(R.id.RR2);
-
-
         //setting group buttons to default state
-
         blueDefault();
-
         redDefault();
-
         panelDefault();
-
         cargoDefault();
-
         enableButtonsDefault();
 
-        leftOrRight = getIntent().getStringExtra("LEFTORRIGHT"); //get data from the settings class to be used in the mainactivity
+        //setting prepopulated text to default state
+        prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
+        prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
+
+        //getting side from the settings to orientate the HAB
+        leftOrRight = getIntent().getStringExtra("LEFTORRIGHT");
 
         //starting listener to check the status of the switch
-
+        Switch NoShowSwitch = findViewById(R.id.NoShowSwitch);
         NoShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                if (isChecked) {
-
-                    noShowStatus = 1;
-
-                    startButton.setText(R.string.GenerateQRCode);
-                    isQRButton = true;
-
-                    makeCirclesInvisible();
-
-                    makeBoxesInvisible("Both");
-
-                    panelButton.setEnabled(false);
-                    panelButton.setBackgroundColor(getResources().getColor(R.color.light));
-                    panelButton.setTextColor(getResources().getColor(R.color.grey));
-
-                    cargoButton.setEnabled(false);
-                    cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
-                    cargoButton.setTextColor(getResources().getColor(R.color.grey));
-
-
-                    if (isBlueAlliance == 1 || isRedAlliance == 1 && matchNumber != 0 &&
-                            teamNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner !=0)
-                        startButton.setEnabled(true);
-                } else {
-
-                    noShowStatus = 0;
-
-                    panelButton.setEnabled(true);
-
-                    cargoButton.setEnabled(true);
-
-                    startButton.setText(R.string.Start);
-                    startButton.setEnabled(false);
-
-                }
-
+                switchCheck(isChecked);
             }
-
         });
-
 
         ScouterNameInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (ScouterNameInput.getText().length() > 0) {
-                    clearButton.setEnabled(true);
-                    if (teamNumberInput.getText().length() > 0 && matchNumberInput.getText().length() > 0
-                            && firstAlliancePartnerInput.getText().length() > 0
-                            && secondAlliancePartnerInput.getText().length() > 0)
-                        startButton.setEnabled(true);
-                }
-                else {
-                    startButton.setEnabled(false);
-                }
+                //to enable/disable start and click button
+                checkIfAnythingIsTyped(ScouterNameInput);
             }
-
             @Override
             public void afterTextChanged(Editable s) { }
         });
@@ -365,20 +175,11 @@ public class MainActivity extends Activity {
         matchNumberInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (matchNumberInput.getText().length() > 0) {
-                    clearButton.setEnabled(true);
-                    if (ScouterNameInput.getText().length() > 0 && teamNumberInput.getText().length() > 0 && firstAlliancePartnerInput.getText().length() > 0
-                            && secondAlliancePartnerInput.getText().length() > 0)
-                        startButton.setEnabled(true);
-                }
-                else {
-                    startButton.setEnabled(false);
-                }
+                //to enable/disable start and click button
+                checkIfAnythingIsTyped(matchNumberInput);
             }
-
             @Override
             public void afterTextChanged(Editable s) { }
         });
@@ -386,21 +187,11 @@ public class MainActivity extends Activity {
         teamNumberInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (teamNumberInput.getText().length() > 0) {
-                    clearButton.setEnabled(true);
-                    if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0
-                            && firstAlliancePartnerInput.getText().length() > 0
-                            && secondAlliancePartnerInput.getText().length() > 0)
-                        startButton.setEnabled(true);
-                }
-                else {
-                    startButton.setEnabled(false);
-                }
+                //to enable/disable start and click button
+                checkIfAnythingIsTyped(teamNumberInput);
             }
-
             @Override
             public void afterTextChanged(Editable s) { }
         });
@@ -408,21 +199,11 @@ public class MainActivity extends Activity {
         firstAlliancePartnerInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (firstAlliancePartnerInput.getText().length() > 0) {
-                    clearButton.setEnabled(true);
-                    if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0
-                            && teamNumberInput.getText().length() > 0
-                            && secondAlliancePartnerInput.getText().length() > 0)
-                        startButton.setEnabled(true);
-                }
-                else {
-                    startButton.setEnabled(false);
-                }
+                //to enable/disable start and click button
+                checkIfAnythingIsTyped(firstAlliancePartnerInput);
             }
-
             @Override
             public void afterTextChanged(Editable s) { }
         });
@@ -430,81 +211,24 @@ public class MainActivity extends Activity {
         secondAlliancePartnerInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (secondAlliancePartnerInput.getText().length() > 0) {
-                    clearButton.setEnabled(true);
-                    if (ScouterNameInput.getText().length() > 0 && matchNumberInput.getText().length() > 0 && teamNumberInput.getText().length() > 0
-                            && firstAlliancePartnerInput.getText().length() > 0)
-                        startButton.setEnabled(true);
-                }
-                else {
-                    startButton.setEnabled(false);
-                }
+                //to enable/disable start and click button
+                checkIfAnythingIsTyped(secondAlliancePartnerInput);
             }
-
             @Override
             public void afterTextChanged(Editable s) { }
         });
 
-
         //set listener for QR Code generator
-
         startButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
-
             public void onClick(View view) {
-                Log.d("QRCODE", "clicked to generate QR code");
                 if (isQRButton) {
-                    String RedOrBlue = "";
-                    if (isBlueAlliance == 1)
-
-                        RedOrBlue = "Blue";
-
-                    else if (isRedAlliance == 1)
-
-                        RedOrBlue = "Red";
-
-                    QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
-
-                            + "+" + matchNumberInput.getText().toString() + "+"
-
-                            + firstAlliancePartnerInput.getText().toString() + "+"
-
-                            + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
-
-                    try {
-
-                        bitmap = TextToImageEncode(QRValue);
-                        final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
-                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
-                        ImageView imageView = view1.findViewById(R.id.imageView);
-                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
-                        imageView.setImageBitmap(bitmap);
-                        qrDialog.setView(view1);
-
-                        final AlertDialog dialog = qrDialog.create();
-                        dialog.show();
-
-                        goBackToMain.setOnClickListener(new View.OnClickListener() {
-                            @Override
-
-                            public void onClick(View view) {
-                                dialog.cancel();
-                            }
-                        });
-
-
-                    } catch (WriterException e) {
-                        e.printStackTrace();
-                    }
+                    QREvents();
                 }
             }
-
         });
-
     }
 
 
@@ -631,6 +355,78 @@ public class MainActivity extends Activity {
         button.setTextColor(getResources().getColor(R.color.light));
     }
 
+    public void checkIfAnythingIsTyped (EditText editText) {
+        if (editText.getText().length() > 0) {
+            clearButton.setEnabled(true);
+            if (ScouterNameInput.getText().length() > 0 && teamNumberInput.getText().length() > 0 && matchNumberInput.getText().length() > 0
+                    && firstAlliancePartnerInput.getText().length() > 0
+                    && secondAlliancePartnerInput.getText().length() > 0)
+                startButton.setEnabled(true);
+        }
+        else
+            startButton.setEnabled(false);
+    }
+
+    public void switchCheck(boolean isChecked) {
+        if (isChecked) {
+            noShowStatus = 1;
+            startButton.setText(R.string.GenerateQRCode);
+            isQRButton = true;
+            makeCirclesInvisible();
+            makeBoxesInvisible("Both");
+            panelButton.setEnabled(false);
+            panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+            panelButton.setTextColor(getResources().getColor(R.color.grey));
+            cargoButton.setEnabled(false);
+            cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+            cargoButton.setTextColor(getResources().getColor(R.color.grey));
+            if (isBlueAlliance == 1 || isRedAlliance == 1 && matchNumber != 0 &&
+                    teamNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner !=0)
+                startButton.setEnabled(true);
+        } else {
+            noShowStatus = 0;
+            panelButton.setEnabled(true);
+            cargoButton.setEnabled(true);
+            startButton.setText(R.string.Start);
+            startButton.setEnabled(false);
+        }
+    }
+
+    private void QREvents () {
+        String RedOrBlue = "";
+        if (isBlueAlliance == 1)
+            RedOrBlue = "Blue";
+        else if (isRedAlliance == 1)
+            RedOrBlue = "Red";
+        QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
+                + "+" + matchNumberInput.getText().toString() + "+"
+                + firstAlliancePartnerInput.getText().toString() + "+"
+                + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
+        try {
+            bitmap = TextToImageEncode(QRValue);
+            final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
+            View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
+            ImageView imageView = view1.findViewById(R.id.imageView);
+            Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+            imageView.setImageBitmap(bitmap);
+            qrDialog.setView(view1);
+
+            final AlertDialog dialog = qrDialog.create();
+            dialog.show();
+
+            goBackToMain.setOnClickListener(new View.OnClickListener() {
+                @Override
+
+                public void onClick(View view) {
+                    dialog.cancel();
+                }
+            });
+
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     //click methods
 
@@ -747,9 +543,6 @@ public class MainActivity extends Activity {
 
 
     public void blueClick (View view) {
-        if (leftOrRight != "Left" && leftOrRight != "Right")
-            //Toast.makeText(MainActivity.this);
-
         if (isBlueAlliance == 0) {
             blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
             blueButton.setTextColor(getResources().getColor(R.color.light));

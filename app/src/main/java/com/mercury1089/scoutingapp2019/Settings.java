@@ -25,11 +25,11 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 public class Settings extends AppCompatActivity {
 
-    BootstrapButton fieldSideLeftButton;
-    BootstrapButton   fieldSideRightButton;
-    Button localStorageResetButton;
-    Button saveButton;
-    Button cancelButton;
+    BootstrapButton fieldSideLeftButton = findViewById(R.id.FieldSideLeft);
+    BootstrapButton   fieldSideRightButton = findViewById(R.id.FieldSideRight);
+    Button localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
+    Button saveButton = findViewById(R.id.SaveButton);
+    Button cancelButton = findViewById(R.id.CancelButton);
     boolean isLeft = false;
     boolean isRight = false;
     boolean isLocalStorageClicked = false;
@@ -46,14 +46,8 @@ public class Settings extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        fieldSideLeftButton = findViewById(R.id.FieldSideLeft);
         leftDefault();
-        fieldSideRightButton = findViewById(R.id.FieldSideRight);
         rightDefault();
-
-        localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
-        saveButton = findViewById(R.id.SaveButton);
-        cancelButton = findViewById(R.id.CancelButton);
 
         isRight = false;
         isLeft = false;
