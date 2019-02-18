@@ -47,7 +47,6 @@
     <string name="GenerateQRCode">GENERATE QR CODE</string>
 
 
-
     <!-- Settings -->
 
     <string name="settings">Settings</string>
@@ -63,7 +62,6 @@
     <string name="ResetLocalStorage">.   RESET LOCAL STORAGE   .</string>
 
     <string name="Save">Save</string>
-
 
 
 </resources>

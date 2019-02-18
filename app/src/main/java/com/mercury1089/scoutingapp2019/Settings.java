@@ -41,7 +41,7 @@ public class Settings extends AppCompatActivity {
 
     boolean isLeft = false;
 
-    boolean isRight = true;
+    boolean isRight = false;
 
     boolean isLocalStorageClicked = false;
 
@@ -84,6 +84,10 @@ public class Settings extends AppCompatActivity {
 
         cancelButton = findViewById(R.id.CancelButton);
 
+        isRight = false;
+
+        isLeft = false;
+
         /* if (hasBeenSaved) {
 
             cancelButton.setEnabled(false);
@@ -99,8 +103,9 @@ public class Settings extends AppCompatActivity {
         if (!isRight) {
 
             isRight = true;
-
             leftOrRight = "Right";
+            Log.d("leftorright", "LeftOrRight: " + leftOrRight);
+
 
             leftDefault();
 
@@ -123,6 +128,9 @@ public class Settings extends AppCompatActivity {
 
             isRight = false;
 
+            leftOrRight = "";
+            Log.d("leftorright","haha ur dumb");
+
             rightDefault();
 
             saveButton.setEnabled(false);
@@ -137,8 +145,8 @@ public class Settings extends AppCompatActivity {
         if (!isLeft) {
 
             isLeft = true;
-
             leftOrRight = "Left";
+            Log.d("leftorright", "LeftOrRight: " + leftOrRight);
 
             fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
 
@@ -308,6 +316,9 @@ public class Settings extends AppCompatActivity {
     public void cancelClick (View view) {
         leftOrRight = "";
         Intent intent = new Intent(Settings.this,MainActivity.class);
+
+        intent.putExtra("LEFTORRIGHT", leftOrRight);
+
         startActivity(intent);
     }
 
@@ -321,8 +332,6 @@ public class Settings extends AppCompatActivity {
 
         isRight = false;
 
-        leftOrRight = "";
-
     }
 
 
@@ -334,8 +343,6 @@ public class Settings extends AppCompatActivity {
         fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
 
         isLeft = false;
-
-        leftOrRight = "";
 
     }
 
