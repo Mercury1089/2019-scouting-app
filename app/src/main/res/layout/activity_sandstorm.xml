@@ -8,31 +8,46 @@
     tools:context=".Sandstorm">
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView61"
+        android:id="@+id/customView66"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        tools:layout_editor_absoluteX="94dp"
+        tools:layout_editor_absoluteY="318dp" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/customView65"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="72dp"
+        app:layout_constraintStart_toEndOf="parent"
+        tools:layout_editor_absoluteY="172dp" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/CargoShipCargoLeft3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView7"
-        app:layout_constraintTop_toTopOf="@+id/customView7" />
+        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoLeft2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoLeft2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView62"
+        android:id="@+id/CargoShipPanelLeft3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/customView61"
-        app:layout_constraintStart_toEndOf="@+id/customView9"
-        app:layout_constraintTop_toBottomOf="@+id/customView12" />
+        app:layout_constraintBottom_toTopOf="@+id/CargoShipCargoLeft3"
+        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelLeft2"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketPanelRightT3" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView22"
+        android:id="@+id/CargoShipCargoRight3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView26"
-        app:layout_constraintTop_toTopOf="@+id/customView26" />
+        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoRight2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoRight2" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -119,21 +134,33 @@
 
                     android:textSize="36sp" />
 
+                <com.beardedhen.androidbootstrap.BootstrapButton
+
+                    android:id="@+id/GoToSetup"
+
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="match_parent"
+
+                    android:text="Setup"
+
+                    android:textSize="36sp" />
+
             </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
             <com.beardedhen.androidbootstrap.BootstrapButton
 
-                android:id="@+id/Dropped"
+                android:id="@+id/DroppedButton"
 
-                android:layout_width="88dp"
+                android:layout_width="0dp"
 
-                android:layout_height="42dp"
+                android:layout_height="46dp"
 
-                android:layout_marginStart="72dp"
-                android:layout_marginTop="96dp"
-                android:text="Dropped"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="16dp"
+                android:text="Dropped        "
                 android:textSize="36sp"
-                app:layout_constraintStart_toStartOf="@+id/TopToggle"
+                app:layout_constraintEnd_toEndOf="@+id/UndoButton"
                 app:layout_constraintTop_toBottomOf="@+id/TopToggle" />
 
             <Switch
@@ -143,6 +170,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Crossed HAB Line:"
+                android:textColor="@color/bootstrap_dropdown_divider"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/UndoButton" />
 
@@ -150,10 +178,10 @@
                 android:id="@+id/view"
                 android:layout_width="50dp"
                 android:layout_height="182dp"
-                android:layout_marginEnd="154dp"
+                android:layout_marginEnd="256dp"
                 android:layout_marginBottom="154dp"
                 app:layout_constraintBottom_toTopOf="@+id/CrossedHABLineSwitch"
-                app:layout_constraintEnd_toEndOf="@+id/Dropped" />
+                app:layout_constraintEnd_toStartOf="@+id/DroppedButton" />
 
             <View
                 android:id="@+id/view2"
@@ -192,244 +220,294 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <com.mercury1089.scoutingapp2019.CustomView
+                android:id="@+id/PanelCircleCounter"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="72dp"
+                app:layout_constraintStart_toEndOf="@+id/PanelCounterCircle"
+                app:layout_constraintTop_toTopOf="@+id/DroppedButton" />
+
+            <com.mercury1089.scoutingapp2019.CustomView
+                android:id="@+id/PanelCounterCircle"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="84dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/PanelCircleCounter" />
+
+            <TextView
+                android:id="@+id/DroppedCounterText"
+                android:layout_width="29dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="0"
+                android:textColor="@color/bootstrap_dropdown_divider"
+                app:layout_constraintStart_toEndOf="@+id/TopToggle"
+                app:layout_constraintTop_toTopOf="@+id/PanelCircleCounter" />
+
+            <TextView
+                android:id="@+id/CargoCounterText"
+                android:layout_width="28dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="8dp"
+                android:text="0"
+                android:textColor="@color/bootstrap_dropdown_divider"
+                app:layout_constraintStart_toEndOf="@+id/PanelCounterCircle"
+                app:layout_constraintTop_toTopOf="@+id/PanelCounterCircle" />
+
         </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView28"
+        android:id="@+id/CargoShipPanelFront1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="82dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView24"
-        app:layout_constraintTop_toBottomOf="@+id/customView14" />
+        app:layout_constraintEnd_toStartOf="@+id/CargoShipPanelRight1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelLeft1" />
+
+    <TextView
+        android:id="@+id/PanelCounterText"
+        android:layout_width="31dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="24dp"
+        android:text="0"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintStart_toStartOf="@+id/PanelOrCargo"
+        app:layout_constraintTop_toBottomOf="@+id/IDDroppedDirections" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView53"
+        android:id="@+id/RightRocketPanelFarT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView54"
-        app:layout_constraintTop_toBottomOf="@+id/customView51" />
+        app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT2"
+        app:layout_constraintTop_toBottomOf="@+id/RightRocketCargoT1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView7"
+        android:id="@+id/CargoShipCargoLeft2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView22"
-        app:layout_constraintTop_toBottomOf="@+id/customView9" />
+        app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoRight3"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelLeft2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView54"
+        android:id="@+id/RightRocketCargoT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView50"
-        app:layout_constraintTop_toBottomOf="@+id/customView51" />
+        app:layout_constraintStart_toEndOf="@+id/RightRocketPanelNearT1"
+        app:layout_constraintTop_toBottomOf="@+id/RightRocketCargoT1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView51"
+        android:id="@+id/RightRocketCargoT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView50"
-        app:layout_constraintTop_toBottomOf="@+id/customView24" />
+        app:layout_constraintStart_toEndOf="@+id/RightRocketPanelNearT1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelRight1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView50"
+        android:id="@+id/RightRocketPanelNearT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView31"
-        app:layout_constraintTop_toBottomOf="@+id/customView24" />
+        app:layout_constraintStart_toEndOf="@+id/CargoShipPamelF2"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelRight1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView52"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView51"
-        app:layout_constraintTop_toBottomOf="@+id/customView24" />
-
-    <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView58"
+        android:id="@+id/RightRocketPanelFarT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView54"
-        app:layout_constraintTop_toBottomOf="@+id/customView53" />
+        app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelRight1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView26"
+        android:id="@+id/RightRocketPanelFarT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView23"
-        app:layout_constraintTop_toBottomOf="@+id/customView7" />
+        app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT2"
+        app:layout_constraintTop_toBottomOf="@+id/RightRocketPanelFarT2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView57"
+        android:id="@+id/CargoShipCargoRight2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoRight1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoLeft2" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/RightRocketCargoT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView58"
-        app:layout_constraintTop_toBottomOf="@+id/customView54" />
+        app:layout_constraintEnd_toStartOf="@+id/RightRocketPanelFarT3"
+        app:layout_constraintTop_toBottomOf="@+id/RightRocketCargoT2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView55"
+        android:id="@+id/RightRocketPanelNearT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView54"
-        app:layout_constraintStart_toStartOf="@+id/customView50"
-        app:layout_constraintTop_toBottomOf="@+id/customView50" />
+        app:layout_constraintEnd_toStartOf="@+id/RightRocketCargoT2"
+        app:layout_constraintStart_toStartOf="@+id/RightRocketPanelNearT1"
+        app:layout_constraintTop_toBottomOf="@+id/RightRocketPanelNearT1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView14"
+        android:id="@+id/CargoShipPanelLeft1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView9"
-        app:layout_constraintTop_toBottomOf="@+id/customView11" />
+        app:layout_constraintEnd_toStartOf="@+id/CargoShipPanelLeft2"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketCargoT1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView23"
+        android:id="@+id/CargoShipCargoRight1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView30"
-        app:layout_constraintTop_toBottomOf="@+id/customView8" />
+        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoFront2"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoLeft1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView56"
+        android:id="@+id/RightRocketPanelNeatT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView57"
-        app:layout_constraintStart_toStartOf="@+id/customView55"
-        app:layout_constraintTop_toBottomOf="@+id/customView55" />
+        app:layout_constraintEnd_toStartOf="@+id/RightRocketCargoT3"
+        app:layout_constraintStart_toStartOf="@+id/RightRocketPanelNearT2"
+        app:layout_constraintTop_toBottomOf="@+id/RightRocketPanelNearT2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView8"
+        android:id="@+id/CargoShipCargoLeft1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView7"
-        app:layout_constraintTop_toBottomOf="@+id/customView9" />
+        app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoLeft2"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelLeft2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView25"
+        android:id="@+id/CargoShipPanelRight2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/customView26"
-        app:layout_constraintTop_toBottomOf="@+id/customView26" />
+        app:layout_constraintStart_toStartOf="@+id/CargoShipCargoRight2"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoRight2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView24"
+        android:id="@+id/CargoShipPanelRight1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/customView14"
-        app:layout_constraintTop_toBottomOf="@+id/customView23" />
+        app:layout_constraintStart_toStartOf="@+id/CargoShipPanelLeft1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoRight1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView27"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView25"
-        app:layout_constraintTop_toBottomOf="@+id/customView22" />
-
-    <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView29"
+        android:id="@+id/CargoShipPanelRight3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView28"
-        app:layout_constraintTop_toBottomOf="@+id/customView14" />
+        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelRight2"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoRight3" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView2"
+        android:id="@+id/CargoShipCargoFront1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelLeft1" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/LeftRocketCargoT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/LeftRocketPanelNearT2"
+        app:layout_constraintTop_toTopOf="@+id/LeftRocketPanelNearT3" />
+
+    <com.mercury1089.scoutingapp2019.CustomView
+        android:id="@+id/LeftRocketPanelFarT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/customView"
+        app:layout_constraintStart_toEndOf="@+id/LeftRocketCargoT3"
         app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView3"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/customView2"
-        app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
-
-    <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView"
+        android:id="@+id/LeftRocketPanelNearT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView5"
-        app:layout_constraintStart_toStartOf="@+id/customView50"
+        app:layout_constraintEnd_toStartOf="@+id/LeftRocketCenterT2"
+        app:layout_constraintStart_toStartOf="@+id/RightRocketPanelNearT1"
         app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView30"
+        android:id="@+id/CargoShipCargoFront2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView31"
-        app:layout_constraintTop_toBottomOf="@+id/customView29" />
+        app:layout_constraintStart_toEndOf="@+id/CargoShipPamelF2"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoFront1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView31"
+        android:id="@+id/CargoShipPamelF2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView29"
-        app:layout_constraintTop_toBottomOf="@+id/customView28" />
+        app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoFront1"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelFront1" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView9"
+        android:id="@+id/CargoShipPanelLeft2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/customView12"
-        app:layout_constraintTop_toBottomOf="@+id/customView12" />
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelRightT3"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketPanelRightT3" />
 
     <Switch
         android:id="@+id/FellOverSwitch"
-        android:layout_width="164dp"
-        android:layout_height="22dp"
+        android:layout_width="214dp"
+        android:layout_height="23dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="Fell Over"
+        android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/customView56" />
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNeatT3" />
 
     <TextView
         android:id="@+id/IDPossession"
@@ -523,25 +601,25 @@
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
-            android:id="@+id/Panel"
+            android:id="@+id/PanelButton"
 
             android:layout_width="wrap_content"
 
             android:layout_height="match_parent"
 
-            android:text="Panel"
+            android:text="Panel       "
 
             android:textSize="36sp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
-            android:id="@+id/Cargo"
+            android:id="@+id/CargoButton"
 
             android:layout_width="wrap_content"
 
             android:layout_height="match_parent"
 
-            android:text="Cargo"
+            android:text="Cargo       "
 
             android:textSize="36sp" />
 
@@ -550,70 +628,70 @@
 
     <com.beardedhen.androidbootstrap.BootstrapButton
 
-        android:id="@+id/Missed"
+        android:id="@+id/MissedButton"
 
-        android:layout_width="88dp"
+        android:layout_width="wrap_content"
 
         android:layout_height="42dp"
 
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Missed"
+        android:text="Missed           "
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView4"
+        android:id="@+id/LeftRocketPanelNearT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView5"
-        app:layout_constraintTop_toBottomOf="@+id/customView" />
+        app:layout_constraintEnd_toStartOf="@+id/LeftRocketCenterT2"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketPanelNearT3" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView10"
+        android:id="@+id/LeftRocketPanelNearT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView11"
-        app:layout_constraintTop_toBottomOf="@+id/customView4" />
+        app:layout_constraintEnd_toStartOf="@+id/LeftRocketCargoT1"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketPanelNearT2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView11"
+        android:id="@+id/LeftRocketCargoT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView12"
-        app:layout_constraintTop_toBottomOf="@+id/customView5" />
+        app:layout_constraintEnd_toStartOf="@+id/LeftRocketPanelRightT3"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketCenterT2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView12"
+        android:id="@+id/LeftRocketPanelRightT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toEndOf="@+id/customView5"
-        app:layout_constraintTop_toBottomOf="@+id/customView6" />
+        app:layout_constraintStart_toEndOf="@+id/LeftRocketCenterT2"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketPanelRightT2" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView5"
+        android:id="@+id/LeftRocketCenterT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/customView6"
-        app:layout_constraintTop_toBottomOf="@+id/customView2" />
+        app:layout_constraintEnd_toStartOf="@+id/LeftRocketPanelRightT2"
+        app:layout_constraintTop_toBottomOf="@+id/LeftRocketCargoT3" />
 
     <com.mercury1089.scoutingapp2019.CustomView
-        android:id="@+id/customView6"
+        android:id="@+id/LeftRocketPanelRightT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="128dp"
-        app:layout_constraintBottom_toBottomOf="@+id/customView5"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketCenterT2"
         app:layout_constraintEnd_toEndOf="@+id/IDScoringPOrCDirections" />
 
 </android.support.constraint.ConstraintLayout>
