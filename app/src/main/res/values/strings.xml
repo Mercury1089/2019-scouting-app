@@ -63,5 +63,9 @@
 
     <string name="Save">Save</string>
 
+    <!-- Sandstorm -->
+
+    <string name="zero">0</string>
+
 
 </resources>

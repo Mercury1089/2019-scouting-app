@@ -36,6 +36,16 @@
 
     <color name="orange"> @android:color/holo_orange_dark </color>
 
+    <color name="yellow">#FFEB3B</color>
+
+    <color name="lightblue">#99B2C7</color>
+
+    <color name="lightyellow">#F1EBAF</color>
+
+    <color name="lightorange">#FFC271</color>
+
+
+
 
 
 </resources>

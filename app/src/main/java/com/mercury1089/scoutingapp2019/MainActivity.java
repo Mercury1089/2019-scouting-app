@@ -156,7 +156,28 @@ public class MainActivity extends Activity {
         Switch NoShowSwitch = findViewById(R.id.NoShowSwitch);
         NoShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                switchCheck(isChecked);
+                if (isChecked) {
+                    noShowStatus = 1;
+                    startButton.setText(R.string.GenerateQRCode);
+                    isQRButton = true;
+                    makeCirclesInvisible();
+                    makeBoxesInvisible("Both");
+                    panelButton.setEnabled(false);
+                    panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+                    panelButton.setTextColor(getResources().getColor(R.color.grey));
+                    cargoButton.setEnabled(false);
+                    cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+                    cargoButton.setTextColor(getResources().getColor(R.color.grey));
+                    if (isBlueAlliance == 1 || isRedAlliance == 1 && matchNumber != 0 &&
+                            teamNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner !=0)
+                        startButton.setEnabled(true);
+                } else {
+                    noShowStatus = 0;
+                    panelButton.setEnabled(true);
+                    cargoButton.setEnabled(true);
+                    startButton.setText(R.string.Start);
+                    startButton.setEnabled(false);
+                }
             }
         });
 
@@ -225,7 +246,38 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (isQRButton) {
-                    QREvents();
+                    String RedOrBlue = "";
+                    if (isBlueAlliance == 1)
+                        RedOrBlue = "Blue";
+                    else if (isRedAlliance == 1)
+                        RedOrBlue = "Red";
+                    QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
+                            + "+" + matchNumberInput.getText().toString() + "+"
+                            + firstAlliancePartnerInput.getText().toString() + "+"
+                            + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
+                    try {
+                        bitmap = TextToImageEncode(QRValue);
+                        final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
+                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
+                        ImageView imageView = view1.findViewById(R.id.imageView);
+                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+                        imageView.setImageBitmap(bitmap);
+                        qrDialog.setView(view1);
+
+                        final AlertDialog dialog = qrDialog.create();
+                        dialog.show();
+
+                        goBackToMain.setOnClickListener(new View.OnClickListener() {
+                            @Override
+
+                            public void onClick(View view) {
+                                dialog.cancel();
+                            }
+                        });
+
+                    } catch (WriterException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -368,63 +420,7 @@ public class MainActivity extends Activity {
     }
 
     public void switchCheck(boolean isChecked) {
-        if (isChecked) {
-            noShowStatus = 1;
-            startButton.setText(R.string.GenerateQRCode);
-            isQRButton = true;
-            makeCirclesInvisible();
-            makeBoxesInvisible("Both");
-            panelButton.setEnabled(false);
-            panelButton.setBackgroundColor(getResources().getColor(R.color.light));
-            panelButton.setTextColor(getResources().getColor(R.color.grey));
-            cargoButton.setEnabled(false);
-            cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
-            cargoButton.setTextColor(getResources().getColor(R.color.grey));
-            if (isBlueAlliance == 1 || isRedAlliance == 1 && matchNumber != 0 &&
-                    teamNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner !=0)
-                startButton.setEnabled(true);
-        } else {
-            noShowStatus = 0;
-            panelButton.setEnabled(true);
-            cargoButton.setEnabled(true);
-            startButton.setText(R.string.Start);
-            startButton.setEnabled(false);
-        }
-    }
 
-    private void QREvents () {
-        String RedOrBlue = "";
-        if (isBlueAlliance == 1)
-            RedOrBlue = "Blue";
-        else if (isRedAlliance == 1)
-            RedOrBlue = "Red";
-        QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
-                + "+" + matchNumberInput.getText().toString() + "+"
-                + firstAlliancePartnerInput.getText().toString() + "+"
-                + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
-        try {
-            bitmap = TextToImageEncode(QRValue);
-            final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
-            View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
-            ImageView imageView = view1.findViewById(R.id.imageView);
-            Button goBackToMain = view1.findViewById(R.id.GoBackButton);
-            imageView.setImageBitmap(bitmap);
-            qrDialog.setView(view1);
-
-            final AlertDialog dialog = qrDialog.create();
-            dialog.show();
-
-            goBackToMain.setOnClickListener(new View.OnClickListener() {
-                @Override
-
-                public void onClick(View view) {
-                    dialog.cancel();
-                }
-            });
-
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
     }
 
 
@@ -651,6 +647,16 @@ public class MainActivity extends Activity {
         teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
         firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
         secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
+
+        String sendMessage = scouterName + matchNumber + teamNumber + firstAlliancePartner + secondAlliancePartner;
+        char initPanelOrCargo = ' ';
+        if (isSetupPanel == 1)
+            initPanelOrCargo = 'P';
+        else if (isSetupCargo == 1)
+            initPanelOrCargo = 'C';
+        Intent intent = new Intent(MainActivity.this, Sandstorm.class);
+        intent.putExtra("message", initPanelOrCargo + sendMessage);
+        startActivity(intent);
     }
 
 

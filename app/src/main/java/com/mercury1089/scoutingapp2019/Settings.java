@@ -29,7 +29,6 @@ public class Settings extends AppCompatActivity {
     BootstrapButton   fieldSideRightButton = findViewById(R.id.FieldSideRight);
     Button localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
     Button saveButton = findViewById(R.id.SaveButton);
-    Button cancelButton = findViewById(R.id.CancelButton);
     boolean isLeft = false;
     boolean isRight = false;
     boolean isLocalStorageClicked = false;
@@ -108,7 +107,7 @@ public class Settings extends AppCompatActivity {
     public void saveClick (View view) {
         hasBeenSaved = true;
         Intent intent = new Intent(Settings.this, MainActivity.class);
-         intent.putExtra("LEFTORRIGHT", leftOrRight);
+        intent.putExtra("LEFTORRIGHT", leftOrRight);
         startActivity(intent);
     }
 

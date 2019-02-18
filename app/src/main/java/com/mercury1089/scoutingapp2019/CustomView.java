@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-//need default constructor here???? pls search it up
+
 public class CustomView extends View {
 
     private final Paint drawPaint;
