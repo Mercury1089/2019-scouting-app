@@ -989,7 +989,7 @@ public class MainActivity extends Activity {
     public void blueClick (View view) {
 
         if (leftOrRight != "Left" && leftOrRight != "Right") {
-            Toast.makeText(MainActivity.this, );
+            //Toast.makeText(MainActivity.this);
         }
         if (isBlueAlliance == 0) {
 
