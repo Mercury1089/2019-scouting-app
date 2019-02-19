@@ -648,15 +648,45 @@ public class MainActivity extends Activity {
         firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
         secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
 
-        String sendMessage = scouterName + matchNumber + teamNumber + firstAlliancePartner + secondAlliancePartner;
-        char initPanelOrCargo = ' ';
-        if (isSetupPanel == 1)
-            initPanelOrCargo = 'P';
-        else if (isSetupCargo == 1)
-            initPanelOrCargo = 'C';
-        Intent intent = new Intent(MainActivity.this, Sandstorm.class);
-        intent.putExtra("message", initPanelOrCargo + sendMessage);
-        startActivity(intent);
+        if (isQRButton) {
+            String RedOrBlue = "";
+            if (isBlueAlliance == 1)
+                RedOrBlue = "Blue";
+            else if (isRedAlliance == 1)
+                RedOrBlue = "Red";
+            QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
+                    + "+" + matchNumberInput.getText().toString() + "+"
+                    + firstAlliancePartnerInput.getText().toString() + "+"
+                    + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
+            try {
+                bitmap = TextToImageEncode(QRValue);
+                final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
+                View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
+                ImageView imageView = view1.findViewById(R.id.imageView);
+                Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+                imageView.setImageBitmap(bitmap);
+                qrDialog.setView(view1);
+
+                final AlertDialog dialog = qrDialog.create();
+                dialog.show();
+
+                goBackToMain.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) { dialog.cancel(); }
+                });
+
+            } catch (WriterException e) { e.printStackTrace(); }
+        } else {
+            String sendMessage = scouterName + matchNumber + teamNumber + firstAlliancePartner + secondAlliancePartner;
+            char initPanelOrCargo = ' ';
+            if (isSetupPanel == 1)
+                initPanelOrCargo = 'P';
+            else if (isSetupCargo == 1)
+                initPanelOrCargo = 'C';
+            Intent intent = new Intent(MainActivity.this, Sandstorm.class);
+            intent.putExtra("message", initPanelOrCargo + sendMessage);
+            startActivity(intent);
+        }
     }
 
 

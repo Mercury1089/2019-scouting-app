@@ -45,18 +45,20 @@
         android:layout_height="match_parent"
         android:background="@color/bootstrap_brand_secondary_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:context=".Sandstorm"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="33dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bootstrap_brand_secondary_text"
-            tools:context=".Sandstorm"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".Sandstorm">
 
             <com.beardedhen.androidbootstrap.BootstrapButtonGroup
 
@@ -93,8 +95,9 @@
 
                     android:layout_height="match_parent"
 
-                    android:text="Setup"
+                    android:onClick="setupClick"
 
+                    android:text="@string/Setup"
                     android:textSize="36sp" />
 
 
@@ -106,7 +109,7 @@
 
                     android:layout_height="match_parent"
 
-                    android:text="Sandstorm"
+                    android:text="@string/Sandstorm"
 
                     android:textSize="36sp" />
 
@@ -121,7 +124,7 @@
 
                     android:background="@color/bootstrap_brand_success"
 
-                    android:text="Teleop"
+                    android:text="@string/Teleop"
 
                     android:textSize="36sp" />
 
@@ -133,7 +136,7 @@
 
                     android:layout_height="match_parent"
 
-                    android:text="Climb"
+                    android:text="@string/Climb"
 
                     android:textSize="36sp" />
 
@@ -149,7 +152,9 @@
 
                 android:layout_marginTop="100dp"
                 android:layout_marginEnd="16dp"
-                android:text="Dropped        "
+                android:enabled="false"
+                android:onClick="droppedClick"
+                android:text="@string/DroppedAndCounter"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="@+id/UndoButton"
                 app:layout_constraintTop_toBottomOf="@+id/TopToggle" />
@@ -204,8 +209,7 @@
                 android:id="@+id/UndoButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginRight="32dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
                 android:text="Undo"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -242,7 +246,7 @@
                 android:id="@+id/DroppedCounterText"
                 android:layout_width="35dp"
                 android:layout_height="46dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:gravity="center"
                 android:text="@string/zero"
                 android:textColor="@color/bootstrap_dropdown_divider"
@@ -261,17 +265,6 @@
                 app:layout_constraintStart_toEndOf="@+id/PanelCounterCircle"
                 app:layout_constraintTop_toTopOf="@+id/PanelCounterCircle" />
 
-            <TextView
-                android:id="@+id/MissedCounterText"
-                android:layout_width="28dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="96dp"
-                android:layout_marginTop="152dp"
-                android:gravity="center"
-                android:text="@string/zero"
-                android:textColor="@color/bootstrap_dropdown_divider"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/PanelCounterCircle" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -294,6 +287,69 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT2"
         app:layout_constraintTop_toBottomOf="@+id/RightRocketCargoT1" />
+
+    <TextView
+        android:id="@+id/T1Bottom"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/T1"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT1"
+        app:layout_constraintEnd_toStartOf="@+id/RRPNT1" />
+
+    <TextView
+        android:id="@+id/T2Bottom"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/T2"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT2"
+        app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
+
+    <TextView
+        android:id="@+id/T3Bottom"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/T3"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT3"
+        app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
+
+    <TextView
+        android:id="@+id/T1Top"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/T1"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT1"
+        app:layout_constraintEnd_toStartOf="@+id/LRPNT1" />
+
+    <TextView
+        android:id="@+id/T2Top"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/T2"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT2"
+        app:layout_constraintEnd_toStartOf="@+id/LRPNT2" />
+
+    <TextView
+        android:id="@+id/T3Top"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/T3"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT3"
+        app:layout_constraintEnd_toStartOf="@+id/LRPNT3" />
 
     <com.mercury1089.scoutingapp2019.CustomView
         android:id="@+id/CargoShipCargoLeft2"
@@ -507,7 +563,7 @@
         android:layout_height="23dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="Fell Over"
+        android:text="@string/FellOver"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT3" />
@@ -519,7 +575,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="84dp"
         android:fontFamily="sans-serif-black"
-        android:text="POSSESSION"
+        android:text="@string/Possession"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -531,7 +587,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
-        android:text="SCORING"
+        android:text="@string/Scoring"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
@@ -542,7 +598,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Tap “PANEL” or “CARGO” any time the robot picks up the corresponding game element."
+        android:text="@string/PossessionDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPossession" />
@@ -553,7 +609,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Tap the “P” or “C” on the diagram to mark where the robot scored their PANEL or CARGO."
+        android:text="@string/POrCDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoring" />
@@ -564,11 +620,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Tap the “MISSED” button on the diagram if the robot attempted to score, but was not successful."
+        android:text="@string/MissedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textSize="13.2sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/IDScoringPOrCDirections" />
+
+    <TextView
+        android:id="@+id/MissedCounterText"
+        android:layout_width="28dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="420dp"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/PanelCounterCircle" />
 
     <TextView
         android:id="@+id/IDDroppedDirections"
@@ -576,7 +644,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Tap “DROPPED” if the robot drops any game element (game element falls out of the robot)."
+        android:text="@string/DroppedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPanelOrCargoDirections" />
@@ -610,8 +678,9 @@
 
             android:layout_height="match_parent"
 
-            android:text="Panel       "
+            android:onClick="panelCounterClick"
 
+            android:text="@string/PanelAndCounter"
             android:textSize="36sp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
@@ -622,8 +691,9 @@
 
             android:layout_height="match_parent"
 
-            android:text="Cargo       "
+            android:onClick="cargoCounterClick"
 
+            android:text="@string/CargoAndCounter"
             android:textSize="36sp" />
 
 
@@ -639,7 +709,8 @@
 
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:text="Missed           "
+        android:onClick="missedClick"
+        android:text="@string/MissedAndCounter"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
@@ -696,5 +767,348 @@
         android:layout_marginEnd="128dp"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketCargoT2"
         app:layout_constraintEnd_toEndOf="@+id/IDScoringPOrCDirections" />
+
+    <TextView
+        android:id="@+id/LRPNT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelNearT3"
+        app:layout_constraintTop_toTopOf="@+id/LeftRocketPanelNearT3" />
+
+    <TextView
+        android:id="@+id/LRPNT2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@+id/LeftRocketPanelNearT2"
+        app:layout_constraintTop_toTopOf="@+id/LeftRocketPanelNearT2" />
+
+    <TextView
+        android:id="@+id/LRPNT1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelNearT1"
+        app:layout_constraintEnd_toEndOf="@+id/LeftRocketPanelNearT1"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelNearT1" />
+
+    <TextView
+        android:id="@+id/LRCT1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketCargoT1"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT1" />
+
+    <TextView
+        android:id="@+id/LRCT2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT2"
+        app:layout_constraintTop_toTopOf="@+id/LeftRocketCargoT2" />
+
+    <TextView
+        android:id="@+id/LRCT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT3"
+        app:layout_constraintTop_toTopOf="@+id/LeftRocketCargoT3" />
+
+    <TextView
+        android:id="@+id/LRPFT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT3"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelFarT3" />
+
+    <TextView
+        android:id="@+id/LRPFT2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT2"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelFarT2" />
+
+    <TextView
+        android:id="@+id/LRPFT1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/LeftRocketPanelFarT1"
+        app:layout_constraintTop_toTopOf="@+id/LeftRocketPanelFarT1" />
+
+    <TextView
+        android:id="@+id/CSPL1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/CargoShipPanelLeft1"
+        app:layout_constraintStart_toStartOf="@+id/CargoShipPanelLeft1" />
+
+    <TextView
+        android:id="@+id/CSPL2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelLeft2" />
+
+    <TextView
+        android:id="@+id/CSPL3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft3"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelLeft3" />
+
+    <TextView
+        android:id="@+id/CSCL3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft3"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoLeft3" />
+
+    <TextView
+        android:id="@+id/CSCR3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight3"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoRight3" />
+
+    <TextView
+        android:id="@+id/CSPR3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight3"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelRight3" />
+
+    <TextView
+        android:id="@+id/CSPR2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelRight2" />
+
+    <TextView
+        android:id="@+id/CSCR2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoRight2" />
+
+    <TextView
+        android:id="@+id/CSCL2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoLeft2" />
+
+    <TextView
+        android:id="@+id/CSCL1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoLeft1"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft1" />
+
+    <TextView
+        android:id="@+id/CSCR1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoRight1"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight1" />
+
+    <TextView
+        android:id="@+id/CSPR1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight1"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelRight1" />
+
+    <TextView
+        android:id="@+id/CSCF1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoFront1"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoFront1" />
+
+    <TextView
+        android:id="@+id/CSCF2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoFront2"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoFront2" />
+
+    <TextView
+        android:id="@+id/CSPF2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelFront2"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelFront2" />
+
+    <TextView
+        android:id="@+id/CSPF1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelFront1"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelFront1" />
+
+    <TextView
+        android:id="@+id/RRPNT1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT1"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT1" />
+
+    <TextView
+        android:id="@+id/RRPNT2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT2"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT2" />
+
+    <TextView
+        android:id="@+id/RRPNT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT3"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT3" />
+
+    <TextView
+        android:id="@+id/RRCT1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT1"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketCargoT1" />
+
+    <TextView
+        android:id="@+id/RRCT2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT2"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketCargoT2" />
+
+    <TextView
+        android:id="@+id/RRCT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/C"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT3"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketCargoT3" />
+
+    <TextView
+        android:id="@+id/RRPFT3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT3"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelFarT3" />
+
+    <TextView
+        android:id="@+id/RRPFT2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT2"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelFarT2" />
+
+    <TextView
+        android:id="@+id/RRPFT1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/P"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT1"
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelFarT1" />
 
 </android.support.constraint.ConstraintLayout>

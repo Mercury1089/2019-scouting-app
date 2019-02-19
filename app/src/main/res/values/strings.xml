@@ -66,6 +66,28 @@
     <!-- Sandstorm -->
 
     <string name="zero">0</string>
+    <string name="C">C</string>
+    <string name="P">P</string>
+    <string name="FellOver">Fell Over</string>
+    <string name="Possession">POSSESSION</string>
+    <string name="Scoring">SCORING</string>
+    <string name="PossessionDirections">Tap “PANEL” or “CARGO” any time the robot picks up the corresponding game element.</string>
+    <string name="POrCDirections">Tap the “P” or “C” on the diagram to mark where the robot scored their PANEL or CARGO.</string>
+    <string name="MissedDirections">Tap the “MISSED” button on the diagram if the robot attempted to score, but was not successful.</string>
+    <string name="DroppedDirections">Tap “DROPPED” if the robot drops any game element (game element falls out of the robot).</string>
+    <string name="PanelAndCounter">Panel&#32;&#32;&#32;&#32;&#32;&#32;&#32;</string>
+    <string name="CargoAndCounter">Cargo&#32;&#32;&#32;&#32;&#32;&#32;&#32;</string>
+    <string name="MissedAndCounter">Missed&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</string>
+    <string name="DroppedAndCounter">Dropped&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</string>
+    <string name="T1">T1</string>
+    <string name="T2">T2</string>
+    <string name="T3">T3</string>
+
+    <!-- Top Toggle -->
+    <string name="Setup">Setup</string>
+    <string name="Sandstorm">Sandstorm</string>
+    <string name="Teleop">Teleop</string>
+    <string name="Climb">Climb</string>
 
 
 </resources>

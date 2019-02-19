@@ -32,7 +32,7 @@
 
     <color name="red"> @color/bootstrap_brand_danger </color>
 
-
+    <color name="black">#000000</color>
 
     <color name="orange"> @android:color/holo_orange_dark </color>
 
