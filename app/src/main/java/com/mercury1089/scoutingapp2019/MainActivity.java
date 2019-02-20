@@ -76,39 +76,39 @@ public class MainActivity extends Activity {
     private int startR2 = 0; //0 or 1
 
     //variables that store elements of the screen for the output variables
-    private EditText ScouterNameInput = findViewById(R.id.ScouterNameInput);
-    private EditText matchNumberInput = findViewById(R.id.MatchNumberInput);
-    private EditText teamNumberInput = findViewById(R.id.TeamNumberInput);
-    private EditText firstAlliancePartnerInput = findViewById(R.id.FirstAlliancePartnerInput);
-    private EditText secondAlliancePartnerInput = findViewById(R.id.SecondAlliancePartnerInput);
-    private BootstrapButton blueButton = findViewById(R.id.BlueButton);
-    private BootstrapButton redButton = findViewById(R.id.RedButton);
-    private BootstrapButton panelButton = findViewById(R.id.PanelButton);
-    private BootstrapButton cargoButton = findViewById(R.id.CargoButton);
+    private EditText ScouterNameInput;
+    private EditText matchNumberInput;
+    private EditText teamNumberInput;
+    private EditText firstAlliancePartnerInput;
+    private EditText secondAlliancePartnerInput;
+    private BootstrapButton blueButton;
+    private BootstrapButton redButton;
+    private BootstrapButton panelButton;
+    private BootstrapButton cargoButton;
 
     //rectangles
-    private View LL1 = findViewById(R.id.LL1);
-    private View LC1 = findViewById(R.id.LC1);
-    private View LR1 = findViewById(R.id.LR1);
-    private View LL2 = findViewById(R.id.LL2);
-    private View LR2 = findViewById(R.id.LR2);
-    private View RL1 = findViewById(R.id.RL1);
-    private View RC1 = findViewById(R.id.RC1);
-    private View RR1 = findViewById(R.id.RR1);
-    private View RL2 = findViewById(R.id.RL2);
-    private View RR2 = findViewById(R.id.RR2);
+    private View LL1;
+    private View LC1;
+    private View LR1;
+    private View LL2;
+    private View LR2;
+    private View RL1;
+    private View RC1;
+    private View RR1;
+    private View RL2;
+    private View RR2;
 
     //circles
-    private CustomView LL1Circle = findViewById(R.id.CircleLL1);
-    private CustomView LC1Circle = findViewById(R.id.CircleLC1);
-    private CustomView LR1Circle = findViewById(R.id.CircleLR1);
-    private CustomView LL2Circle = findViewById(R.id.CircleLL2);
-    private CustomView LR2Circle = findViewById(R.id.CircleLR2);
-    private CustomView RL1Circle = findViewById(R.id.CircleRL1);
-    private CustomView RC1Circle = findViewById(R.id.CircleRC1);
-    private CustomView RR1Circle = findViewById(R.id.CircleRR1);
-    private CustomView RL2Circle = findViewById(R.id.CircleRL2);
-    private CustomView RR2Circle = findViewById(R.id.CircleRR2);
+    private CustomView LL1Circle;
+    private CustomView LC1Circle;
+    private CustomView LR1Circle;
+    private CustomView LL2Circle;
+    private CustomView LR2Circle;
+    private CustomView RL1Circle;
+    private CustomView RC1Circle;
+    private CustomView RR1Circle;
+    private CustomView RL2Circle;
+    private CustomView RR2Circle;
 
     //for QR code generator
     public final static int QRCodeSize = 500;
@@ -116,13 +116,14 @@ public class MainActivity extends Activity {
     String QRValue;
 
     //other variables
-    Button clearButton = findViewById(R.id.ClearButton);
-    Button startButton = findViewById(R.id.StartButton);
-    TextView prepopulatedTitle = findViewById(R.id.IDPrepopulated);
-    TextView prepopulatedDirections = findViewById(R.id.IDPrepopulatedDirections);
+    Button clearButton;
+    Button startButton;
+    TextView prepopulatedTitle;
+    TextView prepopulatedDirections;
 
     boolean isQRButton = false;
     String leftOrRight;
+
 
 
     @Override
@@ -130,6 +131,41 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //initializers
+        ScouterNameInput = findViewById(R.id.ScouterNameInput);
+        matchNumberInput = findViewById(R.id.MatchNumberInput);
+        teamNumberInput = findViewById(R.id.TeamNumberInput);
+        firstAlliancePartnerInput = findViewById(R.id.FirstAlliancePartnerInput);
+        secondAlliancePartnerInput = findViewById(R.id.SecondAlliancePartnerInput);
+        blueButton = findViewById(R.id.BlueButton);
+        redButton = findViewById(R.id.RedButton);
+        panelButton = findViewById(R.id.PanelButton);
+        cargoButton = findViewById(R.id.CargoButton);
+        LL1 = findViewById(R.id.LL1);
+        LC1 = findViewById(R.id.LC1);
+        LR1 = findViewById(R.id.LR1);
+        LL2 = findViewById(R.id.LL2);
+        LR2 = findViewById(R.id.LR2);
+        RL1 = findViewById(R.id.RL1);
+        RC1 = findViewById(R.id.RC1);
+        RR1 = findViewById(R.id.RR1);
+        RL2 = findViewById(R.id.RL2);
+        RR2 = findViewById(R.id.RR2);
+        LL1Circle = findViewById(R.id.CircleLL1);
+        LC1Circle = findViewById(R.id.CircleLC1);
+        LR1Circle = findViewById(R.id.CircleLR1);
+        LL2Circle = findViewById(R.id.CircleLL2);
+        LR2Circle = findViewById(R.id.CircleLR2);
+        RL1Circle = findViewById(R.id.CircleRL1);
+        RC1Circle = findViewById(R.id.CircleRC1);
+        RR1Circle = findViewById(R.id.CircleRR1);
+        RL2Circle = findViewById(R.id.CircleRL2);
+        RR2Circle = findViewById(R.id.CircleRR2);
+
+        clearButton = findViewById(R.id.ClearButton);
+        startButton = findViewById(R.id.StartButton);
+        prepopulatedTitle = findViewById(R.id.IDPrepopulated);
+        prepopulatedDirections = findViewById(R.id.IDPrepopulatedDirections);
 
         //send circles to front
         LL1Circle.bringToFront();
@@ -180,6 +216,7 @@ public class MainActivity extends Activity {
                 }
             }
         });
+
 
         ScouterNameInput.addTextChangedListener(new TextWatcher() {
             @Override
@@ -245,6 +282,12 @@ public class MainActivity extends Activity {
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                scouterName = ScouterNameInput.getText().toString();
+                matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+                teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
+                firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
+                secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
+
                 if (isQRButton) {
                     String RedOrBlue = "";
                     if (isBlueAlliance == 1)
@@ -261,23 +304,30 @@ public class MainActivity extends Activity {
                         View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
                         Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+
                         imageView.setImageBitmap(bitmap);
                         qrDialog.setView(view1);
 
                         final AlertDialog dialog = qrDialog.create();
                         dialog.show();
-
                         goBackToMain.setOnClickListener(new View.OnClickListener() {
                             @Override
-
-                            public void onClick(View view) {
+                            public void onClick(View v) {
                                 dialog.cancel();
                             }
                         });
 
-                    } catch (WriterException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (WriterException e) { e.printStackTrace(); }
+                } else {
+                    String sendMessage = scouterName + matchNumber + teamNumber + firstAlliancePartner + secondAlliancePartner;
+                    char initPanelOrCargo = ' ';
+                    if (isSetupPanel == 1)
+                        initPanelOrCargo = 'P';
+                    else if (isSetupCargo == 1)
+                        initPanelOrCargo = 'C';
+                    Intent intent = new Intent(MainActivity.this, Sandstorm.class);
+                    intent.putExtra("message", initPanelOrCargo + sendMessage);
+                    startActivity(intent);
                 }
             }
         });
@@ -352,19 +402,22 @@ public class MainActivity extends Activity {
     }
 
     public void makeBoxesVisible (String side) {
-        if (side.equals("Left")) {
-            LL1.setVisibility(View.INVISIBLE);
-            LC1.setVisibility(View.INVISIBLE);
-            LR1.setVisibility(View.INVISIBLE);
-            LL2.setVisibility(View.INVISIBLE);
-            LR2.setVisibility(View.INVISIBLE);
-        }
-        else {
-            RL1.setVisibility(View.INVISIBLE);
-            RC1.setVisibility(View.INVISIBLE);
-            RR1.setVisibility(View.INVISIBLE);
-            RL2.setVisibility(View.INVISIBLE);
-            RR2.setVisibility(View.INVISIBLE);
+        switch (side) {
+            case "Both":
+            case "Left":
+                LL1.setVisibility(View.VISIBLE);
+                LC1.setVisibility(View.VISIBLE);
+                LR1.setVisibility(View.VISIBLE);
+                LL2.setVisibility(View.VISIBLE);
+                LR2.setVisibility(View.VISIBLE);
+                if (side.equals("Left"))
+                    break;
+            case "Right":
+                RL1.setVisibility(View.VISIBLE);
+                RC1.setVisibility(View.VISIBLE);
+                RR1.setVisibility(View.VISIBLE);
+                RL2.setVisibility(View.VISIBLE);
+                RR2.setVisibility(View.VISIBLE);
         }
     }
 
@@ -545,10 +598,12 @@ public class MainActivity extends Activity {
                 if (leftOrRight.equals("Left")) {
                     makeBoxesBlue("Left");
                     makeBoxesVisible("Left");
+                    makeBoxesInvisible("Right");
                     makeCirclesInvisible();
                 } else if (leftOrRight.equals("Right")) {
                     makeBoxesBlue("Right");
                     makeBoxesVisible("Right");
+                    makeBoxesInvisible("Left");
                     makeCirclesInvisible();
                 }
             }
@@ -587,7 +642,7 @@ public class MainActivity extends Activity {
                     makeCirclesInvisible();
                 } else {
                     makeBoxesRed("Left");
-                    makeBoxesVisible("Right");
+                    makeBoxesVisible("Left");
                     makeBoxesInvisible("Right");
                     makeCirclesInvisible();
                 }
@@ -636,54 +691,6 @@ public class MainActivity extends Activity {
         startButton.setEnabled(false);
     }
 
-
-    public void startClick (View view) {
-        scouterName = ScouterNameInput.getText().toString();
-        matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
-        teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
-        firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
-        secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
-
-        if (isQRButton) {
-            String RedOrBlue = "";
-            if (isBlueAlliance == 1)
-                RedOrBlue = "Blue";
-            else if (isRedAlliance == 1)
-                RedOrBlue = "Red";
-            QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
-                    + "+" + matchNumberInput.getText().toString() + "+"
-                    + firstAlliancePartnerInput.getText().toString() + "+"
-                    + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
-            try {
-                bitmap = TextToImageEncode(QRValue);
-                final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
-                View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
-                ImageView imageView = view1.findViewById(R.id.imageView);
-                Button goBackToMain = view1.findViewById(R.id.GoBackButton);
-                imageView.setImageBitmap(bitmap);
-                qrDialog.setView(view1);
-
-                final AlertDialog dialog = qrDialog.create();
-                dialog.show();
-
-                goBackToMain.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) { dialog.cancel(); }
-                });
-
-            } catch (WriterException e) { e.printStackTrace(); }
-        } else {
-            String sendMessage = scouterName + matchNumber + teamNumber + firstAlliancePartner + secondAlliancePartner;
-            char initPanelOrCargo = ' ';
-            if (isSetupPanel == 1)
-                initPanelOrCargo = 'P';
-            else if (isSetupCargo == 1)
-                initPanelOrCargo = 'C';
-            Intent intent = new Intent(MainActivity.this, Sandstorm.class);
-            intent.putExtra("message", initPanelOrCargo + sendMessage);
-            startActivity(intent);
-        }
-    }
 
 
 

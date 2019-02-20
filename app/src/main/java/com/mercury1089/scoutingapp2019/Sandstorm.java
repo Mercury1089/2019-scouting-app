@@ -19,53 +19,53 @@ import at.markushi.ui.CircleButton;
 public class Sandstorm extends AppCompatActivity {
     //LEFT ROCKET
     //panel variables
-    CustomView LeftRocketPanelNearT3 = findViewById(R.id.LeftRocketPanelNearT3);
-    CustomView LeftRocketPanelNearT2 = findViewById(R.id.LeftRocketPanelNearT2);
-    CustomView LeftRocketPanelNearT1 = findViewById(R.id.LeftRocketPanelNearT1);
-    CustomView LeftRocketPanelFarT3 = findViewById(R.id.LeftRocketPanelFarT3);
-    CustomView LeftRocketPanelFarT2 = findViewById(R.id.LeftRocketPanelFarT2);
-    CustomView LeftRocketPanelFarT1 = findViewById(R.id.LeftRocketPanelFarT1);
+    CustomView LeftRocketPanelNearT3;
+    CustomView LeftRocketPanelNearT2;
+    CustomView LeftRocketPanelNearT1;
+    CustomView LeftRocketPanelFarT3;
+    CustomView LeftRocketPanelFarT2;
+    CustomView LeftRocketPanelFarT1;
 
     //cargo variables
-    CustomView LeftRocketCargoT3 = findViewById(R.id.LeftRocketCargoT3);
-    CustomView LeftRocketCargoT2 = findViewById(R.id.LeftRocketCargoT2);
-    CustomView LeftRocketCargoT1 = findViewById(R.id.LeftRocketCargoT1);
+    CustomView LeftRocketCargoT3;
+    CustomView LeftRocketCargoT2;
+    CustomView LeftRocketCargoT1;
 
 
     //CARGO SHIP
     //panel variables
-    CustomView CargoShipPanelFront1 = findViewById(R.id.CargoShipPanelFront1);
-    CustomView CargoShipPanelFront2 = findViewById(R.id.CargoShipPanelFront2);
-    CustomView CargoShipPanelLeft1 = findViewById(R.id.CargoShipPanelLeft1);
-    CustomView CargoShipPanelLeft2 = findViewById(R.id.CargoShipPanelLeft2);
-    CustomView CargoShipPanelLeft3 = findViewById(R.id.CargoShipPanelLeft3);
-    CustomView CargoShipPanelRight1 = findViewById(R.id.CargoShipPanelRight1);
-    CustomView CargoShipPanelRight2 = findViewById(R.id.CargoShipPanelRight2);
-    CustomView CargoShipPanelRight3 = findViewById(R.id.CargoShipPanelRight3);
+    CustomView CargoShipPanelFront1;
+    CustomView CargoShipPanelFront2;
+    CustomView CargoShipPanelLeft1;
+    CustomView CargoShipPanelLeft2;
+    CustomView CargoShipPanelLeft3;
+    CustomView CargoShipPanelRight1;
+    CustomView CargoShipPanelRight2;
+    CustomView CargoShipPanelRight3;
 
     //cargo variables
-    CustomView CargoShipCargoFront1 = findViewById(R.id.CargoShipCargoFront1);
-    CustomView CargoShipCargoFront2 = findViewById(R.id.CargoShipCargoFront2);
-    CustomView CargoShipCargoLeft1 = findViewById(R.id.CargoShipCargoLeft1);
-    CustomView CargoShipCargoLeft2 = findViewById(R.id.CargoShipCargoLeft2);
-    CustomView CargoShipCargoLeft3 = findViewById(R.id.CargoShipCargoLeft3);
-    CustomView CargoShipCargoRight1 = findViewById(R.id.CargoShipCargoRight1);
-    CustomView CargoShipCargoRight2 = findViewById(R.id.CargoShipCargoRight2);
-    CustomView CargoShipCargoRight3 = findViewById(R.id.CargoShipCargoRight3);
+    CustomView CargoShipCargoFront1;
+    CustomView CargoShipCargoFront2;
+    CustomView CargoShipCargoLeft1;
+    CustomView CargoShipCargoLeft2;
+    CustomView CargoShipCargoLeft3;
+    CustomView CargoShipCargoRight1;
+    CustomView CargoShipCargoRight2;
+    CustomView CargoShipCargoRight3;
 
     //RIGHT ROCKET
     //panel variables
-    CustomView RightRocketPanelNearT3 = findViewById(R.id.RightRocketPanelNearT3);
-    CustomView RightRocketPanelNearT2 = findViewById(R.id.RightRocketPanelNearT2);
-    CustomView RightRocketPanelNearT1 = findViewById(R.id.RightRocketPanelNearT1);
-    CustomView RightRocketPanelFarT3 = findViewById(R.id.RightRocketPanelFarT3);
-    CustomView RightRocketPanelFarT2 = findViewById(R.id.RightRocketPanelFarT2);
-    CustomView RightRocketPanelFarT1 = findViewById(R.id.RightRocketPanelFarT1);
+    CustomView RightRocketPanelNearT3;
+    CustomView RightRocketPanelNearT2;
+    CustomView RightRocketPanelNearT1;
+    CustomView RightRocketPanelFarT3;
+    CustomView RightRocketPanelFarT2;
+    CustomView RightRocketPanelFarT1;
 
     //cargo variables
-    CustomView RightRocketCargoT3 = findViewById(R.id.RightRocketCargoT3);
-    CustomView RightRocketCargoT2 = findViewById(R.id.RightRocketCargoT2);
-    CustomView RightRocketCargoT1 = findViewById(R.id.RightRocketCargoT1);
+    CustomView RightRocketCargoT3;
+    CustomView RightRocketCargoT2;
+    CustomView RightRocketCargoT1;
 
     //Repeated Variables for each buttonClick:
     private final String MODE = "Sandstorm";
@@ -123,65 +123,65 @@ public class Sandstorm extends AppCompatActivity {
     private int RRPFT3Counter = 0;
 
     //left rocket text
-    private TextView LRPNT1 = findViewById(R.id.LRPNT1);
-    private TextView LRPNT2 = findViewById(R.id.LRPNT2);
-    private TextView LRPNT3 = findViewById(R.id.LRPNT3);
-    private TextView LRCT1 = findViewById(R.id.LRCT1);
-    private TextView LRCT2 = findViewById(R.id.LRCT2);
-    private TextView LRCT3 = findViewById(R.id.LRCT3);
-    private TextView LRPFT1 = findViewById(R.id.LRPFT1);
-    private TextView LRPFT2 = findViewById(R.id.LRPFT2);
-    private TextView LRPFT3 = findViewById(R.id.LRPFT3);
+    private TextView LRPNT1;
+    private TextView LRPNT2;
+    private TextView LRPNT3;
+    private TextView LRCT1;
+    private TextView LRCT2;
+    private TextView LRCT3;
+    private TextView LRPFT1;
+    private TextView LRPFT2;
+    private TextView LRPFT3;
 
     //cargo ship text
-    private TextView CSPF1 = findViewById(R.id.CSPF1);
-    private TextView CSPF2 = findViewById(R.id.CSPF2);
-    private TextView CSCF1 = findViewById(R.id.CSCF1);
-    private TextView CSCF2 = findViewById(R.id.CSCF2);
-    private TextView CSPL1 = findViewById(R.id.CSPL1);
-    private TextView CSPL2 = findViewById(R.id.CSPL2);
-    private TextView CSPL3 = findViewById(R.id.CSPL3);
-    private TextView CSCL1 = findViewById(R.id.CSCL1);
-    private TextView CSCL2 = findViewById(R.id.CSCL2);
-    private TextView CSCL3 = findViewById(R.id.CSCL3);
-    private TextView CSCR1 = findViewById(R.id.CSCR1);
-    private TextView CSCR2 = findViewById(R.id.CSCR2);
-    private TextView CSCR3 = findViewById(R.id.CSCR3);
-    private TextView CSPR1 = findViewById(R.id.CSPR1);
-    private TextView CSPR2 = findViewById(R.id.CSPR2);
-    private TextView CSPR3 = findViewById(R.id.CSPR3);
+    private TextView CSPF1;
+    private TextView CSPF2;
+    private TextView CSCF1;
+    private TextView CSCF2;
+    private TextView CSPL1;
+    private TextView CSPL2;
+    private TextView CSPL3;
+    private TextView CSCL1;
+    private TextView CSCL2;
+    private TextView CSCL3;
+    private TextView CSCR1;
+    private TextView CSCR2;
+    private TextView CSCR3;
+    private TextView CSPR1;
+    private TextView CSPR2;
+    private TextView CSPR3;
 
     //right rocket text
-    private TextView RRPNT1 = findViewById(R.id.RRPNT1);
-    private TextView RRPNT2 = findViewById(R.id.RRPNT2);
-    private TextView RRPNT3 = findViewById(R.id.RRPNT3);
-    private TextView RRCT1 = findViewById(R.id.RRCT1);
-    private TextView RRCT2 = findViewById(R.id.RRCT2);
-    private TextView RRCT3 = findViewById(R.id.RRCT3);
-    private TextView RRPFT1 = findViewById(R.id.RRPFT1);
-    private TextView RRPFT2 = findViewById(R.id.RRPFT2);
-    private TextView RRPFT3 = findViewById(R.id.RRPFT3);
+    private TextView RRPNT1;
+    private TextView RRPNT2;
+    private TextView RRPNT3;
+    private TextView RRCT1;
+    private TextView RRCT2;
+    private TextView RRCT3;
+    private TextView RRPFT1;
+    private TextView RRPFT2;
+    private TextView RRPFT3;
 
 
 
 
     //counter TextViews
-    TextView PanelCounterText = findViewById(R.id.PanelCounterText);
-    TextView CargoCounterText = findViewById(R.id.CargoCounterText);
-    TextView DroppedCounterText = findViewById(R.id.DroppedCounterText);
-    TextView MissedCounterText = findViewById(R.id.MissedCounterText);
+    TextView PanelCounterText;
+    TextView CargoCounterText;
+    TextView DroppedCounterText;
+    TextView MissedCounterText;
 
     //bootstrap buttons
-    BootstrapButton SetupButton = findViewById(R.id.GoToSetup);
-    BootstrapButton SandstormButton = findViewById(R.id.GoToSandstorm);
-    BootstrapButton TeleopButton = findViewById(R.id.GoToTeleop);
-    BootstrapButton ClimbButton = findViewById(R.id.GoToClimb);
-    BootstrapButton PanelButton = findViewById(R.id.SPanelButton);
-    BootstrapButton CargoButton = findViewById(R.id.SCargoButton);
+    BootstrapButton SetupButton;
+    BootstrapButton SandstormButton;
+    BootstrapButton TeleopButton;
+    BootstrapButton ClimbButton;
+    BootstrapButton PanelButton;
+    BootstrapButton CargoButton;
 
     //buttons
-    Button DroppedButton = findViewById(R.id.DroppedButton);
-    Button MissedButton = findViewById(R.id.MissedButton);
+    Button DroppedButton;
+    Button MissedButton;
 
     //array counter
     private int arrCounter = 0; //multiples of 7 outputted.... 2D array --> int arr[][] = new int[arrCounter][7];
@@ -191,14 +191,101 @@ public class Sandstorm extends AppCompatActivity {
     private int deadRobot = 0; //0 or 1
     private boolean isCargo = false;
     private boolean isPanel = false;
-    CircleButton btn = findViewById(R.id.btn_home);
+    CircleButton btn;
     Random random = new Random();
+
+    public Sandstorm() {
+
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandstorm);
+
+        //initializers
+        LeftRocketPanelNearT3 = findViewById(R.id.LeftRocketPanelNearT3);
+        LeftRocketPanelNearT2 = findViewById(R.id.LeftRocketPanelNearT2);
+        LeftRocketPanelNearT1 = findViewById(R.id.LeftRocketPanelNearT1);
+        LeftRocketPanelFarT3 = findViewById(R.id.LeftRocketPanelFarT3);
+        LeftRocketPanelFarT2 = findViewById(R.id.LeftRocketPanelFarT2);
+        LeftRocketPanelFarT1 = findViewById(R.id.LeftRocketPanelFarT1);
+        LeftRocketCargoT3 = findViewById(R.id.LeftRocketCargoT3);
+        LeftRocketCargoT2 = findViewById(R.id.LeftRocketCargoT2);
+        LeftRocketCargoT1 = findViewById(R.id.LeftRocketCargoT1);
+        CargoShipPanelFront1 = findViewById(R.id.CargoShipPanelFront1);
+        CargoShipPanelFront2 = findViewById(R.id.CargoShipPanelFront2);
+        CargoShipPanelLeft1 = findViewById(R.id.CargoShipPanelLeft1);
+        CargoShipPanelLeft2 = findViewById(R.id.CargoShipPanelLeft2);
+        CargoShipPanelLeft3 = findViewById(R.id.CargoShipPanelLeft3);
+        CargoShipPanelRight1 = findViewById(R.id.CargoShipPanelRight1);
+        CargoShipPanelRight2 = findViewById(R.id.CargoShipPanelRight2);
+        CargoShipPanelRight3 = findViewById(R.id.CargoShipPanelRight3);
+        CargoShipCargoFront1 = findViewById(R.id.CargoShipCargoFront1);
+        CargoShipCargoFront2 = findViewById(R.id.CargoShipCargoFront2);
+        CargoShipCargoLeft1 = findViewById(R.id.CargoShipCargoLeft1);
+        CargoShipCargoLeft2 = findViewById(R.id.CargoShipCargoLeft2);
+        CargoShipCargoLeft3 = findViewById(R.id.CargoShipCargoLeft3);
+        CargoShipCargoRight1 = findViewById(R.id.CargoShipCargoRight1);
+        CargoShipCargoRight2 = findViewById(R.id.CargoShipCargoRight2);
+        CargoShipCargoRight3 = findViewById(R.id.CargoShipCargoRight3);
+        RightRocketPanelNearT3 = findViewById(R.id.RightRocketPanelNearT3);
+        RightRocketPanelNearT2 = findViewById(R.id.RightRocketPanelNearT2);
+        RightRocketPanelNearT1 = findViewById(R.id.RightRocketPanelNearT1);
+        RightRocketPanelFarT3 = findViewById(R.id.RightRocketPanelFarT3);
+        RightRocketPanelFarT2 = findViewById(R.id.RightRocketPanelFarT2);
+        RightRocketPanelFarT1 = findViewById(R.id.RightRocketPanelFarT1);
+        RightRocketCargoT3 = findViewById(R.id.RightRocketCargoT3);
+        RightRocketCargoT2 = findViewById(R.id.RightRocketCargoT2);
+        RightRocketCargoT1 = findViewById(R.id.RightRocketCargoT1);
+        LRPNT1 = findViewById(R.id.LRPNT1);
+        LRPNT2 = findViewById(R.id.LRPNT2);
+        LRPNT3 = findViewById(R.id.LRPNT3);
+        LRCT1 = findViewById(R.id.LRCT1);
+        LRCT2 = findViewById(R.id.LRCT2);
+        LRCT3 = findViewById(R.id.LRCT3);
+        LRPFT1 = findViewById(R.id.LRPFT1);
+        LRPFT2 = findViewById(R.id.LRPFT2);
+        LRPFT3 = findViewById(R.id.LRPFT3);
+        CSPF1 = findViewById(R.id.CSPF1);
+        CSPF2 = findViewById(R.id.CSPF2);
+        CSCF1 = findViewById(R.id.CSCF1);
+        CSCF2 = findViewById(R.id.CSCF2);
+        CSPL1 = findViewById(R.id.CSPL1);
+        CSPL2 = findViewById(R.id.CSPL2);
+        CSPL3 = findViewById(R.id.CSPL3);
+        CSCL1 = findViewById(R.id.CSCL1);
+        CSCL2 = findViewById(R.id.CSCL2);
+        CSCL3 = findViewById(R.id.CSCL3);
+        CSCR1 = findViewById(R.id.CSCR1);
+        CSCR2 = findViewById(R.id.CSCR2);
+        CSCR3 = findViewById(R.id.CSCR3);
+        CSPR1 = findViewById(R.id.CSPR1);
+        CSPR2 = findViewById(R.id.CSPR2);
+        CSPR3 = findViewById(R.id.CSPR3);
+        RRPNT1 = findViewById(R.id.RRPNT1);
+        RRPNT2 = findViewById(R.id.RRPNT2);
+        RRPNT3 = findViewById(R.id.RRPNT3);
+        RRCT1 = findViewById(R.id.RRCT1);
+        RRCT2 = findViewById(R.id.RRCT2);
+        RRCT3 = findViewById(R.id.RRCT3);
+        RRPFT1 = findViewById(R.id.RRPFT1);
+        RRPFT2 = findViewById(R.id.RRPFT2);
+        RRPFT3 = findViewById(R.id.RRPFT3);
+        PanelCounterText = findViewById(R.id.PanelCounterText);
+        CargoCounterText = findViewById(R.id.CargoCounterText);
+        DroppedCounterText = findViewById(R.id.DroppedCounterText);
+        MissedCounterText = findViewById(R.id.MissedCounterText);
+        SetupButton = findViewById(R.id.GoToSetup);
+        SandstormButton = findViewById(R.id.GoToSandstorm);
+        TeleopButton = findViewById(R.id.GoToTeleop);
+        ClimbButton = findViewById(R.id.GoToClimb);
+        PanelButton = findViewById(R.id.SPanelButton);
+        CargoButton = findViewById(R.id.SCargoButton);
+        DroppedButton = findViewById(R.id.DroppedButton);
+        MissedButton = findViewById(R.id.MissedButton);
+        btn = findViewById(R.id.btn_home);
 
         //make Sandstorm button look active
         selectedButtonColors(SandstormButton);

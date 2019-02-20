@@ -10,8 +10,6 @@ import android.os.Bundle;
 
 
 
-import android.support.v4.app.NavUtils;
-
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -22,24 +20,17 @@ import android.widget.Button;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
-import java.util.Set;
-
-
 public class Settings extends AppCompatActivity {
 
-    BootstrapButton fieldSideLeftButton = findViewById(R.id.FieldSideLeft);
-    BootstrapButton   fieldSideRightButton = findViewById(R.id.FieldSideRight);
-    Button localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
-    Button saveButton = findViewById(R.id.SaveButton);
-    boolean isLeft = false;
-    boolean isRight = false;
-    boolean isLocalStorageClicked = false;
-    boolean hasBeenSaved = false;
-    String leftOrRight = "";
-
-
-
-
+    private BootstrapButton fieldSideLeftButton;
+    private BootstrapButton fieldSideRightButton;
+    private Button localStorageResetButton;
+    private Button saveButton;
+    private boolean isLeft;
+    private boolean isRight;
+    private boolean isLocalStorageClicked;
+    public boolean hasBeenSaved;
+    private String leftOrRight;
 
     @Override
 
@@ -47,6 +38,15 @@ public class Settings extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        fieldSideLeftButton = findViewById(R.id.FieldSideLeft);
+        fieldSideRightButton = findViewById(R.id.FieldSideRight);
+        localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
+        saveButton = findViewById(R.id.SaveButton);
+        isLeft = false;
+        isRight = false;
+        isLocalStorageClicked = false;
+        hasBeenSaved = false;
+        leftOrRight = "";
         leftDefault();
         rightDefault();
 
@@ -100,10 +100,22 @@ public class Settings extends AppCompatActivity {
             localStorageResetDefault();
     }
 
-    public void localStorageResetDefault () {
+    private void localStorageResetDefault () {
         isLocalStorageClicked = false;
         localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.light));
         localStorageResetButton.setTextColor(getResources().getColor(R.color.grey));
+    }
+
+    private void rightDefault () {
+        fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
+        fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
+        isRight = false;
+    }
+
+    private void leftDefault () {
+        fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
+        fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
+        isLeft = false;
     }
 
     public void saveClick (View view) {
@@ -120,15 +132,5 @@ public class Settings extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void rightDefault () {
-        fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.light));
-        fieldSideRightButton.setTextColor(getResources().getColor(R.color.grey));
-        isRight = false;
-    }
 
-    public void leftDefault () {
-        fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.light));
-        fieldSideLeftButton.setTextColor(getResources().getColor(R.color.grey));
-        isLeft = false;
-    }
 }

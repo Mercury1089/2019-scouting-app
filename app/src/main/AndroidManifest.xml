@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SandstormRight"></activity>
-        <activity android:name=".Sandstorm" />
+        <activity
+            android:name=".SandstormRight"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Sandstorm"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:parentActivityName=".Settings" />
