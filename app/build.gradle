@@ -31,6 +31,5 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.google.zxing:javase:3.3.0'
-    implementation 'com.cuboid:cuboidcirclebutton:1.0.5'
 
 }

@@ -11,6 +11,7 @@
         android:id="@+id/MissedCounterCircle"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:color="@color/grey"
         app:layout_constraintEnd_toEndOf="@+id/MissedButton"
         app:layout_constraintTop_toTopOf="@+id/MissedButton" />
 
@@ -220,6 +221,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="72dp"
+                android:color="@color/grey"
                 app:layout_constraintStart_toEndOf="@+id/PanelCounterCircle"
                 app:layout_constraintTop_toTopOf="@+id/DroppedButton" />
 
@@ -228,6 +230,7 @@
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="90dp"
+                android:color="@color/grey"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/CargoCounterCircle" />
 

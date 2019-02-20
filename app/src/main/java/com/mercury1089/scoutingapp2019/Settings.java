@@ -22,6 +22,8 @@ import android.widget.Button;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
+import java.util.Set;
+
 
 public class Settings extends AppCompatActivity {
 

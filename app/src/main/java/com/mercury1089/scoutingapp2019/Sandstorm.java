@@ -65,7 +65,6 @@ public class Sandstorm extends AppCompatActivity {
     //Repeated Variables for each buttonClick:
     private final String MODE = "Sandstorm";
     private String location = "";
-    private String panelOrCargo = "";
     private String side = ""; //left, right, or front
     private String nearOrFar = "";
     private String tier = "";
@@ -77,6 +76,89 @@ public class Sandstorm extends AppCompatActivity {
     private int droppedCargo = 0;
     private int missedCargo = 0;
     private int missedPanels = 0;
+
+    //left rocket counters
+    private int LRPNT3Counter = 0;
+    private int LRPNT2Counter = 0;
+    private int LRPNT1Counter = 0;
+    private int LRCT3Counter = 0;
+    private int LRCT2Counter = 0;
+    private int LRCT1Counter = 0;
+    private int LRPFT3Counter = 0;
+    private int LRPFT2Counter = 0;
+    private int LRPFT1Counter = 0;
+
+    //cargo ship counters
+    private int CSPF1Counter = 0;
+    private int CSPF2Counter = 0;
+    private int CSCF1Counter = 0;
+    private int CSCF2Counter = 0;
+    private int CSPL1Counter = 0;
+    private int CSPL2Counter = 0;
+    private int CSPL3Counter = 0;
+    private int CSCL1Counter = 0;
+    private int CSCL2Counter = 0;
+    private int CSCL3Counter = 0;
+    private int CSCR1Counter = 0;
+    private int CSCR2Counter = 0;
+    private int CSCR3Counter = 0;
+    private int CSPR1Counter = 0;
+    private int CSPR2Counter = 0;
+    private int CSPR3Counter = 0;
+
+    //right rocket counters
+    private int RRPNT1Counter = 0;
+    private int RRPNT2Counter = 0;
+    private int RRPNT3Counter = 0;
+    private int RRCT1Counter = 0;
+    private int RRCT2Counter = 0;
+    private int RRCT3Counter = 0;
+    private int RRPFT1Counter = 0;
+    private int RRPFT2Counter = 0;
+    private int RRPFT3Counter = 0;
+
+    //left rocket text
+    private TextView LRPNT1 = findViewById(R.id.LRPNT1);
+    private TextView LRPNT2 = findViewById(R.id.LRPNT2);
+    private TextView LRPNT3 = findViewById(R.id.LRPNT3);
+    private TextView LRCT1 = findViewById(R.id.LRCT1);
+    private TextView LRCT2 = findViewById(R.id.LRCT2);
+    private TextView LRCT3 = findViewById(R.id.LRCT3);
+    private TextView LRPFT1 = findViewById(R.id.LRPFT1);
+    private TextView LRPFT2 = findViewById(R.id.LRPFT2);
+    private TextView LRPFT3 = findViewById(R.id.LRPFT3);
+
+    //cargo ship text
+    private TextView CSPF1 = findViewById(R.id.CSPF1);
+    private TextView CSPF2 = findViewById(R.id.CSPF2);
+    private TextView CSCF1 = findViewById(R.id.CSCF1);
+    private TextView CSCF2 = findViewById(R.id.CSCF2);
+    private TextView CSPL1 = findViewById(R.id.CSPL1);
+    private TextView CSPL2 = findViewById(R.id.CSPL2);
+    private TextView CSPL3 = findViewById(R.id.CSPL3);
+    private TextView CSCL1 = findViewById(R.id.CSCL1);
+    private TextView CSCL2 = findViewById(R.id.CSCL2);
+    private TextView CSCL3 = findViewById(R.id.CSCL3);
+    private TextView CSCR1 = findViewById(R.id.CSCR1);
+    private TextView CSCR2 = findViewById(R.id.CSCR2);
+    private TextView CSCR3 = findViewById(R.id.CSCR3);
+    private TextView CSPR1 = findViewById(R.id.CSPR1);
+    private TextView CSPR2 = findViewById(R.id.CSPR2);
+    private TextView CSPR3 = findViewById(R.id.CSPR3);
+
+    //right rocket text
+    private TextView RRPNT1 = findViewById(R.id.RRPNT1);
+    private TextView RRPNT2 = findViewById(R.id.RRPNT2);
+    private TextView RRPNT3 = findViewById(R.id.RRPNT3);
+    private TextView RRCT1 = findViewById(R.id.RRCT1);
+    private TextView RRCT2 = findViewById(R.id.RRCT2);
+    private TextView RRCT3 = findViewById(R.id.RRCT3);
+    private TextView RRPFT1 = findViewById(R.id.RRPFT1);
+    private TextView RRPFT2 = findViewById(R.id.RRPFT2);
+    private TextView RRPFT3 = findViewById(R.id.RRPFT3);
+
+
+
 
     //counter TextViews
     TextView PanelCounterText = findViewById(R.id.PanelCounterText);
@@ -111,11 +193,17 @@ public class Sandstorm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sandstorm);
 
+        //make Sandstorm button look active
+        selectedButtonColors(SandstormButton);
+
         //setting counters to default
         PanelCounterText.setText('0');
         CargoCounterText.setText('0');
         DroppedCounterText.setText('0');
         MissedCounterText.setText('0');
+
+        //disable scoring diagram
+        disableScoringDiagram('A');
 
          String message = getIntent().getStringExtra("message");
          if (message.charAt(0) == 'P') {
@@ -124,12 +212,14 @@ public class Sandstorm extends AppCompatActivity {
             CargoButton.setEnabled(false);
             totalPanels++;
             //enable panel circles
+             enableScoringDiagram('P');
          } else {
              selectedButtonColors(CargoButton);
              CargoCounterText.setText('1');
              PanelButton.setEnabled(false);
              totalCargo++;
              //enable cargo circles
+             enableScoringDiagram('C');
          }
 
          PanelCounterText.bringToFront();
@@ -256,26 +346,56 @@ public class Sandstorm extends AppCompatActivity {
                 RightRocketCargoT2.setEnabled(false);
                 RightRocketCargoT1.setEnabled(false);
         }
-
-
-        //cargo variables
-
-
-
-        //CARGO SHIP
-        //panel variables
-
-
-        //cargo variables
-
-
-        //RIGHT ROCKET
-        //panel variables
-
-
-        //cargo variables
-
     }
+
+    private void enableScoringDiagram (char c) {
+        switch (c) {
+            case 'A':
+            case 'P':
+                LeftRocketPanelNearT3.setEnabled(true);
+                LeftRocketPanelNearT2.setEnabled(true);
+                LeftRocketPanelNearT1.setEnabled(true);
+                LeftRocketPanelFarT3.setEnabled(true);
+                LeftRocketPanelFarT2.setEnabled(true);
+                LeftRocketPanelFarT1.setEnabled(true);
+
+                CargoShipPanelFront1.setEnabled(true);
+                CargoShipPanelFront2.setEnabled(true);
+                CargoShipPanelLeft1.setEnabled(true);
+                CargoShipPanelLeft2.setEnabled(true);
+                CargoShipPanelLeft3.setEnabled(true);
+                CargoShipPanelRight1.setEnabled(true);
+                CargoShipPanelRight2.setEnabled(true);
+                CargoShipPanelRight3.setEnabled(true);
+
+                RightRocketPanelNearT3.setEnabled(true);
+                RightRocketPanelNearT2.setEnabled(true);
+                RightRocketPanelNearT1.setEnabled(true);
+                RightRocketPanelFarT3.setEnabled(true);
+                RightRocketPanelFarT2.setEnabled(true);
+                RightRocketPanelFarT1.setEnabled(true);
+                if (c == 'P')
+                    break;
+            case 'C':
+                LeftRocketCargoT3.setEnabled(true);
+                LeftRocketCargoT2.setEnabled(true);
+                LeftRocketCargoT1.setEnabled(true);
+
+                CargoShipCargoFront1.setEnabled(true);
+                CargoShipCargoFront2.setEnabled(true);
+                CargoShipCargoLeft1.setEnabled(true);
+                CargoShipCargoLeft2.setEnabled(true);
+                CargoShipCargoLeft3.setEnabled(true);
+                CargoShipCargoRight1.setEnabled(true);
+                CargoShipCargoRight2.setEnabled(true);
+                CargoShipCargoRight3.setEnabled(true);
+
+                RightRocketCargoT3.setEnabled(true);
+                RightRocketCargoT2.setEnabled(true);
+                RightRocketCargoT1.setEnabled(true);
+        }
+    }
+
 
 
     //click methods
@@ -285,21 +405,25 @@ public class Sandstorm extends AppCompatActivity {
     }
     public void panelCounterClick (View view) {
         selectedButtonColors(PanelButton);
+        defaultButtonState(CargoButton);
         totalPanels++;
         PanelCounterText.setText(totalPanels);
         CargoButton.setEnabled(false);
         isPanel = true;
         isCargo = false;
-        //enable panel circles
+        enableScoringDiagram('P');
+        disableScoringDiagram('C');
     }
     public void cargoCounterClick (View view) {
         selectedButtonColors(CargoButton);
+        defaultButtonState(PanelButton);
         totalCargo++;
         CargoCounterText.setText(totalCargo);
         PanelButton.setEnabled(false);
         isPanel = false;
         isCargo = true;
-        //enable cargo circles
+        enableScoringDiagram('P');
+        disableScoringDiagram('C');
     }
     public void droppedClick (View view) {
         //use handler??? for temporarily active (only 500 ms)
@@ -321,11 +445,50 @@ public class Sandstorm extends AppCompatActivity {
         updateCounterDisplay(droppedPanels,droppedCargo,DroppedCounterText);
     }
     public void missedClick (View view) {
-        if (panelOrCargo.equals("Panel"))
+        if (isPanel)
             missedPanels++;
-        else if (panelOrCargo.equals("Cargo"))
+        if (isCargo)
             missedCargo++;
         updateCounterDisplay(missedPanels,missedCargo,DroppedCounterText);
     }
 
+    //left rocket onClicks
+    public void LRPNT3CounterClick (View view) {LRPNT3Counter++;}
+    public void LRPNT2CounterClick (View view) {LRPNT2Counter++;}
+    public void LRPNT1CounterClick (View view) {LRPNT1Counter++;}
+    public void LRCT3CounterClick (View view) {LRCT3Counter++;}
+    public void LRCT2CounterClick (View view) {LRCT2Counter++;}
+    public void LRCT1CounterClick (View view) {LRCT1Counter++;}
+    public void LRPFT3CounterClick (View view) {LRPFT3Counter++;}
+    public void LRPFT2CounterClick (View view) {LRPFT2Counter++;}
+    public void LRPFT1CounterClick (View view) {LRPFT2Counter++;}
+
+    //cargo ship onClicks
+    public void CSPF1CounterClick (View view) {CSPF1Counter++;}
+    public void CSPF2CounterClick (View view) {CSPF2Counter++;}
+    public void CSCF1CounterClick (View view) {CSCF1Counter++;}
+    public void CSCF2CounterClick (View view) {CSCF2Counter++;}
+    public void CSPL1CounterClick (View view) {CSPL1Counter++;}
+    public void CSPL2CounterClick (View view) {CSPL2Counter++;}
+    public void CSPL3CounterClick (View view) {CSPL3Counter++;}
+    public void CSCL1CounterClick (View view) {CSCL1Counter++;}
+    public void CSCL2CounterClick (View view) {CSCL2Counter++;}
+    public void CSCL3CounterClick (View view) {CSCL3Counter++;}
+    public void CSCR1CounterClick (View view) {CSCR1Counter++;}
+    public void CSCR2CounterClick (View view) {CSCR2Counter++;}
+    public void CSCR3CounterClick (View view) {CSCR3Counter++;}
+    public void CSPR1CounterClick (View view) {CSPR1Counter++;}
+    public void CSPR2CounterClick (View view) {CSPR2Counter++;}
+    public void CSPR3CounterClick (View view) {CSPR3Counter++;}
+
+    //right rocket onClicks
+    public void RRPNT3CounterClick (View view) {RRPNT3Counter++;}
+    public void RRPNT2CounterClick (View view) {RRPNT3Counter++;}
+    public void RRPNT1CounterClick (View view) {RRPNT1Counter++;}
+    public void RRCT3CounterClick (View view) {RRCT3Counter++;}
+    public void RRCT2CounterClick (View view) {RRCT2Counter++;}
+    public void RRCT1CounterClick (View view) {RRCT1Counter++;}
+    public void RRPFT3CounterClick (View view) {RRPFT3Counter++;}
+    public void RRPFT2CounterClick (View view) {RRPFT2Counter++;}
+    public void RRPFT1CounterClick (View view) {RRPFT1Counter++;}
 }
