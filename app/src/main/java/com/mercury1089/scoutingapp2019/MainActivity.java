@@ -419,10 +419,6 @@ public class MainActivity extends Activity {
             startButton.setEnabled(false);
     }
 
-    public void switchCheck(boolean isChecked) {
-
-    }
-
 
     //click methods
 

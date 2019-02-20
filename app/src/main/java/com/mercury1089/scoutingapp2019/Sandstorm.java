@@ -1,6 +1,7 @@
 package com.mercury1089.scoutingapp2019;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+
+import java.util.Random;
+
+import at.markushi.ui.CircleButton;
 
 public class Sandstorm extends AppCompatActivity {
     //LEFT ROCKET
@@ -186,6 +191,8 @@ public class Sandstorm extends AppCompatActivity {
     private int deadRobot = 0; //0 or 1
     private boolean isCargo = false;
     private boolean isPanel = false;
+    CircleButton btn = findViewById(R.id.btn_home);
+    Random random = new Random();
 
 
     @Override
@@ -453,42 +460,149 @@ public class Sandstorm extends AppCompatActivity {
     }
 
     //left rocket onClicks
-    public void LRPNT3CounterClick (View view) {LRPNT3Counter++;}
-    public void LRPNT2CounterClick (View view) {LRPNT2Counter++;}
-    public void LRPNT1CounterClick (View view) {LRPNT1Counter++;}
-    public void LRCT3CounterClick (View view) {LRCT3Counter++;}
-    public void LRCT2CounterClick (View view) {LRCT2Counter++;}
-    public void LRCT1CounterClick (View view) {LRCT1Counter++;}
-    public void LRPFT3CounterClick (View view) {LRPFT3Counter++;}
-    public void LRPFT2CounterClick (View view) {LRPFT2Counter++;}
-    public void LRPFT1CounterClick (View view) {LRPFT2Counter++;}
+    public void LRPNT3CounterClick (View view) {
+        LRPNT3Counter++;
+        String LPRNT3[] = {"Rocket", "Panel", "", "Near","T3", "1"};
+    }
+    public void LRPNT2CounterClick (View view) {
+        LRPNT2Counter++;
+        String LPRNT2[] = {"Rocket", "Panel", "", "Near","T2", "1"};
+    }
+    public void LRPNT1CounterClick (View view) {
+        LRPNT1Counter++;
+        String LPRNT1[] = {"Rocket", "Panel", "", "Near","T1", "1"};
+    }
+    public void LRCT3CounterClick (View view) {
+        LRCT3Counter++;
+        String LPCT3[] = {"Rocket", "Cargo", "","T3", "1"};
+    }
+    public void LRCT2CounterClick (View view) {
+        LRCT2Counter++;
+        String LPCT2[] = {"Rocket", "Cargo", "","T2", "1"};
+    }
+    public void LRCT1CounterClick (View view) {
+        LRCT1Counter++;
+        String LPCT1[] = {"Rocket", "Cargo", "","T1", "1"};
+    }
+    public void LRPFT3CounterClick (View view) {
+        LRPFT3Counter++;
+        String LPRFT3[] = {"Rocket", "Panel", "Far", "", "T3","1"};
+    }
+    public void LRPFT2CounterClick (View view) {
+        LRPFT2Counter++;
+        String LPRFT2[] = {"Rocket", "Panel", "Far", "", "T2", "1"};
+    }
+    public void LRPFT1CounterClick (View view) {
+        LRPFT2Counter++;
+        String LPRFT1[] = {"Rocket", "Panel", "Far", "", "T1", "1"};
+    }
 
     //cargo ship onClicks
-    public void CSPF1CounterClick (View view) {CSPF1Counter++;}
-    public void CSPF2CounterClick (View view) {CSPF2Counter++;}
-    public void CSCF1CounterClick (View view) {CSCF1Counter++;}
-    public void CSCF2CounterClick (View view) {CSCF2Counter++;}
-    public void CSPL1CounterClick (View view) {CSPL1Counter++;}
-    public void CSPL2CounterClick (View view) {CSPL2Counter++;}
-    public void CSPL3CounterClick (View view) {CSPL3Counter++;}
-    public void CSCL1CounterClick (View view) {CSCL1Counter++;}
-    public void CSCL2CounterClick (View view) {CSCL2Counter++;}
-    public void CSCL3CounterClick (View view) {CSCL3Counter++;}
-    public void CSCR1CounterClick (View view) {CSCR1Counter++;}
-    public void CSCR2CounterClick (View view) {CSCR2Counter++;}
-    public void CSCR3CounterClick (View view) {CSCR3Counter++;}
-    public void CSPR1CounterClick (View view) {CSPR1Counter++;}
-    public void CSPR2CounterClick (View view) {CSPR2Counter++;}
-    public void CSPR3CounterClick (View view) {CSPR3Counter++;}
+    public void CSPF1CounterClick (View view) {
+        CSPF1Counter++;
+        String CSPF1[] = {"Cargoship", "Panel", "Front", "", "", "1"};
+    }
+    public void CSPF2CounterClick (View view) {
+        CSPF2Counter++;
+        String CSPF2[] = {"Cargoship", "Panel", "Front", "", "", "1"};
+    }
+    public void CSCF1CounterClick (View view) {
+        CSCF1Counter++;
+        String CSCF1[] = {"Cargoship", "Cargo", "Front", "", "", "1"};
+    }
+    public void CSCF2CounterClick (View view) {
+        CSCF2Counter++;
+        String CSCF2[] = {"Cargoship", "Cargo", "Front", "", "", "1"};
+    }
+    public void CSPL1CounterClick (View view) {
+        CSPL1Counter++;
+        String CSPL1[] = {"Cargoship", "Panel", "Left", "", "", "1"};
+    }
+    public void CSPL2CounterClick (View view) {
+        CSPL2Counter++;
+        String CSPL2[] = {"Cargoship", "Panel", "Left", "", "", "1"};
+    }
+    public void CSPL3CounterClick (View view) {
+        CSPL3Counter++;
+        String CSPL3[] = {"Cargoship", "Panel", "Left", "", "", "1"};
+    }
+    public void CSCL1CounterClick (View view) {
+        CSCL1Counter++;
+        String CSCL1[] = {"Cargoship", "Cargo", "Left", "", "", "1"};
+    }
+    public void CSCL2CounterClick (View view) {
+        CSCL2Counter++;
+        String CSCL2[] = {"Cargoship", "Cargo", "Left", "", "", "1"};
+    }
+    public void CSCL3CounterClick (View view) {
+        CSCL3Counter++;
+        String CSCL3[] = {"Cargoship", "Cargo", "Left", "", "", "1"};
+    }
+    public void CSCR1CounterClick (View view) {
+        CSCR1Counter++;
+        String CSCR1[] = {"Cargoship", "Cargo", "Right", "", "", "1"};
+    }
+    public void CSCR2CounterClick (View view) {
+        CSCR2Counter++;
+        String CSCR2[] = {"Cargoship", "Cargo", "Right", "", "", "1"};
+    }
+    public void CSCR3CounterClick (View view) {
+        CSCR3Counter++;
+        String CSCR3[] = {"Cargoship", "Cargo", "Right", "", "", "1"};
+    }
+    public void CSPR1CounterClick (View view) {
+        CSPR1Counter++;
+        String CSPR1[] = {"Cargoship", "Panel", "Right", "", "", "1"};
+    }
+    public void CSPR2CounterClick (View view) {
+        CSPR2Counter++;
+        String CSPR2[] = {"Cargoship", "Panel", "Right", "", "", "1"};
+    }
+    public void CSPR3CounterClick (View view) {
+        CSPR3Counter++;
+        String CSPR3[] = {"Cargoship", "Panel", "Right", "", "", "1"};
+    }
 
     //right rocket onClicks
-    public void RRPNT3CounterClick (View view) {RRPNT3Counter++;}
-    public void RRPNT2CounterClick (View view) {RRPNT3Counter++;}
-    public void RRPNT1CounterClick (View view) {RRPNT1Counter++;}
-    public void RRCT3CounterClick (View view) {RRCT3Counter++;}
-    public void RRCT2CounterClick (View view) {RRCT2Counter++;}
-    public void RRCT1CounterClick (View view) {RRCT1Counter++;}
-    public void RRPFT3CounterClick (View view) {RRPFT3Counter++;}
-    public void RRPFT2CounterClick (View view) {RRPFT2Counter++;}
-    public void RRPFT1CounterClick (View view) {RRPFT1Counter++;}
+    public void RRPNT3CounterClick (View view) {
+        RRPNT3Counter++;
+        String RRPNT3[] = {MODE, "Rocket", "Panel", "", "Near", "T3", "1"};
+    }
+    public void RRPNT2CounterClick (View view) {
+        RRPNT2Counter++;
+        String RRPNT2[] = {MODE, "Rocket", "Panel", "", "Near", "T2", "1"};
+    }
+    public void RRPNT1CounterClick (View view) {
+        RRPNT1Counter++;
+        String RRPNT1[] = {MODE, "Rocket", "Panel", "", "Near", "T1", "1"};
+    }
+    public void RRCT3CounterClick (View view) {
+        RRCT3Counter++;
+        String RRPCT3[] = {MODE, "Rocket", "Cargo", "", "", "T3", "1"};
+    }
+    public void RRCT2CounterClick (View view) {
+        RRCT2Counter++;
+        String RRPCT2[] = {MODE, "Rocket", "Cargo", "", "", "T2", "1"};
+    }
+    public void RRCT1CounterClick (View view) {
+        RRCT1Counter++;
+        String RRPCT1[] = {MODE, "Rocket", "Cargo", "", "", "T1", "1"};
+    }
+    public void RRPFT3CounterClick (View view) {
+        RRPFT3Counter++;
+        String RRPFT3[] = {MODE, "Rocket", "Panel", "", "Far", "T2", "1"};
+    }
+    public void RRPFT2CounterClick (View view) {
+        RRPFT2Counter++;
+        String RRPFT2[] = {MODE, "Rocket", "Panel", "", "Far", "T2", "1"};
+    }
+    public void RRPFT1CounterClick (View view) {
+        RRPFT1Counter++;
+        String RRPFT1[] = {MODE, "Rocket", "Panel", "", "Far", "T1", "1"};
+    }
+
+    //button test
+    public void buttonTest (View view) {
+        btn.setColor(Color.rgb(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
+    }
 }
