@@ -19,53 +19,53 @@ import at.markushi.ui.CircleButton;
 public class Sandstorm extends AppCompatActivity {
     //LEFT ROCKET
     //panel variables
-    CustomView LeftRocketPanelNearT3;
-    CustomView LeftRocketPanelNearT2;
-    CustomView LeftRocketPanelNearT1;
-    CustomView LeftRocketPanelFarT3;
-    CustomView LeftRocketPanelFarT2;
-    CustomView LeftRocketPanelFarT1;
+    CircleButton LeftRocketPanelNearT3;
+    CircleButton LeftRocketPanelNearT2;
+    CircleButton LeftRocketPanelNearT1;
+    CircleButton LeftRocketPanelFarT3;
+    CircleButton LeftRocketPanelFarT2;
+    CircleButton LeftRocketPanelFarT1;
 
     //cargo variables
-    CustomView LeftRocketCargoT3;
-    CustomView LeftRocketCargoT2;
-    CustomView LeftRocketCargoT1;
+    CircleButton LeftRocketCargoT3;
+    CircleButton LeftRocketCargoT2;
+    CircleButton LeftRocketCargoT1;
 
 
     //CARGO SHIP
     //panel variables
-    CustomView CargoShipPanelFront1;
-    CustomView CargoShipPanelFront2;
-    CustomView CargoShipPanelLeft1;
-    CustomView CargoShipPanelLeft2;
-    CustomView CargoShipPanelLeft3;
-    CustomView CargoShipPanelRight1;
-    CustomView CargoShipPanelRight2;
-    CustomView CargoShipPanelRight3;
+    CircleButton CargoShipPanelFront1;
+    CircleButton CargoShipPanelFront2;
+    CircleButton CargoShipPanelLeft1;
+    CircleButton CargoShipPanelLeft2;
+    CircleButton CargoShipPanelLeft3;
+    CircleButton CargoShipPanelRight1;
+    CircleButton CargoShipPanelRight2;
+    CircleButton CargoShipPanelRight3;
 
     //cargo variables
-    CustomView CargoShipCargoFront1;
-    CustomView CargoShipCargoFront2;
-    CustomView CargoShipCargoLeft1;
-    CustomView CargoShipCargoLeft2;
-    CustomView CargoShipCargoLeft3;
-    CustomView CargoShipCargoRight1;
-    CustomView CargoShipCargoRight2;
-    CustomView CargoShipCargoRight3;
+    CircleButton CargoShipCargoFront1;
+    CircleButton CargoShipCargoFront2;
+    CircleButton CargoShipCargoLeft1;
+    CircleButton CargoShipCargoLeft2;
+    CircleButton CargoShipCargoLeft3;
+    CircleButton CargoShipCargoRight1;
+    CircleButton CargoShipCargoRight2;
+    CircleButton CargoShipCargoRight3;
 
     //RIGHT ROCKET
     //panel variables
-    CustomView RightRocketPanelNearT3;
-    CustomView RightRocketPanelNearT2;
-    CustomView RightRocketPanelNearT1;
-    CustomView RightRocketPanelFarT3;
-    CustomView RightRocketPanelFarT2;
-    CustomView RightRocketPanelFarT1;
+    CircleButton RightRocketPanelNearT3;
+    CircleButton RightRocketPanelNearT2;
+    CircleButton RightRocketPanelNearT1;
+    CircleButton RightRocketPanelFarT3;
+    CircleButton RightRocketPanelFarT2;
+    CircleButton RightRocketPanelFarT1;
 
     //cargo variables
-    CustomView RightRocketCargoT3;
-    CustomView RightRocketCargoT2;
-    CustomView RightRocketCargoT1;
+    CircleButton RightRocketCargoT3;
+    CircleButton RightRocketCargoT2;
+    CircleButton RightRocketCargoT1;
 
     //Repeated Variables for each buttonClick:
     private final String MODE = "Sandstorm";
@@ -379,6 +379,18 @@ public class Sandstorm extends AppCompatActivity {
             }
         });
     }
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        View decorView = getWindow().getDecorView();
+        if (hasFocus) {
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+    }
 
     //call methods
     private void updateCounterDisplay (int panels, int cargo, TextView textView) {
@@ -427,6 +439,88 @@ public class Sandstorm extends AppCompatActivity {
                 RightRocketPanelFarT3.setEnabled(false);
                 RightRocketPanelFarT2.setEnabled(false);
                 RightRocketPanelFarT1.setEnabled(false);
+                if (LRPNT3Counter > 0)
+                    LeftRocketPanelNearT3.setColor(R.color.panelscoreddisabled);
+                else
+                    LeftRocketPanelNearT3.setColor(R.color.defaultdisabled);
+                if (LRPNT2Counter > 0)
+                    LeftRocketPanelNearT2.setColor(R.color.panelscoreddisabled);
+                else
+                    LeftRocketPanelNearT2.setColor(R.color.defaultdisabled);
+                if (LRPNT1Counter > 0)
+                    LeftRocketPanelNearT1.setColor(R.color.panelscoreddisabled);
+                else
+                    LeftRocketPanelNearT1.setColor(R.color.defaultdisabled);
+                if (LRPFT3Counter > 0)
+                    LeftRocketPanelFarT3.setColor(R.color.panelscoreddisabled);
+                else
+                    LeftRocketPanelFarT3.setColor(R.color.defaultdisabled);
+                if (LRPFT2Counter > 0)
+                    LeftRocketPanelFarT2.setColor(R.color.panelscoreddisabled);
+                else
+                    LeftRocketPanelFarT2.setColor(R.color.defaultdisabled);
+                if (LRPFT1Counter > 0)
+                    LeftRocketPanelFarT1.setColor(R.color.panelscoreddisabled);
+                else
+                    LeftRocketPanelFarT1.setColor(R.color.defaultdisabled);
+
+                if (CSPF1Counter > 0)
+                    CargoShipPanelFront1.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelFront1.setColor(R.color.defaultdisabled);
+                if (CSPF2Counter > 0)
+                    CargoShipPanelFront2.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelFront2.setColor(R.color.defaultdisabled);
+                if (CSPL1Counter > 0)
+                    CargoShipPanelLeft1.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelLeft1.setColor(R.color.defaultdisabled);
+                if (CSPL2Counter > 0)
+                    CargoShipPanelLeft2.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelLeft2.setColor(R.color.defaultdisabled);
+                if (CSPL3Counter > 0)
+                    CargoShipPanelLeft3.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelLeft3.setColor(R.color.defaultdisabled);
+                if (CSPR1Counter > 0)
+                    CargoShipPanelRight1.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelRight1.setColor(R.color.defaultdisabled);
+                if (CSPR2Counter > 0)
+                    CargoShipPanelRight2.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelRight2.setColor(R.color.defaultdisabled);
+                if (CSPR3Counter > 0)
+                    CargoShipPanelRight3.setColor(R.color.panelscoreddisabled);
+                else
+                    CargoShipPanelRight3.setColor(R.color.defaultdisabled);
+
+                if (RRPNT3Counter > 0)
+                    RightRocketPanelNearT3.setColor(R.color.panelscoreddisabled);
+                else
+                    RightRocketPanelNearT3.setColor(R.color.defaultdisabled);
+                if (RRPNT2Counter > 0)
+                    RightRocketPanelNearT2.setColor(R.color.panelscoreddisabled);
+                else
+                    RightRocketPanelNearT2.setColor(R.color.defaultdisabled);
+                if (RRPNT1Counter > 0)
+                    RightRocketPanelNearT1.setColor(R.color.panelscoreddisabled);
+                else
+                    RightRocketPanelNearT1.setColor(R.color.defaultdisabled);
+                if (RRPFT3Counter > 0)
+                    RightRocketPanelFarT3.setColor(R.color.panelscoreddisabled);
+                else
+                    RightRocketPanelFarT3.setColor(R.color.defaultdisabled);
+                if (RRPFT2Counter > 0)
+                    RightRocketPanelFarT2.setColor(R.color.panelscoreddisabled);
+                else
+                    RightRocketPanelFarT2.setColor(R.color.defaultdisabled);
+                if (RRPFT1Counter > 0)
+                    RightRocketPanelFarT1.setColor(R.color.panelscoreddisabled);
+                else
+                    RightRocketPanelFarT1.setColor(R.color.defaultdisabled);
                 if (c == 'P')
                     break;
             case 'C':
@@ -446,6 +540,65 @@ public class Sandstorm extends AppCompatActivity {
                 RightRocketCargoT3.setEnabled(false);
                 RightRocketCargoT2.setEnabled(false);
                 RightRocketCargoT1.setEnabled(false);
+
+                if (LRCT3Counter > 0)
+                    LeftRocketCargoT3.setColor(R.color.cargoscoreddisabled);
+                else
+                    LeftRocketCargoT3.setColor(R.color.defaultdisabled);
+                if (LRCT2Counter > 0)
+                    LeftRocketCargoT2.setColor(R.color.cargoscoreddisabled);
+                else
+                    LeftRocketCargoT2.setColor(R.color.defaultdisabled);
+                if (LRCT1Counter > 0)
+                    LeftRocketCargoT1.setColor(R.color.cargoscoreddisabled);
+                else
+                    LeftRocketCargoT1.setColor(R.color.defaultdisabled);
+
+                if (CSCF1Counter > 0)
+                    CargoShipCargoFront1.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoFront1.setColor(R.color.defaultdisabled);
+                if (CSCF2Counter > 0)
+                    CargoShipCargoFront2.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoFront2.setColor(R.color.defaultdisabled);
+                if (CSCL1Counter > 0)
+                    CargoShipCargoLeft1.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoLeft1.setColor(R.color.defaultdisabled);
+                if (CSCL2Counter > 0)
+                    CargoShipCargoLeft2.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoLeft2.setColor(R.color.defaultdisabled);
+                if (CSCL3Counter > 0)
+                    CargoShipCargoLeft3.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoLeft3.setColor(R.color.defaultdisabled);
+                if (CSCR1Counter > 0)
+                    CargoShipCargoRight1.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoRight1.setColor(R.color.defaultdisabled);
+                if (CSCR2Counter > 0)
+                    CargoShipCargoRight2.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoRight2.setColor(R.color.defaultdisabled);
+                if (CSCR3Counter > 0)
+                    CargoShipCargoRight3.setColor(R.color.cargoscoreddisabled);
+                else
+                    CargoShipCargoRight3.setColor(R.color.defaultdisabled);
+
+                if (RRCT3Counter > 0)
+                    RightRocketCargoT3.setColor(R.color.cargoscoreddisabled);
+                else
+                    RightRocketCargoT3.setColor(R.color.defaultdisabled);
+                if (RRCT2Counter > 0)
+                    RightRocketCargoT2.setColor(R.color.cargoscoreddisabled);
+                else
+                    RightRocketCargoT2.setColor(R.color.defaultdisabled);
+                if (RRCT1Counter > 0)
+                    RightRocketCargoT1.setColor(R.color.cargoscoreddisabled);
+                else
+                    RightRocketCargoT1.setColor(R.color.defaultdisabled);
         }
     }
 
@@ -475,6 +628,93 @@ public class Sandstorm extends AppCompatActivity {
                 RightRocketPanelFarT3.setEnabled(true);
                 RightRocketPanelFarT2.setEnabled(true);
                 RightRocketPanelFarT1.setEnabled(true);
+
+                if (LRPNT3Counter > 0)
+                    LeftRocketPanelNearT3.setColor(R.color.panelscoredenabled);
+                else
+                    LeftRocketPanelNearT3.setColor(R.color.panelenabled);
+                if (LRPNT2Counter > 0)
+                    LeftRocketPanelNearT2.setColor(R.color.panelscoredenabled);
+                else
+                    LeftRocketPanelNearT2.setColor(R.color.panelenabled);
+                if (LRPNT1Counter > 0)
+                    LeftRocketPanelNearT1.setColor(R.color.panelscoredenabled);
+                else
+                    LeftRocketPanelNearT1.setColor(R.color.panelenabled);
+                if (LRPFT3Counter > 0)
+                    LeftRocketPanelFarT3.setColor(R.color.panelscoredenabled);
+                else
+                    LeftRocketPanelFarT3.setColor(R.color.panelenabled);
+                if (LRPFT2Counter > 0)
+                    LeftRocketPanelFarT2.setColor(R.color.panelscoredenabled);
+                else
+                    LeftRocketPanelFarT2.setColor(R.color.panelenabled);
+                if (LRPFT1Counter > 0)
+                    LeftRocketPanelFarT1.setColor(R.color.panelscoredenabled);
+                else
+                    LeftRocketPanelFarT1.setColor(R.color.panelenabled);
+
+                if (CSPF1Counter > 0)
+                    CargoShipPanelFront1.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelFront1.setColor(R.color.panelenabled);
+                if (CSPF2Counter > 0)
+                    CargoShipPanelFront2.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelFront2.setColor(R.color.panelenabled);
+                if (CSPL1Counter > 0)
+                    CargoShipPanelLeft1.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelLeft1.setColor(R.color.panelenabled);
+                if (CSPL2Counter > 0)
+                    CargoShipPanelLeft2.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelLeft2.setColor(R.color.panelenabled);
+                if (CSPL3Counter > 0)
+                    CargoShipPanelLeft3.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelLeft3.setColor(R.color.panelenabled);
+                if (CSPR1Counter > 0)
+                    CargoShipPanelRight1.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelRight1.setColor(R.color.panelenabled);
+                if (CSPR2Counter > 0)
+                    CargoShipPanelRight2.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelRight2.setColor(R.color.panelenabled);
+                if (CSPR3Counter > 0)
+                    CargoShipPanelRight3.setColor(R.color.panelscoredenabled);
+                else
+                    CargoShipPanelRight3.setColor(R.color.panelenabled);
+
+                if (RRPNT3Counter > 0)
+                    RightRocketPanelNearT3.setColor(R.color.panelscoredenabled);
+                else
+                    RightRocketPanelNearT3.setColor(R.color.panelenabled);
+                if (RRPNT2Counter > 0)
+                    RightRocketPanelNearT2.setColor(R.color.panelscoredenabled);
+                else
+                    RightRocketPanelNearT2.setColor(R.color.panelenabled);
+                if (RRPNT1Counter > 0)
+                    RightRocketPanelNearT1.setColor(R.color.panelscoredenabled);
+                else
+                    RightRocketPanelNearT1.setColor(R.color.panelenabled);
+                if (RRPFT3Counter > 0)
+                    RightRocketPanelFarT3.setColor(R.color.panelscoredenabled);
+                else
+                    RightRocketPanelFarT3.setColor(R.color.panelenabled);
+                if (RRPFT2Counter > 0)
+                    RightRocketPanelFarT2.setColor(R.color.panelscoredenabled);
+                else
+                    RightRocketPanelFarT2.setColor(R.color.panelenabled);
+                if (RRPFT1Counter > 0)
+                    RightRocketPanelFarT1.setColor(R.color.panelscoredenabled);
+                else
+                    RightRocketPanelFarT1.setColor(R.color.panelenabled);
+
+
+
+
                 if (c == 'P')
                     break;
             case 'C':
@@ -494,6 +734,65 @@ public class Sandstorm extends AppCompatActivity {
                 RightRocketCargoT3.setEnabled(true);
                 RightRocketCargoT2.setEnabled(true);
                 RightRocketCargoT1.setEnabled(true);
+
+                if (LRCT3Counter > 0)
+                    LeftRocketCargoT3.setColor(R.color.cargoscoredenabled);
+                else
+                    LeftRocketCargoT3.setColor(R.color.cargoenabled);
+                if (LRCT2Counter > 0)
+                    LeftRocketCargoT2.setColor(R.color.cargoscoredenabled);
+                else
+                    LeftRocketCargoT2.setColor(R.color.cargoenabled);
+                if (LRCT1Counter > 0)
+                    LeftRocketCargoT1.setColor(R.color.cargoscoredenabled);
+                else
+                    LeftRocketCargoT1.setColor(R.color.cargoenabled);
+
+                if (CSCF1Counter > 0)
+                    CargoShipCargoFront1.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoFront1.setColor(R.color.cargoenabled);
+                if (CSCF2Counter > 0)
+                    CargoShipCargoFront2.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoFront2.setColor(R.color.cargoenabled);
+                if (CSCL1Counter > 0)
+                    CargoShipCargoLeft1.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoLeft1.setColor(R.color.cargoenabled);
+                if (CSCL2Counter > 0)
+                    CargoShipCargoLeft2.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoLeft2.setColor(R.color.cargoenabled);
+                if (CSCL3Counter > 0)
+                    CargoShipCargoLeft3.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoLeft3.setColor(R.color.cargoenabled);
+                if (CSCR1Counter > 0)
+                    CargoShipCargoRight1.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoRight1.setColor(R.color.cargoenabled);
+                if (CSCR2Counter > 0)
+                    CargoShipCargoRight2.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoRight2.setColor(R.color.cargoenabled);
+                if (CSCR3Counter > 0)
+                    CargoShipCargoRight3.setColor(R.color.cargoscoredenabled);
+                else
+                    CargoShipCargoRight3.setColor(R.color.cargoenabled);
+
+                if (RRCT3Counter > 0)
+                    RightRocketCargoT3.setColor(R.color.cargoscoredenabled);
+                else
+                    RightRocketCargoT3.setColor(R.color.cargoenabled);
+                if (RRCT2Counter > 0)
+                    RightRocketCargoT2.setColor(R.color.cargoscoredenabled);
+                else
+                    RightRocketCargoT2.setColor(R.color.cargoenabled);
+                if (RRCT1Counter > 0)
+                    RightRocketCargoT1.setColor(R.color.cargoscoredenabled);
+                else
+                    RightRocketCargoT1.setColor(R.color.cargoscoredenabled);
         }
     }
 
@@ -556,142 +855,176 @@ public class Sandstorm extends AppCompatActivity {
     //left rocket onClicks
     public void LRPNT3CounterClick (View view) {
         LRPNT3Counter++;
+        LeftRocketPanelNearT3.setColor(R.color.panelscoredenabled);
         String LPRNT3[] = {"Rocket", "Panel", "", "Near","T3", "1"};
     }
     public void LRPNT2CounterClick (View view) {
         LRPNT2Counter++;
+        LeftRocketPanelNearT2.setColor(R.color.panelscoredenabled);
         String LPRNT2[] = {"Rocket", "Panel", "", "Near","T2", "1"};
     }
     public void LRPNT1CounterClick (View view) {
         LRPNT1Counter++;
+        LeftRocketPanelNearT1.setColor(R.color.panelscoredenabled);
         String LPRNT1[] = {"Rocket", "Panel", "", "Near","T1", "1"};
     }
     public void LRCT3CounterClick (View view) {
         LRCT3Counter++;
+        LeftRocketCargoT3.setColor(R.color.cargoscoredenabled);
         String LPCT3[] = {"Rocket", "Cargo", "","T3", "1"};
     }
     public void LRCT2CounterClick (View view) {
         LRCT2Counter++;
+        LeftRocketCargoT2.setColor(R.color.cargoscoredenabled);
         String LPCT2[] = {"Rocket", "Cargo", "","T2", "1"};
     }
     public void LRCT1CounterClick (View view) {
         LRCT1Counter++;
+        LeftRocketCargoT1.setColor(R.color.cargoscoredenabled);
         String LPCT1[] = {"Rocket", "Cargo", "","T1", "1"};
     }
     public void LRPFT3CounterClick (View view) {
         LRPFT3Counter++;
+        LeftRocketPanelFarT3.setColor(R.color.panelscoredenabled);
         String LPRFT3[] = {"Rocket", "Panel", "Far", "", "T3","1"};
     }
     public void LRPFT2CounterClick (View view) {
         LRPFT2Counter++;
+        LeftRocketPanelFarT2.setColor(R.color.panelscoredenabled);
         String LPRFT2[] = {"Rocket", "Panel", "Far", "", "T2", "1"};
     }
     public void LRPFT1CounterClick (View view) {
         LRPFT2Counter++;
+        LeftRocketPanelFarT1.setColor(R.color.panelscoredenabled);
         String LPRFT1[] = {"Rocket", "Panel", "Far", "", "T1", "1"};
     }
 
     //cargo ship onClicks
     public void CSPF1CounterClick (View view) {
         CSPF1Counter++;
+        CargoShipPanelFront1.setColor(R.color.panelscoredenabled);
         String CSPF1[] = {"Cargoship", "Panel", "Front", "", "", "1"};
     }
     public void CSPF2CounterClick (View view) {
         CSPF2Counter++;
+        CargoShipPanelFront2.setColor(R.color.panelscoredenabled);
         String CSPF2[] = {"Cargoship", "Panel", "Front", "", "", "1"};
     }
     public void CSCF1CounterClick (View view) {
         CSCF1Counter++;
+        CargoShipCargoFront1.setColor(R.color.cargoscoredenabled);
         String CSCF1[] = {"Cargoship", "Cargo", "Front", "", "", "1"};
     }
     public void CSCF2CounterClick (View view) {
         CSCF2Counter++;
+        CargoShipCargoFront2.setColor(R.color.cargoscoredenabled);
         String CSCF2[] = {"Cargoship", "Cargo", "Front", "", "", "1"};
     }
     public void CSPL1CounterClick (View view) {
         CSPL1Counter++;
+        CargoShipPanelLeft1.setColor(R.color.panelscoredenabled);
         String CSPL1[] = {"Cargoship", "Panel", "Left", "", "", "1"};
     }
     public void CSPL2CounterClick (View view) {
         CSPL2Counter++;
+        CargoShipPanelLeft2.setColor(R.color.panelscoredenabled);
         String CSPL2[] = {"Cargoship", "Panel", "Left", "", "", "1"};
     }
     public void CSPL3CounterClick (View view) {
         CSPL3Counter++;
+        CargoShipPanelLeft3.setColor(R.color.panelscoredenabled);
         String CSPL3[] = {"Cargoship", "Panel", "Left", "", "", "1"};
     }
     public void CSCL1CounterClick (View view) {
         CSCL1Counter++;
+        CargoShipCargoLeft1.setColor(R.color.cargoscoredenabled);
         String CSCL1[] = {"Cargoship", "Cargo", "Left", "", "", "1"};
     }
     public void CSCL2CounterClick (View view) {
         CSCL2Counter++;
+        CargoShipCargoLeft2.setColor(R.color.cargoscoredenabled);
         String CSCL2[] = {"Cargoship", "Cargo", "Left", "", "", "1"};
     }
     public void CSCL3CounterClick (View view) {
         CSCL3Counter++;
+        CargoShipCargoLeft3.setColor(R.color.cargoscoredenabled);
         String CSCL3[] = {"Cargoship", "Cargo", "Left", "", "", "1"};
     }
     public void CSCR1CounterClick (View view) {
         CSCR1Counter++;
+        CargoShipCargoRight1.setColor(R.color.cargoscoredenabled);
         String CSCR1[] = {"Cargoship", "Cargo", "Right", "", "", "1"};
     }
     public void CSCR2CounterClick (View view) {
         CSCR2Counter++;
+        CargoShipCargoRight2.setColor(R.color.cargoscoredenabled);
         String CSCR2[] = {"Cargoship", "Cargo", "Right", "", "", "1"};
     }
     public void CSCR3CounterClick (View view) {
         CSCR3Counter++;
+        CargoShipCargoRight3.setColor(R.color.cargoscoredenabled);
         String CSCR3[] = {"Cargoship", "Cargo", "Right", "", "", "1"};
     }
     public void CSPR1CounterClick (View view) {
         CSPR1Counter++;
+        CargoShipPanelRight1.setColor(R.color.panelscoredenabled);
         String CSPR1[] = {"Cargoship", "Panel", "Right", "", "", "1"};
     }
     public void CSPR2CounterClick (View view) {
         CSPR2Counter++;
+        CargoShipPanelRight2.setColor(R.color.panelscoredenabled);
         String CSPR2[] = {"Cargoship", "Panel", "Right", "", "", "1"};
     }
     public void CSPR3CounterClick (View view) {
         CSPR3Counter++;
+        CargoShipPanelRight3.setColor(R.color.panelscoredenabled);
         String CSPR3[] = {"Cargoship", "Panel", "Right", "", "", "1"};
     }
 
     //right rocket onClicks
     public void RRPNT3CounterClick (View view) {
         RRPNT3Counter++;
+        RightRocketPanelNearT3.setColor(R.color.panelscoredenabled);
         String RRPNT3[] = {MODE, "Rocket", "Panel", "", "Near", "T3", "1"};
     }
     public void RRPNT2CounterClick (View view) {
         RRPNT2Counter++;
+        RightRocketPanelNearT2.setColor(R.color.panelscoredenabled);
         String RRPNT2[] = {MODE, "Rocket", "Panel", "", "Near", "T2", "1"};
     }
     public void RRPNT1CounterClick (View view) {
         RRPNT1Counter++;
+        RightRocketPanelNearT1.setColor(R.color.panelscoredenabled);
         String RRPNT1[] = {MODE, "Rocket", "Panel", "", "Near", "T1", "1"};
     }
     public void RRCT3CounterClick (View view) {
         RRCT3Counter++;
+        RightRocketCargoT3.setColor(R.color.cargoscoredenabled);
         String RRPCT3[] = {MODE, "Rocket", "Cargo", "", "", "T3", "1"};
     }
     public void RRCT2CounterClick (View view) {
         RRCT2Counter++;
+        RightRocketCargoT2.setColor(R.color.cargoscoredenabled);
         String RRPCT2[] = {MODE, "Rocket", "Cargo", "", "", "T2", "1"};
     }
     public void RRCT1CounterClick (View view) {
         RRCT1Counter++;
+        RightRocketCargoT1.setColor(R.color.cargoscoredenabled);
         String RRPCT1[] = {MODE, "Rocket", "Cargo", "", "", "T1", "1"};
     }
     public void RRPFT3CounterClick (View view) {
         RRPFT3Counter++;
+        RightRocketPanelFarT3.setColor(R.color.panelscoredenabled);
         String RRPFT3[] = {MODE, "Rocket", "Panel", "", "Far", "T2", "1"};
     }
     public void RRPFT2CounterClick (View view) {
         RRPFT2Counter++;
+        RightRocketPanelFarT2.setColor(R.color.panelscoredenabled);
         String RRPFT2[] = {MODE, "Rocket", "Panel", "", "Far", "T2", "1"};
     }
     public void RRPFT1CounterClick (View view) {
         RRPFT1Counter++;
+        RightRocketPanelFarT1.setColor(R.color.panelscoredenabled);
         String RRPFT1[] = {MODE, "Rocket", "Panel", "", "Far", "T1", "1"};
     }
 

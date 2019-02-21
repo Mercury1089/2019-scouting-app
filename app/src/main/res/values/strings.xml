@@ -82,6 +82,7 @@
     <string name="T1">T1</string>
     <string name="T2">T2</string>
     <string name="T3">T3</string>
+    <string name="HABLine">Crossed HAB Line</string>
 
     <!-- Top Toggle -->
     <string name="Setup">Setup</string>

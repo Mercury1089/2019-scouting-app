@@ -12,6 +12,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
+        android:onClick="CSCL3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipCargoLeft2"
@@ -23,6 +24,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:onClick="CSPL3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintBottom_toTopOf="@+id/CargoShipCargoLeft3"
@@ -33,6 +35,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
+        android:onClick="CSCR3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipCargoRight2"
@@ -44,6 +47,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="82dp"
+        android:onClick="CSPF1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/CargoShipPanelRight1"
@@ -55,6 +59,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="RRPFT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT2"
@@ -129,6 +134,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="CSCL2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoRight3"
@@ -140,6 +146,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="RRCT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/RightRocketPanelNearT1"
@@ -151,6 +158,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="RRCT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/RightRocketPanelNearT1"
@@ -161,6 +169,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:onClick="LRPNT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront2"
@@ -172,6 +181,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="RRPFT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT1"
@@ -183,6 +193,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="RRPFT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT2"
@@ -194,6 +205,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSCR2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipCargoRight1"
@@ -205,6 +217,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="RRCT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/RightRocketPanelFarT3"
@@ -216,6 +229,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="RRPNT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/RightRocketCargoT2"
@@ -228,6 +242,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="CSPL1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/CargoShipPanelLeft2"
@@ -239,6 +254,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSCR1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipCargoFront2"
@@ -250,6 +266,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="RRPNT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/RightRocketCargoT3"
@@ -262,6 +279,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="CSCL1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoLeft2"
@@ -272,6 +290,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSPR2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toStartOf="@+id/CargoShipCargoRight2"
@@ -282,6 +301,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSPR1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toStartOf="@+id/CargoShipPanelLeft1"
@@ -293,6 +313,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSPR3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipPanelRight2"
@@ -304,6 +325,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSCF1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront1"
@@ -314,7 +336,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:text="H"
+        android:onClick="LRCT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/LeftRocketPanelNearT2"
@@ -326,6 +348,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:onClick="LRPFT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/LeftRocketCargoT3"
@@ -336,6 +359,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
+        android:onClick="LRPNT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/LRCT3"
@@ -347,6 +371,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="CSCF2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront2"
@@ -358,6 +383,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="CSCF2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoFront1"
@@ -368,6 +394,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
+        android:onClick="CSPL1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/LRCT1"
@@ -383,6 +410,15 @@
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT3" />
+
+    <Switch
+        android:id="@+id/CrossedHABLineSwitch"
+        android:layout_width="214dp"
+        android:layout_height="23dp"
+        android:text="@string/HABLine"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toTopOf="@+id/FellOverSwitch"
+        app:layout_constraintStart_toStartOf="@+id/FellOverSwitch" />
 
     <TextView
         android:id="@+id/IDPossession"
@@ -478,26 +514,25 @@
 
             android:id="@+id/SPanelButton"
 
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
 
             android:layout_height="match_parent"
 
             android:onClick="panelCounterClick"
 
-            android:text="Panel         "
+            android:text="@string/PanelAndCounter"
             android:textSize="36sp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
             android:id="@+id/SCargoButton"
 
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
 
             android:layout_height="match_parent"
 
             android:onClick="cargoCounterClick"
-
-            android:text="Cargo        "
+            android:text="@string/CargoAndCounter"
             android:textSize="36sp" />
 
 
@@ -535,8 +570,6 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="panelCounterClick"
-
             android:text="@string/Setup"
             android:textSize="36sp" />
 
@@ -547,8 +580,6 @@
             android:layout_width="wrap_content"
 
             android:layout_height="match_parent"
-
-            android:onClick="cargoCounterClick"
 
             android:text="@string/Sandstorm"
             android:textSize="36sp" />
@@ -586,14 +617,13 @@
 
         android:id="@+id/MissedButton"
 
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
 
-        android:layout_height="42dp"
-
+        android:layout_height="45dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:onClick="missedClick"
-        android:text="Missed        "
+        android:text="@string/MissedAndCounter"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
@@ -608,6 +638,29 @@
         app:layout_constraintEnd_toEndOf="@+id/MissedButton"
         app:layout_constraintTop_toTopOf="@+id/MissedButton" />
 
+    <at.markushi.ui.CircleButton
+        android:id="@+id/PanelCounterCircle"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="78dp"
+        android:color="@color/grey"
+        android:saveEnabled="false"
+        app:cb_color="@color/defaultdisabled"
+        app:cb_pressedRingWidth="10dp"
+        app:layout_constraintStart_toStartOf="@+id/PanelOrCargo"
+        app:layout_constraintTop_toTopOf="@+id/CargoCounterText" />
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/CargoCounterCircle"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:color="@color/grey"
+        android:saveEnabled="false"
+        app:cb_color="@color/defaultdisabled"
+        app:cb_pressedRingWidth="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/PanelOrCargo"
+        app:layout_constraintTop_toTopOf="@+id/PanelOrCargo" />
+
     <TextView
         android:id="@+id/MissedCounterText"
         android:layout_width="45dp"
@@ -615,8 +668,69 @@
         android:gravity="center"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/MissedCounterCircle"
         app:layout_constraintStart_toStartOf="@+id/MissedCounterCircle"
         app:layout_constraintTop_toTopOf="@+id/MissedCounterCircle" />
+
+    <TextView
+        android:id="@+id/PanelCounterText"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="78dp"
+        android:enabled="false"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/PanelCounterCircle"
+        app:layout_constraintStart_toStartOf="@+id/PanelOrCargo"
+        app:layout_constraintTop_toTopOf="@+id/PanelCounterCircle" />
+
+    <TextView
+        android:id="@+id/CargoCounterText"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/CargoCounterCircle"
+        app:layout_constraintStart_toStartOf="@+id/CargoCounterCircle"
+        app:layout_constraintTop_toTopOf="@+id/CargoCounterCircle" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+
+        android:id="@+id/DroppedButton"
+
+        android:layout_width="125dp"
+
+        android:layout_height="45dp"
+
+        android:layout_marginStart="472dp"
+        android:onClick="missedClick"
+        android:text="@string/DroppedAndCounter"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/PanelOrCargo" />
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/DroppedCounterCircle"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:color="@color/grey"
+        android:saveEnabled="false"
+        app:cb_color="@color/defaultdisabled"
+        app:cb_pressedRingWidth="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/DroppedButton"
+        app:layout_constraintTop_toTopOf="@+id/DroppedCounterText" />
+
+    <TextView
+        android:id="@+id/DroppedCounterText"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="@string/zero"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintEnd_toEndOf="@+id/DroppedCounterCircle"
+        app:layout_constraintTop_toTopOf="@+id/DroppedButton" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/LeftRocketPanelNearT2"
@@ -624,6 +738,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="LRPNT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/LeftRocketCargoT2"
@@ -635,6 +750,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="LRPNT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/LeftRocketCargoT1"
@@ -646,6 +762,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="LRCT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/LeftRocketPanelFarT2"
@@ -657,6 +774,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="LRPFT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/LeftRocketCargoT1"
@@ -668,6 +786,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="LRCT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/LeftRocketPanelFarT2"
@@ -678,6 +797,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="128dp"
+        android:onClick="LRPFT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketCargoT2"
@@ -792,6 +912,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:onClick="CSPL2CounterClick"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft2"
@@ -802,6 +923,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:onClick="CSPL3CounterClick"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft3"
@@ -1032,7 +1154,6 @@
         android:layout_width="84dp"
         android:layout_height="87dp"
         android:onClick="buttonTest"
-        android:text="B"
         app:cb_color="@color/colorAccent"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toStartOf="parent"
