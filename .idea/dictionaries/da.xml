@@ -1,11 +1,18 @@
 <component name="ProjectDictionaryState">
   <dictionary name="da">
     <words>
+      <w>cargoenabled</w>
+      <w>cargoscoreddisabled</w>
+      <w>cargoscoredenabled</w>
       <w>cargoship</w>
+      <w>defaultdisabled</w>
       <w>initializers</w>
       <w>lightblue</w>
       <w>lightorange</w>
       <w>lightyellow</w>
+      <w>panelenabled</w>
+      <w>panelscoreddisabled</w>
+      <w>panelscoredenabled</w>
       <w>prepop</w>
       <w>prepopulated</w>
       <w>qrcode</w>
@@ -13,6 +20,9 @@
       <w>scoutingapp</w>
       <w>setis</w>
       <w>teleop</w>
+      <w>textdefault</w>
+      <w>textdefaultdisabled</w>
+      <w>textdefaultenabled</w>
     </words>
   </dictionary>
 </component>

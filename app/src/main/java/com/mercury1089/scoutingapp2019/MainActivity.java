@@ -128,7 +128,7 @@ public class MainActivity extends Activity {
 
     @Override
 
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //initializers
@@ -223,7 +223,7 @@ public class MainActivity extends Activity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //to enable/disable start and click button
+                //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(ScouterNameInput);
             }
             @Override
@@ -235,7 +235,7 @@ public class MainActivity extends Activity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //to enable/disable start and click button
+                //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(matchNumberInput);
             }
             @Override
@@ -247,7 +247,7 @@ public class MainActivity extends Activity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //to enable/disable start and click button
+                //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(teamNumberInput);
             }
             @Override
@@ -259,7 +259,7 @@ public class MainActivity extends Activity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //to enable/disable start and click button
+                //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(firstAlliancePartnerInput);
             }
             @Override
@@ -271,7 +271,7 @@ public class MainActivity extends Activity {
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //to enable/disable start and click button
+                //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(secondAlliancePartnerInput);
             }
             @Override
@@ -319,14 +319,22 @@ public class MainActivity extends Activity {
 
                     } catch (WriterException e) { e.printStackTrace(); }
                 } else {
-                    String sendMessage = scouterName + matchNumber + teamNumber + firstAlliancePartner + secondAlliancePartner;
+                    scouterName = ScouterNameInput.getText().toString();
+                    matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+                    teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
+                    firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
+                    secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
+
+                    String sendMessage = scouterName + matchNumber + teamNumber
+                            + firstAlliancePartner + secondAlliancePartner;
                     char initPanelOrCargo = ' ';
                     if (isSetupPanel == 1)
                         initPanelOrCargo = 'P';
                     else if (isSetupCargo == 1)
                         initPanelOrCargo = 'C';
+                    sendMessage += initPanelOrCargo;
                     Intent intent = new Intent(MainActivity.this, Sandstorm.class);
-                    intent.putExtra("message", initPanelOrCargo + sendMessage);
+                    intent.putExtra("message", sendMessage);
                     startActivity(intent);
                 }
             }
@@ -463,7 +471,9 @@ public class MainActivity extends Activity {
     public void checkIfAnythingIsTyped (EditText editText) {
         if (editText.getText().length() > 0) {
             clearButton.setEnabled(true);
-            if (ScouterNameInput.getText().length() > 0 && teamNumberInput.getText().length() > 0 && matchNumberInput.getText().length() > 0
+            if (ScouterNameInput.getText().length() > 0
+                    && teamNumberInput.getText().length() > 0
+                    && matchNumberInput.getText().length() > 0
                     && firstAlliancePartnerInput.getText().length() > 0
                     && secondAlliancePartnerInput.getText().length() > 0)
                 startButton.setEnabled(true);
@@ -563,7 +573,7 @@ public class MainActivity extends Activity {
         startR1 = 1;
 
         makeCirclesInvisible();
-        RC1Circle.setVisibility(View.VISIBLE);
+        RR1Circle.setVisibility(View.VISIBLE);
     }
 
 

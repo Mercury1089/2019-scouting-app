@@ -36,17 +36,16 @@
 
     <color name="orange"> @android:color/holo_orange_dark </color>
 
-    <color name="yellow">#FFEB3B</color>
-
-    <color name="lightblue">#99B2C7</color>
-
-    <color name="lightyellow">#F1EBAF</color>
-
-    <color name="lightorange">#FFC271</color>
-
-
-
-
+    <!-- for circle buttons -->
+    
+    <color name="defaultdisabled">#41332F2F</color>
+    <color name="panelenabled">#FFFFD9</color>
+    <color name="cargoenabled">#DABD8B</color>
+    <color name="textdefault">#9B9B9B</color>
+    <color name="panelscoreddisabled">#EBE188</color>
+    <color name="cargoscoreddisabled">#F5C067</color>
+    <color name="panelscoredenabled">#F8E71C</color>
+    <color name="cargoscoredenabled">#F5A623</color>
 
 
 </resources>

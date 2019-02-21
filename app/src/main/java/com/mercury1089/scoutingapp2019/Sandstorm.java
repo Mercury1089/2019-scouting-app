@@ -178,10 +178,8 @@ public class Sandstorm extends AppCompatActivity {
     BootstrapButton ClimbButton;
     BootstrapButton PanelButton;
     BootstrapButton CargoButton;
-
-    //buttons
-    Button DroppedButton;
-    Button MissedButton;
+    BootstrapButton DroppedButton;
+    BootstrapButton MissedButton;
 
     //array counter
     private int arrCounter = 0; //multiples of 7 outputted.... 2D array --> int arr[][] = new int[arrCounter][7];
@@ -277,24 +275,33 @@ public class Sandstorm extends AppCompatActivity {
         CargoCounterText = findViewById(R.id.CargoCounterText);
         DroppedCounterText = findViewById(R.id.DroppedCounterText);
         MissedCounterText = findViewById(R.id.MissedCounterText);
-        SetupButton = findViewById(R.id.GoToSetup);
-        SandstormButton = findViewById(R.id.GoToSandstorm);
-        TeleopButton = findViewById(R.id.GoToTeleop);
-        ClimbButton = findViewById(R.id.GoToClimb);
+        SetupButton = findViewById(R.id.SetupButton);
+        SandstormButton = findViewById(R.id.SandstormButton);
+        TeleopButton = findViewById(R.id.TeleopButton);
+        ClimbButton = findViewById(R.id.ClimbButton);
         PanelButton = findViewById(R.id.SPanelButton);
         CargoButton = findViewById(R.id.SCargoButton);
         DroppedButton = findViewById(R.id.DroppedButton);
         MissedButton = findViewById(R.id.MissedButton);
         btn = findViewById(R.id.btn_home);
 
+        btn.setEnabled(false);
+
         //make Sandstorm button look active
         selectedButtonColors(SandstormButton);
 
+        //make other buttons look default
+        defaultButtonState(SetupButton);
+        defaultButtonState(TeleopButton);
+        defaultButtonState(ClimbButton);
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+
         //setting counters to default
-        PanelCounterText.setText('0');
-        CargoCounterText.setText('0');
-        DroppedCounterText.setText('0');
-        MissedCounterText.setText('0');
+        PanelCounterText.setText("0");
+        CargoCounterText.setText("0");
+        DroppedCounterText.setText("0");
+        MissedCounterText.setText("0");
 
         //disable scoring diagram
         disableScoringDiagram('A');
@@ -302,14 +309,14 @@ public class Sandstorm extends AppCompatActivity {
          String message = getIntent().getStringExtra("message");
          if (message.charAt(0) == 'P') {
             selectedButtonColors(PanelButton);
-            PanelCounterText.setText('1');
+            PanelCounterText.setText("1");
             CargoButton.setEnabled(false);
             totalPanels++;
             //enable panel circles
              enableScoringDiagram('P');
          } else {
              selectedButtonColors(CargoButton);
-             CargoCounterText.setText('1');
+             CargoCounterText.setText("1");
              PanelButton.setEnabled(false);
              totalCargo++;
              //enable cargo circles
@@ -376,7 +383,7 @@ public class Sandstorm extends AppCompatActivity {
     //call methods
     private void updateCounterDisplay (int panels, int cargo, TextView textView) {
         int total = panels + cargo;
-        textView.setText(total);
+        textView.setText(String.valueOf(total));
     }
     private void defaultButtonState (BootstrapButton button) {
         button.setBackgroundColor(getResources().getColor(R.color.light));
@@ -501,7 +508,7 @@ public class Sandstorm extends AppCompatActivity {
         selectedButtonColors(PanelButton);
         defaultButtonState(CargoButton);
         totalPanels++;
-        PanelCounterText.setText(totalPanels);
+        PanelCounterText.setText(String.valueOf(totalPanels));
         CargoButton.setEnabled(false);
         isPanel = true;
         isCargo = false;
@@ -512,7 +519,7 @@ public class Sandstorm extends AppCompatActivity {
         selectedButtonColors(CargoButton);
         defaultButtonState(PanelButton);
         totalCargo++;
-        CargoCounterText.setText(totalCargo);
+        CargoCounterText.setText(String.valueOf(totalCargo));
         PanelButton.setEnabled(false);
         isPanel = false;
         isCargo = true;
@@ -524,13 +531,13 @@ public class Sandstorm extends AppCompatActivity {
         if (isPanel) {
             droppedPanels++;
             totalPanels++;
-            PanelCounterText.setText(totalPanels);
+            PanelCounterText.setText(String.valueOf(totalPanels));
             defaultButtonState(PanelButton);
         }
         if (isCargo) {
             droppedCargo++;
             totalCargo++;
-            CargoCounterText.setText(totalCargo);
+            CargoCounterText.setText(String.valueOf(totalCargo));
             defaultButtonState(CargoButton);
         }
         DroppedButton.setEnabled(false);
