@@ -123,6 +123,7 @@ public class MainActivity extends Activity {
 
     boolean isQRButton = false;
     String leftOrRight;
+    String message;
 
 
 
@@ -187,6 +188,126 @@ public class MainActivity extends Activity {
 
         //getting side from the settings to orientate the HAB
         leftOrRight = getIntent().getStringExtra("LEFTORRIGHT");
+        message = "" + getIntent().getStringExtra("message");
+        int counter = 1;
+        int lastIndex = 0;
+        if (message.length() > 0) {
+            if (message.charAt(0) == 'P') {
+                isSetupPanel = 1;
+                selectedButtonColors(panelButton);
+                cargoDefault();
+            } else if (message.charAt(0) == 'C') {
+                isSetupCargo = 1;
+                selectedButtonColors(cargoButton);
+                panelDefault();
+            }
+            for (int i = 0; i < message.length(); i++) {
+                if (message.charAt(i) == ',') {
+                    switch (counter) {
+                        case 1:
+                            scouterName = message.substring(lastIndex, i);
+                            ScouterNameInput.setText(scouterName);
+                        case 2:
+                            matchNumber = Integer.parseInt(message.substring(lastIndex, i));
+                            matchNumberInput.setText(matchNumber);
+                        case 3:
+                            teamNumber = Integer.parseInt(message.substring(lastIndex, i));
+                            teamNumberInput.setText(teamNumber);
+                        case 4:
+                            firstAlliancePartner = Integer.parseInt(message.substring(lastIndex, i));
+                            firstAlliancePartnerInput.setText(firstAlliancePartner);
+                        case 5:
+                            secondAlliancePartner = Integer.parseInt(message.substring(lastIndex, i));
+                            secondAlliancePartnerInput.setText(secondAlliancePartner);
+                        case 6:
+                            String RedOrBlue = message.substring(lastIndex,i);
+                            if (RedOrBlue.equals("Red")){
+                                isRedAlliance = 1;
+                                isBlueAlliance = 0;
+                            }
+                            else if (RedOrBlue.equals("Blue")){
+                                isRedAlliance = 0;
+                                isBlueAlliance = 1;
+                            }
+                        case 7:
+                            leftOrRight = message.substring(lastIndex,i);
+                            if (leftOrRight.equals("Left")) {
+                                if (isBlueAlliance == 1) {
+                                    makeBoxesBlue("Left");
+                                    makeBoxesVisible("Left");
+                                }
+                                else if (isRedAlliance == 1) {
+                                    makeBoxesRed("Right");
+                                    makeBoxesVisible("Right");
+                                }
+                            }
+                            else if (leftOrRight.equals("Right")){
+                                if (isBlueAlliance == 1) {
+                                    makeBoxesBlue("Right");
+                                    makeBoxesVisible("Right");
+                                }
+                                else if (isRedAlliance == 1) {
+                                    makeBoxesRed("Left");
+                                    makeBoxesVisible("Left");
+                                }
+                            }
+                        case 8:
+                            String startingposition = message.substring(lastIndex,i);
+                            makeCirclesInvisible();
+                            if (isBlueAlliance == 1) {
+                                if (leftOrRight.equals("Left"))
+                                    if (startingposition.equals("L1"))
+                                        LL1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("C1"))
+                                        LC1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R1"))
+                                        LR1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("L2"))
+                                        LL2Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R2"))
+                                        LR2Circle.setVisibility(View.VISIBLE);
+                                if (leftOrRight.equals("Right"))
+                                    if (startingposition.equals("L1"))
+                                        RL1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("C1"))
+                                        RC1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R1"))
+                                        RR1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("L2"))
+                                        RL2Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R2"))
+                                        RR2Circle.setVisibility(View.VISIBLE);
+                            }
+                            else if (isRedAlliance == 1) {
+                                if (leftOrRight.equals("Right"))
+                                    if (startingposition.equals("L1"))
+                                        LL1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("C1"))
+                                        LC1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R1"))
+                                        LR1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("L2"))
+                                        LL2Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R2"))
+                                        LR2Circle.setVisibility(View.VISIBLE);
+                                if (leftOrRight.equals("Left"))
+                                    if (startingposition.equals("L1"))
+                                        RL1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("C1"))
+                                        RC1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R1"))
+                                        RR1Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("L2"))
+                                        RL2Circle.setVisibility(View.VISIBLE);
+                                    else if (startingposition.equals("R2"))
+                                        RR2Circle.setVisibility(View.VISIBLE);
+                            }
+                    }
+                    counter++;
+                    lastIndex = i + 1;
+                }
+            }
+        }
 
         //starting listener to check the status of the switch
         Switch NoShowSwitch = findViewById(R.id.NoShowSwitch);
@@ -294,10 +415,11 @@ public class MainActivity extends Activity {
                         RedOrBlue = "Blue";
                     else if (isRedAlliance == 1)
                         RedOrBlue = "Red";
-                    QRValue = ScouterNameInput.getText().toString() + "+" + teamNumberInput.getText().toString()
-                            + "+" + matchNumberInput.getText().toString() + "+"
-                            + firstAlliancePartnerInput.getText().toString() + "+"
-                            + secondAlliancePartnerInput.getText().toString() + "+" + RedOrBlue;
+                    QRValue = ScouterNameInput.getText().toString() + "," + teamNumberInput.getText().toString()
+                            + "," + matchNumberInput.getText().toString() + ","
+                            + firstAlliancePartnerInput.getText().toString() + ","
+                            + secondAlliancePartnerInput.getText().toString() + ","
+                            + RedOrBlue + "," + leftOrRight + ",,";
                     try {
                         bitmap = TextToImageEncode(QRValue);
                         final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
@@ -324,15 +446,31 @@ public class MainActivity extends Activity {
                     teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
                     firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
                     secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
-
-                    String sendMessage = scouterName + matchNumber + teamNumber
-                            + firstAlliancePartner + secondAlliancePartner;
+                    String RedOrBlue = "";
+                    if (isRedAlliance == 1)
+                        RedOrBlue = "Red";
+                    else if (isBlueAlliance == 1)
+                        RedOrBlue = "Blue";
+                    String startingPosition = "";
+                    if (startL1 == 1)
+                        startingPosition = "L1";
+                    else if (startC1 == 1)
+                        startingPosition = "C1";
+                    else if (startR1 == 1)
+                        startingPosition = "R1";
+                    else if (startL2 == 1)
+                        startingPosition = "L2";
+                    else if (startR2 == 1)
+                        startingPosition = "R2";
+                    String sendMessage = scouterName + "," + matchNumber + "," + teamNumber
+                            + "," + firstAlliancePartner + "," + secondAlliancePartner
+                            + "," + RedOrBlue + "," + leftOrRight + "," + startingPosition;
                     char initPanelOrCargo = ' ';
                     if (isSetupPanel == 1)
                         initPanelOrCargo = 'P';
                     else if (isSetupCargo == 1)
                         initPanelOrCargo = 'C';
-                    sendMessage += initPanelOrCargo;
+                    sendMessage = initPanelOrCargo + "," + sendMessage;
                     Intent intent = new Intent(MainActivity.this, Sandstorm.class);
                     intent.putExtra("message", sendMessage);
                     startActivity(intent);

@@ -169,7 +169,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:onClick="LRPNT1CounterClick"
+        android:onClick="RRPNT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront2"
@@ -383,7 +383,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:onClick="CSCF2CounterClick"
+        android:onClick="CSPF2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
         app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoFront1"
@@ -570,6 +570,7 @@
 
             android:layout_height="match_parent"
 
+            android:onClick="setupClick"
             android:text="@string/Setup"
             android:textSize="36sp" />
 

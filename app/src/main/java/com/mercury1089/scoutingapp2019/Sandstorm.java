@@ -2,6 +2,7 @@ package com.mercury1089.scoutingapp2019;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
@@ -189,8 +191,10 @@ public class Sandstorm extends AppCompatActivity {
     private int deadRobot = 0; //0 or 1
     private boolean isCargo = false;
     private boolean isPanel = false;
+    private String message = "";
     CircleButton btn;
     Random random = new Random();
+
 
     public Sandstorm() {
 
@@ -306,7 +310,7 @@ public class Sandstorm extends AppCompatActivity {
         //disable scoring diagram
         disableScoringDiagram('A');
 
-         String message = getIntent().getStringExtra("message");
+         message = getIntent().getStringExtra("message");
          if (message.charAt(0) == 'P') {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
@@ -378,6 +382,20 @@ public class Sandstorm extends AppCompatActivity {
 
             }
         });
+
+        final int interval = 1000; // 1 Second
+        Handler handler = new Handler();
+        Runnable runnable = new Runnable(){
+            int sec = 15;
+            public void run() {
+                sec--;
+                if (sec < 4)
+                    Toast.makeText(Sandstorm.this,
+                            "Teleop is starting in " + sec, Toast.LENGTH_SHORT).show();
+            }
+        };
+        handler.postAtTime(runnable, System.currentTimeMillis()+interval);
+        handler.postDelayed(runnable, interval);
     }
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -801,6 +819,7 @@ public class Sandstorm extends AppCompatActivity {
     //click methods
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("message", message);
         startActivity(intent);
     }
     public void panelCounterClick (View view) {
