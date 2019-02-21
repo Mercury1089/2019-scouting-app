@@ -189,8 +189,8 @@ public class MainActivity extends Activity {
         //getting side from the settings to orientate the HAB
         leftOrRight = getIntent().getStringExtra("LEFTORRIGHT");
         message = "" + getIntent().getStringExtra("message");
-        int counter = 1;
-        int lastIndex = 0;
+        int counter = 0;
+        int lastIndex = 1;
         if (message.length() > 0) {
             if (message.charAt(0) == 'P') {
                 isSetupPanel = 1;
@@ -201,7 +201,7 @@ public class MainActivity extends Activity {
                 selectedButtonColors(cargoButton);
                 panelDefault();
             }
-            for (int i = 0; i < message.length(); i++) {
+            for (int i = 1; i < message.length(); i++) {
                 if (message.charAt(i) == ',') {
                     switch (counter) {
                         case 1:

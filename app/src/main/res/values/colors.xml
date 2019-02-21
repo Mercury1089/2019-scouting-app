@@ -20,15 +20,9 @@
 
     <color name="light"> @color/bootstrap_dropdown_divider </color>
 
+    <color name="grey"> @color/bootstrap_gray </color>
 
-
-    <color name="grey"> @color/bootstrap_gray_light </color>
-
-
-
-    <color name="blue"> @color/bootstrap_brand_info </color>
-
-
+    <color name="blue">@color/bootstrap_brand_success</color>
 
     <color name="red"> @color/bootstrap_brand_danger </color>
 
@@ -38,7 +32,7 @@
 
     <!-- for circle buttons -->
     
-    <color name="defaultdisabled">#41332F2F</color>
+    <color name="defaultdisabled">#801E1E1E</color>
     <color name="panelenabled">#FFFFD9</color>
     <color name="cargoenabled">#DABD8B</color>
     <color name="textdefault">#9B9B9B</color>
