@@ -22,7 +22,7 @@
 
     <color name="grey"> @color/bootstrap_gray </color>
 
-    <color name="blue">@color/bootstrap_brand_success</color>
+    <color name="blue">@color/bootstrap_brand_info</color>
 
     <color name="red"> @color/bootstrap_brand_danger </color>
 
