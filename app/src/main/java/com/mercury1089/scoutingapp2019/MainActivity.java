@@ -199,6 +199,8 @@ public class MainActivity extends Activity {
                 selectedButtonColors(cargoButton);
                 panelDefault();
             }
+
+
             message = message.substring(message.indexOf(",")+1, message.length());
             for (int i = 1; i < message.length(); i++) {
                 switch (i) {

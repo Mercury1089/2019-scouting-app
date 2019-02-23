@@ -2,13 +2,9 @@ package com.mercury1089.scoutingapp2019;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Parcelable;
-import android.support.v4.os.ParcelableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -17,7 +13,6 @@ import android.widget.Toast;
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.util.HashMap;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -73,13 +68,6 @@ public class Sandstorm extends AppCompatActivity {
     CircleButton RightRocketCargoT3;
     CircleButton RightRocketCargoT2;
     CircleButton RightRocketCargoT1;
-
-    //Repeated Variables for each buttonClick:
-    private final String MODE = "Sandstorm";
-    private String location = "";
-    private String side = ""; //left, right, or front
-    private String nearOrFar = "";
-    private String tier = "";
 
     //displayed counters
     private int totalPanels = 0;
@@ -188,17 +176,15 @@ public class Sandstorm extends AppCompatActivity {
     BootstrapButton DroppedButton;
     BootstrapButton MissedButton;
 
-    //array counter
-    private int arrCounter = 0; //multiples of 7 outputted.... 2D array --> int arr[][] = new int[arrCounter][7];
-
     //other variables
+    final String MODE = "Sandstorm";
     private int crossedHABLine = 0; //0 or 1
     private int deadRobot = 0; //0 or 1
     private boolean isCargo = false;
     private boolean isPanel = false;
     private String message = "";
+    String UNDO
     CircleButton btn;
-    Random random;
     Timer timer;
 
     @Override
@@ -313,6 +299,8 @@ public class Sandstorm extends AppCompatActivity {
         //make and initialize hashtable
         HashMap<String, String> hashMap = new HashMap<>();
 
+
+
         //left rocket
         hashMap.put("LRPNT3","Sandstorm,Rocket,Panel,Left,Near,T3");
         hashMap.put("LRCT3","Sandstorm,Rocket,Cargo,Left,,T3");
@@ -368,28 +356,61 @@ public class Sandstorm extends AppCompatActivity {
                     @Override
                     public void run() {
                         HashMap<String, String> hashMap = new HashMap<>();
-                        int counter;
+                        int counter = 0;
+                        StringBuilder output = new StringBuilder();
                         //left rocket
-                        hashMap.get("LRPNT3");
-                        hashMap.get("LRCT3");
-                        hashMap.get("LRPFT3");
+                        for (int i = 0; i < LRPNT3Counter; i++) {
+                            output.append(",").append(hashMap.get("LRPNT3")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRCT3Counter; i++) {
+                            output.append(",").append(hashMap.get("LRCT3")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRPFT3Counter; i++) {
+                            output.append(",").append(hashMap.get("LRPFT3")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRPNT2Counter; i++) {
+                            output.append(",").append(hashMap.get("LRPNT2")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRCT2Counter; i++) {
+                            output.append(",").append(hashMap.get("LRCT2")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRPFT2Counter; i++) {
+                            output.append(",").append(hashMap.get("LRPFT2")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRPNT1Counter; i++) {
+                            output.append(",").append(hashMap.get("LRPNT1")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRCT1Counter; i++) {
+                            output.append(",").append(hashMap.get("LRCT1")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < LRPFT1Counter; i++) {
+                            output.append(",").append(hashMap.get("LRPFT1")).append(",").append(counter);
+                            counter++;
+                        }
 
-                        hashMap.get("LRPNT2");
-                        hashMap.get("LRCT2");
-                        hashMap.get("LRPFT2");
-
-                        hashMap.get("LRPNT1");
-                        hashMap.get("LRCT1");
-                        hashMap.get("LRPFT1");
 
                         //cargoship
-                        hashMap.get("PF");
-                        hashMap.get("CF");
+                        for (int i = 0; i < (CSPF1Counter + CSPF2Counter); i++)
+                            output.append("," + hashMap.get("PF") + "," + counter);
+                        for (int i = 0; i < (CSCF1Counter + CSCF2Counter); i++)
+                            output.append("," + hashMap.get("CF") + "," + counter);
 
-                        hashMap.get("PL");
-                        hashMap.get("CL");
-                        hashMap.get("PR");
-                        hashMap.get("CR");
+                        for (int i = 0; i < (CSPL1Counter + CSPL2Counter + CSPL3Counter); i++)
+                            output.append("," + hashMap.get("PL") + "," + counter);
+                        for (int i = 0; i < (CSCL1Counter + CSCL2Counter + CSCL3Counter); i++)
+                            output.append("," + hashMap.get("CL") + "," + counter);
+                        for (int i = 0; i < (CSPR1Counter + CSPR2Counter + CSPR3Counter); i++)
+                            output.append("," + hashMap.get("PR") + "," + counter);
+                        for (int i = 0; i < (CSCR1Counter + CSCR2Counter + CSCR3Counter); i++)
+                            output.append("," + hashMap.get("CR") + "," + counter);
 
                         //right rocket
                         hashMap.get("RRPNT3");
@@ -405,6 +426,7 @@ public class Sandstorm extends AppCompatActivity {
                         hashMap.get("RRPFT1");
 
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);
+                        intent.putExtra("map", hashMap);
                         startActivity(intent);
                     }
                 });
@@ -1289,204 +1311,477 @@ public class Sandstorm extends AppCompatActivity {
     public void LRPNT3CounterClick (View view) {
         LRPNT3Counter++;
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
+        UNDO = "LRPNT3";
 
     }
     public void LRPNT2CounterClick (View view) {
         LRPNT2Counter++;
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
+        UNDO = "LRPNT2";
     }
     public void LRPNT1CounterClick (View view) {
         LRPNT1Counter++;
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
+        UNDO = "LRPNT1";
     }
     public void LRCT3CounterClick (View view) {
         LRCT3Counter++;
         LeftRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData LRCT3 = new ScoreData();
-        LRCT3.setAll(MODE, "Rocket", "Cargo","Left", "", "T3", LRCT3Counter);
+        UNDO = "LRCT3";
     }
     public void LRCT2CounterClick (View view) {
         LRCT2Counter++;
         LeftRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData LRCT2 = new ScoreData();
-        LRCT2.setAll(MODE, "Rocket", "Cargo", "Left","","T2", LRCT2Counter);
+        UNDO = "LRCT2";
     }
     public void LRCT1CounterClick (View view) {
         LRCT1Counter++;
         LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData LRCT1 = new ScoreData();
-        LRCT1.setAll(MODE, "Rocket", "Cargo", "Left","", "T1", LRCT1Counter);
+        UNDO = "LRCT1";
     }
     public void LRPFT3CounterClick (View view) {
         LRPFT3Counter++;
         LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
-        ScoreData LRPFT3 = new ScoreData();
-        LRPFT3.setAll(MODE, "Rocket", "Panel", "Left",  "Far","T3", LRPFT3Counter);
+        UNDO = "LRPFT3";
     }
     public void LRPFT2CounterClick (View view) {
         LRPFT2Counter++;
         LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
-        ScoreData LRPFT2 = new ScoreData();
-        LRPFT2.setAll(MODE, "Rocket", "Panel", "", "Far", "T2", LRPFT2Counter);
+        UNDO = "LRPFT2";
     }
     public void LRPFT1CounterClick (View view) {
         LRPFT1Counter++;
         LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
-        ScoreData LRPFT1 = new ScoreData();
-        LRPFT1.setAll(MODE, "Rocket", "Panel", "Far", "", "T1", LRPFT1Counter);
+        UNDO = "LRPFT1";
     }
 
     //cargo ship onClicks
     public void CSPF1CounterClick (View view) {
         CSPF1Counter++;
         CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPF1 = new ScoreData();
-        CSPF1.setAll(MODE, "Cargoship", "Panel", "Front", "", "", CSPF1Counter);
+        UNDO = "CSPF1";
     }
     public void CSPF2CounterClick (View view) {
         CSPF2Counter++;
         CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPF2 = new ScoreData();
-        CSPF2.setAll(MODE, "Cargoship", "Panel", "Front", "", "", CSPF2Counter);
+        UNDO = "CSPF2";
     }
     public void CSCF1CounterClick (View view) {
         CSCF1Counter++;
         CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCF1 = new ScoreData();
-        CSCF1.setAll(MODE, "Cargoship", "Cargo", "Front", "",  "", CSCF1Counter);
+        UNDO = "CSCF1";
     }
     public void CSCF2CounterClick (View view) {
         CSCF2Counter++;
         CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCF2 = new ScoreData();
-        CSCF2.setAll(MODE, "Cargoship", "Cargo", "Front", "", "", CSCF2Counter);
+        UNDO = "CSCF2";
     }
     public void CSPL1CounterClick (View view) {
         CSPL1Counter++;
         CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPL1 = new ScoreData();
-        CSPL1.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL1Counter);
+        UNDO = "CSPL1";
     }
     public void CSPL2CounterClick (View view) {
         CSPL2Counter++;
         CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPL2 = new ScoreData();
-        CSPL2.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL2Counter);
+        UNDO = "CSPL2";
     }
     public void CSPL3CounterClick (View view) {
         CSPL3Counter++;
         CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPL3 = new ScoreData();
-        CSPL3.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL3Counter);
+        UNDO = "CSPL3";
     }
     public void CSCL1CounterClick (View view) {
         CSCL1Counter++;
         CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCL1 = new ScoreData();
-        CSCL1.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL1Counter);
+        UNDO = "CSCL1";
     }
     public void CSCL2CounterClick (View view) {
         CSCL2Counter++;
         CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCL2 = new ScoreData();
-        CSCL2.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL2Counter);
+        UNDO = "CSCL2";
     }
     public void CSCL3CounterClick (View view) {
         CSCL3Counter++;
         CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCL3 = new ScoreData();
-        CSCL3.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL3Counter);
+        UNDO = "CSCL3";
     }
     public void CSCR1CounterClick (View view) {
         CSCR1Counter++;
         CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCR1 = new ScoreData();
-        CSCR1.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR1Counter);
+        UNDO = "CSCR1";
     }
     public void CSCR2CounterClick (View view) {
         CSCR2Counter++;
         CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCR2 = new ScoreData();
-        CSCR2.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR2Counter);
+        UNDO = "CSCR2";
     }
     public void CSCR3CounterClick (View view) {
         CSCR3Counter++;
         CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData CSCR3 = new ScoreData();
-        CSCR3.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR3Counter);
+        UNDO = "CSCR3";
     }
     public void CSPR1CounterClick (View view) {
         CSPR1Counter++;
         CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPR1 = new ScoreData();
-        CSPR1.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR1Counter);
+        UNDO = "CSPR1";
     }
     public void CSPR2CounterClick (View view) {
         CSPR2Counter++;
         CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPR2 = new ScoreData();
-        CSPR2.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR2Counter);
+        UNDO = "CSPR2";
     }
     public void CSPR3CounterClick (View view) {
         CSPR3Counter++;
         CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
-        ScoreData CSPR3 = new ScoreData();
-        CSPR3.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR3Counter);
+        UNDO = "CSPR3";
     }
 
     //right rocket onClicks
     public void RRPNT3CounterClick (View view) {
         RRPNT3Counter++;
         RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
-        ScoreData RRPNT3 = new ScoreData();
-        RRPNT3.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T3", RRPNT3Counter);
+        UNDO = "RRPNT3";
     }
     public void RRPNT2CounterClick (View view) {
         RRPNT2Counter++;
         RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
-        ScoreData RRPNT2 = new ScoreData();
-        RRPNT2.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T2", RRPNT2Counter);
+        UNDO = "RRPNT2";
     }
     public void RRPNT1CounterClick (View view) {
         RRPNT1Counter++;
         RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
-        ScoreData RRPNT1 = new ScoreData();
-        RRPNT1.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T1", RRPNT1Counter);
+        UNDO = "RRPNT1";
     }
     public void RRCT3CounterClick (View view) {
         RRCT3Counter++;
         RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData RRCT3 = new ScoreData();
-        RRCT3.setAll(MODE, "Rocket", "Cargo", "Right", "", "T3", RRCT3Counter);
+        UNDO = "RRCT3";
     }
     public void RRCT2CounterClick (View view) {
         RRCT2Counter++;
         RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData RRCT2 = new ScoreData();
-        RRCT2.setAll(MODE, "Rocket", "Cargo", "Right", "", "T2", RRCT2Counter);
+        UNDO = "RRCT2";
     }
     public void RRCT1CounterClick (View view) {
         RRCT1Counter++;
         RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
-        ScoreData RRCT1 = new ScoreData();
-        RRCT1.setAll(MODE, "Rocket", "Cargo", "Right", "", "T1", RRCT1Counter);
+        UNDO = "RRCT1";
     }
     public void RRPFT3CounterClick (View view) {
         RRPFT3Counter++;
         RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
-        ScoreData RRPFT3 = new ScoreData();
-        RRPFT3.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T3", RRPFT3Counter);
+        UNDO = "RRPFT3";
     }
     public void RRPFT2CounterClick (View view) {
         RRPFT2Counter++;
         RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
-        ScoreData RRPFT2 = new ScoreData();
-        RRPFT2.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T2", RRPFT2Counter);
+        UNDO = "RRPFT2";
     }
     public void RRPFT1CounterClick (View view) {
         RRPFT1Counter++;
         RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
-        ScoreData RRPFT1 = new ScoreData();
-        RRPFT1.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T1", RRPFT1Counter);
+        UNDO = "RRPFT1";
+    }
+
+    //undo button
+    public void UndoClick (View view) {
+        //left rocket onClicks
+        if (UNDO.equals("LRPNT3")){
+            LRPNT3Counter--;
+            if (LRPNT3Counter == 0) {
+                //hi
+            }
+        } else if (UNDO.equals("LRPNT2")) {
+            LRPNT2Counter--;
+            if (LRPNT2Counter == 0) {
+                //hi
+            }
+        } else if (UNDO.equals("LRPNT1")) {
+            LRPNT1Counter--;
+            if (LRPNT1Counter == 0) {
+                //hi
+            }
+        } else if (UNDO.equals("LRCT3")) {
+            LRCT3Counter--;
+            if (LRCT3Counter == 0) {
+                //hi
+            }
+        } else if (UNDO.equals("LRCT2")) {
+            LRCT2Counter--;
+            if (LRCT2Counter == 0) {
+                //hi
+            }
+        } else if (UNDO.equals("LRCT1"))
+            LRCT2Counter--;
+        if (LRCT2Counter == 0) {
+            //hi
+        }
+        }
+        public void LRCT1CounterClick (View view) {
+            LRCT1Counter--;
+            LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData LRCT1 = new ScoreData();
+            LRCT1.setAll(MODE, "Rocket", "Cargo", "Left","", "T1", LRCT1Counter);
+        }
+        public void LRPFT3CounterClick (View view) {
+            LRPFT3Counter--;
+            LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData LRPFT3 = new ScoreData();
+            LRPFT3.setAll(MODE, "Rocket", "Panel", "Left",  "Far","T3", LRPFT3Counter);
+        }
+        public void LRPFT2CounterClick (View view) {
+            LRPFT2Counter--;
+            LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData LRPFT2 = new ScoreData();
+            LRPFT2.setAll(MODE, "Rocket", "Panel", "", "Far", "T2", LRPFT2Counter);
+        }
+        public void LRPFT1CounterClick (View view) {
+            LRPFT1Counter--;
+            LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData LRPFT1 = new ScoreData();
+            LRPFT1.setAll(MODE, "Rocket", "Panel", "Far", "", "T1", LRPFT1Counter);
+        }
+
+        //cargo ship onClicks
+        public void CSPF1CounterClick (View view) {
+            CSPF1Counter--;
+            CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPF1 = new ScoreData();
+            CSPF1.setAll(MODE, "Cargoship", "Panel", "Front", "", "", CSPF1Counter);
+        }
+        public void CSPF2CounterClick (View view) {
+            CSPF2Counter--;
+            CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPF2 = new ScoreData();
+            CSPF2.setAll(MODE, "Cargoship", "Panel", "Front", "", "", CSPF2Counter);
+        }
+        public void CSCF1CounterClick (View view) {
+            CSCF1Counter--;
+            CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCF1 = new ScoreData();
+            CSCF1.setAll(MODE, "Cargoship", "Cargo", "Front", "",  "", CSCF1Counter);
+        }
+        public void CSCF2CounterClick (View view) {
+            CSCF2Counter--;
+            CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCF2 = new ScoreData();
+            CSCF2.setAll(MODE, "Cargoship", "Cargo", "Front", "", "", CSCF2Counter);
+        }
+        public void CSPL1CounterClick (View view) {
+            CSPL1Counter--;
+            CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPL1 = new ScoreData();
+            CSPL1.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL1Counter);
+        }
+        public void CSPL2CounterClick (View view) {
+            CSPL2Counter--;
+            CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPL2 = new ScoreData();
+            CSPL2.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL2Counter);
+        }
+        public void CSPL3CounterClick (View view) {
+            CSPL3Counter--;
+            CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPL3 = new ScoreData();
+            CSPL3.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL3Counter);
+        }
+        public void CSCL1CounterClick (View view) {
+            CSCL1Counter--;
+            CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCL1 = new ScoreData();
+            CSCL1.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL1Counter);
+        }
+        public void CSCL2CounterClick (View view) {
+            CSCL2Counter--;
+            CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCL2 = new ScoreData();
+            CSCL2.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL2Counter);
+        }
+        public void CSCL3CounterClick (View view) {
+            CSCL3Counter--;
+            CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCL3 = new ScoreData();
+            CSCL3.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL3Counter);
+        }
+        public void CSCR1CounterClick (View view) {
+            CSCR1Counter--;
+            CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCR1 = new ScoreData();
+            CSCR1.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR1Counter);
+        }
+        public void CSCR2CounterClick (View view) {
+            CSCR2Counter--;
+            CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCR2 = new ScoreData();
+            CSCR2.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR2Counter);
+        }
+        public void CSCR3CounterClick (View view) {
+            CSCR3Counter--;
+            CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSCR3 = new ScoreData();
+            CSCR3.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR3Counter);
+        }
+        public void CSPR1CounterClick (View view) {
+            CSPR1Counter--;
+            CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPR1 = new ScoreData();
+            CSPR1.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR1Counter);
+        }
+        public void CSPR2CounterClick (View view) {
+            CSPR2Counter--;
+            CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPR2 = new ScoreData();
+            CSPR2.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR2Counter);
+        }
+        public void CSPR3CounterClick (View view) {
+            CSPR3Counter--;
+            CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData CSPR3 = new ScoreData();
+            CSPR3.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR3Counter);
+        }
+
+        //right rocket onClicks
+        public void RRPNT3CounterClick (View view) {
+            RRPNT3Counter--;
+            RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData RRPNT3 = new ScoreData();
+            RRPNT3.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T3", RRPNT3Counter);
+        }
+        public void RRPNT2CounterClick (View view) {
+            RRPNT2Counter--;
+            RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData RRPNT2 = new ScoreData();
+            RRPNT2.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T2", RRPNT2Counter);
+        }
+        public void RRPNT1CounterClick (View view) {
+            RRPNT1Counter--;
+            RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData RRPNT1 = new ScoreData();
+            RRPNT1.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T1", RRPNT1Counter);
+        }
+        public void RRCT3CounterClick (View view) {
+            RRCT3Counter--;
+            RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData RRCT3 = new ScoreData();
+            RRCT3.setAll(MODE, "Rocket", "Cargo", "Right", "", "T3", RRCT3Counter);
+        }
+        public void RRCT2CounterClick (View view) {
+            RRCT2Counter--;
+            RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData RRCT2 = new ScoreData();
+            RRCT2.setAll(MODE, "Rocket", "Cargo", "Right", "", "T2", RRCT2Counter);
+        }
+        public void RRCT1CounterClick (View view) {
+            RRCT1Counter--;
+            RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
+           if (UNDO == "LRPNT2") {
+               //hi
+           }
+            ScoreData RRCT1 = new ScoreData();
+            RRCT1.setAll(MODE, "Rocket", "Cargo", "Right", "", "T1", RRCT1Counter);
+        }
+        public void RRPFT3CounterClick (View view) {
+            RRPFT3Counter--;
+            RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData RRPFT3 = new ScoreData();
+            RRPFT3.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T3", RRPFT3Counter);
+        }
+        public void RRPFT2CounterClick (View view) {
+            RRPFT2Counter--;
+            RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData RRPFT2 = new ScoreData();
+            RRPFT2.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T2", RRPFT2Counter);
+        }
+        public void RRPFT1CounterClick (View view) {
+            RRPFT1Counter--;
+            RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
+            if (UNDO == "LRPNT2") {
+                //hi
+            }
+            ScoreData RRPFT1 = new ScoreData();
+            RRPFT1.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T1", RRPFT1Counter);
+        }
     }
 }
