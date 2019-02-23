@@ -1512,49 +1512,27 @@ public class Sandstorm extends AppCompatActivity {
             if (LRCT2Counter == 0) {
                 //hi
             }
-        } else if (UNDO.equals("LRCT1"))
-            LRCT2Counter--;
-        if (LRCT2Counter == 0) {
-            //hi
-        }
-        }
-        public void LRCT1CounterClick (View view) {
+        } else if (UNDO.equals("LRCT1")) {
             LRCT1Counter--;
-            LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData LRCT1 = new ScoreData();
-            LRCT1.setAll(MODE, "Rocket", "Cargo", "Left","", "T1", LRCT1Counter);
-        }
-        public void LRPFT3CounterClick (View view) {
+            if (LRCT1Counter == 0) {
+                //hi
+            }
+        } else if (UNDO.equals("LRPFT3")){
             LRPFT3Counter--;
-            LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
+            if (LRPFT3Counter == 0) {
+                    //hi
             }
-            ScoreData LRPFT3 = new ScoreData();
-            LRPFT3.setAll(MODE, "Rocket", "Panel", "Left",  "Far","T3", LRPFT3Counter);
-        }
-        public void LRPFT2CounterClick (View view) {
+        } else if (UNDO.equals("LRPFT2")) {
             LRPFT2Counter--;
-            LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
+            if (LRPFT2Counter == 0) {
+                    //hi
             }
-            ScoreData LRPFT2 = new ScoreData();
-            LRPFT2.setAll(MODE, "Rocket", "Panel", "", "Far", "T2", LRPFT2Counter);
-        }
-        public void LRPFT1CounterClick (View view) {
+        } else if (UNDO.equals("LRPFT1")) {
             LRPFT1Counter--;
-            LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
+            if (LRPFT1Counter == 0) {
+                    //hi
             }
-            ScoreData LRPFT1 = new ScoreData();
-            LRPFT1.setAll(MODE, "Rocket", "Panel", "Far", "", "T1", LRPFT1Counter);
         }
-
         //cargo ship onClicks
         public void CSPF1CounterClick (View view) {
             CSPF1Counter--;
