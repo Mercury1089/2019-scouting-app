@@ -191,7 +191,7 @@ public class MainActivity extends Activity {
         message = "" + getIntent().getStringExtra("message");
         int counter = 0;
         int lastIndex = 1;
-        if (message.length() > 0) {
+        if (message.length() > 0 && (message.charAt(0) == 'P' || message.charAt(0) == 'C')) {
             if (message.charAt(0) == 'P') {
                 isSetupPanel = 1;
                 selectedButtonColors(panelButton);
@@ -201,26 +201,32 @@ public class MainActivity extends Activity {
                 selectedButtonColors(cargoButton);
                 panelDefault();
             }
+            message = message.substring(message.indexOf(",")+1, message.length());
             for (int i = 1; i < message.length(); i++) {
-                if (message.charAt(i) == ',') {
-                    switch (counter) {
+                    switch (i) {
                         case 1:
-                            scouterName = message.substring(lastIndex, i);
+                            scouterName = message.substring(0, message.indexOf(","));
                             ScouterNameInput.setText(scouterName);
+                            message = message.substring(message.indexOf(",")+1, message.length());
                         case 2:
-                            matchNumber = Integer.parseInt(message.substring(lastIndex, i));
-                            matchNumberInput.setText(matchNumber);
+                            matchNumber = Integer.parseInt(message.substring(0, message.indexOf(",")));
+                            matchNumberInput.setText(String.valueOf(matchNumber));
+                            message = message.substring(message.indexOf(",")+1, message.length());
                         case 3:
-                            teamNumber = Integer.parseInt(message.substring(lastIndex, i));
-                            teamNumberInput.setText(teamNumber);
+                            teamNumber = Integer.parseInt(message.substring(0, message.indexOf(",")));
+                            teamNumberInput.setText(String.valueOf(teamNumber));
+                            message = message.substring(message.indexOf(",")+1, message.length());
                         case 4:
-                            firstAlliancePartner = Integer.parseInt(message.substring(lastIndex, i));
-                            firstAlliancePartnerInput.setText(firstAlliancePartner);
+                            firstAlliancePartner = Integer.parseInt(message.substring(0, message.indexOf(",")));
+                            firstAlliancePartnerInput.setText(String.valueOf(firstAlliancePartner));
+                            message = message.substring(message.indexOf(",")+1, message.length());
                         case 5:
-                            secondAlliancePartner = Integer.parseInt(message.substring(lastIndex, i));
-                            secondAlliancePartnerInput.setText(secondAlliancePartner);
+                            secondAlliancePartner = Integer.parseInt(message.substring(0, message.indexOf(",")));
+                            secondAlliancePartnerInput.setText(String.valueOf(secondAlliancePartner));
+                            message = message.substring(message.indexOf(",")+1, message.length());
                         case 6:
-                            String RedOrBlue = message.substring(lastIndex,i);
+                            String RedOrBlue = message.substring(0, message.indexOf(","));
+                            message = message.substring(message.indexOf(",")+1, message.length());
                             if (RedOrBlue.equals("Red")){
                                 isRedAlliance = 1;
                                 isBlueAlliance = 0;
@@ -230,7 +236,8 @@ public class MainActivity extends Activity {
                                 isBlueAlliance = 1;
                             }
                         case 7:
-                            leftOrRight = message.substring(lastIndex,i);
+                            leftOrRight = message.substring(0, message.indexOf(","));
+                            message = message.substring(message.indexOf(",")+1, message.length());
                             if (leftOrRight.equals("Left")) {
                                 if (isBlueAlliance == 1) {
                                     makeBoxesBlue("Left");
@@ -252,7 +259,8 @@ public class MainActivity extends Activity {
                                 }
                             }
                         case 8:
-                            String startingposition = message.substring(lastIndex,i);
+                            String startingposition = message;
+                            message = "";
                             makeCirclesInvisible();
                             if (isBlueAlliance == 1) {
                                 if (leftOrRight.equals("Left"))
@@ -305,7 +313,6 @@ public class MainActivity extends Activity {
                     }
                     counter++;
                     lastIndex = i + 1;
-                }
             }
         }
 

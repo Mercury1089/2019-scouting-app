@@ -194,7 +194,6 @@ public class Sandstorm extends AppCompatActivity {
     private boolean isCargo = false;
     private boolean isPanel = false;
     private String message = "";
-    CircleButton btn;
     Random random;
     Timer timer;
 
@@ -285,8 +284,6 @@ public class Sandstorm extends AppCompatActivity {
         DroppedButton = findViewById(R.id.DroppedButton);
         MissedButton = findViewById(R.id.MissedButton);
         timer = new Timer();
-
-        btn.setEnabled(false);
 
         //make Sandstorm button look active
         selectedButtonColors(SandstormButton);
