@@ -6,10 +6,14 @@
       <w>cargoscoredenabled</w>
       <w>cargoship</w>
       <w>defaultdisabled</w>
+      <w>hashtable</w>
       <w>initializers</w>
       <w>lightblue</w>
       <w>lightorange</w>
       <w>lightyellow</w>
+      <w>lrct</w>
+      <w>lrpft</w>
+      <w>lrpnt</w>
       <w>panelenabled</w>
       <w>panelscoreddisabled</w>
       <w>panelscoredenabled</w>
@@ -17,6 +21,9 @@
       <w>prepopulated</w>
       <w>qrcode</w>
       <w>qrcodesuccess</w>
+      <w>rrct</w>
+      <w>rrpft</w>
+      <w>rrpnt</w>
       <w>scoutingapp</w>
       <w>setis</w>
       <w>startingposition</w>
