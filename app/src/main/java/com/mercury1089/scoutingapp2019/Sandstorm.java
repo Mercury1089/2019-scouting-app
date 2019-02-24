@@ -20,6 +20,8 @@ import java.util.TimerTask;
 
 import at.markushi.ui.CircleButton;
 
+import static java.lang.Math.abs;
+
 public class Sandstorm extends AppCompatActivity {
     //LEFT ROCKET
     //panel variables
@@ -178,16 +180,26 @@ public class Sandstorm extends AppCompatActivity {
     BootstrapButton DroppedButton;
     BootstrapButton MissedButton;
 
+    //text views
+    TextView possessionTitle;
+    TextView panelOrCargoDirections;
+    TextView droppedDirection;
+
+    TextView scoringTitle;
+    TextView pOrCDirections;
+    TextView missedDirections;
+
     //other variables
     final String MODE = "Sandstorm";
     private int crossedHABLine = 0; //0 or 1
     private int deadRobot = 0; //0 or 1
     private boolean isCargo = false;
     private boolean isPanel = false;
-    private String message = "";
     String UNDO;
     Button UndoButton;
     Timer timer;
+    Switch FellOverSwitch;
+    Switch HABLineSwitch;
 
 
     @Override
@@ -398,32 +410,68 @@ public class Sandstorm extends AppCompatActivity {
 
 
                         //cargoship
-                        for (int i = 0; i < (CSPF1Counter + CSPF2Counter); i++)
-                            output.append("," + hashMap.get("PF") + "," + counter);
-                        for (int i = 0; i < (CSCF1Counter + CSCF2Counter); i++)
-                            output.append("," + hashMap.get("CF") + "," + counter);
-
-                        for (int i = 0; i < (CSPL1Counter + CSPL2Counter + CSPL3Counter); i++)
-                            output.append("," + hashMap.get("PL") + "," + counter);
-                        for (int i = 0; i < (CSCL1Counter + CSCL2Counter + CSCL3Counter); i++)
-                            output.append("," + hashMap.get("CL") + "," + counter);
-                        for (int i = 0; i < (CSPR1Counter + CSPR2Counter + CSPR3Counter); i++)
-                            output.append("," + hashMap.get("PR") + "," + counter);
-                        for (int i = 0; i < (CSCR1Counter + CSCR2Counter + CSCR3Counter); i++)
-                            output.append("," + hashMap.get("CR") + "," + counter);
+                        for (int i = 0; i < (CSPF1Counter + CSPF2Counter); i++) {
+                            output.append(",").append(hashMap.get("PF")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < (CSCF1Counter + CSCF2Counter); i++) {
+                            output.append(",").append(hashMap.get("CF")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < (CSPL1Counter + CSPL2Counter + CSPL3Counter); i++) {
+                            output.append(",").append(hashMap.get("PL")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < (CSCL1Counter + CSCL2Counter + CSCL3Counter); i++) {
+                            output.append(",").append(hashMap.get("CL")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < (CSPR1Counter + CSPR2Counter + CSPR3Counter); i++) {
+                            output.append(",").append(hashMap.get("PR")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < (CSCR1Counter + CSCR2Counter + CSCR3Counter); i++) {
+                            output.append(",").append(hashMap.get("CR")).append(",").append(counter);
+                            counter++;
+                        }
 
                         //right rocket
-                        hashMap.get("RRPNT3");
-                        hashMap.get("RRCT3");
-                        hashMap.get("RRPFT3");
-
-                        hashMap.get("RRPNT2");
-                        hashMap.get("RRCT2");
-                        hashMap.get("RRPFT2");
-
-                        hashMap.get("RRPNT1");
-                        hashMap.get("RRCT1");
-                        hashMap.get("RRPFT1");
+                        for (int i = 0; i < RRPNT3Counter; i++) {
+                            output.append(",").append(hashMap.get("RRPNT3")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRCT3Counter; i++) {
+                            output.append(",").append(hashMap.get("RRCT3")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRPFT3Counter; i++) {
+                            output.append(",").append(hashMap.get("RRPFT3")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRPNT2Counter; i++) {
+                            output.append(",").append(hashMap.get("RRPNT2")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRCT2Counter; i++) {
+                            output.append(",").append(hashMap.get("RRCT2")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRPFT2Counter; i++) {
+                            output.append(",").append(hashMap.get("RRPFT2")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRPNT1Counter; i++) {
+                            output.append(",").append(hashMap.get("RRPNT1")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRCT1Counter; i++) {
+                            output.append(",").append(hashMap.get("RRCT1")).append(",").append(counter);
+                            counter++;
+                        }
+                        for (int i = 0; i < RRPFT1Counter; i++) {
+                            output.append(",").append(hashMap.get("RRPFT1")).append(",").append(counter);
+                            counter++;
+                        }
 
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);
                         intent.putExtra("sandstormMap", hashMap);
@@ -434,19 +482,21 @@ public class Sandstorm extends AppCompatActivity {
         };
         timer.schedule(displayCountDownMessage, 12000);
         timer.schedule(switchToTeleop, 15000);
-         if (message.charAt(0) == 'P') {
+        HashMap<String,String> setupHashMap;
+        Serializable setupData = getIntent().getSerializableExtra("main");
+        setupHashMap = (HashMap<String, String>)setupData;
+        setupHashMap.get("AllianceColor");
+        if (setupHashMap.get("AllianceColor").equals("P")) {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
             CargoButton.setEnabled(false);
             totalPanels++;
-            //enable panel circles
              enableScoringDiagram('P');
          } else {
              selectedButtonColors(CargoButton);
              CargoCounterText.setText("1");
              PanelButton.setEnabled(false);
              totalCargo++;
-             //enable cargo circles
              enableScoringDiagram('C');
          }
 
@@ -461,27 +511,32 @@ public class Sandstorm extends AppCompatActivity {
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
 
-        final Switch HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
+        HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
         HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
+                if (isChecked) {
+                    UNDO = "HAB";
+                    UndoButton.setEnabled(true);
                     crossedHABLine = 1;
+                }
                 else
                     crossedHABLine = 0;
             }
         });
 
-        final Switch FellOverSwitch = findViewById(R.id.FellOverSwitch);
+        FellOverSwitch = findViewById(R.id.FellOverSwitch);
         FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TextView possessionTitle = findViewById(R.id.IDPossession);
-                TextView panelOrCargoDirections = findViewById(R.id.IDPanelOrCargoDirections);
-                TextView droppedDirection = findViewById(R.id.IDDroppedDirections);
+                possessionTitle = findViewById(R.id.IDPossession);
+                panelOrCargoDirections = findViewById(R.id.IDPanelOrCargoDirections);
+                droppedDirection = findViewById(R.id.IDDroppedDirections);
 
-                TextView scoringTitle = findViewById(R.id.IDScoring);
-                TextView pOrCDirections = findViewById(R.id.IDScoringPOrCDirections);
-                TextView missedDirections = findViewById(R.id.IDScoringMissedDirections);
+                scoringTitle = findViewById(R.id.IDScoring);
+                pOrCDirections = findViewById(R.id.IDScoringPOrCDirections);
+                missedDirections = findViewById(R.id.IDScoringMissedDirections);
                 if (isChecked) {
+                    UNDO = "FellOver";
+                    UndoButton.setEnabled(true);
                     deadRobot = 1;
                     PanelButton.setEnabled(false);
                     CargoButton.setEnabled(false);
@@ -520,10 +575,6 @@ public class Sandstorm extends AppCompatActivity {
     }
 
     //call methods
-    private void updateCounterDisplay (int panels, int cargo, TextView textView) {
-        int total = panels + cargo;
-        textView.setText(String.valueOf(total));
-    }
     private void defaultButtonState (BootstrapButton button) {
         button.setBackgroundColor(getResources().getColor(R.color.light));
         button.setTextColor(getResources().getColor(R.color.grey));
@@ -537,10 +588,6 @@ public class Sandstorm extends AppCompatActivity {
             textView.setTextColor(getResources().getColor(R.color.grey));
         else
             textView.setTextColor(getResources().getColor(R.color.light));
-    }
-
-    private void passOnSetupHashMap () {
-
     }
 
 
@@ -1205,13 +1252,15 @@ public class Sandstorm extends AppCompatActivity {
     //click methods
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        HashMap<String,String> setupHashMap = new HashMap<>();
+        HashMap<String,String> setupHashMap;
         Serializable setupData = getIntent().getSerializableExtra("main");
         setupHashMap = (HashMap<String, String>)setupData;
         intent.putExtra("main", setupHashMap);
         startActivity(intent);
     }
     public void panelCounterClick (View view) {
+        UNDO = "Panel";
+        UndoButton.setEnabled(true);
         selectedButtonColors(PanelButton);
         defaultButtonState(CargoButton);
         totalPanels++;
@@ -1223,6 +1272,8 @@ public class Sandstorm extends AppCompatActivity {
         disableScoringDiagram('C');
     }
     public void cargoCounterClick (View view) {
+        UNDO = "Cargo";
+        UndoButton.setEnabled(true);
         selectedButtonColors(CargoButton);
         defaultButtonState(PanelButton);
         totalCargo++;
@@ -1253,27 +1304,56 @@ public class Sandstorm extends AppCompatActivity {
 
         if (isPanel) {
             droppedPanels++;
-            totalPanels++;
-            PanelCounterText.setText(String.valueOf(totalPanels));
             defaultButtonState(PanelButton);
         }
         if (isCargo) {
             droppedCargo++;
-            totalCargo++;
-            CargoCounterText.setText(String.valueOf(totalCargo));
             defaultButtonState(CargoButton);
         }
+        DroppedCounterText.setText(droppedPanels+droppedCargo);
+
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
+
         DroppedButton.setEnabled(false);
         MissedButton.setEnabled(false);
         disableScoringDiagram('A');
-        updateCounterDisplay(droppedPanels,droppedCargo,DroppedCounterText);
     }
     public void missedClick (View view) {
-        if (isPanel)
+        UNDO = "Missed";
+        UndoButton.setEnabled(true);
+
+        selectedButtonColors(MissedButton);
+        TimerTask changeToDefault = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        defaultButtonState(MissedButton);
+                    }
+                });
+            }
+        };
+        timer.schedule(changeToDefault, 500);
+
+        if (isPanel){
             missedPanels++;
-        if (isCargo)
+            defaultButtonState(PanelButton);
+        }
+        if (isCargo){
             missedCargo++;
-        updateCounterDisplay(missedPanels,missedCargo,DroppedCounterText);
+            defaultButtonState(CargoButton);
+        }
+
+        MissedCounterText.setText(missedPanels+missedCargo);
+
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
+
+        MissedButton.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        disableScoringDiagram('A');
     }
 
     //left rocket onClicks
@@ -1490,24 +1570,76 @@ public class Sandstorm extends AppCompatActivity {
     //undo button
     public void UndoClick (View view) {
         switch (UNDO) {
-
+            case "Panel":
+                defaultButtonState(PanelButton);
+                defaultButtonState(CargoButton);
+                totalPanels--;
+                PanelCounterText.setText(String.valueOf(totalPanels));
+                CargoButton.setEnabled(true);
+                isPanel = false;
+                isCargo = false;
+                disableScoringDiagram('A');
+                break;
+            case "Cargo":
+                defaultButtonState(CargoButton);
+                defaultButtonState(PanelButton);
+                totalCargo--;
+                CargoCounterText.setText(String.valueOf(totalCargo));
+                PanelButton.setEnabled(true);
+                isPanel = false;
+                isCargo = false;
+                disableScoringDiagram('A');
+                break;
             case "Dropped":
                 if (isPanel) {
                     droppedPanels--;
-                    totalPanels--;
-                    PanelCounterText.setText(String.valueOf(totalPanels));
                     selectedButtonColors(PanelButton);
                 }
                 if (isCargo) {
                     droppedCargo--;
-                    totalCargo--;
-                    CargoCounterText.setText(String.valueOf(totalCargo));
                     selectedButtonColors(CargoButton);
                 }
+                DroppedCounterText.setText(droppedPanels+droppedCargo);
+
+                PanelButton.setEnabled(false);
+                CargoButton.setEnabled(false);
+
                 DroppedButton.setEnabled(true);
                 MissedButton.setEnabled(true);
-                enableScoringDiagram('A'); //might cause errors
-                updateCounterDisplay(droppedPanels,droppedCargo,DroppedCounterText);
+                enableScoringDiagram('A');
+                break;
+            case "Missed":
+                if (isPanel){
+                    missedPanels--;
+                    selectedButtonColors(PanelButton);
+                }
+                if (isCargo){
+                    missedCargo--;
+                    selectedButtonColors(CargoButton);
+                }
+
+                MissedCounterText.setText(missedPanels+missedCargo);
+
+                PanelButton.setEnabled(false);
+                CargoButton.setEnabled(false);
+
+                MissedButton.setEnabled(true);
+                DroppedButton.setEnabled(true);
+                enableScoringDiagram('A');
+            case "FellOver":
+                deadRobot = 0;
+                PanelButton.setEnabled(true);
+                CargoButton.setEnabled(true);
+                setTextToColor(possessionTitle, "white");
+                setTextToColor(panelOrCargoDirections, "white");
+                setTextToColor(droppedDirection, "white");
+                setTextToColor(scoringTitle, "white");
+                setTextToColor(pOrCDirections, "white");
+                setTextToColor(missedDirections, "white");
+                FellOverSwitch.setChecked(!FellOverSwitch.isChecked());
+            case "HAB":
+                crossedHABLine = abs(crossedHABLine-1);
+                HABLineSwitch.setChecked(!HABLineSwitch.isChecked());
             case "LRPNT3": //undo for circle buttons aka locations
                 LRPNT3Counter--;
                 if (LRPNT3Counter == 0) {
@@ -1528,192 +1660,224 @@ public class Sandstorm extends AppCompatActivity {
                     LeftRocketPanelNearT1.setColor(Color.rgb(255, 255, 217));
                     LRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "LRCT3":
                 LRCT3Counter--;
                 if (LRCT3Counter == 0) {
                     LeftRocketCargoT3.setColor(Color.rgb(221, 172, 107));
                     LRCT3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "LRCT2":
                 LRCT2Counter--;
                 if (LRCT2Counter == 0) {
                     LeftRocketCargoT2.setColor(Color.rgb(221, 172, 107));
                     LRCT2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "LRCT1":
                 LRCT1Counter--;
                 if (LRCT1Counter == 0) {
                     LeftRocketCargoT1.setColor(Color.rgb(221, 172, 107));
                     LRCT1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "LRPFT3":
                 LRPFT3Counter--;
                 if (LRPFT3Counter == 0) {
                     LeftRocketPanelFarT3.setColor(Color.rgb(255, 255, 217));
                     LRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "LRPFT2":
                 LRPFT2Counter--;
                 if (LRPFT2Counter == 0) {
                     LeftRocketPanelFarT2.setColor(Color.rgb(255, 255, 217));
                     LRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "LRPFT1":
                 LRPFT1Counter--;
                 if (LRPFT1Counter == 0) {
                     LeftRocketPanelFarT1.setColor(Color.rgb(255, 255, 217));
                     LRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPF1":
                 CSPF1Counter--;
                 if (CSPF1Counter == 0) {
                     CargoShipPanelFront1.setColor(Color.rgb(255, 255, 217));
                     CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPF2":
                 CSPF2Counter--;
                 if (CSPF2Counter == 0) {
                     CargoShipPanelFront2.setColor(Color.rgb(255, 255, 217));
                     CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCF1":
                 CSCF1Counter--;
                 if (CSCF1Counter == 0) {
                     CargoShipCargoFront1.setColor(Color.rgb(221, 172, 107));
                     CSCF1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCF2":
                 CSCF2Counter--;
                 if (CSCF2Counter == 0) {
                     CargoShipCargoFront2.setColor(Color.rgb(221, 172, 107));
                     CSCF2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPL1":
                 CSPL1Counter--;
                 if (CSPL1Counter == 0) {
                     CargoShipPanelLeft1.setColor(Color.rgb(255, 255, 217));
                     CSPL1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPL2":
                 CSPL2Counter--;
                 if (CSPL2Counter == 0) {
                     CargoShipPanelLeft2.setColor(Color.rgb(255, 255, 217));
                     CSPL2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPL3":
                 CSPL3Counter--;
                 if (CSPL3Counter == 0) {
                     CargoShipPanelLeft3.setColor(Color.rgb(255, 255, 217));
                     CSPL3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCL1":
                 CSCL1Counter--;
                 if (CSCL1Counter == 0) {
                     CargoShipCargoLeft1.setColor(Color.rgb(221, 172, 107));
                     CSCL1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCL2":
                 CSCL2Counter--;
                 if (CSCL2Counter == 0) {
                     CargoShipCargoLeft2.setColor(Color.rgb(221, 172, 107));
                     CSCL2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCL3":
                 CSCL3Counter--;
                 if (CSCL3Counter == 0) {
                     CargoShipCargoLeft3.setColor(Color.rgb(221, 172, 107));
                     CSCL3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCR1":
                 CSCR1Counter--;
                 if (CSCR1Counter == 0) {
                     CargoShipCargoRight1.setColor(Color.rgb(221, 172, 107));
                     CSCR1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCR2":
                 CSCR2Counter--;
                 if (CSCR2Counter == 0) {
                     CargoShipCargoRight2.setColor(Color.rgb(221, 172, 107));
                     CSCR2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSCR3":
                 CSCR3Counter--;
                 if (CSCR3Counter == 0) {
                     CargoShipCargoRight3.setColor(Color.rgb(221, 172, 107));
                     CSCR3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPR1":
                 CSCR1Counter--;
                 if (CSCR1Counter == 0) {
                     CargoShipPanelRight1.setColor(Color.rgb(255, 255, 217));
                     CSPR1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPR2":
                 CSPR2Counter--;
                 if (CSPR2Counter == 0) {
                     CargoShipPanelRight2.setColor(Color.rgb(255, 255, 217));
                     CSPR2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "CSPR3":
                 CSPR3Counter--;
                 if (CSPR3Counter == 0) {
                     CargoShipPanelRight3.setColor(Color.rgb(255, 255, 217));
                     CSPR3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "RRPNT3":
                 RRPNT3Counter--;
                 if (RRPNT3Counter == 0) {
                     RightRocketPanelNearT3.setColor(Color.rgb(255, 255, 217));
                     RRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "RRPNT2":
                 RRPNT2Counter--;
                 if (LRPNT2Counter == 0) {
                     RightRocketPanelNearT2.setColor(Color.rgb(255, 255, 217));
                     RRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "RRPNT1":
                 RRPNT1Counter--;
                 if (RRPNT1Counter == 0) {
                     RightRocketPanelNearT1.setColor(Color.rgb(255, 255, 217));
                     RRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "RRCT3":
                 RRCT3Counter--;
                 if (RRCT3Counter == 0) {
                     RightRocketCargoT3.setColor(Color.rgb(221, 172, 107));
                     RRCT3.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
+                break;
             case "RRCT2":
                 RRCT2Counter--;
                 if (RRCT2Counter == 0) {
                     RightRocketCargoT2.setColor(Color.rgb(221, 172, 107));
                     RRCT2.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
+                break;
             case "RRCT1":
                 RRCT1Counter--;
                 if (LRCT1Counter == 0) {
                     RightRocketCargoT1.setColor(Color.rgb(221, 172, 107));
                     RRCT1.setTextColor(getResources().getColor(R.color.light));
                 }
+                break;
             case "RRPFT3":
                 RRPFT3Counter--;
                 if (RRPFT3Counter == 0) {
                     RightRocketPanelFarT3.setColor(Color.rgb(255, 255, 217));
                     RRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "RRPFT2":
                 RRPFT2Counter--;
                 if (RRPFT2Counter == 0) {
                     RightRocketPanelFarT2.setColor(Color.rgb(255, 255, 217));
                     RRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
             case "RRPFT1":
                 RRPFT1Counter--;
                 if (RRPFT1Counter == 0) {
                     RightRocketPanelFarT1.setColor(Color.rgb(255, 255, 217));
                     RRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
                 }
+                break;
         }
     }
 }
