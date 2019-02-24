@@ -16,7 +16,9 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
+import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -169,6 +171,8 @@ public class Sandstorm extends AppCompatActivity {
     private TextView RRPFT2;
     private TextView RRPFT3;
 
+    private HashMap<String, String> recievedHashMap;
+
 
 
 
@@ -286,6 +290,7 @@ public class Sandstorm extends AppCompatActivity {
         CargoButton = findViewById(R.id.SCargoButton);
         DroppedButton = findViewById(R.id.DroppedButton);
         MissedButton = findViewById(R.id.MissedButton);
+        recievedHashMap = new HashMap<String, String>();
         timer = new Timer();
 
         //make Sandstorm button look active
@@ -345,7 +350,8 @@ public class Sandstorm extends AppCompatActivity {
         hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,Right,,T1");
         hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,Right,Far,T1");
 
-        message = getIntent().getStringExtra("message");
+        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+        recievedHashMap = (HashMap<String, String>)setupData;
 
         TimerTask displayCountDownMessage = new TimerTask() {
             @Override
@@ -364,43 +370,6 @@ public class Sandstorm extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        HashMap<String, String> hashMap = new HashMap<>();
-                        int counter;
-                        //left rocket
-                        hashMap.get("LRPNT3");
-                        hashMap.get("LRCT3");
-                        hashMap.get("LRPFT3");
-
-                        hashMap.get("LRPNT2");
-                        hashMap.get("LRCT2");
-                        hashMap.get("LRPFT2");
-
-                        hashMap.get("LRPNT1");
-                        hashMap.get("LRCT1");
-                        hashMap.get("LRPFT1");
-
-                        //cargoship
-                        hashMap.get("PF");
-                        hashMap.get("CF");
-
-                        hashMap.get("PL");
-                        hashMap.get("CL");
-                        hashMap.get("PR");
-                        hashMap.get("CR");
-
-                        //right rocket
-                        hashMap.get("RRPNT3");
-                        hashMap.get("RRCT3");
-                        hashMap.get("RRPFT3");
-
-                        hashMap.get("RRPNT2");
-                        hashMap.get("RRCT2");
-                        hashMap.get("RRPFT2");
-
-                        hashMap.get("RRPNT1");
-                        hashMap.get("RRCT1");
-                        hashMap.get("RRPFT1");
-
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);
                         startActivity(intent);
                     }
@@ -409,14 +378,14 @@ public class Sandstorm extends AppCompatActivity {
         };
         timer.schedule(displayCountDownMessage, 12000);
         timer.schedule(switchToTeleop, 15000);
-         if (message.charAt(0) == 'P') {
+         if (recievedHashMap.get("StartingGameObject").charAt(0) == 'P') {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
             CargoButton.setEnabled(false);
             totalPanels++;
             //enable panel circles
              enableScoringDiagram('P');
-         } else {
+         } else if (recievedHashMap.get("StartingGameObject").charAt(0) == 'C'){
              selectedButtonColors(CargoButton);
              CargoCounterText.setText("1");
              PanelButton.setEnabled(false);
@@ -1216,7 +1185,7 @@ public class Sandstorm extends AppCompatActivity {
     //click methods
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("message", message);
+        intent.putExtra("recievedHashMap", recievedHashMap);
         startActivity(intent);
     }
     public void panelCounterClick (View view) {

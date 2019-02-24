@@ -856,9 +856,8 @@
         android:gravity="center"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT3"
-        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelFarT3"
-        app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="341dp" />
 
     <TextView
         android:id="@+id/LRPFT2"
