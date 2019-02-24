@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -183,9 +185,10 @@ public class Sandstorm extends AppCompatActivity {
     private boolean isCargo = false;
     private boolean isPanel = false;
     private String message = "";
-    String UNDO
-    CircleButton btn;
+    String UNDO;
+    Button UndoButton;
     Timer timer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -273,9 +276,8 @@ public class Sandstorm extends AppCompatActivity {
         CargoButton = findViewById(R.id.SCargoButton);
         DroppedButton = findViewById(R.id.DroppedButton);
         MissedButton = findViewById(R.id.MissedButton);
+        UndoButton = findViewById(R.id.UndoButton);
         timer = new Timer();
-
-        btn.setEnabled(false);
 
         //make Sandstorm button look active
         selectedButtonColors(SandstormButton);
@@ -335,8 +337,6 @@ public class Sandstorm extends AppCompatActivity {
         hashMap.put("RRPNT1","Sandstorm,Rocket,Panel,Right,Near,T1");
         hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,Right,,T1");
         hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,Right,Far,T1");
-
-        message = getIntent().getStringExtra("message");
 
         TimerTask displayCountDownMessage = new TimerTask() {
             @Override
@@ -426,7 +426,7 @@ public class Sandstorm extends AppCompatActivity {
                         hashMap.get("RRPFT1");
 
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);
-                        intent.putExtra("map", hashMap);
+                        intent.putExtra("sandstormMap", hashMap);
                         startActivity(intent);
                     }
                 });
@@ -539,45 +539,9 @@ public class Sandstorm extends AppCompatActivity {
             textView.setTextColor(getResources().getColor(R.color.light));
     }
 
-    /*private HashMap setHashtableValues () {
-        HashMap<String, String> hashMap = new HashMap<>();
+    private void passOnSetupHashMap () {
 
-        //left rocket
-        hashMap.put("LRPNT3","Sandstorm,Rocket,Panel,,Near,T3");
-        hashMap.put("LRCT3","Sandstorm,Rocket,Cargo,,,T3");
-        hashMap.put("LRPFT3","Sandstorm,Rocket,Panel,,Far,T3");
-
-        hashMap.put("LRPNT2","Sandstorm,Rocket,Panel,,Near,T2");
-        hashMap.put("LRCT2","Sandstorm,Rocket,Cargo,,,T2");
-        hashMap.put("LRPFT2","Sandstorm,Rocket,Panel,,Far,T2");
-
-        hashMap.put("LRPNT1","Sandstorm,Rocket,Panel,,Near,T1");
-        hashMap.put("LRCT1","Sandstorm,Rocket,Cargo,,,T1");
-        hashMap.put("LRPFT1","Sandstorm,Rocket,Panel,,Far,T1");
-
-        //cargoship
-        hashMap.put("PF","Sandstorm,Cargoship,Panel,Front,,,");
-        hashMap.put("CF","Sandstorm,Cargoship,Cargo,Front,,,");
-
-        hashMap.put("PL","Sandstorm,Cargoship,Panel,Left,,,");
-        hashMap.put("CL","Sandstorm,Cargoship,Cargo,Left,,,");
-        hashMap.put("PR","Sandstorm,Cargoship,Panel,Right,,,");
-        hashMap.put("CR","Sandstorm,Cargoship,Cargo,Right,,,");
-
-        //right rocket
-        hashMap.put("RRPNT3","Sandstorm,Rocket,Panel,,Near,T3");
-        hashMap.put("RRCT3","Sandstorm,Rocket,Cargo,,,T3");
-        hashMap.put("RRPFT3","Sandstorm,Rocket,Panel,,Far,T3");
-
-        hashMap.put("RRPNT2","Sandstorm,Rocket,Panel,,Near,T2");
-        hashMap.put("RRCT2","Sandstorm,Rocket,Cargo,,,T2");
-        hashMap.put("RRPFT2","Sandstorm,Rocket,Panel,,Far,T2");
-
-        hashMap.put("RRPNT1","Sandstorm,Rocket,Panel,,Near,T1");
-        hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,,,T1");
-        hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,,Far,T1");
-        return hashMap;
-    }*/
+    }
 
 
     private void disableScoringDiagram (char c) {
@@ -998,7 +962,7 @@ public class Sandstorm extends AppCompatActivity {
                 }
                 else {
                     CargoShipPanelFront2.setColor(Color.rgb(255, 255, 217));
-                    CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
                 if (CSPL1Counter > 0) {
                     CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
@@ -1022,7 +986,7 @@ public class Sandstorm extends AppCompatActivity {
                 }
                 else {
                     CargoShipPanelLeft3.setColor(Color.rgb(255, 255, 217));
-                    CSPL1.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSPL3.setTextColor(getResources().getColor(R.color.textdefault));
                 }
                 if (CSPR1Counter > 0) {
                     CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
@@ -1156,7 +1120,7 @@ public class Sandstorm extends AppCompatActivity {
                 }
                 else {
                     CargoShipCargoFront2.setColor(Color.rgb(221, 172, 107));
-                    CSCF1.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCF2.setTextColor(getResources().getColor(R.color.textdefault));
                 }
                 if (CSCL1Counter > 0) {
                     CargoShipCargoLeft1.setColor(Color.rgb(255, 152, 0));
@@ -1231,7 +1195,7 @@ public class Sandstorm extends AppCompatActivity {
                 }
                 else {
                     RightRocketCargoT1.setColor(Color.rgb(221, 172, 107));
-                    RRCT3.setTextColor(getResources().getColor(R.color.light));
+                    RRCT1.setTextColor(getResources().getColor(R.color.light));
                 }
         }
     }
@@ -1241,7 +1205,10 @@ public class Sandstorm extends AppCompatActivity {
     //click methods
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("message", message);
+        HashMap<String,String> setupHashMap = new HashMap<>();
+        Serializable setupData = getIntent().getSerializableExtra("main");
+        setupHashMap = (HashMap<String, String>)setupData;
+        intent.putExtra("main", setupHashMap);
         startActivity(intent);
     }
     public void panelCounterClick (View view) {
@@ -1267,7 +1234,9 @@ public class Sandstorm extends AppCompatActivity {
         disableScoringDiagram('C');
     }
     public void droppedClick (View view) {
-        //use handler??? for temporarily active (only 500 ms)
+        UNDO = "Dropped";
+        UndoButton.setEnabled(true);
+        
         selectedButtonColors(DroppedButton);
         TimerTask changeToDefault = new TimerTask() {
             @Override
@@ -1312,47 +1281,56 @@ public class Sandstorm extends AppCompatActivity {
         LRPNT3Counter++;
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT3";
+        UndoButton.setEnabled(true);
 
     }
     public void LRPNT2CounterClick (View view) {
         LRPNT2Counter++;
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT2";
+        UndoButton.setEnabled(true);
     }
     public void LRPNT1CounterClick (View view) {
         LRPNT1Counter++;
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT1";
+        UndoButton.setEnabled(true);
     }
     public void LRCT3CounterClick (View view) {
         LRCT3Counter++;
         LeftRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "LRCT3";
+        UndoButton.setEnabled(true);
     }
     public void LRCT2CounterClick (View view) {
         LRCT2Counter++;
         LeftRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "LRCT2";
+        UndoButton.setEnabled(true);
     }
     public void LRCT1CounterClick (View view) {
         LRCT1Counter++;
         LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "LRCT1";
+        UndoButton.setEnabled(true);
     }
     public void LRPFT3CounterClick (View view) {
         LRPFT3Counter++;
         LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPFT3";
+        UndoButton.setEnabled(true);
     }
     public void LRPFT2CounterClick (View view) {
         LRPFT2Counter++;
         LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPFT2";
+        UndoButton.setEnabled(true);
     }
     public void LRPFT1CounterClick (View view) {
         LRPFT1Counter++;
         LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPFT1";
+        UndoButton.setEnabled(true);
     }
 
     //cargo ship onClicks
@@ -1360,81 +1338,97 @@ public class Sandstorm extends AppCompatActivity {
         CSPF1Counter++;
         CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPF1";
+        UndoButton.setEnabled(true);
     }
     public void CSPF2CounterClick (View view) {
         CSPF2Counter++;
         CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPF2";
+        UndoButton.setEnabled(true);
     }
     public void CSCF1CounterClick (View view) {
         CSCF1Counter++;
         CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCF1";
+        UndoButton.setEnabled(true);
     }
     public void CSCF2CounterClick (View view) {
         CSCF2Counter++;
         CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCF2";
+        UndoButton.setEnabled(true);
     }
     public void CSPL1CounterClick (View view) {
         CSPL1Counter++;
         CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL1";
+        UndoButton.setEnabled(true);
     }
     public void CSPL2CounterClick (View view) {
         CSPL2Counter++;
         CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL2";
+        UndoButton.setEnabled(true);
     }
     public void CSPL3CounterClick (View view) {
         CSPL3Counter++;
         CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL3";
+        UndoButton.setEnabled(true);
     }
     public void CSCL1CounterClick (View view) {
         CSCL1Counter++;
         CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL1";
+        UndoButton.setEnabled(true);
     }
     public void CSCL2CounterClick (View view) {
         CSCL2Counter++;
         CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL2";
+        UndoButton.setEnabled(true);
     }
     public void CSCL3CounterClick (View view) {
         CSCL3Counter++;
         CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL3";
+        UndoButton.setEnabled(true);
     }
     public void CSCR1CounterClick (View view) {
         CSCR1Counter++;
         CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR1";
+        UndoButton.setEnabled(true);
     }
     public void CSCR2CounterClick (View view) {
         CSCR2Counter++;
         CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR2";
+        UndoButton.setEnabled(true);
     }
     public void CSCR3CounterClick (View view) {
         CSCR3Counter++;
         CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR3";
+        UndoButton.setEnabled(true);
     }
     public void CSPR1CounterClick (View view) {
         CSPR1Counter++;
         CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR1";
+        UndoButton.setEnabled(true);
     }
     public void CSPR2CounterClick (View view) {
         CSPR2Counter++;
         CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR2";
+        UndoButton.setEnabled(true);
     }
     public void CSPR3CounterClick (View view) {
         CSPR3Counter++;
         CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR3";
+        UndoButton.setEnabled(true);
     }
 
     //right rocket onClicks
@@ -1442,324 +1436,284 @@ public class Sandstorm extends AppCompatActivity {
         RRPNT3Counter++;
         RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT3";
+        UndoButton.setEnabled(true);
     }
     public void RRPNT2CounterClick (View view) {
         RRPNT2Counter++;
         RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT2";
+        UndoButton.setEnabled(true);
     }
     public void RRPNT1CounterClick (View view) {
         RRPNT1Counter++;
         RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT1";
+        UndoButton.setEnabled(true);
     }
     public void RRCT3CounterClick (View view) {
         RRCT3Counter++;
         RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT3";
+        UndoButton.setEnabled(true);
     }
     public void RRCT2CounterClick (View view) {
         RRCT2Counter++;
         RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT2";
+        UndoButton.setEnabled(true);
     }
     public void RRCT1CounterClick (View view) {
         RRCT1Counter++;
         RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT1";
+        UndoButton.setEnabled(true);
     }
     public void RRPFT3CounterClick (View view) {
         RRPFT3Counter++;
         RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT3";
+        UndoButton.setEnabled(true);
     }
     public void RRPFT2CounterClick (View view) {
         RRPFT2Counter++;
         RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT2";
+        UndoButton.setEnabled(true);
     }
     public void RRPFT1CounterClick (View view) {
         RRPFT1Counter++;
         RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT1";
+        UndoButton.setEnabled(true);
     }
 
     //undo button
     public void UndoClick (View view) {
-        //left rocket onClicks
-        if (UNDO.equals("LRPNT3")){
-            LRPNT3Counter--;
-            if (LRPNT3Counter == 0) {
-                //hi
-            }
-        } else if (UNDO.equals("LRPNT2")) {
-            LRPNT2Counter--;
-            if (LRPNT2Counter == 0) {
-                //hi
-            }
-        } else if (UNDO.equals("LRPNT1")) {
-            LRPNT1Counter--;
-            if (LRPNT1Counter == 0) {
-                //hi
-            }
-        } else if (UNDO.equals("LRCT3")) {
-            LRCT3Counter--;
-            if (LRCT3Counter == 0) {
-                //hi
-            }
-        } else if (UNDO.equals("LRCT2")) {
-            LRCT2Counter--;
-            if (LRCT2Counter == 0) {
-                //hi
-            }
-        } else if (UNDO.equals("LRCT1")) {
-            LRCT1Counter--;
-            if (LRCT1Counter == 0) {
-                //hi
-            }
-        } else if (UNDO.equals("LRPFT3")){
-            LRPFT3Counter--;
-            if (LRPFT3Counter == 0) {
-                    //hi
-            }
-        } else if (UNDO.equals("LRPFT2")) {
-            LRPFT2Counter--;
-            if (LRPFT2Counter == 0) {
-                    //hi
-            }
-        } else if (UNDO.equals("LRPFT1")) {
-            LRPFT1Counter--;
-            if (LRPFT1Counter == 0) {
-                    //hi
-            }
-        }
-        //cargo ship onClicks
-        public void CSPF1CounterClick (View view) {
-            CSPF1Counter--;
-            CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPF1 = new ScoreData();
-            CSPF1.setAll(MODE, "Cargoship", "Panel", "Front", "", "", CSPF1Counter);
-        }
-        public void CSPF2CounterClick (View view) {
-            CSPF2Counter--;
-            CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPF2 = new ScoreData();
-            CSPF2.setAll(MODE, "Cargoship", "Panel", "Front", "", "", CSPF2Counter);
-        }
-        public void CSCF1CounterClick (View view) {
-            CSCF1Counter--;
-            CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCF1 = new ScoreData();
-            CSCF1.setAll(MODE, "Cargoship", "Cargo", "Front", "",  "", CSCF1Counter);
-        }
-        public void CSCF2CounterClick (View view) {
-            CSCF2Counter--;
-            CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCF2 = new ScoreData();
-            CSCF2.setAll(MODE, "Cargoship", "Cargo", "Front", "", "", CSCF2Counter);
-        }
-        public void CSPL1CounterClick (View view) {
-            CSPL1Counter--;
-            CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPL1 = new ScoreData();
-            CSPL1.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL1Counter);
-        }
-        public void CSPL2CounterClick (View view) {
-            CSPL2Counter--;
-            CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPL2 = new ScoreData();
-            CSPL2.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL2Counter);
-        }
-        public void CSPL3CounterClick (View view) {
-            CSPL3Counter--;
-            CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPL3 = new ScoreData();
-            CSPL3.setAll(MODE, "Cargoship", "Panel", "Left", "", "", CSPL3Counter);
-        }
-        public void CSCL1CounterClick (View view) {
-            CSCL1Counter--;
-            CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCL1 = new ScoreData();
-            CSCL1.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL1Counter);
-        }
-        public void CSCL2CounterClick (View view) {
-            CSCL2Counter--;
-            CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCL2 = new ScoreData();
-            CSCL2.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL2Counter);
-        }
-        public void CSCL3CounterClick (View view) {
-            CSCL3Counter--;
-            CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCL3 = new ScoreData();
-            CSCL3.setAll(MODE, "Cargoship", "Cargo", "Left", "", "", CSCL3Counter);
-        }
-        public void CSCR1CounterClick (View view) {
-            CSCR1Counter--;
-            CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCR1 = new ScoreData();
-            CSCR1.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR1Counter);
-        }
-        public void CSCR2CounterClick (View view) {
-            CSCR2Counter--;
-            CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCR2 = new ScoreData();
-            CSCR2.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR2Counter);
-        }
-        public void CSCR3CounterClick (View view) {
-            CSCR3Counter--;
-            CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSCR3 = new ScoreData();
-            CSCR3.setAll(MODE, "Cargoship", "Cargo", "Right", "", "", CSCR3Counter);
-        }
-        public void CSPR1CounterClick (View view) {
-            CSPR1Counter--;
-            CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPR1 = new ScoreData();
-            CSPR1.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR1Counter);
-        }
-        public void CSPR2CounterClick (View view) {
-            CSPR2Counter--;
-            CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPR2 = new ScoreData();
-            CSPR2.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR2Counter);
-        }
-        public void CSPR3CounterClick (View view) {
-            CSPR3Counter--;
-            CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData CSPR3 = new ScoreData();
-            CSPR3.setAll(MODE, "Cargoship", "Panel", "Right", "", "", CSPR3Counter);
-        }
+        switch (UNDO) {
 
-        //right rocket onClicks
-        public void RRPNT3CounterClick (View view) {
-            RRPNT3Counter--;
-            RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
-            }
-            ScoreData RRPNT3 = new ScoreData();
-            RRPNT3.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T3", RRPNT3Counter);
-        }
-        public void RRPNT2CounterClick (View view) {
-            RRPNT2Counter--;
-            RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
-            }
-            ScoreData RRPNT2 = new ScoreData();
-            RRPNT2.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T2", RRPNT2Counter);
-        }
-        public void RRPNT1CounterClick (View view) {
-            RRPNT1Counter--;
-            RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
-            }
-            ScoreData RRPNT1 = new ScoreData();
-            RRPNT1.setAll(MODE, "Rocket", "Panel", "Right", "Near", "T1", RRPNT1Counter);
-        }
-        public void RRCT3CounterClick (View view) {
-            RRCT3Counter--;
-            RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData RRCT3 = new ScoreData();
-            RRCT3.setAll(MODE, "Rocket", "Cargo", "Right", "", "T3", RRCT3Counter);
-        }
-        public void RRCT2CounterClick (View view) {
-            RRCT2Counter--;
-            RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData RRCT2 = new ScoreData();
-            RRCT2.setAll(MODE, "Rocket", "Cargo", "Right", "", "T2", RRCT2Counter);
-        }
-        public void RRCT1CounterClick (View view) {
-            RRCT1Counter--;
-            RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
-           if (UNDO == "LRPNT2") {
-               //hi
-           }
-            ScoreData RRCT1 = new ScoreData();
-            RRCT1.setAll(MODE, "Rocket", "Cargo", "Right", "", "T1", RRCT1Counter);
-        }
-        public void RRPFT3CounterClick (View view) {
-            RRPFT3Counter--;
-            RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
-            }
-            ScoreData RRPFT3 = new ScoreData();
-            RRPFT3.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T3", RRPFT3Counter);
-        }
-        public void RRPFT2CounterClick (View view) {
-            RRPFT2Counter--;
-            RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
-            }
-            ScoreData RRPFT2 = new ScoreData();
-            RRPFT2.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T2", RRPFT2Counter);
-        }
-        public void RRPFT1CounterClick (View view) {
-            RRPFT1Counter--;
-            RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
-            if (UNDO == "LRPNT2") {
-                //hi
-            }
-            ScoreData RRPFT1 = new ScoreData();
-            RRPFT1.setAll(MODE, "Rocket", "Panel", "Right", "Far", "T1", RRPFT1Counter);
+            case "Dropped":
+                if (isPanel) {
+                    droppedPanels--;
+                    totalPanels--;
+                    PanelCounterText.setText(String.valueOf(totalPanels));
+                    selectedButtonColors(PanelButton);
+                }
+                if (isCargo) {
+                    droppedCargo--;
+                    totalCargo--;
+                    CargoCounterText.setText(String.valueOf(totalCargo));
+                    selectedButtonColors(CargoButton);
+                }
+                DroppedButton.setEnabled(true);
+                MissedButton.setEnabled(true);
+                enableScoringDiagram('A'); //might cause errors
+                updateCounterDisplay(droppedPanels,droppedCargo,DroppedCounterText);
+            case "LRPNT3": //undo for circle buttons aka locations
+                LRPNT3Counter--;
+                if (LRPNT3Counter == 0) {
+                    LeftRocketPanelNearT3.setColor(Color.rgb(255, 255, 217));
+                    LRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+                break;
+            case "LRPNT2":
+                LRPNT2Counter--;
+                if (LRPNT2Counter == 0) {
+                    LeftRocketPanelNearT2.setColor(Color.rgb(255, 255, 217));
+                    LRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+                break;
+            case "LRPNT1":
+                LRPNT1Counter--;
+                if (LRPNT1Counter == 0) {
+                    LeftRocketPanelNearT1.setColor(Color.rgb(255, 255, 217));
+                    LRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "LRCT3":
+                LRCT3Counter--;
+                if (LRCT3Counter == 0) {
+                    LeftRocketCargoT3.setColor(Color.rgb(221, 172, 107));
+                    LRCT3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "LRCT2":
+                LRCT2Counter--;
+                if (LRCT2Counter == 0) {
+                    LeftRocketCargoT2.setColor(Color.rgb(221, 172, 107));
+                    LRCT2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "LRCT1":
+                LRCT1Counter--;
+                if (LRCT1Counter == 0) {
+                    LeftRocketCargoT1.setColor(Color.rgb(221, 172, 107));
+                    LRCT1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "LRPFT3":
+                LRPFT3Counter--;
+                if (LRPFT3Counter == 0) {
+                    LeftRocketPanelFarT3.setColor(Color.rgb(255, 255, 217));
+                    LRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "LRPFT2":
+                LRPFT2Counter--;
+                if (LRPFT2Counter == 0) {
+                    LeftRocketPanelFarT2.setColor(Color.rgb(255, 255, 217));
+                    LRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "LRPFT1":
+                LRPFT1Counter--;
+                if (LRPFT1Counter == 0) {
+                    LeftRocketPanelFarT1.setColor(Color.rgb(255, 255, 217));
+                    LRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPF1":
+                CSPF1Counter--;
+                if (CSPF1Counter == 0) {
+                    CargoShipPanelFront1.setColor(Color.rgb(255, 255, 217));
+                    CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPF2":
+                CSPF2Counter--;
+                if (CSPF2Counter == 0) {
+                    CargoShipPanelFront2.setColor(Color.rgb(255, 255, 217));
+                    CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCF1":
+                CSCF1Counter--;
+                if (CSCF1Counter == 0) {
+                    CargoShipCargoFront1.setColor(Color.rgb(221, 172, 107));
+                    CSCF1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCF2":
+                CSCF2Counter--;
+                if (CSCF2Counter == 0) {
+                    CargoShipCargoFront2.setColor(Color.rgb(221, 172, 107));
+                    CSCF2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPL1":
+                CSPL1Counter--;
+                if (CSPL1Counter == 0) {
+                    CargoShipPanelLeft1.setColor(Color.rgb(255, 255, 217));
+                    CSPL1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPL2":
+                CSPL2Counter--;
+                if (CSPL2Counter == 0) {
+                    CargoShipPanelLeft2.setColor(Color.rgb(255, 255, 217));
+                    CSPL2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPL3":
+                CSPL3Counter--;
+                if (CSPL3Counter == 0) {
+                    CargoShipPanelLeft3.setColor(Color.rgb(255, 255, 217));
+                    CSPL3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCL1":
+                CSCL1Counter--;
+                if (CSCL1Counter == 0) {
+                    CargoShipCargoLeft1.setColor(Color.rgb(221, 172, 107));
+                    CSCL1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCL2":
+                CSCL2Counter--;
+                if (CSCL2Counter == 0) {
+                    CargoShipCargoLeft2.setColor(Color.rgb(221, 172, 107));
+                    CSCL2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCL3":
+                CSCL3Counter--;
+                if (CSCL3Counter == 0) {
+                    CargoShipCargoLeft3.setColor(Color.rgb(221, 172, 107));
+                    CSCL3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCR1":
+                CSCR1Counter--;
+                if (CSCR1Counter == 0) {
+                    CargoShipCargoRight1.setColor(Color.rgb(221, 172, 107));
+                    CSCR1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCR2":
+                CSCR2Counter--;
+                if (CSCR2Counter == 0) {
+                    CargoShipCargoRight2.setColor(Color.rgb(221, 172, 107));
+                    CSCR2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSCR3":
+                CSCR3Counter--;
+                if (CSCR3Counter == 0) {
+                    CargoShipCargoRight3.setColor(Color.rgb(221, 172, 107));
+                    CSCR3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPR1":
+                CSCR1Counter--;
+                if (CSCR1Counter == 0) {
+                    CargoShipPanelRight1.setColor(Color.rgb(255, 255, 217));
+                    CSPR1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPR2":
+                CSPR2Counter--;
+                if (CSPR2Counter == 0) {
+                    CargoShipPanelRight2.setColor(Color.rgb(255, 255, 217));
+                    CSPR2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "CSPR3":
+                CSPR3Counter--;
+                if (CSPR3Counter == 0) {
+                    CargoShipPanelRight3.setColor(Color.rgb(255, 255, 217));
+                    CSPR3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "RRPNT3":
+                RRPNT3Counter--;
+                if (RRPNT3Counter == 0) {
+                    RightRocketPanelNearT3.setColor(Color.rgb(255, 255, 217));
+                    RRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "RRPNT2":
+                RRPNT2Counter--;
+                if (LRPNT2Counter == 0) {
+                    RightRocketPanelNearT2.setColor(Color.rgb(255, 255, 217));
+                    RRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "RRPNT1":
+                RRPNT1Counter--;
+                if (RRPNT1Counter == 0) {
+                    RightRocketPanelNearT1.setColor(Color.rgb(255, 255, 217));
+                    RRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "RRCT3":
+                RRCT3Counter--;
+                if (RRCT3Counter == 0) {
+                    RightRocketCargoT3.setColor(Color.rgb(221, 172, 107));
+                    RRCT3.setTextColor(getResources().getColor(R.color.defaultdisabled));
+                }
+            case "RRCT2":
+                RRCT2Counter--;
+                if (RRCT2Counter == 0) {
+                    RightRocketCargoT2.setColor(Color.rgb(221, 172, 107));
+                    RRCT2.setTextColor(getResources().getColor(R.color.defaultdisabled));
+                }
+            case "RRCT1":
+                RRCT1Counter--;
+                if (LRCT1Counter == 0) {
+                    RightRocketCargoT1.setColor(Color.rgb(221, 172, 107));
+                    RRCT1.setTextColor(getResources().getColor(R.color.light));
+                }
+            case "RRPFT3":
+                RRPFT3Counter--;
+                if (RRPFT3Counter == 0) {
+                    RightRocketPanelFarT3.setColor(Color.rgb(255, 255, 217));
+                    RRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "RRPFT2":
+                RRPFT2Counter--;
+                if (RRPFT2Counter == 0) {
+                    RightRocketPanelFarT2.setColor(Color.rgb(255, 255, 217));
+                    RRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
+                }
+            case "RRPFT1":
+                RRPFT1Counter--;
+                if (RRPFT1Counter == 0) {
+                    RightRocketPanelFarT1.setColor(Color.rgb(255, 255, 217));
+                    RRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
+                }
         }
     }
 }

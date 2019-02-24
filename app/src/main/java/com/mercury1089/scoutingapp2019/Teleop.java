@@ -13,7 +13,7 @@ public class Teleop extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teleop);
-        Serializable data = getIntent().getSerializableExtra("map");
+        Serializable data = getIntent().getSerializableExtra("sandstormMap");
         HashMap<String,String> teleopData = new HashMap<>();
         teleopData = (HashMap<String, String>)data;
         String hi;

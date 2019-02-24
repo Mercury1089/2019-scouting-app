@@ -12,9 +12,6 @@
         <activity android:name=".Climb"></activity>
         <activity android:name=".Teleop" />
         <activity
-            android:name=".SandstormRight"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".Sandstorm"
             android:parentActivityName=".MainActivity" />
         <activity
