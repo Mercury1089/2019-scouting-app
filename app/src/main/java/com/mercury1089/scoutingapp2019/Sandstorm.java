@@ -3,6 +3,8 @@ package com.mercury1089.scoutingapp2019;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
+import android.os.Parcelable;
+import android.support.v4.os.ParcelableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -304,7 +307,45 @@ public class Sandstorm extends AppCompatActivity {
         //disable scoring diagram
         disableScoringDiagram('A');
 
-         message = getIntent().getStringExtra("message");
+        //make and initialize hashtable
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        //left rocket
+        hashMap.put("LRPNT3","Sandstorm,Rocket,Panel,Left,Near,T3");
+        hashMap.put("LRCT3","Sandstorm,Rocket,Cargo,Left,,T3");
+        hashMap.put("LRPFT3","Sandstorm,Rocket,Panel,Left,Far,T3");
+
+        hashMap.put("LRPNT2","Sandstorm,Rocket,Panel,Left,Near,T2");
+        hashMap.put("LRCT2","Sandstorm,Rocket,Cargo,Left,,T2");
+        hashMap.put("LRPFT2","Sandstorm,Rocket,Panel,Left,Far,T2");
+
+        hashMap.put("LRPNT1","Sandstorm,Rocket,Panel,Left,Near,T1");
+        hashMap.put("LRCT1","Sandstorm,Rocket,Cargo,Left,,T1");
+        hashMap.put("LRPFT1","Sandstorm,Rocket,Panel,Left,Far,T1");
+
+        //cargoship
+        hashMap.put("PF","Sandstorm,Cargoship,Panel,Front,,,");
+        hashMap.put("CF","Sandstorm,Cargoship,Cargo,Front,,,");
+
+        hashMap.put("PL","Sandstorm,Cargoship,Panel,Left,,,");
+        hashMap.put("CL","Sandstorm,Cargoship,Cargo,Left,,,");
+        hashMap.put("PR","Sandstorm,Cargoship,Panel,Right,,,");
+        hashMap.put("CR","Sandstorm,Cargoship,Cargo,Right,,,");
+
+        //right rocket
+        hashMap.put("RRPNT3","Sandstorm,Rocket,Panel,Right,Near,T3");
+        hashMap.put("RRCT3","Sandstorm,Rocket,Cargo,Right,,T3");
+        hashMap.put("RRPFT3","Sandstorm,Rocket,Panel,Right,Far,T3");
+
+        hashMap.put("RRPNT2","Sandstorm,Rocket,Panel,Right,Near,T2");
+        hashMap.put("RRCT2","Sandstorm,Rocket,Cargo,Right,,T2");
+        hashMap.put("RRPFT2","Sandstorm,Rocket,Panel,Right,Far,T2");
+
+        hashMap.put("RRPNT1","Sandstorm,Rocket,Panel,Right,Near,T1");
+        hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,Right,,T1");
+        hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,Right,Far,T1");
+
+        message = getIntent().getStringExtra("message");
 
         TimerTask displayCountDownMessage = new TimerTask() {
             @Override
@@ -323,6 +364,43 @@ public class Sandstorm extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        HashMap<String, String> hashMap = new HashMap<>();
+                        int counter;
+                        //left rocket
+                        hashMap.get("LRPNT3");
+                        hashMap.get("LRCT3");
+                        hashMap.get("LRPFT3");
+
+                        hashMap.get("LRPNT2");
+                        hashMap.get("LRCT2");
+                        hashMap.get("LRPFT2");
+
+                        hashMap.get("LRPNT1");
+                        hashMap.get("LRCT1");
+                        hashMap.get("LRPFT1");
+
+                        //cargoship
+                        hashMap.get("PF");
+                        hashMap.get("CF");
+
+                        hashMap.get("PL");
+                        hashMap.get("CL");
+                        hashMap.get("PR");
+                        hashMap.get("CR");
+
+                        //right rocket
+                        hashMap.get("RRPNT3");
+                        hashMap.get("RRCT3");
+                        hashMap.get("RRPFT3");
+
+                        hashMap.get("RRPNT2");
+                        hashMap.get("RRCT2");
+                        hashMap.get("RRPFT2");
+
+                        hashMap.get("RRPNT1");
+                        hashMap.get("RRCT1");
+                        hashMap.get("RRPFT1");
+
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);
                         startActivity(intent);
                     }
@@ -435,6 +513,46 @@ public class Sandstorm extends AppCompatActivity {
         else
             textView.setTextColor(getResources().getColor(R.color.light));
     }
+
+    /*private HashMap setHashtableValues () {
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        //left rocket
+        hashMap.put("LRPNT3","Sandstorm,Rocket,Panel,,Near,T3");
+        hashMap.put("LRCT3","Sandstorm,Rocket,Cargo,,,T3");
+        hashMap.put("LRPFT3","Sandstorm,Rocket,Panel,,Far,T3");
+
+        hashMap.put("LRPNT2","Sandstorm,Rocket,Panel,,Near,T2");
+        hashMap.put("LRCT2","Sandstorm,Rocket,Cargo,,,T2");
+        hashMap.put("LRPFT2","Sandstorm,Rocket,Panel,,Far,T2");
+
+        hashMap.put("LRPNT1","Sandstorm,Rocket,Panel,,Near,T1");
+        hashMap.put("LRCT1","Sandstorm,Rocket,Cargo,,,T1");
+        hashMap.put("LRPFT1","Sandstorm,Rocket,Panel,,Far,T1");
+
+        //cargoship
+        hashMap.put("PF","Sandstorm,Cargoship,Panel,Front,,,");
+        hashMap.put("CF","Sandstorm,Cargoship,Cargo,Front,,,");
+
+        hashMap.put("PL","Sandstorm,Cargoship,Panel,Left,,,");
+        hashMap.put("CL","Sandstorm,Cargoship,Cargo,Left,,,");
+        hashMap.put("PR","Sandstorm,Cargoship,Panel,Right,,,");
+        hashMap.put("CR","Sandstorm,Cargoship,Cargo,Right,,,");
+
+        //right rocket
+        hashMap.put("RRPNT3","Sandstorm,Rocket,Panel,,Near,T3");
+        hashMap.put("RRCT3","Sandstorm,Rocket,Cargo,,,T3");
+        hashMap.put("RRPFT3","Sandstorm,Rocket,Panel,,Far,T3");
+
+        hashMap.put("RRPNT2","Sandstorm,Rocket,Panel,,Near,T2");
+        hashMap.put("RRCT2","Sandstorm,Rocket,Cargo,,,T2");
+        hashMap.put("RRPFT2","Sandstorm,Rocket,Panel,,Far,T2");
+
+        hashMap.put("RRPNT1","Sandstorm,Rocket,Panel,,Near,T1");
+        hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,,,T1");
+        hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,,Far,T1");
+        return hashMap;
+    }*/
 
 
     private void disableScoringDiagram (char c) {
@@ -1125,14 +1243,14 @@ public class Sandstorm extends AppCompatActivity {
     }
     public void droppedClick (View view) {
         //use handler??? for temporarily active (only 500 ms)
+        selectedButtonColors(DroppedButton);
         TimerTask changeToDefault = new TimerTask() {
             @Override
             public void run() {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Intent intent = new Intent(Sandstorm.this, Teleop.class);
-                        startActivity(intent);
+                        defaultButtonState(DroppedButton);
                     }
                 });
             }
@@ -1168,20 +1286,15 @@ public class Sandstorm extends AppCompatActivity {
     public void LRPNT3CounterClick (View view) {
         LRPNT3Counter++;
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
-        ScoreData LPRNT3 = new ScoreData();
-        LPRNT3.setAll(MODE, "Rocket", "Panel", "Left","Near", "T3", LRPNT3Counter);
+
     }
     public void LRPNT2CounterClick (View view) {
         LRPNT2Counter++;
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
-        ScoreData LRPNT2 = new ScoreData();
-        LRPNT2.setAll(MODE, "Rocket", "Panel", "Left","Near", "T2", LRPFT2Counter);
     }
     public void LRPNT1CounterClick (View view) {
         LRPNT1Counter++;
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
-        ScoreData LPRNT1 = new ScoreData();
-        LPRNT1.setAll(MODE, "Rocket", "Panel", "Left","Near", "T1", LRPNT1Counter);
     }
     public void LRCT3CounterClick (View view) {
         LRCT3Counter++;
