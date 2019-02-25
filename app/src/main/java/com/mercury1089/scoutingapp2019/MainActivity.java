@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.NavUtils;
 
 
@@ -21,7 +22,7 @@ import android.util.Log;
 import android.view.View;
 
 
-
+import android.view.ViewGroup;
 import android.widget.Button;
 
 import android.widget.CompoundButton;
@@ -167,6 +168,7 @@ public class MainActivity extends Activity {
         setupHashMap.put("StartingGameObject", "Neither");
         setupHashMap.put("NoShow", "False");
         setupHashMap.put("LeftOrRight", getIntent().getStringExtra("LEFTORRIGHT"));
+        setupHashMap.put("StartingPosition", "None");
         NoShowSwitch = findViewById(R.id.NoShowSwitch);
 
         clearButton = findViewById(R.id.ClearButton);
@@ -191,14 +193,14 @@ public class MainActivity extends Activity {
         prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
         prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
 
-        if (setupHashMap.size() == 3) {
+        if (setupHashMap.size() == 4) {
             Serializable setupData = getIntent().getSerializableExtra("recievedHashMap");
             if (setupData != null) setupHashMap = (HashMap<String, String>) setupData;
             if (setupHashMap == null) setupHashMap = new HashMap<String, String>();
         }
         
         enableButtonsDefault();
-        if (setupHashMap.size() > 3) {
+        if (setupHashMap.size() > 4) {
                 ScouterNameInput.setText(setupHashMap.get(ScouterNameInput.getTag().toString()).toString());
                 matchNumberInput.setText(setupHashMap.get(matchNumberInput.getTag().toString()).toString());
                 teamNumberInput.setText(setupHashMap.get(teamNumberInput.getTag().toString()).toString());
@@ -242,6 +244,15 @@ public class MainActivity extends Activity {
                     cargoButton.setTextColor(getResources().getColor(R.color.light));
                 }
             }
+            ConstraintLayout constraintLayout = findViewById(R.id.mainactivity);
+            for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                if (constraintLayout.getChildAt(i).getTag().toString().equals(setupHashMap.get("StartingPosition"))) {
+                    View circle = constraintLayout.getChildAt(i);
+                    if (circle instanceof View) {
+                        circle.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
         }
         //starting listener to check the status of the switch
         NoShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -279,7 +290,7 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
-                checkIfAnythingIsTyped(ScouterNameInput);
+                checkToEnableStartButton();
                 setupHashMap.put(ScouterNameInput.getTag().toString(), ScouterNameInput.getText().toString());
             }
             @Override
@@ -292,20 +303,19 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
-                checkIfAnythingIsTyped(matchNumberInput);
+                checkToEnableStartButton();
                 setupHashMap.put(matchNumberInput.getTag().toString(), matchNumberInput.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
         });
-
         teamNumberInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
-                checkIfAnythingIsTyped(teamNumberInput);
+                checkToEnableStartButton();
                 setupHashMap.put(teamNumberInput.getTag().toString(), teamNumberInput.getText().toString());
             }
             @Override
@@ -318,7 +328,7 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
-                checkIfAnythingIsTyped(firstAlliancePartnerInput);
+                checkToEnableStartButton();
                 setupHashMap.put(firstAlliancePartnerInput.getTag().toString(), firstAlliancePartnerInput.getText().toString());
             }
             @Override
@@ -331,7 +341,7 @@ public class MainActivity extends Activity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
-                checkIfAnythingIsTyped(secondAlliancePartnerInput);
+                checkToEnableStartButton();
                 setupHashMap.put(secondAlliancePartnerInput.getTag().toString(), secondAlliancePartnerInput.getText().toString());
             }
             @Override
@@ -559,21 +569,6 @@ public class MainActivity extends Activity {
         button.setTextColor(getResources().getColor(R.color.light));
     }
 
-    public void checkIfAnythingIsTyped (EditText editText) {
-        if (editText.getText().length() > 0) {
-            clearButton.setEnabled(true);
-            if (ScouterNameInput.getText().length() > 0
-                    && teamNumberInput.getText().length() > 0
-                    && matchNumberInput.getText().length() > 0
-                    && firstAlliancePartnerInput.getText().length() > 0
-                    && secondAlliancePartnerInput.getText().length() > 0)
-                startButton.setEnabled(true);
-        }
-        else
-            startButton.setEnabled(false);
-    }
-
-
     //click methods
 
     public void SettingsClick (View view) { NavUtils.navigateUpFromSameTask(this); }
@@ -594,7 +589,8 @@ public class MainActivity extends Activity {
     public void LL1Click (View view) {
         startPositionDefault();
         startL1 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         LL1Circle.setVisibility(View.VISIBLE);
     }
@@ -604,7 +600,8 @@ public class MainActivity extends Activity {
     public void LC1Click (View view) {
         startPositionDefault();
         startC1 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         LC1Circle.setVisibility(View.VISIBLE);
     }
@@ -614,7 +611,8 @@ public class MainActivity extends Activity {
     public void LR1Click (View view) {
         startPositionDefault();
         startR1 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         LR1Circle.setVisibility(View.VISIBLE);
     }
@@ -624,7 +622,8 @@ public class MainActivity extends Activity {
     public void LL2Click (View view) {
         startPositionDefault();
         startL2 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         LL2Circle.setVisibility(View.VISIBLE);
     }
@@ -634,7 +633,8 @@ public class MainActivity extends Activity {
     public void LR2Click (View view) {
         startPositionDefault();
         startR2 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         LR2Circle.setVisibility(View.VISIBLE);
     }
@@ -642,7 +642,8 @@ public class MainActivity extends Activity {
     public void RL1Click (View view) {
         startPositionDefault();
         startL1 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         RL1Circle.setVisibility(View.VISIBLE);
     }
@@ -652,7 +653,8 @@ public class MainActivity extends Activity {
     public void RC1Click (View view) {
         startPositionDefault();
         startC1 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         RC1Circle.setVisibility(View.VISIBLE);
     }
@@ -662,7 +664,8 @@ public class MainActivity extends Activity {
     public void RR1Click (View view) {
         startPositionDefault();
         startR1 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         RR1Circle.setVisibility(View.VISIBLE);
     }
@@ -672,7 +675,8 @@ public class MainActivity extends Activity {
     public void RL2Click (View view) {
         startPositionDefault();
         startL2 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         RL2Circle.setVisibility(View.VISIBLE);
     }
@@ -682,7 +686,8 @@ public class MainActivity extends Activity {
     public void RR2Click (View view) {
         startPositionDefault();
         startR2 = 1;
-
+        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        checkToEnableStartButton();
         makeCirclesInvisible();
         RR2Circle.setVisibility(View.VISIBLE);
     }
@@ -795,7 +800,7 @@ public class MainActivity extends Activity {
         panelButton.setEnabled(true);
         cargoButton.setEnabled(true);
 
-        if (setupHashMap.size() > 3) {
+        if (setupHashMap.size() > 4) {
             startButton.setEnabled(true);
         }
         else {
@@ -833,4 +838,17 @@ public class MainActivity extends Activity {
         bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
         return bitmap;
     }
+    public void checkToEnableStartButton() {
+        if (ScouterNameInput.getText().length() > 0
+                && teamNumberInput.getText().length() > 0
+                && matchNumberInput.getText().length() > 0
+                && firstAlliancePartnerInput.getText().length() > 0
+                && secondAlliancePartnerInput.getText().length() > 0 && !setupHashMap.get("StartingPosition").equals("None")) {
+            startButton.setEnabled(true);
+        }
+        else {
+            startButton.setEnabled(false);
+        }
+    }
+
 }
