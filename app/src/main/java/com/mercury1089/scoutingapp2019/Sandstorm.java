@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Parcelable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -173,10 +174,8 @@ public class Sandstorm extends AppCompatActivity {
     private TextView RRPFT2;
     private TextView RRPFT3;
 
-    private HashMap<String, String> recievedHashMap;
-
-
-
+    private HashMap<String, String> setupHashMap;
+    private HashMap<String, String> scoreHashMap;
 
     //counter TextViews
     TextView PanelCounterText;
@@ -301,7 +300,8 @@ public class Sandstorm extends AppCompatActivity {
         CargoButton = findViewById(R.id.SCargoButton);
         DroppedButton = findViewById(R.id.DroppedButton);
         MissedButton = findViewById(R.id.MissedButton);
-        recievedHashMap = new HashMap<String, String>();
+        setupHashMap = new HashMap<String, String>();
+        scoreHashMap = new HashMap<String, String>();
         timer = new Timer();
 
         //make Sandstorm button look active
@@ -323,9 +323,9 @@ public class Sandstorm extends AppCompatActivity {
         //disable scoring diagram
         disableScoringDiagram('A');
 
-        //make and initialize hashtable
-        HashMap<String, String> hashMap = new HashMap<>();
-
+        //make and initialize hash map
+        //HashMap<String, String> hashMap = new HashMap<>();
+        /*
         //left rocket
         hashMap.put("LRPNT3","Sandstorm,Rocket,Panel,Left,Near,T3");
         hashMap.put("LRCT3","Sandstorm,Rocket,Cargo,Left,,T3");
@@ -360,9 +360,11 @@ public class Sandstorm extends AppCompatActivity {
         hashMap.put("RRPNT1","Sandstorm,Rocket,Panel,Right,Near,T1");
         hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,Right,,T1");
         hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,Right,Far,T1");
-
+        */
         Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
-        recievedHashMap = (HashMap<String, String>)setupData;
+        setupHashMap = (HashMap<String, String>)setupData;
+        Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
+        scoreHashMap = (HashMap<String, String>)scoreData;
 
         TimerTask displayCountDownMessage = new TimerTask() {
             @Override
@@ -598,6 +600,18 @@ public class Sandstorm extends AppCompatActivity {
             textView.setTextColor(getResources().getColor(R.color.grey));
         else
             textView.setTextColor(getResources().getColor(R.color.light));
+    }
+
+    ConstraintLayout layout = findViewById(R.id.layout);
+
+    public boolean iterateThroughForm(ConstraintLayout layout) {
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            View v = layout.getChildAt(i);
+            if (v instanceof TextView) {
+                scoreHashMap.put(v.getTag().toString(), "0");
+            } //etc. If it fails anywhere, just return false.
+        }
+        return true;
     }
 
 

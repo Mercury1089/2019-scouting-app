@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bootstrap_brand_secondary_text"
@@ -337,8 +338,8 @@
         android:onClick="LRPFT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/LeftRocketCargoT3"
-        app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
+        app:layout_constraintBottom_toTopOf="@+id/LRPFT2"
+        app:layout_constraintStart_toEndOf="@+id/LeftRocketCargoT3" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/LeftRocketPanelNearT3"
@@ -856,7 +857,8 @@
         android:gravity="center"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        tools:layout_editor_absoluteX="222dp"
+        app:layout_constraintEnd_toEndOf="@+id/LeftRocketPanelFarT3"
+        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelFarT3"
         tools:layout_editor_absoluteY="341dp" />
 
     <TextView
