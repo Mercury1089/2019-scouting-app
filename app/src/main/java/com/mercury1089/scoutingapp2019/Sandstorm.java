@@ -204,7 +204,6 @@ public class Sandstorm extends AppCompatActivity {
     TextView missedDirections;
 
     //other variables
-    final String MODE = "Sandstorm";
     private int crossedHABLine = 0; //0 or 1
     private int deadRobot = 0; //0 or 1
     private boolean isCargo = false;
