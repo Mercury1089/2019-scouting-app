@@ -246,9 +246,9 @@ public class MainActivity extends Activity {
             }
             ConstraintLayout constraintLayout = findViewById(R.id.mainactivity);
             for (int i = 0; i < constraintLayout.getChildCount(); i++) {
-                if (constraintLayout.getChildAt(i).getTag().toString().equals(setupHashMap.get("StartingPosition"))) {
+                if (constraintLayout.getChildAt(i) instanceof CustomView) {
                     View circle = constraintLayout.getChildAt(i);
-                    if (circle instanceof View) {
+                    if (circle.getTag().toString().equals(setupHashMap.get("StartingPosition"))) {
                         circle.setVisibility(View.VISIBLE);
                     }
                 }
