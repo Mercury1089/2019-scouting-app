@@ -89,6 +89,7 @@
     <string name="Sandstorm">Sandstorm</string>
     <string name="Teleop">Teleop</string>
     <string name="Climb">Climb</string>
+    <string name="title_activity_sandstorm__left">Sandstorm_Left</string>
 
 
 </resources>

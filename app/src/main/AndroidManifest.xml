@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Climb"></activity>
+        <activity android:name=".SandstormRight"></activity>
+        <activity android:name=".Climb" />
         <activity android:name=".Teleop" />
         <activity
             android:name=".Sandstorm"

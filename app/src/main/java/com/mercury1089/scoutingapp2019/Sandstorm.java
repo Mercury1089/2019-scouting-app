@@ -408,6 +408,12 @@ public class Sandstorm extends AppCompatActivity {
                             counter++;
                         }
 
+                        //set tag to every circle button and text view
+                        //key: output | value: counter
+                        //create hashmap and iterate through all textviews to set tag as key and text value as value
+                        //init tag to empty first
+                        //if tag is set to empty, move on
+                        //tag = key
 
                         //cargoship
                         for (int i = 0; i < (CSPF1Counter + CSPF2Counter); i++) {
