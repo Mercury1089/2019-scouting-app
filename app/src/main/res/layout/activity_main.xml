@@ -534,7 +534,7 @@
 
         app:layout_constraintTop_toBottomOf="@+id/LeftOrRight" />
 
-
+    <!-- hi -->
     <TextView
 
         android:id="@+id/IDStartingPositionDirections"
