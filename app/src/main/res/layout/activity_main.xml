@@ -144,10 +144,11 @@
 
         android:inputType="textPersonName"
 
+        android:tag="ScouterName"
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/IDScouterName" />
 
 
@@ -188,10 +189,11 @@
 
         android:maxLength="3"
 
+        android:tag="MatchNumber"
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/IDMatchNumber" />
 
 
@@ -232,8 +234,9 @@
 
         android:maxLength="4"
 
-        android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag="TeamNumber"
 
+        android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/MatchNumberInput" />
 
@@ -294,8 +297,9 @@
 
         android:maxLength="4"
 
-        android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag="Alliance1"
 
+        android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
@@ -316,8 +320,9 @@
 
         android:maxLength="4"
 
-        android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag="Alliance2"
 
+        android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toEndOf="@+id/FirstAlliancePartnerInput"
         app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
@@ -376,10 +381,11 @@
 
             android:onClick="blueClick"
 
+            android:tag="BlueToggle"
+
             android:text="@string/Blue"
 
             tools:layout_editor_absoluteX="250dp"
-
             tools:layout_editor_absoluteY="439dp" />
 
 
@@ -393,12 +399,13 @@
 
             android:onClick="redClick"
 
+            android:tag="RedToggle"
+
             android:text="@string/Red"
 
             android:textSize="12sp"
 
             tools:layout_editor_absoluteX="301dp"
-
             tools:layout_editor_absoluteY="602dp" />
 
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
@@ -482,9 +489,8 @@
             android:background="@color/bootstrap_brand_success"
 
             android:onClick="panelClick"
-
+            android:tag="PanelToggle"
             android:text="@string/Panel"
-
             android:textSize="12sp" />
 
 
@@ -497,9 +503,8 @@
             android:layout_height="match_parent"
 
             android:onClick="cargoClick"
-
+            android:tag="CargoToggle"
             android:text="@string/Cargo"
-
             android:textSize="12sp" />
 
 

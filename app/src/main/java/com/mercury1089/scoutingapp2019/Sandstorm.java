@@ -2,6 +2,9 @@ package com.mercury1089.scoutingapp2019;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Parcelable;
+import android.support.v4.os.ParcelableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +18,8 @@ import com.beardedhen.androidbootstrap.BootstrapButton;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -72,6 +77,13 @@ public class Sandstorm extends AppCompatActivity {
     CircleButton RightRocketCargoT3;
     CircleButton RightRocketCargoT2;
     CircleButton RightRocketCargoT1;
+
+    //Repeated Variables for each buttonClick:
+    private final String MODE = "Sandstorm";
+    private String location = "";
+    private String side = ""; //left, right, or front
+    private String nearOrFar = "";
+    private String tier = "";
 
     //displayed counters
     private int totalPanels = 0;
@@ -160,6 +172,8 @@ public class Sandstorm extends AppCompatActivity {
     private TextView RRPFT1;
     private TextView RRPFT2;
     private TextView RRPFT3;
+
+    private HashMap<String, String> recievedHashMap;
 
 
 
@@ -288,7 +302,7 @@ public class Sandstorm extends AppCompatActivity {
         CargoButton = findViewById(R.id.SCargoButton);
         DroppedButton = findViewById(R.id.DroppedButton);
         MissedButton = findViewById(R.id.MissedButton);
-        UndoButton = findViewById(R.id.UndoButton);
+        recievedHashMap = new HashMap<String, String>();
         timer = new Timer();
 
         //make Sandstorm button look active
@@ -312,8 +326,6 @@ public class Sandstorm extends AppCompatActivity {
 
         //make and initialize hashtable
         HashMap<String, String> hashMap = new HashMap<>();
-
-
 
         //left rocket
         hashMap.put("LRPNT3","Sandstorm,Rocket,Panel,Left,Near,T3");
@@ -349,6 +361,9 @@ public class Sandstorm extends AppCompatActivity {
         hashMap.put("RRPNT1","Sandstorm,Rocket,Panel,Right,Near,T1");
         hashMap.put("RRCT1","Sandstorm,Rocket,Cargo,Right,,T1");
         hashMap.put("RRPFT1","Sandstorm,Rocket,Panel,Right,Far,T1");
+
+        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+        recievedHashMap = (HashMap<String, String>)setupData;
 
         TimerTask displayCountDownMessage = new TimerTask() {
             @Override
@@ -408,12 +423,6 @@ public class Sandstorm extends AppCompatActivity {
                             counter++;
                         }
 
-                        //set tag to every circle button and text view
-                        //key: output | value: counter
-                        //create hashmap and iterate through all textviews to set tag as key and text value as value
-                        //init tag to empty first
-                        //if tag is set to empty, move on
-                        //tag = key
 
                         //cargoship
                         for (int i = 0; i < (CSPF1Counter + CSPF2Counter); i++) {
@@ -488,17 +497,13 @@ public class Sandstorm extends AppCompatActivity {
         };
         timer.schedule(displayCountDownMessage, 12000);
         timer.schedule(switchToTeleop, 15000);
-        HashMap<String,String> setupHashMap;
-        Serializable setupData = getIntent().getSerializableExtra("main");
-        setupHashMap = (HashMap<String, String>)setupData;
-        setupHashMap.get("AllianceColor");
-        if (setupHashMap.get("AllianceColor").equals("P")) {
+         if (recievedHashMap.get("StartingGameObject").charAt(0) == 'P') {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
             CargoButton.setEnabled(false);
             totalPanels++;
              enableScoringDiagram('P');
-         } else {
+         } else if (recievedHashMap.get("StartingGameObject").charAt(0) == 'C'){
              selectedButtonColors(CargoButton);
              CargoCounterText.setText("1");
              PanelButton.setEnabled(false);
@@ -1258,10 +1263,7 @@ public class Sandstorm extends AppCompatActivity {
     //click methods
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        HashMap<String,String> setupHashMap;
-        Serializable setupData = getIntent().getSerializableExtra("main");
-        setupHashMap = (HashMap<String, String>)setupData;
-        intent.putExtra("main", setupHashMap);
+        intent.putExtra("recievedHashMap", recievedHashMap);
         startActivity(intent);
     }
     public void panelCounterClick (View view) {

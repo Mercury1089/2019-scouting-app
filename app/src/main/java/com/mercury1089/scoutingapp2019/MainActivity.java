@@ -106,6 +106,10 @@ public class MainActivity extends Activity {
     private CustomView RL2Circle;
     private CustomView RR2Circle;
 
+    private Switch NoShowSwitch;
+
+    private HashMap<String, String> setupHashMap;
+
     //for QR code generator
     public final static int QRCodeSize = 500;
     Bitmap bitmap;
@@ -120,8 +124,6 @@ public class MainActivity extends Activity {
     boolean isQRButton = false;
     String leftOrRight;
     String message;
-
-    private HashMap<String, String> setupHashMap;
 
 
 
@@ -161,8 +163,11 @@ public class MainActivity extends Activity {
         RL2Circle = findViewById(R.id.CircleRL2);
         RR2Circle = findViewById(R.id.CircleRR2);
 
-        setupHashMap = new HashMap<>();
+        setupHashMap = new HashMap<String, String>();
         setupHashMap.put("StartingGameObject", "Neither");
+        setupHashMap.put("NoShow", "False");
+        setupHashMap.put("LeftOrRight", getIntent().getStringExtra("LEFTORRIGHT"));
+        NoShowSwitch = findViewById(R.id.NoShowSwitch);
 
         clearButton = findViewById(R.id.ClearButton);
         startButton = findViewById(R.id.StartButton);
@@ -181,123 +186,68 @@ public class MainActivity extends Activity {
         redDefault();
         panelDefault();
         cargoDefault();
-        enableButtonsDefault();
 
         //setting prepopulated text to default state
         prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
         prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
 
-        //hash stuff
-        setupHashMap.put("LeftOrRight", getIntent().getStringExtra("LEFTORRIGHT"));
-        if (setupHashMap.size() == 2) {
-            Serializable setupData = getIntent().getSerializableExtra("main");
-            if (setupData != null)
-                setupHashMap = (HashMap<String, String>) setupData;
-            if (setupHashMap == null)
-                setupHashMap = new HashMap<>();
+        if (setupHashMap.size() == 3) {
+            Serializable setupData = getIntent().getSerializableExtra("recievedHashMap");
+            if (setupData != null) setupHashMap = (HashMap<String, String>) setupData;
+            if (setupHashMap == null) setupHashMap = new HashMap<String, String>();
         }
-        if (setupHashMap.size() > 2) {
-            ScouterNameInput.setText(setupHashMap.get("ScouterName"));
-            matchNumberInput.setText(setupHashMap.get("MatchNumber"));
-            teamNumberInput.setText(setupHashMap.get("TeamNumber"));
-            firstAlliancePartnerInput.setText(setupHashMap.get("FirstAlliancePartner"));
-            secondAlliancePartnerInput.setText(setupHashMap.get("SecondAlliancePartner"));
-
-            if (setupHashMap.get("initPanelOrCargo").equals("P")) {
-                isSetupPanel = 1;
-                selectedButtonColors(panelButton);
-                cargoDefault();
-            } else if (setupHashMap.get("initPanelOrCargo").equals("C")) {
-                isSetupCargo = 1;
-                selectedButtonColors(cargoButton);
-                panelDefault();
-            }
-
-            if (setupHashMap.get("AllianceColor").equals("Blue")) {
-                isRedAlliance = 1;
-                isBlueAlliance = 0;
-            } else if (setupHashMap.get("AllianceColor").equals("Red")) {
-                isRedAlliance = 0;
-                isBlueAlliance = 1;
-            }
-
-            if (leftOrRight.equals("Left")) {
-                if (isBlueAlliance == 1) {
+        
+        enableButtonsDefault();
+        if (setupHashMap.size() > 3) {
+                ScouterNameInput.setText(setupHashMap.get(ScouterNameInput.getTag().toString()).toString());
+                matchNumberInput.setText(setupHashMap.get(matchNumberInput.getTag().toString()).toString());
+                teamNumberInput.setText(setupHashMap.get(teamNumberInput.getTag().toString()).toString());
+                firstAlliancePartnerInput.setText(setupHashMap.get(firstAlliancePartnerInput.getTag().toString()).toString());
+                secondAlliancePartnerInput.setText(setupHashMap.get(secondAlliancePartnerInput.getTag().toString()).toString());
+            if (setupHashMap.get("LeftOrRight").equals("Left")) {
+                if (setupHashMap.get("AllianceColor").equals("Blue")) {
                     makeBoxesBlue("Left");
                     makeBoxesVisible("Left");
+                    blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
+                    blueButton.setTextColor(getResources().getColor(R.color.light));
                 }
-                else if (isRedAlliance == 1) {
+                else if (setupHashMap.get("AllianceColor").equals("Red")) {
                     makeBoxesRed("Right");
                     makeBoxesVisible("Right");
+                    redButton.setBackgroundColor(getResources().getColor(R.color.red));
+                    redButton.setTextColor(getResources().getColor(R.color.light));
                 }
             }
-            else if (leftOrRight.equals("Right")){
-                if (isBlueAlliance == 1) {
+            else if (setupHashMap.get("LeftOrRight").equals("Right")){
+                if (setupHashMap.get("AllianceColor").equals("Blue")) {
                     makeBoxesBlue("Right");
                     makeBoxesVisible("Right");
+                    blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
+                    blueButton.setTextColor(getResources().getColor(R.color.light));
                 }
-                else if (isRedAlliance == 1) {
+                else if (setupHashMap.get("AllianceColor").equals("Red")) {
                     makeBoxesRed("Left");
                     makeBoxesVisible("Left");
+                    redButton.setBackgroundColor(getResources().getColor(R.color.red));
+                    redButton.setTextColor(getResources().getColor(R.color.light));
                 }
             }
-            String startingposition = setupHashMap.get("StartingPosition");
-            makeCirclesInvisible();
-            if (isBlueAlliance == 1) {
-                if (leftOrRight.equals("Left"))
-                    if (startingposition.equals("L1"))
-                        LL1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("C1"))
-                        LC1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R1"))
-                        LR1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("L2"))
-                        LL2Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R2"))
-                        LR2Circle.setVisibility(View.VISIBLE);
-                if (leftOrRight.equals("Right"))
-                    if (startingposition.equals("L1"))
-                        RL1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("C1"))
-                        RC1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R1"))
-                        RR1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("L2"))
-                        RL2Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R2"))
-                        RR2Circle.setVisibility(View.VISIBLE);
-            }
-            else if (isRedAlliance == 1) {
-                if (leftOrRight.equals("Right"))
-                    if (startingposition.equals("L1"))
-                        LL1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("C1"))
-                        LC1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R1"))
-                        LR1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("L2"))
-                        LL2Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R2"))
-                        LR2Circle.setVisibility(View.VISIBLE);
-                if (leftOrRight.equals("Left"))
-                    if (startingposition.equals("L1"))
-                        RL1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("C1"))
-                        RC1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R1"))
-                        RR1Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("L2"))
-                        RL2Circle.setVisibility(View.VISIBLE);
-                    else if (startingposition.equals("R2"))
-                        RR2Circle.setVisibility(View.VISIBLE);
+            if (!setupHashMap.get("StartingGameObject").equals("Neither")) {
+                if (setupHashMap.get("StartingGameObject").equals("Panel")) {
+                    panelButton.setBackgroundColor(getResources().getColor(R.color.orange));
+                    panelButton.setTextColor(getResources().getColor(R.color.light));
+                }
+                else if (setupHashMap.get("StartingGameObject").equals("Cargo")) {
+                    cargoButton.setBackgroundColor(getResources().getColor(R.color.orange));
+                    cargoButton.setTextColor(getResources().getColor(R.color.light));
+                }
             }
         }
-
         //starting listener to check the status of the switch
-        Switch NoShowSwitch = findViewById(R.id.NoShowSwitch);
         NoShowSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    setupHashMap.put("NoShow", "True");
                     noShowStatus = 1;
                     startButton.setText(R.string.GenerateQRCode);
                     isQRButton = true;
@@ -313,11 +263,11 @@ public class MainActivity extends Activity {
                             teamNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner !=0)
                         startButton.setEnabled(true);
                 } else {
+                    setupHashMap.put("NoShow", "False");
                     noShowStatus = 0;
                     panelButton.setEnabled(true);
                     cargoButton.setEnabled(true);
                     startButton.setText(R.string.Start);
-                    startButton.setEnabled(false);
                 }
             }
         });
@@ -330,6 +280,7 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(ScouterNameInput);
+                setupHashMap.put(ScouterNameInput.getTag().toString(), ScouterNameInput.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -342,6 +293,7 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(matchNumberInput);
+                setupHashMap.put(matchNumberInput.getTag().toString(), matchNumberInput.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -354,6 +306,7 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(teamNumberInput);
+                setupHashMap.put(teamNumberInput.getTag().toString(), teamNumberInput.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -366,6 +319,7 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(firstAlliancePartnerInput);
+                setupHashMap.put(firstAlliancePartnerInput.getTag().toString(), firstAlliancePartnerInput.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -378,6 +332,7 @@ public class MainActivity extends Activity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //to enable/disable start and cancel button
                 checkIfAnythingIsTyped(secondAlliancePartnerInput);
+                setupHashMap.put(secondAlliancePartnerInput.getTag().toString(), secondAlliancePartnerInput.getText().toString());
             }
             @Override
             public void afterTextChanged(Editable s) { }
@@ -425,35 +380,39 @@ public class MainActivity extends Activity {
 
                     } catch (WriterException e) { e.printStackTrace(); }
                 } else {
-                    HashMap<String,String> main = new HashMap<>();
-                    main.put("ScouterName",ScouterNameInput.getText().toString());
-                    main.put("MatchNumber",matchNumberInput.getText().toString());
-                    main.put("TeamNumber", teamNumberInput.getText().toString());
-                    main.put("FirstAlliancePartner", firstAlliancePartnerInput.getText().toString());
-                    main.put("SecondAlliancePartner",secondAlliancePartnerInput.getText().toString());
-
+                    scouterName = ScouterNameInput.getText().toString();
+                    matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+                    teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
+                    firstAlliancePartner = Integer.parseInt(firstAlliancePartnerInput.getText().toString());
+                    secondAlliancePartner = Integer.parseInt(secondAlliancePartnerInput.getText().toString());
+                    String RedOrBlue = "";
                     if (isRedAlliance == 1)
-                        main.put("AllianceColor","Red");
+                        RedOrBlue = "Red";
                     else if (isBlueAlliance == 1)
-                        main.put("AllianceColor","Blue");
-
+                        RedOrBlue = "Blue";
+                    String startingPosition = "";
                     if (startL1 == 1)
-                        main.put("StartingPosition","L1");
+                        startingPosition = "L1";
                     else if (startC1 == 1)
-                        main.put("StartingPosition","C1");
+                        startingPosition = "C1";
                     else if (startR1 == 1)
-                        main.put("StartingPosition","R1");
+                        startingPosition = "R1";
                     else if (startL2 == 1)
-                        main.put("StartingPosition","L2");
+                        startingPosition = "L2";
                     else if (startR2 == 1)
-                        main.put("StartingPosition","R2");
-
+                        startingPosition = "R2";
+                    String sendMessage = scouterName + "," + matchNumber + "," + teamNumber
+                            + "," + firstAlliancePartner + "," + secondAlliancePartner
+                            + "," + RedOrBlue + "," + leftOrRight + "," + startingPosition;
+                    char initPanelOrCargo = ' ';
                     if (isSetupPanel == 1)
-                        main.put("initPanelOrCargo","P");
+                        initPanelOrCargo = 'P';
                     else if (isSetupCargo == 1)
-                        main.put("initPanelOrCargo","C");
+                        initPanelOrCargo = 'C';
+                    sendMessage = initPanelOrCargo + "," + sendMessage;
+
                     Intent intent = new Intent(MainActivity.this, Sandstorm.class);
-                    intent.putExtra("mainHashMap", main);
+                    intent.putExtra("setupHashMap", setupHashMap);
                     startActivity(intent);
                 }
             }
@@ -730,6 +689,7 @@ public class MainActivity extends Activity {
 
 
     public void blueClick (View view) {
+        setupHashMap.put("AllianceColor", "Blue");
         if (isBlueAlliance == 0) {
             blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
             blueButton.setTextColor(getResources().getColor(R.color.light));
@@ -737,12 +697,12 @@ public class MainActivity extends Activity {
             redDefault();
 
             if (noShowStatus == 0) {
-                if (leftOrRight.equals("Left")) {
+                if (setupHashMap.get("LeftOrRight").toString().equals("Left")) {
                     makeBoxesBlue("Left");
                     makeBoxesVisible("Left");
                     makeBoxesInvisible("Right");
                     makeCirclesInvisible();
-                } else if (leftOrRight.equals("Right")) {
+                } else if (setupHashMap.get("LeftOrRight").toString().equals("Right")) {
                     makeBoxesBlue("Right");
                     makeBoxesVisible("Right");
                     makeBoxesInvisible("Left");
@@ -767,6 +727,7 @@ public class MainActivity extends Activity {
     }
 
     public void redClick (View view) {
+        setupHashMap.put("AllianceColor", "Red");
         if (isRedAlliance == 0) {
             blueDefault();
             redButton.setBackgroundColor(getResources().getColor(R.color.red));
@@ -777,7 +738,7 @@ public class MainActivity extends Activity {
                 startButton.setEnabled(true);
 
             if (noShowStatus == 0) {
-                if (leftOrRight.equals("Left")) {
+                if (setupHashMap.get("LeftOrRight").toString().equals("Left")) {
                     makeBoxesRed("Right");
                     makeBoxesVisible("Right");
                     makeBoxesInvisible("Left");
@@ -805,6 +766,7 @@ public class MainActivity extends Activity {
 
     public void panelClick (View view) {
         if (isSetupPanel == 0) {
+            setupHashMap.put("StartingGameObject", "Panel");
             isSetupPanel = 1;
             selectedButtonColors(panelButton);
             cargoDefault();
@@ -815,9 +777,11 @@ public class MainActivity extends Activity {
 
 
 
-    public void cargoClick (View view) {
 
+
+    public void cargoClick (View view) {
         if (isSetupCargo == 0) {
+            setupHashMap.put("StartingGameObject", "Cargo");
             panelDefault();
             isSetupCargo = 1;
             selectedButtonColors(cargoButton);
@@ -825,12 +789,18 @@ public class MainActivity extends Activity {
             cargoDefault();
 
     }
-
+    //This the defualt state for the cargo button
     public void enableButtonsDefault() {
 
         panelButton.setEnabled(true);
         cargoButton.setEnabled(true);
-        startButton.setEnabled(false);
+
+        if (setupHashMap.size() > 3) {
+            startButton.setEnabled(true);
+        }
+        else {
+            startButton.setEnabled(false);
+        }
     }
 
 

@@ -389,11 +389,11 @@
         android:layout_width="194dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:text="@string/FellOver"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RRPNT3" />
+        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT3" />
 
     <Switch
         android:id="@+id/CrossedHABLineSwitch"
@@ -687,6 +687,7 @@
         android:layout_width="125dp"
 
         android:layout_height="45dp"
+
         android:layout_marginStart="472dp"
         android:onClick="droppedClick"
         android:text="Dropped     "
@@ -855,9 +856,8 @@
         android:gravity="center"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT3"
-        app:layout_constraintStart_toStartOf="@+id/LeftRocketPanelFarT3"
-        app:layout_constraintTop_toBottomOf="@+id/IDScoringMissedDirections" />
+        tools:layout_editor_absoluteX="222dp"
+        tools:layout_editor_absoluteY="341dp" />
 
     <TextView
         android:id="@+id/LRPFT2"
@@ -1139,16 +1139,5 @@
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT1"
         app:layout_constraintTop_toTopOf="@+id/RightRocketPanelFarT1" />
-
-    <Button
-        android:id="@+id/UndoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:onClick="UndoClick"
-        android:text="UNDO"
-        app:layout_constraintBottom_toBottomOf="@+id/CrossedHABLineSwitch"
-        app:layout_constraintStart_toStartOf="@+id/RRPFT3"
-        app:layout_constraintTop_toBottomOf="@+id/CrossedHABLineSwitch" />
 
 </android.support.constraint.ConstraintLayout>
