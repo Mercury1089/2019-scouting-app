@@ -1,511 +1,739 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+
     xmlns:tools="http://schemas.android.com/tools"
+
 
     android:id="@+id/mainactivity"
 
+
     android:layout_width="match_parent"
+
 
     android:layout_height="match_parent"
 
+
     android:background="@color/bootstrap_gray_dark"
+
     tools:context=".MainActivity">
 
 
     <Button
 
+
         android:id="@+id/SettingsButton"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="32dp"
 
+
         android:layout_marginTop="8dp"
+
 
         android:onClick="SettingsClick"
 
+
         android:text="@string/Settings"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
 
+
         android:id="@+id/ClearButton"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="32dp"
 
+
         android:layout_marginTop="8dp"
+
 
         android:enabled="false"
 
+
         android:onClick="ClearClick"
+
 
         android:text="@string/Clear"
 
+
         app:layout_constraintStart_toEndOf="@+id/SettingsButton"
+
 
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
 
+
         android:id="@+id/IDSetup"
+
 
         android:layout_width="74dp"
 
+
         android:layout_height="0dp"
+
 
         android:layout_marginStart="16dp"
 
+
         android:layout_marginTop="8dp"
+
 
         android:text="@string/SetupTitle"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
 
         app:fontFamily="sans-serif-black"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/SettingsButton" />
 
 
     <TextView
 
+
         android:id="@+id/IDSetupDirections"
+
 
         android:layout_width="386dp"
 
+
         android:layout_height="23dp"
+
 
         android:layout_marginStart="16dp"
 
+
         android:layout_marginBottom="16dp"
+
 
         android:text="@string/SetupDirections"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
 
         android:textSize="14sp"
 
+
         app:layout_constraintBottom_toTopOf="@+id/IDScouterName"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/IDSetup" />
 
 
     <TextView
 
+
         android:id="@+id/IDScouterName"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="25dp"
+
 
         android:layout_marginStart="16dp"
 
+
         android:layout_marginTop="32dp"
+
 
         android:text="@string/ScouterName"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
 
         android:textStyle="bold"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/IDSetup" />
 
 
     <EditText
 
+
         android:id="@+id/ScouterNameInput"
+
 
         android:layout_width="379dp"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="16dp"
 
+
         android:ems="10"
+
 
         android:inputType="textPersonName"
 
+
         android:tag="ScouterName"
+
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDScouterName" />
 
 
     <TextView
 
+
         android:id="@+id/IDMatchNumber"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="16dp"
 
+
         android:layout_marginTop="16dp"
+
 
         android:text="@string/MatchNumber"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/ScouterNameInput" />
 
 
     <EditText
 
+
         android:id="@+id/MatchNumberInput"
+
 
         android:layout_width="379dp"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="16dp"
 
+
         android:ems="10"
+
 
         android:inputType="number"
 
+
         android:maxLength="3"
+
 
         android:tag="MatchNumber"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDMatchNumber" />
 
 
     <TextView
 
+
         android:id="@+id/IDTeamNumber"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="17dp"
+
 
         android:layout_marginStart="16dp"
 
+
         android:text="@string/TeamNumber"
+
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/MatchNumberInput" />
 
 
     <EditText
 
+
         android:id="@+id/TeamNumberInput"
+
 
         android:layout_width="211dp"
 
+
         android:layout_height="46dp"
+
 
         android:layout_marginStart="16dp"
 
+
         android:layout_marginTop="64dp"
+
 
         android:ems="10"
 
+
         android:inputType="number"
+
 
         android:maxLength="4"
 
+
         android:tag="TeamNumber"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="@+id/MatchNumberInput" />
 
 
     <Switch
 
+
         android:id="@+id/NoShowSwitch"
+
 
         android:layout_width="148dp"
 
+
         android:layout_height="55dp"
+
 
         android:layout_marginStart="128dp"
 
+
         android:backgroundTint="@android:color/holo_orange_dark"
+
 
         android:text="@string/NoShow"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toEndOf="@+id/TeamNumberInput"
+
 
         app:layout_constraintTop_toBottomOf="@+id/MatchNumberInput" />
 
 
     <TextView
 
+
         android:id="@+id/IDAlliancePartners"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="16dp"
 
+
         android:text="@string/AlliancePartners"
+
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/TeamNumberInput" />
 
 
     <EditText
 
+
         android:id="@+id/FirstAlliancePartnerInput"
+
 
         android:layout_width="120dp"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="16dp"
 
+
         android:ems="10"
+
 
         android:inputType="number"
 
+
         android:maxLength="4"
+
 
         android:tag="Alliance1"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
 
     <EditText
 
+
         android:id="@+id/SecondAlliancePartnerInput"
+
 
         android:layout_width="120dp"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="32dp"
 
+
         android:ems="10"
+
 
         android:inputType="number"
 
+
         android:maxLength="4"
+
 
         android:tag="Alliance2"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
+
         app:layout_constraintStart_toEndOf="@+id/FirstAlliancePartnerInput"
+
         app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
 
     <TextView
 
+
         android:id="@+id/IDAllianceColor"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="256dp"
 
+
         android:text="@string/AllianceColor"
+
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toEndOf="@+id/IDAlliancePartners"
+
 
         app:layout_constraintTop_toTopOf="@+id/IDAlliancePartners" />
 
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
 
+
         android:id="@+id/AllianceColors"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginTop="24dp"
 
+
         android:layout_marginEnd="36dp"
+
 
         android:orientation="horizontal"
 
+
         app:bootstrapBrand="success"
+
 
         app:bootstrapSize="lg"
 
+
         app:layout_constraintEnd_toEndOf="parent"
 
+
         app:layout_constraintTop_toTopOf="@+id/IDAllianceColor"
+
 
         app:roundedCorners="true">
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
+
             android:id="@+id/BlueButton"
+
 
             android:layout_width="wrap_content"
 
+
             android:layout_height="wrap_content"
+
 
             android:onClick="blueClick"
 
+
             android:tag="BlueToggle"
+
 
             android:text="@string/Blue"
 
+
             tools:layout_editor_absoluteX="250dp"
+
             tools:layout_editor_absoluteY="439dp" />
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
+
             android:id="@+id/RedButton"
+
 
             android:layout_width="wrap_content"
 
+
             android:layout_height="wrap_content"
+
 
             android:onClick="redClick"
 
+
             android:tag="RedToggle"
+
 
             android:text="@string/Red"
 
+
             android:textSize="12sp"
 
+
             tools:layout_editor_absoluteX="301dp"
+
             tools:layout_editor_absoluteY="602dp" />
+
 
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
 
 
     <TextView
 
+
         android:id="@+id/IDPrepopulated"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="0dp"
+
 
         android:layout_marginStart="16dp"
 
+
         android:fontFamily="sans-serif-black"
+
 
         android:text="@string/PrepopulatedTitle"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/SecondAlliancePartnerInput" />
 
 
     <TextView
 
+
         android:id="@+id/IDPrepopulatedDirections"
+
 
         android:layout_width="576dp"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="16dp"
 
+
         android:layout_marginTop="16dp"
+
 
         android:text="@string/PrepopulatedDirections"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/IDPrepopulated" />
 
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
 
+
         android:id="@+id/LeftOrRight"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginStart="24dp"
 
+
         android:layout_marginTop="8dp"
+
 
         android:orientation="horizontal"
 
+
         app:bootstrapBrand="success"
+
 
         app:bootstrapSize="lg"
 
+
         app:layout_constraintStart_toStartOf="parent"
 
+
         app:layout_constraintTop_toBottomOf="@+id/IDPrepopulatedDirections"
+
 
         app:roundedCorners="true">
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
+
             android:id="@+id/PanelButton"
+
 
             android:layout_width="wrap_content"
 
+
             android:layout_height="match_parent"
+
 
             android:background="@color/bootstrap_brand_success"
 
+
             android:onClick="panelClick"
+
             android:tag="PanelToggle"
+
             android:text="@string/Panel"
+
             android:textSize="12sp" />
 
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
+
             android:id="@+id/CargoButton"
+
 
             android:layout_width="wrap_content"
 
+
             android:layout_height="match_parent"
 
+
             android:onClick="cargoClick"
+
             android:tag="CargoToggle"
+
             android:text="@string/Cargo"
+
             android:textSize="12sp" />
 
 
@@ -514,451 +742,711 @@
 
     <TextView
 
+
         android:id="@+id/IDStartingPosition"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="24dp"
 
+
         android:layout_marginStart="16dp"
+
 
         android:layout_marginTop="32dp"
 
+
         android:fontFamily="sans-serif-black"
+
 
         android:text="@string/StartingPositionTitle"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/LeftOrRight" />
 
-    <!-- hi -->
+
     <TextView
+
 
         android:id="@+id/IDStartingPositionDirections"
 
+
         android:layout_width="601dp"
+
 
         android:layout_height="24dp"
 
+
         android:layout_marginStart="16dp"
+
 
         android:text="@string/SetupDirections"
 
+
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPosition" />
 
 
     <View
 
+
         android:id="@+id/LL2"
+
 
         android:layout_width="87dp"
 
+
         android:layout_height="87dp"
+
 
         android:layout_marginStart="64dp"
 
+
         android:layout_marginTop="8dp"
 
+
         android:background="@color/bootstrap_brand_info"
+
 
         android:onClick="LL2Click"
 
+
         android:visibility="invisible"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
 
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
 
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleLL2"
+
         android:layout_width="87dp"
+
         android:layout_height="87dp"
+
         android:layout_marginStart="64dp"
+
         android:layout_marginTop="8dp"
+
         android:layout_marginBottom="10dp"
+
         android:tag="LL2"
+
         android:visibility="invisible"
+
         app:layout_constraintBottom_toTopOf="@+id/L2M1"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections"
+
         app:layout_constraintVertical_bias="0.0" />
 
+
     <View
+
 
         android:id="@+id/L2M1"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="87dp"
 
+
         android:layout_marginTop="10dp"
+
 
         android:layout_marginEnd="12dp"
 
+
         android:background="@color/bootstrap_brand_info"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintEnd_toStartOf="@+id/CircleLC1"
 
+
         app:layout_constraintTop_toBottomOf="@+id/LL2" />
 
+
     <View
+
 
         android:id="@+id/LR2"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="87dp"
 
+
         android:layout_marginStart="64dp"
+
 
         android:layout_marginTop="10dp"
 
+
         android:background="@color/bootstrap_brand_info"
+
 
         android:onClick="LR2Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toStartOf="parent"
 
+
         app:layout_constraintTop_toBottomOf="@+id/L2M1" />
+
 
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleLR2"
+
         android:layout_width="87dp"
+
         android:layout_height="87dp"
+
         android:layout_marginStart="64dp"
+
         android:layout_marginTop="10dp"
+
         android:layout_marginEnd="12dp"
+
         android:tag="LR2"
+
         android:visibility="invisible"
+
         app:layout_constraintEnd_toStartOf="@+id/CircleLR1"
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/L2M1" />
 
+
     <View
+
 
         android:id="@+id/LL1"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="95dp"
 
+
         android:layout_marginStart="12dp"
 
+
         android:background="@color/bootstrap_brand_info"
+
 
         android:onClick="LL1Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/LL2"
 
+
         app:layout_constraintTop_toTopOf="@+id/LL2" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleLL1"
+
         android:layout_width="87dp"
+
         android:layout_height="95dp"
+
         android:layout_marginStart="12dp"
+
         android:layout_marginTop="8dp"
+
         android:tag="LL1"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
+
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
+
     <View
+
 
         android:id="@+id/LC1"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="95dp"
 
+
         android:layout_marginStart="12dp"
 
+
         android:background="@color/bootstrap_brand_info"
+
 
         android:onClick="LC1Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/L2M1"
 
+
         app:layout_constraintTop_toBottomOf="@+id/LL1" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleLC1"
+
         android:layout_width="87dp"
+
         android:layout_height="95dp"
+
         android:layout_marginStart="12dp"
+
         android:tag="LC1"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
+
         app:layout_constraintTop_toBottomOf="@+id/CircleLL1" />
 
+
     <View
+
 
         android:id="@+id/LR1"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="95dp"
 
+
         android:layout_marginStart="12dp"
+
 
         android:background="@color/bootstrap_brand_info"
 
+
         android:onClick="LR1Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/LR2"
 
+
         app:layout_constraintTop_toBottomOf="@+id/LC1" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleLR1"
+
         android:layout_width="87dp"
+
         android:layout_height="95dp"
+
         android:layout_marginStart="12dp"
+
         android:tag="LR1"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
+
         app:layout_constraintTop_toBottomOf="@+id/CircleLC1" />
 
+
     <View
+
 
         android:id="@+id/RR1"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="95dp"
 
+
         android:layout_marginStart="64dp"
+
 
         android:background="@color/bootstrap_brand_danger"
 
+
         android:onClick="RR1Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/LL1"
 
+
         app:layout_constraintTop_toTopOf="@+id/RR2" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleRR1"
+
         android:layout_width="87dp"
+
         android:layout_height="95dp"
+
         android:layout_marginStart="64dp"
+
         android:layout_marginTop="8dp"
+
         android:onClick="RR1Click"
+
         android:tag="RR1"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
+
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
+
     <View
+
 
         android:id="@+id/RC1"
 
+
         android:layout_width="87dp"
+
 
         android:layout_height="95dp"
 
+
         android:layout_marginStart="64dp"
 
+
         android:background="@color/bootstrap_brand_danger"
+
 
         android:onClick="RC1Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/LC1"
 
+
         app:layout_constraintTop_toBottomOf="@+id/LL1" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleRC1"
+
         android:layout_width="87dp"
+
         android:layout_height="95dp"
+
         android:layout_marginStart="64dp"
+
         android:tag="RC1"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
+
         app:layout_constraintTop_toBottomOf="@+id/CircleRR1" />
+
 
     <View
 
+
         android:id="@+id/RL1"
+
 
         android:layout_width="87dp"
 
+
         android:layout_height="95dp"
 
+
         android:layout_marginStart="64dp"
+
 
         android:background="@color/bootstrap_brand_danger"
 
+
         android:onClick="RL1Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/LR1"
 
+
         app:layout_constraintTop_toBottomOf="@+id/LC1" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleRL1"
+
         android:layout_width="87dp"
+
         android:layout_height="95dp"
+
         android:layout_marginStart="64dp"
+
         android:tag="RL1"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
+
         app:layout_constraintTop_toBottomOf="@+id/CircleRC1" />
 
 
     <View
 
+
         android:id="@+id/RR2"
+
 
         android:layout_width="87dp"
 
+
         android:layout_height="87dp"
+
 
         android:layout_marginStart="12dp"
 
+
         android:layout_marginTop="8dp"
 
+
         android:background="@color/bootstrap_brand_danger"
+
 
         android:onClick="RR2Click"
 
+
         android:visibility="invisible"
+
 
         app:layout_constraintStart_toEndOf="@+id/RR1"
 
+
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
+
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleRR2"
+
         android:layout_width="87dp"
+
         android:layout_height="87dp"
+
         android:layout_marginStart="12dp"
+
         android:layout_marginTop="8dp"
+
         android:tag="RR2"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleRR1"
+
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
+
 
     <View
 
+
         android:id="@+id/R2M"
+
 
         android:layout_width="87dp"
 
+
         android:layout_height="87dp"
+
 
         android:layout_marginStart="12dp"
 
+
         android:layout_marginTop="10dp"
+
 
         android:background="@color/bootstrap_brand_danger"
 
+
         android:visibility="invisible"
 
+
         app:layout_constraintStart_toEndOf="@+id/RC1"
+
 
         app:layout_constraintTop_toBottomOf="@+id/CircleRR2" />
 
 
     <View
 
+
         android:id="@+id/RL2"
+
 
         android:layout_width="87dp"
 
+
         android:layout_height="87dp"
+
 
         android:layout_marginStart="12dp"
 
+
         android:layout_marginTop="10dp"
+
 
         android:background="@color/bootstrap_brand_danger"
 
+
         android:onClick="RL2Click"
+
 
         android:tag="RL2"
 
+
         android:visibility="invisible"
 
+
         app:layout_constraintStart_toEndOf="@+id/CircleRL1"
+
         app:layout_constraintTop_toBottomOf="@+id/R2M" />
 
 
     <com.mercury1089.scoutingapp2019.CustomView
+
         android:id="@+id/CircleRL2"
+
         android:layout_width="87dp"
+
         android:layout_height="87dp"
+
         android:layout_marginStart="12dp"
+
         android:layout_marginTop="10dp"
+
         android:tag="RL2"
+
         android:visibility="invisible"
+
         app:layout_constraintStart_toEndOf="@+id/CircleRR1"
+
         app:layout_constraintTop_toBottomOf="@+id/R2M" />
+
 
     <TextView
 
+
         android:id="@+id/IDStartButtonDirections"
+
 
         android:layout_width="wrap_content"
 
+
         android:layout_height="wrap_content"
+
 
         android:layout_marginTop="16dp"
 
+
         android:text="@string/StartButtonDirections"
+
 
         android:textColor="@color/bootstrap_dropdown_divider"
 
+
         app:layout_constraintEnd_toStartOf="@+id/StartButton"
+
 
         app:layout_constraintHorizontal_bias="0.5"
 
+
         app:layout_constraintStart_toEndOf="@+id/StartButton"
+
 
         app:layout_constraintTop_toBottomOf="@+id/RL1" />
 
 
     <Button
 
+
         android:id="@+id/StartButton"
+
 
         android:layout_width="473dp"
 
+
         android:layout_height="wrap_content"
+
 
         android:enabled="false"
 
+
         android:text="@string/Start"
+
 
         app:layout_constraintEnd_toEndOf="parent"
 
+
         app:layout_constraintHorizontal_bias="0.5"
 
+
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/IDStartButtonDirections" />
 
 
