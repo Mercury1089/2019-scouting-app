@@ -6,12 +6,13 @@
 
     xmlns:tools="http://schemas.android.com/tools"
 
+    android:id="@+id/mainactivity"
+
     android:layout_width="match_parent"
 
     android:layout_height="match_parent"
 
     android:background="@color/bootstrap_gray_dark"
-
     tools:context=".MainActivity">
 
 
@@ -533,7 +534,7 @@
 
         app:layout_constraintTop_toBottomOf="@+id/LeftOrRight" />
 
-
+    <!-- hi -->
     <TextView
 
         android:id="@+id/IDStartingPositionDirections"
@@ -583,6 +584,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="10dp"
+        android:tag="LL2"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/L2M1"
         app:layout_constraintStart_toStartOf="parent"
@@ -598,10 +600,15 @@
         android:layout_height="87dp"
 
         android:layout_marginTop="10dp"
+
         android:layout_marginEnd="12dp"
+
         android:background="@color/bootstrap_brand_info"
+
         android:visibility="invisible"
+
         app:layout_constraintEnd_toStartOf="@+id/CircleLC1"
+
         app:layout_constraintTop_toBottomOf="@+id/LL2" />
 
     <View
@@ -633,6 +640,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="12dp"
+        android:tag="LR2"
         android:visibility="invisible"
         app:layout_constraintEnd_toStartOf="@+id/CircleLR1"
         app:layout_constraintStart_toStartOf="parent"
@@ -664,6 +672,7 @@
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:tag="LL1"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
@@ -693,6 +702,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
+        android:tag="LC1"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/CircleLL1" />
@@ -722,6 +732,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="12dp"
+        android:tag="LR1"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL2"
         app:layout_constraintTop_toBottomOf="@+id/CircleLC1" />
@@ -753,6 +764,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         android:onClick="RR1Click"
+        android:tag="RR1"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
@@ -782,6 +794,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="64dp"
+        android:tag="RC1"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
         app:layout_constraintTop_toBottomOf="@+id/CircleRR1" />
@@ -811,6 +824,7 @@
         android:layout_width="87dp"
         android:layout_height="95dp"
         android:layout_marginStart="64dp"
+        android:tag="RL1"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleLL1"
         app:layout_constraintTop_toBottomOf="@+id/CircleRC1" />
@@ -844,6 +858,7 @@
         android:layout_height="87dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:tag="RR2"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleRR1"
         app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
@@ -885,6 +900,8 @@
 
         android:onClick="RL2Click"
 
+        android:tag="RL2"
+
         android:visibility="invisible"
 
         app:layout_constraintStart_toEndOf="@+id/CircleRL1"
@@ -897,6 +914,7 @@
         android:layout_height="87dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="10dp"
+        android:tag="RL2"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/CircleRR1"
         app:layout_constraintTop_toBottomOf="@+id/R2M" />
@@ -933,8 +951,6 @@
         android:layout_height="wrap_content"
 
         android:enabled="false"
-
-        android:onClick="startClick"
 
         android:text="@string/Start"
 
