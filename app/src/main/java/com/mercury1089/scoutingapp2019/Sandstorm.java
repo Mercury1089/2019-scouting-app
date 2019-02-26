@@ -1132,6 +1132,8 @@ public class Sandstorm extends MainActivity {
         totalPanels++;
         PanelCounterText.setText(String.valueOf(totalPanels));
         CargoButton.setEnabled(false);
+        DroppedButton.setEnabled(true);
+        MissedButton.setEnabled(true);
         isPanel = true;
         isCargo = false;
         enableScoringDiagram('P');
@@ -1145,6 +1147,8 @@ public class Sandstorm extends MainActivity {
         totalCargo++;
         CargoCounterText.setText(String.valueOf(totalCargo));
         PanelButton.setEnabled(false);
+        DroppedButton.setEnabled(true);
+        MissedButton.setEnabled(true);
         isPanel = false;
         isCargo = true;
         enableScoringDiagram('C');
@@ -1176,7 +1180,10 @@ public class Sandstorm extends MainActivity {
             droppedCargo++;
             defaultButtonState(CargoButton);
         }
-        DroppedCounterText.setText((droppedPanels+droppedCargo));
+
+        int totalDropped = droppedPanels+droppedCargo;
+        DroppedCounterText.setText(totalDropped);
+        DroppedButton.setBackgroundColor(getResources().getColor(R.color.orange));
 
         PanelButton.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1211,8 +1218,10 @@ public class Sandstorm extends MainActivity {
             missedCargo++;
             defaultButtonState(CargoButton);
         }
+        int totalMissed = missedPanels+missedCargo;
 
-        MissedCounterText.setText((missedPanels+missedCargo));
+        MissedButton.setBackgroundColor(getResources().getColor(R.color.orange));
+        MissedCounterText.setText(totalMissed);
 
         PanelButton.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1226,7 +1235,6 @@ public class Sandstorm extends MainActivity {
     public void LRPNT3CounterClick (View view) {
         LRPNT3Counter++;
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
-        LRPNT3.setText(LRPNT3Counter);
         UNDO = "LRPNT3";
         LRPNT3.setText(LRPNT3Counter + "");
         LRPNT3.setTextColor(getResources().getColor(R.color.textdefault));

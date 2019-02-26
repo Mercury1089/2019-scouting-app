@@ -70,7 +70,7 @@
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
-        android:tag='""'
+        android:tag=""
         android:text="@string/T1"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT1"
@@ -84,6 +84,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT2"
         app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
 
@@ -95,6 +96,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT3"
         app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
 
@@ -105,6 +107,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/T1"
         android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT1"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT1" />
 
@@ -115,6 +118,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT2"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT2" />
 
@@ -125,6 +129,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
+        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT3"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT3" />
 
