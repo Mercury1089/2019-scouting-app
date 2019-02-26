@@ -250,6 +250,7 @@ public class MainActivity extends Activity {
                     View circle = constraintLayout.getChildAt(i);
                     if (circle.getTag().toString().equals(setupHashMap.get("StartingPosition"))) {
                         circle.setVisibility(View.VISIBLE);
+                        break;
                     }
                 }
             }
@@ -589,7 +590,7 @@ public class MainActivity extends Activity {
     public void LL1Click (View view) {
         startPositionDefault();
         startL1 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", LL1Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         LL1Circle.setVisibility(View.VISIBLE);
@@ -600,7 +601,7 @@ public class MainActivity extends Activity {
     public void LC1Click (View view) {
         startPositionDefault();
         startC1 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", LC1Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         LC1Circle.setVisibility(View.VISIBLE);
@@ -611,7 +612,7 @@ public class MainActivity extends Activity {
     public void LR1Click (View view) {
         startPositionDefault();
         startR1 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", LR1Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         LR1Circle.setVisibility(View.VISIBLE);
@@ -622,7 +623,7 @@ public class MainActivity extends Activity {
     public void LL2Click (View view) {
         startPositionDefault();
         startL2 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", LL2Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         LL2Circle.setVisibility(View.VISIBLE);
@@ -633,7 +634,7 @@ public class MainActivity extends Activity {
     public void LR2Click (View view) {
         startPositionDefault();
         startR2 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", LR2Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         LR2Circle.setVisibility(View.VISIBLE);
@@ -642,7 +643,7 @@ public class MainActivity extends Activity {
     public void RL1Click (View view) {
         startPositionDefault();
         startL1 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", RL1Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         RL1Circle.setVisibility(View.VISIBLE);
@@ -653,7 +654,7 @@ public class MainActivity extends Activity {
     public void RC1Click (View view) {
         startPositionDefault();
         startC1 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", RC1Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         RC1Circle.setVisibility(View.VISIBLE);
@@ -664,7 +665,7 @@ public class MainActivity extends Activity {
     public void RR1Click (View view) {
         startPositionDefault();
         startR1 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", RR1Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         RR1Circle.setVisibility(View.VISIBLE);
@@ -675,7 +676,7 @@ public class MainActivity extends Activity {
     public void RL2Click (View view) {
         startPositionDefault();
         startL2 = 1;
-        setupHashMap.put("StartingPosition", RR2Circle.getTag().toString());
+        setupHashMap.put("StartingPosition", RL2Circle.getTag().toString());
         checkToEnableStartButton();
         makeCirclesInvisible();
         RL2Circle.setVisibility(View.VISIBLE);
