@@ -1122,7 +1122,6 @@ public class Sandstorm extends MainActivity {
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("setupHashMap", setupHashMap);
-        intent.putExtra("scoreHashMap", scoreHashMap);
         startActivity(intent);
     }
     public void panelCounterClick (View view) {
@@ -1148,8 +1147,8 @@ public class Sandstorm extends MainActivity {
         PanelButton.setEnabled(false);
         isPanel = false;
         isCargo = true;
-        enableScoringDiagram('P');
-        disableScoringDiagram('C');
+        enableScoringDiagram('C');
+        disableScoringDiagram('P');
     }
     public void droppedClick (View view) {
         UNDO = "Dropped";

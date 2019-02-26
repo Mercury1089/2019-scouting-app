@@ -156,18 +156,21 @@ public class Settings extends AppCompatActivity {
     }
 
     public void saveClick (View view) {
+        if (isLeft) {
+            leftOrRight = "Left";
+        }
+        else if (isRight){
+            leftOrRight = "Right";
+        }
         hasBeenSaved = true;
         Intent intent = new Intent(Settings.this, MainActivity.class);
-        intent.putExtra("LEFTORRIGHT", leftOrRight);
-        startActivityForResult(intent, 1);
-    }
-
-    public void cancelClick (View view) {
-        leftOrRight = "";
-        Intent intent = new Intent(Settings.this,MainActivity.class);
         intent.putExtra("LEFTORRIGHT", leftOrRight);
         startActivity(intent);
     }
 
-
+    public void cancelClick (View view) {
+        Intent intent = new Intent(Settings.this,MainActivity.class);
+        intent.putExtra("LEFTORRIGHT", getIntent().getStringExtra("mainLeftOrRight"));
+        startActivity(intent);
+    }
 }
