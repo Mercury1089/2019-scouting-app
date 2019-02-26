@@ -201,11 +201,11 @@ public class MainActivity extends Activity {
         
         enableButtonsDefault();
         if (setupHashMap.size() > 4) {
-                ScouterNameInput.setText(setupHashMap.get(ScouterNameInput.getTag().toString()).toString());
-                matchNumberInput.setText(setupHashMap.get(matchNumberInput.getTag().toString()).toString());
-                teamNumberInput.setText(setupHashMap.get(teamNumberInput.getTag().toString()).toString());
-                firstAlliancePartnerInput.setText(setupHashMap.get(firstAlliancePartnerInput.getTag().toString()).toString());
-                secondAlliancePartnerInput.setText(setupHashMap.get(secondAlliancePartnerInput.getTag().toString()).toString());
+                ScouterNameInput.setText(setupHashMap.get(ScouterNameInput.getTag().toString()));
+                matchNumberInput.setText(setupHashMap.get(matchNumberInput.getTag().toString()));
+                teamNumberInput.setText(setupHashMap.get(teamNumberInput.getTag().toString()));
+                firstAlliancePartnerInput.setText(setupHashMap.get(firstAlliancePartnerInput.getTag().toString()));
+                secondAlliancePartnerInput.setText(setupHashMap.get(secondAlliancePartnerInput.getTag().toString()));
             if (setupHashMap.get("LeftOrRight").equals("Left")) {
                 if (setupHashMap.get("AllianceColor").equals("Blue")) {
                     makeBoxesBlue("Left");
@@ -703,12 +703,12 @@ public class MainActivity extends Activity {
             redDefault();
 
             if (noShowStatus == 0) {
-                if (setupHashMap.get("LeftOrRight").toString().equals("Left")) {
+                if (setupHashMap.get("LeftOrRight").equals("Left")) {
                     makeBoxesBlue("Left");
                     makeBoxesVisible("Left");
                     makeBoxesInvisible("Right");
                     makeCirclesInvisible();
-                } else if (setupHashMap.get("LeftOrRight").toString().equals("Right")) {
+                } else if (setupHashMap.get("LeftOrRight").equals("Right")) {
                     makeBoxesBlue("Right");
                     makeBoxesVisible("Right");
                     makeBoxesInvisible("Left");
@@ -744,7 +744,7 @@ public class MainActivity extends Activity {
                 startButton.setEnabled(true);
 
             if (noShowStatus == 0) {
-                if (setupHashMap.get("LeftOrRight").toString().equals("Left")) {
+                if (setupHashMap.get("LeftOrRight").equals("Left")) {
                     makeBoxesRed("Right");
                     makeBoxesVisible("Right");
                     makeBoxesInvisible("Left");
@@ -776,8 +776,10 @@ public class MainActivity extends Activity {
             isSetupPanel = 1;
             selectedButtonColors(panelButton);
             cargoDefault();
-        } else
+        } else {
+            setupHashMap.put("StartingGameObject", "Neither");
             panelDefault();
+        }
 
     }
 
@@ -791,8 +793,10 @@ public class MainActivity extends Activity {
             panelDefault();
             isSetupCargo = 1;
             selectedButtonColors(cargoButton);
-        } else
+        } else {
+            setupHashMap.put("StartingGameObject", "Neither");
             cargoDefault();
+        }
 
     }
     //This the defualt state for the cargo button
