@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bootstrap_brand_secondary_text"
     tools:context=".Climb">
 
 </android.support.constraint.ConstraintLayout>

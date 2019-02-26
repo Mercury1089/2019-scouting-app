@@ -31,6 +31,7 @@ public class Settings extends AppCompatActivity {
     private boolean isLocalStorageClicked;
     public boolean hasBeenSaved;
     private String leftOrRight;
+    private String mainLeftOrRight;
 
     @Override
 
@@ -52,6 +53,28 @@ public class Settings extends AppCompatActivity {
 
         isRight = false;
         isLeft = false;
+
+
+        if (getIntent().getStringExtra("mainLeftOrRight") != null) {
+            String mainLeftOrRight = getIntent().getStringExtra("mainLeftOrRight");
+            if (mainLeftOrRight.equals("Left")) {
+                isLeft = true;
+                leftOrRight = "Left";
+                rightDefault();
+                fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.orange));
+                fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
+                saveButton.setEnabled(true);
+                localStorageResetDefault();
+            } else if (mainLeftOrRight.equals("Right")) {
+                isRight = true;
+                leftOrRight = "Right";
+                fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
+                fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+                leftDefault();
+                localStorageResetDefault();
+                saveButton.setEnabled(true);
+            }
+        }
     }
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -103,6 +126,8 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+
+
     public void localStorageResetClick (View view) {
         if (!isLocalStorageClicked) {
             isLocalStorageClicked = true;
@@ -134,7 +159,7 @@ public class Settings extends AppCompatActivity {
         hasBeenSaved = true;
         Intent intent = new Intent(Settings.this, MainActivity.class);
         intent.putExtra("LEFTORRIGHT", leftOrRight);
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
 
     public void cancelClick (View view) {

@@ -103,9 +103,7 @@ import com.google.zxing.common.BitMatrix;
 import java.io.Serializable;
 
 import java.util.HashMap;
-
-
-
+import java.util.Set;
 
 
 public class MainActivity extends Activity {
@@ -1081,7 +1079,11 @@ public class MainActivity extends Activity {
 
 
 
-    public void SettingsClick (View view) { NavUtils.navigateUpFromSameTask(this);  }
+    public void SettingsClick (View view) {
+        Intent intent = new Intent(MainActivity.this, Settings.class);
+        intent.putExtra("mainLeftOrRight", leftOrRight);
+        startActivity(intent);
+    }
 
 
 

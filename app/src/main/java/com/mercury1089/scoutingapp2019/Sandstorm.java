@@ -1230,6 +1230,12 @@ public class Sandstorm extends MainActivity {
         LRPNT3.setText(LRPNT3Counter);
         UNDO = "LRPNT3";
         LRPNT3.setText(LRPNT3Counter + "");
+        LRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
 
     }
@@ -1238,6 +1244,12 @@ public class Sandstorm extends MainActivity {
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT2";
         LRPNT2.setText(LRPNT2Counter + "");
+        LRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRPNT1CounterClick (View view) {
@@ -1245,6 +1257,12 @@ public class Sandstorm extends MainActivity {
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT1";
         LRPNT1.setText(LRPNT1Counter + "");
+        LRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRCT3CounterClick (View view) {
@@ -1252,6 +1270,11 @@ public class Sandstorm extends MainActivity {
         LeftRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "LRCT3";
         LRCT3.setText(LRCT3Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRCT2CounterClick (View view) {
@@ -1259,6 +1282,11 @@ public class Sandstorm extends MainActivity {
         LeftRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "LRCT2";
         LRCT2.setText(LRCT2Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRCT1CounterClick (View view) {
@@ -1266,6 +1294,11 @@ public class Sandstorm extends MainActivity {
         LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "LRCT1";
         LRCT1.setText(LRCT1Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRPFT3CounterClick (View view) {
@@ -1273,6 +1306,12 @@ public class Sandstorm extends MainActivity {
         LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPFT3";
         LRPFT3.setText(LRPFT3Counter + "");
+        LRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRPFT2CounterClick (View view) {
@@ -1280,6 +1319,12 @@ public class Sandstorm extends MainActivity {
         LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPFT2";
         LRPFT2.setText(LRPFT2Counter + "");
+        LRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void LRPFT1CounterClick (View view) {
@@ -1287,6 +1332,12 @@ public class Sandstorm extends MainActivity {
         LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPFT1";
         LRPFT1.setText(LRPFT1Counter + "");
+        LRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
 
@@ -1296,6 +1347,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPF1";
         CSPF1.setText(CSPF1Counter + "");
+        CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPF2CounterClick (View view) {
@@ -1303,6 +1360,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPF2";
         CSPF2.setText(CSPF2Counter + "");
+        CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCF1CounterClick (View view) {
@@ -1310,6 +1373,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCF1";
         CSCF1.setText(CSCF1Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCF2CounterClick (View view) {
@@ -1317,6 +1385,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCF2";
         CSCF2.setText(CSCF2Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPL1CounterClick (View view) {
@@ -1324,6 +1397,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL1";
         CSPL1.setText(CSPL1Counter + "");
+        CSPL1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPL2CounterClick (View view) {
@@ -1331,6 +1410,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL2";
         CSPL2.setText(CSPL2Counter + "");
+        CSPL2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPL3CounterClick (View view) {
@@ -1338,6 +1423,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL3";
         CSPL3.setText(CSPL3Counter + "");
+        CSPL3.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCL1CounterClick (View view) {
@@ -1345,6 +1436,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL1";
         CSCL1.setText(CSCL1Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCL2CounterClick (View view) {
@@ -1352,6 +1448,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL2";
         CSCL2.setText(CSCL2Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCL3CounterClick (View view) {
@@ -1359,6 +1460,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL3";
         CSCL3.setText(CSCL3Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCR1CounterClick (View view) {
@@ -1366,6 +1472,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR1";
         CSCR1.setText(CSCR1Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCR2CounterClick (View view) {
@@ -1373,6 +1484,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR2";
         CSCR2.setText(CSCR2Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSCR3CounterClick (View view) {
@@ -1380,6 +1496,11 @@ public class Sandstorm extends MainActivity {
         CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR3";
         CSCR3.setText(CSCR3Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPR1CounterClick (View view) {
@@ -1387,6 +1508,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR1";
         CSPR1.setText(CSPR1Counter + "");
+        CSPR1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPR2CounterClick (View view) {
@@ -1394,6 +1521,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR2";
         CSPR2.setText(CSPR2Counter + "");
+        CSPR2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void CSPR3CounterClick (View view) {
@@ -1401,6 +1534,12 @@ public class Sandstorm extends MainActivity {
         CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR3";
         CSPR3.setText(CSPR3Counter + "");
+        CSPR3.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
 
@@ -1410,6 +1549,12 @@ public class Sandstorm extends MainActivity {
         RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT3";
         RRPNT3.setText(RRPNT3Counter + "");
+        RRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRPNT2CounterClick (View view) {
@@ -1417,6 +1562,12 @@ public class Sandstorm extends MainActivity {
         RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT2";
         RRPNT2.setText(RRPNT2Counter + "");
+        RRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRPNT1CounterClick (View view) {
@@ -1424,6 +1575,12 @@ public class Sandstorm extends MainActivity {
         RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT1";
         RRPNT1.setText(RRPNT1Counter + "");
+        RRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRCT3CounterClick (View view) {
@@ -1431,6 +1588,11 @@ public class Sandstorm extends MainActivity {
         RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT3";
         RRCT3.setText(RRCT3Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRCT2CounterClick (View view) {
@@ -1438,6 +1600,11 @@ public class Sandstorm extends MainActivity {
         RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT2";
         RRCT2.setText(RRCT2Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRCT1CounterClick (View view) {
@@ -1445,6 +1612,11 @@ public class Sandstorm extends MainActivity {
         RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT1";
         RRCT1.setText(RRCT1Counter + "");
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRPFT3CounterClick (View view) {
@@ -1452,6 +1624,12 @@ public class Sandstorm extends MainActivity {
         RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT3";
         RRPFT3.setText(RRPFT3Counter + "");
+        RRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRPFT2CounterClick (View view) {
@@ -1459,6 +1637,12 @@ public class Sandstorm extends MainActivity {
         RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT2";
         RRPFT2.setText(RRPFT2Counter + "");
+        RRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
     public void RRPFT1CounterClick (View view) {
@@ -1466,6 +1650,12 @@ public class Sandstorm extends MainActivity {
         RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT1";
         RRPFT1.setText(RRPFT1Counter + "");
+        RRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
+        disableScoringDiagram('A');
+        defaultButtonState(PanelButton);
+        defaultButtonState(CargoButton);
+        PanelButton.setEnabled(true);
+        CargoButton.setEnabled(true);
         UndoButton.setEnabled(true);
     }
 

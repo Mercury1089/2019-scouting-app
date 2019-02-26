@@ -11,23 +11,18 @@ package="com.mercury1089.scoutingapp2019">
     <activity android:name=".Climb" />
     <activity android:name=".Teleop" />
     <activity
-        android:name=".SandstormRight"
-        android:parentActivityName=".MainActivity" />
+        android:name=".SandstormRight"/>
     <activity
-        android:name=".Sandstorm"
-        android:parentActivityName=".MainActivity" />
+        android:name=".Sandstorm"/>
     <activity
-        android:name=".MainActivity"
-        android:parentActivityName=".Settings" />
+        android:name=".MainActivity" />
     <activity android:name=".Settings">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <action android:name="android.intent.action.VIEW" />
-            <!-- idk bout the line above this lol -->
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
     <activity android:name="com.mercury1089.scoutingapp2019.QR_Display"></activity>
 </application>
-
 </manifest>
