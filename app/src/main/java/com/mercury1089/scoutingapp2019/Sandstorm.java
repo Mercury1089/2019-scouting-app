@@ -343,8 +343,11 @@ public class Sandstorm extends MainActivity {
                         for (int i = 0; i < constraintLayout.getChildCount(); i++) {
                             if (constraintLayout.getChildAt(i) instanceof TextView) {
                                 TextView textView = (TextView) constraintLayout.getChildAt(i);
-                                if (!textView.getTag().equals(""))
-                                    scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                if (textView.getTag() != null) {
+                                    if (!textView.getTag().equals("")) {
+                                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                    }
+                                }
                             }
                         }
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);

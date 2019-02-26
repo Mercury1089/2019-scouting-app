@@ -337,6 +337,8 @@ public class MainActivity extends Activity {
 
         setupHashMap.put("StartingPosition", "None");
 
+        setupHashMap.put("AllianceColor", "Neither");
+
         NoShowSwitch = findViewById(R.id.NoShowSwitch);
 
 
@@ -385,7 +387,7 @@ public class MainActivity extends Activity {
 
 
 
-        if (setupHashMap.size() == 4) {
+        if (setupHashMap.size() == 5) {
 
             Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
 
@@ -399,7 +401,7 @@ public class MainActivity extends Activity {
 
         enableButtonsDefault();
 
-        if (setupHashMap.size() > 4) {
+        if (setupHashMap.size() > 5) {
 
             ScouterNameInput.setText(setupHashMap.get(ScouterNameInput.getTag().toString()));
 
@@ -517,6 +519,8 @@ public class MainActivity extends Activity {
 
                 if (isChecked) {
 
+                    checkToEnableQRButton();
+
                     setupHashMap.put("NoShow", "True");
 
                     noShowStatus = 1;
@@ -583,6 +587,8 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
+                checkToEnableQRButton();
+
                 setupHashMap.put(ScouterNameInput.getTag().toString(), ScouterNameInput.getText().toString());
 
             }
@@ -609,6 +615,8 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
+                checkToEnableQRButton();
+
                 setupHashMap.put(matchNumberInput.getTag().toString(), matchNumberInput.getText().toString());
 
             }
@@ -632,6 +640,8 @@ public class MainActivity extends Activity {
                 //to enable/disable start and cancel button
 
                 checkToEnableStartButton();
+
+                checkToEnableQRButton();
 
                 setupHashMap.put(teamNumberInput.getTag().toString(), teamNumberInput.getText().toString());
 
@@ -659,6 +669,8 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
+                checkToEnableQRButton();
+
                 setupHashMap.put(firstAlliancePartnerInput.getTag().toString(), firstAlliancePartnerInput.getText().toString());
 
             }
@@ -684,6 +696,8 @@ public class MainActivity extends Activity {
                 //to enable/disable start and cancel button
 
                 checkToEnableStartButton();
+
+                checkToEnableQRButton();
 
                 setupHashMap.put(secondAlliancePartnerInput.getTag().toString(), secondAlliancePartnerInput.getText().toString());
 
@@ -1328,10 +1342,13 @@ public class MainActivity extends Activity {
 
 
     public void blueClick (View view) {
-
         setupHashMap.put("AllianceColor", "Blue");
 
         if (isBlueAlliance == 0) {
+
+            checkToEnableQRButton();
+
+            redDefault();
 
             blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
 
@@ -1339,23 +1356,9 @@ public class MainActivity extends Activity {
 
             isBlueAlliance = 1;
 
-            redDefault();
-
-
-
             if (noShowStatus == 0) {
 
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
-
-                    makeBoxesBlue("Left");
-
-                    makeBoxesVisible("Left");
-
-                    makeBoxesInvisible("Right");
-
-                    makeCirclesInvisible();
-
-                } else if (setupHashMap.get("LeftOrRight").toString().equals("Right")) {
 
                     makeBoxesBlue("Right");
 
@@ -1365,39 +1368,48 @@ public class MainActivity extends Activity {
 
                     makeCirclesInvisible();
 
+                } else if (setupHashMap.get("LeftOrRight").equals("Right"))  {
+
+                    makeBoxesBlue("Left");
+
+                    makeBoxesVisible("Left");
+
+                    makeBoxesInvisible("Right");
+
+                    makeCirclesInvisible();
+
                 }
 
             }
 
             else {
 
-                makeCirclesInvisible();
-
                 makeBoxesInvisible("Both");
+
+                makeCirclesInvisible();
 
             }
 
         }
 
-
-
-
-
-
-
         else {
 
             blueDefault();
 
-            startButton.setEnabled(false);
+            setupHashMap.put("AllianceColor", "Neither");
 
-            //make boxes invisible
+            checkToEnableQRButton();
+
+            startButton.setEnabled(false);
 
             makeBoxesInvisible("Both");
 
             makeCirclesInvisible();
 
         }
+
+
+
 
     }
 
@@ -1409,6 +1421,8 @@ public class MainActivity extends Activity {
 
         if (isRedAlliance == 0) {
 
+            checkToEnableQRButton();
+
             blueDefault();
 
             redButton.setBackgroundColor(getResources().getColor(R.color.red));
@@ -1416,14 +1430,6 @@ public class MainActivity extends Activity {
             redButton.setTextColor(getResources().getColor(R.color.light));
 
             isRedAlliance = 1;
-
-
-
-            if (teamNumber != 0 && matchNumber != 0)
-
-                startButton.setEnabled(true);
-
-
 
             if (noShowStatus == 0) {
 
@@ -1464,6 +1470,10 @@ public class MainActivity extends Activity {
         else {
 
             redDefault();
+
+            setupHashMap.put("AllianceColor", "Neither");
+
+            checkToEnableQRButton();
 
             startButton.setEnabled(false);
 
@@ -1538,7 +1548,7 @@ public class MainActivity extends Activity {
 
 
 
-        if (setupHashMap.size() > 4) {
+        if (setupHashMap.size() > 5) {
             startButton.setEnabled(true);
         }
 
@@ -1632,6 +1642,28 @@ public class MainActivity extends Activity {
 
         }
 
+    }
+
+    public void checkToEnableQRButton () {
+        if (isQRButton == true) {
+            if (ScouterNameInput.getText().length() > 0
+
+                    && teamNumberInput.getText().length() > 0
+
+                    && matchNumberInput.getText().length() > 0
+
+                    && firstAlliancePartnerInput.getText().length() > 0
+
+                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked()) {
+
+                startButton.setEnabled(true);
+
+            }
+            else {
+                startButton.setEnabled(false);
+            }
+        }
     }
 
 
