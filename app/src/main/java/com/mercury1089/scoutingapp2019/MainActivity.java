@@ -565,35 +565,35 @@ public class MainActivity extends Activity {
 
                     if (setupHashMap.get("AllianceColor").equals("Blue")) {
                         if (setupHashMap.get("LeftOrRight").equals("Right")) {
-                            makeBoxesBlue("Left");
-
-                            makeBoxesVisible("Left");
-
-                            makeBoxesInvisible("Right");
-                        }
-                        else if (setupHashMap.get("LeftOrRight").equals("Left")) {
                             makeBoxesBlue("Right");
 
                             makeBoxesVisible("Right");
 
                             makeBoxesInvisible("Left");
                         }
-
-                    }
-                    else if (setupHashMap.get("AllianceColor").equals("Red")) {
-                        if (setupHashMap.get("LeftOrRight").equals("Right")) {
-                            makeBoxesRed("Left");
+                        else if (setupHashMap.get("LeftOrRight").equals("Left")) {
+                            makeBoxesBlue("Left");
 
                             makeBoxesVisible("Left");
 
                             makeBoxesInvisible("Right");
                         }
-                        else if (setupHashMap.get("LeftOrRight").equals("Left")) {
+
+                    }
+                    else if (setupHashMap.get("AllianceColor").equals("Red")) {
+                        if (setupHashMap.get("LeftOrRight").equals("Right")) {
                             makeBoxesRed("Right");
 
                             makeBoxesVisible("Right");
 
                             makeBoxesInvisible("Left");
+                        }
+                        else if (setupHashMap.get("LeftOrRight").equals("Left")) {
+                            makeBoxesRed("Left");
+
+                            makeBoxesVisible("Left");
+
+                            makeBoxesInvisible("Right");
                         }
                     }
 
@@ -1414,21 +1414,21 @@ public class MainActivity extends Activity {
 
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
 
-                    makeBoxesBlue("Right");
-
-                    makeBoxesVisible("Right");
-
-                    makeBoxesInvisible("Left");
-
-                    makeCirclesInvisible();
-
-                } else if (setupHashMap.get("LeftOrRight").equals("Right"))  {
-
                     makeBoxesBlue("Left");
 
                     makeBoxesVisible("Left");
 
                     makeBoxesInvisible("Right");
+
+                    makeCirclesInvisible();
+
+                } else if (setupHashMap.get("LeftOrRight").equals("Right"))  {
+
+                    makeBoxesBlue("Right");
+
+                    makeBoxesVisible("Right");
+
+                    makeBoxesInvisible("Left");
 
                     makeCirclesInvisible();
 
@@ -1489,21 +1489,21 @@ public class MainActivity extends Activity {
 
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
 
-                    makeBoxesRed("Right");
-
-                    makeBoxesVisible("Right");
-
-                    makeBoxesInvisible("Left");
-
-                    makeCirclesInvisible();
-
-                } else if (setupHashMap.get("LeftOrRight").equals("Right"))  {
-
                     makeBoxesRed("Left");
 
                     makeBoxesVisible("Left");
 
                     makeBoxesInvisible("Right");
+
+                    makeCirclesInvisible();
+
+                } else if (setupHashMap.get("LeftOrRight").equals("Right"))  {
+
+                    makeBoxesRed("Right");
+
+                    makeBoxesVisible("Right");
+
+                    makeBoxesInvisible("Left");
 
                     makeCirclesInvisible();
 
