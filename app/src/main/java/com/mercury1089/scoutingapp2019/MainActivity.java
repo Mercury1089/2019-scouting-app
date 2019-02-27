@@ -1555,9 +1555,12 @@ public class MainActivity extends Activity {
 
             cargoDefault();
 
-        } else
+        } else {
+
+            setupHashMap.put("StartingGameObject", "Neither");
 
             panelDefault();
+        }
 
 
 
@@ -1585,9 +1588,12 @@ public class MainActivity extends Activity {
 
             selectedButtonColors(cargoButton);
 
-        } else
+        } else {
+
+            setupHashMap.put("StartingGameObject", "Neither");
 
             cargoDefault();
+        }
 
 
 
