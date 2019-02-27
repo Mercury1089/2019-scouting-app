@@ -36,7 +36,7 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="setupClick"
+            android:onClick="SetupClick"
             android:text="@string/Setup"
             android:textSize="36sp" />
 
@@ -48,6 +48,7 @@
 
             android:layout_height="match_parent"
 
+            android:onClick="SandstormClick"
             android:text="@string/Sandstorm"
             android:textSize="36sp" />
 
@@ -59,7 +60,7 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="cargoCounterClick"
+            android:onClick="TeleopClick"
 
             android:text="@string/Teleop"
             android:textSize="36sp" />
@@ -71,8 +72,6 @@
             android:layout_width="wrap_content"
 
             android:layout_height="match_parent"
-
-            android:onClick="cargoCounterClick"
 
             android:saveEnabled="false"
             android:text="@string/Climb"
@@ -437,7 +436,9 @@
         android:onClick="GenerateQRClick"
         android:saveEnabled="false"
         android:text="@string/GenerateQRCode"
-        app:layout_constraintTop_toBottomOf="@+id/NumberPartners"
-        tools:layout_editor_absoluteX="24dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberPartners" />
 
 </android.support.constraint.ConstraintLayout>

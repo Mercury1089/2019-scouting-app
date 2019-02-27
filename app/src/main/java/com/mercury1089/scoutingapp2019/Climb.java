@@ -46,6 +46,9 @@ public class Climb extends AppCompatActivity {
 
     private BootstrapButton GenerateQRButton;
 
+    private HashMap<String, String> setupHashMap;
+    private HashMap<String, String> scoreHashMap;
+
     public final static int QRCodeSize = 500;
 
     public String QRValue = "";
@@ -108,6 +111,13 @@ public class Climb extends AppCompatActivity {
 
         GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.light));
         GenerateQRButton.setTextColor(getResources().getColor(R.color.grey));
+
+        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+
+        setupHashMap = (HashMap<String, String>) setupData;
+
+        Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
+        scoreHashMap = (HashMap<String, String>) scoreData;
     }
 
     private void defaultButtonState (BootstrapButton button) {
@@ -117,6 +127,24 @@ public class Climb extends AppCompatActivity {
     public void selectedButtonColors(BootstrapButton button) {
         button.setBackgroundColor(getResources().getColor(R.color.orange));
         button.setTextColor(getResources().getColor(R.color.light));
+    }
+
+    public void SetupClick (View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("setupHashMap", setupHashMap);
+        startActivity(intent);
+    }
+    public void SandstormClick (View view) {
+        Intent intent = new Intent(this, Sandstorm.class);
+        intent.putExtra("setupHashMap", setupHashMap);
+        intent.putExtra("scoreHashMap", scoreHashMap);
+        startActivity(intent);
+    }
+    public void TeleopClick (View view) {
+        Intent intent = new Intent(this, Teleop.class);
+        intent.putExtra("setupHashMap", setupHashMap);
+        intent.putExtra("scoreHashMap", scoreHashMap);
+        startActivity(intent);
     }
 
     public void OnHABClick (View view) {
@@ -223,13 +251,6 @@ public class Climb extends AppCompatActivity {
     }
 
     public void GenerateQRClick (View view) {
-        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
-
-        HashMap<String, String> setupHashMap = (HashMap<String, String>) setupData;
-
-        Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
-        HashMap<String, String> scoreHashMap = (HashMap<String, String>) scoreData;
-
         String key;
         StringBuilder QRString = new StringBuilder();
             try {

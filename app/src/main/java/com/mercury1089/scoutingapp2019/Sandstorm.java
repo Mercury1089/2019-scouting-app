@@ -383,6 +383,16 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
 
+        CircleButton PanelCounterCircle = findViewById(R.id.PanelCounterCircle);
+        CircleButton CargoCounterCircle = findViewById(R.id.CargoCounterCircle);
+        CircleButton DroppedCounterCircle = findViewById(R.id.DroppedCounterCircle);
+        CircleButton MissedCounterCircle = findViewById(R.id.MissedCounterCircle);
+
+        PanelCounterCircle.setEnabled(false);
+        CargoCounterCircle.setEnabled(false);
+        DroppedCounterCircle.setEnabled(false);
+        MissedCounterCircle.setEnabled(false);
+
         HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
         HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -1127,6 +1137,20 @@ public class Sandstorm extends MainActivity {
         intent.putExtra("setupHashMap", setupHashMap);
         startActivity(intent);
     }
+    public void teleopClick (View view) {
+        Intent intent = new Intent(this, Teleop.class);
+        intent.putExtra("setupHashMap", setupHashMap);
+        intent.putExtra("scoreHashMap", scoreHashMap);
+        startActivity(intent);
+    }
+
+    public void climbClick (View view) {
+        Intent intent = new Intent(this, Climb.class);
+        intent.putExtra("setupHashMap", setupHashMap);
+        intent.putExtra("scoreHashMap", scoreHashMap);
+        startActivity(intent);
+    }
+
     public void panelCounterClick (View view) {
         UNDO = "Panel";
         UndoButton.setEnabled(true);

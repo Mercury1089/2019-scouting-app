@@ -103,7 +103,6 @@ import com.google.zxing.common.BitMatrix;
 import java.io.Serializable;
 
 import java.util.HashMap;
-import java.util.Set;
 
 
 public class MainActivity extends Activity {
@@ -114,7 +113,7 @@ public class MainActivity extends Activity {
 
     private String scouterName = "";
 
-    private int matchNumber = 0;
+    private String matchNumber = "";
 
     private int teamNumber = 0;
 
@@ -545,7 +544,7 @@ public class MainActivity extends Activity {
 
                     cargoButton.setTextColor(getResources().getColor(R.color.grey));
 
-                    if (isBlueAlliance == 1 || isRedAlliance == 1 && matchNumber != 0 &&
+                    if (isBlueAlliance == 1 || isRedAlliance == 1 && !matchNumber.equals("") &&
 
                             teamNumber != 0 && firstAlliancePartner != 0 && secondAlliancePartner !=0)
 
@@ -775,7 +774,7 @@ public class MainActivity extends Activity {
 
                 scouterName = ScouterNameInput.getText().toString();
 
-                matchNumber = Integer.parseInt(matchNumberInput.getText().toString());
+                matchNumber = matchNumberInput.getText().toString();
 
                 teamNumber = Integer.parseInt(teamNumberInput.getText().toString());
 
