@@ -23,6 +23,5 @@ package="com.mercury1089.scoutingapp2019">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name="com.mercury1089.scoutingapp2019.QR_Display"></activity>
 </application>
 </manifest>

@@ -1209,8 +1209,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
-        android:text="Starting Soon"
         android:tag=""
+        android:text="Starting Soon"
+        android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MissedButton" />
 

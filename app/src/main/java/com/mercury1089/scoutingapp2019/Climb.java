@@ -1,11 +1,24 @@
 package com.mercury1089.scoutingapp2019;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Climb extends AppCompatActivity {
 
@@ -32,6 +45,10 @@ public class Climb extends AppCompatActivity {
     private BootstrapButton TwoPartnerButton;
 
     private BootstrapButton GenerateQRButton;
+
+    public final static int QRCodeSize = 500;
+
+    public String QRValue = "";
 
     int OnHAB = 0;
     int level = 0;
@@ -206,6 +223,97 @@ public class Climb extends AppCompatActivity {
     }
 
     public void GenerateQRClick (View view) {
-        //qr code
+        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+
+        HashMap<String, String> setupHashMap = (HashMap<String, String>) setupData;
+
+        Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
+        HashMap<String, String> scoreHashMap = (HashMap<String, String>) scoreData;
+
+        String key;
+        StringBuilder QRString = new StringBuilder();
+            try {
+                Object keyset[] = setupHashMap.keySet().toArray();
+                for (int i = 0; i < keyset.length; i++) {
+                    key = "" + keyset[i];
+                    QRString.append(key).append(",").append(setupHashMap.get(key)).append(",");
+                }
+                    Object keySet[] = scoreHashMap.keySet().toArray();
+                for (int i = 0; i < keySet.length; i++) {
+                    key = "" + keySet[i];
+                    QRString.append(key).append(",").append(scoreHashMap.get(key)).append(",");
+                }
+                QRValue = QRString.toString();
+                Bitmap bitmap = TextToImageEncode(QRValue);
+                final AlertDialog.Builder qrDialog = new AlertDialog.Builder(Climb.this);
+                View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
+                ImageView imageView = view1.findViewById(R.id.imageView);
+                Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+
+
+                imageView.setImageBitmap(bitmap);
+
+                qrDialog.setView(view1);
+
+
+                final AlertDialog dialog = qrDialog.create();
+
+                dialog.show();
+
+                goBackToMain.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+
+                    public void onClick(View v) {
+
+                        dialog.cancel();
+                    }
+                });
+            } catch (WriterException e) { e.printStackTrace(); }
+    }
+    Bitmap TextToImageEncode(String Value) throws WriterException {
+        BitMatrix bitMatrix;
+        try {
+
+            bitMatrix = new MultiFormatWriter().encode(
+                    Value,
+                    BarcodeFormat.DATA_MATRIX.QR_CODE,
+                    QRCodeSize, QRCodeSize, null
+            );
+
+        } catch (IllegalArgumentException illegalArgumentException) {
+            return null;
+        }
+
+
+
+        int bitMatrixWidth = bitMatrix.getWidth();
+
+        int bitMatrixHeight = bitMatrix.getHeight();
+
+        int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
+
+        for (int y = 0; y < bitMatrixHeight; y++) {
+
+            int offset = y * bitMatrixWidth;
+
+            for (int x = 0; x < bitMatrixWidth; x++) {
+
+                pixels[offset + x] = bitMatrix.get(x, y) ?
+
+                        getResources().getColor(R.color.colorPrimaryDark) : getResources().getColor(R.color.bootstrap_dropdown_divider);
+
+            }
+
+        }
+
+
+
+        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
+
+        bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
+
+        return bitmap;
+
     }
 }
