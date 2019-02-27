@@ -563,6 +563,60 @@ public class MainActivity extends Activity {
 
                     startButton.setText(R.string.Start);
 
+                    if (setupHashMap.get("AllianceColor").equals("Blue")) {
+                        if (setupHashMap.get("LeftOrRight").equals("Right")) {
+                            makeBoxesBlue("Left");
+
+                            makeBoxesVisible("Left");
+
+                            makeBoxesInvisible("Right");
+                        }
+                        else if (setupHashMap.get("LeftOrRight").equals("Left")) {
+                            makeBoxesBlue("Right");
+
+                            makeBoxesVisible("Right");
+
+                            makeBoxesInvisible("Left");
+                        }
+
+                    }
+                    else if (setupHashMap.get("AllianceColor").equals("Red")) {
+                        if (setupHashMap.get("LeftOrRight").equals("Right")) {
+                            makeBoxesRed("Left");
+
+                            makeBoxesVisible("Left");
+
+                            makeBoxesInvisible("Right");
+                        }
+                        else if (setupHashMap.get("LeftOrRight").equals("Left")) {
+                            makeBoxesRed("Right");
+
+                            makeBoxesVisible("Right");
+
+                            makeBoxesInvisible("Left");
+                        }
+                    }
+
+                    ConstraintLayout constraintLayout = findViewById(R.id.mainactivity);
+
+                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+
+                        if (constraintLayout.getChildAt(i) instanceof CustomView) {
+
+                            View circle = constraintLayout.getChildAt(i);
+
+                            if (circle.getTag().toString().equals(setupHashMap.get("StartingPosition"))) {
+
+                                circle.setVisibility(View.VISIBLE);
+
+                                break;
+
+                            }
+
+                        }
+
+                    }
+
                 }
 
             }
