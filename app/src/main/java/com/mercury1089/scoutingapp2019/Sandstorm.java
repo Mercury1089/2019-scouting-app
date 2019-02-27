@@ -346,7 +346,7 @@ public class Sandstorm extends MainActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ConstraintLayout constraintLayout = findViewById(R.id.layout);
+                        ConstraintLayout constraintLayout = findViewById(R.id.sandstorm);
                         for (int i = 0; i < constraintLayout.getChildCount(); i++) {
                             if (constraintLayout.getChildAt(i) instanceof TextView) {
                                 TextView textView = (TextView) constraintLayout.getChildAt(i);
@@ -440,24 +440,76 @@ public class Sandstorm extends MainActivity {
                     UNDO = "FellOver";
                     UndoButton.setEnabled(true);
                     deadRobot = 1;
+
                     PanelButton.setEnabled(false);
+                    defaultButtonState(PanelButton);
+
                     CargoButton.setEnabled(false);
+                    defaultButtonState(CargoButton);
+
+                    DroppedButton.setEnabled(false);
+                    defaultButtonState(DroppedButton);
+
+                    MissedButton.setEnabled(false);
+                    defaultButtonState(MissedButton);
+
                     setTextToColor(possessionTitle, "grey");
                     setTextToColor(panelOrCargoDirections, "grey");
                     setTextToColor(droppedDirection, "grey");
                     setTextToColor(scoringTitle, "grey");
                     setTextToColor(pOrCDirections, "grey");
                     setTextToColor(missedDirections, "grey");
+
+                    ConstraintLayout constraintLayout = findViewById(R.id.sandstorm);
+
+                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                        if (constraintLayout.getChildAt(i) instanceof CircleButton) {
+                            constraintLayout.getChildAt(i).setEnabled(false);
+                        }
+                        else if (constraintLayout.getChildAt(i) instanceof TextView) {
+                            if (constraintLayout.getChildAt(i).getTag() != null) {
+                                if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
+                                    String sandstorm = constraintLayout.getChildAt(i).getTag().toString().substring(0, 9);
+                                    if (sandstorm.equals("Sandstorm")) {
+                                        setTextToColor((TextView) constraintLayout.getChildAt(i), "grey");
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 } else {
                     deadRobot = 0;
                     PanelButton.setEnabled(true);
                     CargoButton.setEnabled(true);
+                    DroppedButton.setEnabled(true);
+                    MissedButton.setEnabled(true);
                     setTextToColor(possessionTitle, "white");
                     setTextToColor(panelOrCargoDirections, "white");
                     setTextToColor(droppedDirection, "white");
                     setTextToColor(scoringTitle, "white");
                     setTextToColor(pOrCDirections, "white");
                     setTextToColor(missedDirections, "white");
+
+                    ConstraintLayout constraintLayout = findViewById(R.id.sandstorm);
+
+                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                        if (constraintLayout.getChildAt(i) instanceof CircleButton) {
+                            constraintLayout.getChildAt(i).setEnabled(true);
+                        }
+                        else if (constraintLayout.getChildAt(i) instanceof TextView) {
+                            if (constraintLayout.getChildAt(i).getTag() != null) {
+                                if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
+                                    String sandstorm = constraintLayout.getChildAt(i).getTag().toString().substring(0, 9);
+                                    if (sandstorm.equals("Sandstorm")) {
+                                        setTextToColor((TextView) constraintLayout.getChildAt(i), "white");
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
                 }
 
             }

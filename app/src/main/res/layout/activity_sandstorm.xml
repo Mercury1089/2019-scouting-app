@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout"
+    android:id="@+id/sandstorm"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bootstrap_brand_secondary_text"
@@ -82,9 +82,9 @@
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
+        android:tag=""
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT2"
         app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
 
@@ -94,9 +94,9 @@
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
+        android:tag=""
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT3"
         app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
 
@@ -105,9 +105,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:tag=""
         android:text="@string/T1"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT1"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT1" />
 
@@ -116,9 +116,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:tag=""
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT2"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT2" />
 
@@ -127,9 +127,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:tag=""
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT3"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT3" />
 
@@ -418,9 +418,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="84dp"
         android:fontFamily="sans-serif-black"
+        android:tag=""
         android:text="@string/Possession"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -431,9 +431,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
+        android:tag=""
         android:text="@string/Scoring"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
 
@@ -443,9 +443,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tag=""
         android:text="@string/PossessionDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPossession" />
 
@@ -455,9 +455,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tag=""
         android:text="@string/POrCDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoring" />
 
@@ -467,10 +467,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:tag=""
         android:text="@string/MissedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textSize="13.2sp"
-        android:tag=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/IDScoringPOrCDirections" />
 
@@ -480,9 +480,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tag=""
         android:text="@string/DroppedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPanelOrCargoDirections" />
 
@@ -664,9 +664,9 @@
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag="Sandstorm,Missed,,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="Sandstorm,Missed,,,,"
         app:layout_constraintEnd_toEndOf="@+id/MissedCounterCircle"
         app:layout_constraintStart_toStartOf="@+id/MissedCounterCircle"
         app:layout_constraintTop_toTopOf="@+id/MissedCounterCircle" />
@@ -678,9 +678,9 @@
         android:layout_marginStart="78dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag="Sandstorm,Possessed,Panel,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="Sandstorm,Possessed,Panel,,,"
         app:layout_constraintEnd_toEndOf="@+id/PanelCounterCircle"
         app:layout_constraintStart_toStartOf="@+id/PanelOrCargo"
         app:layout_constraintTop_toTopOf="@+id/PanelCounterCircle" />
@@ -691,9 +691,9 @@
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag="Sandstorm,Possessed,Cargo,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="Sandstorm,Possessed,Cargo,,,"
         app:layout_constraintEnd_toEndOf="@+id/CargoCounterCircle"
         app:layout_constraintStart_toStartOf="@+id/CargoCounterCircle"
         app:layout_constraintTop_toTopOf="@+id/CargoCounterCircle" />
@@ -730,9 +730,9 @@
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag="Sandstorm,Dropped,,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="Sandstorm,Dropped,,,,"
         app:layout_constraintEnd_toEndOf="@+id/DroppedCounterCircle"
         app:layout_constraintTop_toTopOf="@+id/DroppedButton" />
 
@@ -929,8 +929,8 @@
         android:tag="Sandstorm,CargoShip,Panel,Left,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft2"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelLeft2" />
+        tools:layout_editor_absoluteX="409dp"
+        tools:layout_editor_absoluteY="460dp" />
 
     <TextView
         android:id="@+id/CSPL3"
