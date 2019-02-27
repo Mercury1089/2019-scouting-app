@@ -619,6 +619,7 @@
         android:layout_marginTop="24dp"
         android:enabled="false"
         android:onClick="missedClick"
+        android:saveEnabled="true"
         android:text="Missed     "
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"

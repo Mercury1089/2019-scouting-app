@@ -303,6 +303,13 @@ public class Sandstorm extends MainActivity {
         scoreHashMap = new HashMap<String, String>();
         timer = new Timer();
         UndoButton = findViewById(R.id.UndoButton);
+        possessionTitle = findViewById(R.id.IDPossession);
+        panelOrCargoDirections = findViewById(R.id.IDPanelOrCargoDirections);
+        droppedDirection = findViewById(R.id.IDDroppedDirections);
+
+        scoringTitle = findViewById(R.id.IDScoring);
+        pOrCDirections = findViewById(R.id.IDScoringPOrCDirections);
+        missedDirections = findViewById(R.id.IDScoringMissedDirections);
 
         //make Sandstorm button look active
         selectedButtonColors(SandstormButton);
@@ -362,12 +369,14 @@ public class Sandstorm extends MainActivity {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
             CargoButton.setEnabled(false);
+            isPanel = true;
             totalPanels++;
              enableScoringDiagram('P');
          } else if (setupHashMap.get("StartingGameObject").charAt(0) == 'C'){
              selectedButtonColors(CargoButton);
              CargoCounterText.setText("1");
              PanelButton.setEnabled(false);
+             isCargo = true;
              totalCargo++;
              enableScoringDiagram('C');
          }
@@ -393,6 +402,23 @@ public class Sandstorm extends MainActivity {
         DroppedCounterCircle.setEnabled(false);
         MissedCounterCircle.setEnabled(false);
 
+        possessionTitle.setTextColor(getResources().getColor(R.color.light));
+        panelOrCargoDirections.setTextColor(getResources().getColor(R.color.light));
+        droppedDirection.setTextColor(getResources().getColor(R.color.light));
+        scoringTitle.setTextColor(getResources().getColor(R.color.light));
+        pOrCDirections.setTextColor(getResources().getColor(R.color.light));
+        missedDirections.setTextColor(getResources().getColor(R.color.light));
+
+        MissedButton.setBackgroundColor(getResources().getColor(R.color.light));
+        MissedButton.setTextColor(getResources().getColor(R.color.grey));
+        MissedCounterText.setTextColor(getResources().getColor(R.color.light));
+        MissedButton.setEnabled(true);
+
+        DroppedButton.setBackgroundColor(getResources().getColor(R.color.light));
+        DroppedButton.setTextColor(getResources().getColor(R.color.grey));
+        DroppedCounterText.setTextColor(getResources().getColor(R.color.light));
+        DroppedButton.setEnabled(true);
+
         HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
         HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -409,13 +435,7 @@ public class Sandstorm extends MainActivity {
         FellOverSwitch = findViewById(R.id.FellOverSwitch);
         FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                possessionTitle = findViewById(R.id.IDPossession);
-                panelOrCargoDirections = findViewById(R.id.IDPanelOrCargoDirections);
-                droppedDirection = findViewById(R.id.IDDroppedDirections);
 
-                scoringTitle = findViewById(R.id.IDScoring);
-                pOrCDirections = findViewById(R.id.IDScoringPOrCDirections);
-                missedDirections = findViewById(R.id.IDScoringMissedDirections);
                 if (isChecked) {
                     UNDO = "FellOver";
                     UndoButton.setEnabled(true);
@@ -468,7 +488,7 @@ public class Sandstorm extends MainActivity {
     private void setTextToColor (TextView textView, String color) {
         if (color.equals("grey"))
             textView.setTextColor(getResources().getColor(R.color.grey));
-        else
+        else if (color.equals("white"))
             textView.setTextColor(getResources().getColor(R.color.light));
     }
 
@@ -1209,7 +1229,7 @@ public class Sandstorm extends MainActivity {
         }
 
         int totalDropped = droppedPanels+droppedCargo;
-        DroppedCounterText.setText(totalDropped);
+        DroppedCounterText.setText(totalDropped + "");
         DroppedButton.setBackgroundColor(getResources().getColor(R.color.orange));
 
         PanelButton.setEnabled(true);
@@ -1248,7 +1268,7 @@ public class Sandstorm extends MainActivity {
         int totalMissed = missedPanels+missedCargo;
 
         MissedButton.setBackgroundColor(getResources().getColor(R.color.orange));
-        MissedCounterText.setText(totalMissed);
+        MissedCounterText.setText(totalMissed + "");
 
         PanelButton.setEnabled(true);
         CargoButton.setEnabled(true);

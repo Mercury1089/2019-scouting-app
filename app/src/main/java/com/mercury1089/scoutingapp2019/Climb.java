@@ -44,7 +44,7 @@ public class Climb extends AppCompatActivity {
     private BootstrapButton OnePartnerButton;
     private BootstrapButton TwoPartnerButton;
 
-    private BootstrapButton GenerateQRButton;
+    private Button GenerateQRButton;
 
     private HashMap<String, String> setupHashMap;
     private HashMap<String, String> scoreHashMap;
@@ -65,28 +65,28 @@ public class Climb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_climb);
 
-        BootstrapButton SetupButton = findViewById(R.id.ClimbSetupButton);
-        BootstrapButton SandstormButton = findViewById(R.id.ClimbSandstormButton);
-        BootstrapButton TeleopButton = findViewById(R.id.ClimbTeleopButton);
-        BootstrapButton ClimbButton = findViewById(R.id.ClimbClimbButton);
+         SetupButton = findViewById(R.id.ClimbSetupButton);
+         SandstormButton = findViewById(R.id.ClimbSandstormButton);
+         TeleopButton = findViewById(R.id.ClimbTeleopButton);
+         ClimbButton = findViewById(R.id.ClimbClimbButton);
 
-        BootstrapButton OnHABButton = findViewById(R.id.OnHabButton);
-        BootstrapButton OffHABButton = findViewById(R.id.OffHabButton);
+         OnHABButton = findViewById(R.id.OnHabButton);
+         OffHABButton = findViewById(R.id.OffHabButton);
 
-        BootstrapButton Level1Button = findViewById(R.id.Level1Button);
-        BootstrapButton Level2Button = findViewById(R.id.Level2Button);
-        BootstrapButton Level3Button = findViewById(R.id.Level3Button);
+         Level1Button = findViewById(R.id.Level1Button);
+         Level2Button = findViewById(R.id.Level2Button);
+         Level3Button = findViewById(R.id.Level3Button);
 
-        BootstrapButton OnYourOwnButton = findViewById(R.id.IsSoloButton);
-        BootstrapButton WithHelpButton = findViewById(R.id.WithHelpButton);
+         OnYourOwnButton = findViewById(R.id.IsSoloButton);
+         WithHelpButton = findViewById(R.id.WithHelpButton);
 
-        BootstrapButton HasLiftedButton = findViewById(R.id.HasLiftedButton);;
-        BootstrapButton HasNotLiftedButton = findViewById(R.id.HasNotLiftedButton);;
+         HasLiftedButton = findViewById(R.id.HasLiftedButton);;
+         HasNotLiftedButton = findViewById(R.id.HasNotLiftedButton);;
 
-        BootstrapButton OnePartnerButton = findViewById(R.id.OnePartnerButton);
-        BootstrapButton TwoPartnerButton = findViewById(R.id.TwoPartnersButton);
+         OnePartnerButton = findViewById(R.id.OnePartnerButton);
+         TwoPartnerButton = findViewById(R.id.TwoPartnersButton);
 
-        Button GenerateQRButton = findViewById(R.id.ClimbGenerateQRButton);
+         GenerateQRButton = findViewById(R.id.ClimbGenerateQRButton);
 
         defaultButtonState(SetupButton);
         defaultButtonState(SandstormButton);
@@ -267,7 +267,7 @@ public class Climb extends AppCompatActivity {
                 QRValue = QRString.toString();
                 Bitmap bitmap = TextToImageEncode(QRValue);
                 final AlertDialog.Builder qrDialog = new AlertDialog.Builder(Climb.this);
-                View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
+                View view1 = getLayoutInflater().inflate(R.layout.qr_popup,null);
                 ImageView imageView = view1.findViewById(R.id.imageView);
                 Button goBackToMain = view1.findViewById(R.id.GoBackButton);
 
