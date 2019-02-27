@@ -524,7 +524,7 @@
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
 
-        android:id="@+id/TopToggle"
+        android:id="@+id/OnHab"
 
         android:layout_width="wrap_content"
 
