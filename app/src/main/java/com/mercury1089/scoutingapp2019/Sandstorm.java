@@ -433,7 +433,7 @@ public class Sandstorm extends MainActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 ConstraintLayout constraintLayout = findViewById(R.id.layout);
-                String color = "";
+                String color;
                 if (isChecked) {
                     UNDO = "FellOver";
                     UndoButton.setEnabled(true);
