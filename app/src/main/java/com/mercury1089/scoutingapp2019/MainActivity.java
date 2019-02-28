@@ -556,6 +556,8 @@ public class MainActivity extends Activity {
 
                     noShowStatus = 0;
 
+                    isQRButton = false;
+
                     panelButton.setEnabled(true);
 
                     cargoButton.setEnabled(true);
@@ -1410,7 +1412,7 @@ public class MainActivity extends Activity {
             isBlueAlliance = 1;
 
             if (noShowStatus == 0) {
-
+                isQRButton = false;
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
 
                     makeBoxesBlue("Left");
@@ -1421,6 +1423,8 @@ public class MainActivity extends Activity {
 
                     makeCirclesInvisible();
 
+
+
                 } else if (setupHashMap.get("LeftOrRight").equals("Right"))  {
 
                     makeBoxesBlue("Right");
@@ -1430,7 +1434,6 @@ public class MainActivity extends Activity {
                     makeBoxesInvisible("Left");
 
                     makeCirclesInvisible();
-
                 }
 
             }
@@ -1458,6 +1461,8 @@ public class MainActivity extends Activity {
             makeBoxesInvisible("Both");
 
             makeCirclesInvisible();
+
+
 
         }
 
@@ -1564,16 +1569,6 @@ public class MainActivity extends Activity {
 
 
     }
-
-
-
-
-
-
-
-
-
-
 
     public void cargoClick (View view) {
 
