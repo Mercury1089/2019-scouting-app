@@ -338,7 +338,7 @@ public class Sandstorm extends MainActivity {
                             if (constraintLayout.getChildAt(i) instanceof TextView) {
                                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                                 if (textView.getTag() != null) {
-                                    if (!textView.getTag().equals("")) {
+                                    if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
                                         scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
                                     }
                                 }
@@ -433,50 +433,35 @@ public class Sandstorm extends MainActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 ConstraintLayout constraintLayout = findViewById(R.id.layout);
-
+                String color = "";
                 if (isChecked) {
                     UNDO = "FellOver";
                     UndoButton.setEnabled(true);
                     deadRobot = 1;
-
-                    PanelButton.setEnabled(false);
                     defaultButtonState(PanelButton);
-
-                    PanelCounterText.setEnabled(false);
-                    CargoButton.setEnabled(false);
                     defaultButtonState(CargoButton);
-
-                    DroppedButton.setEnabled(false);
                     defaultButtonState(DroppedButton);
-
-                    MissedButton.setEnabled(false);
                     defaultButtonState(MissedButton);
 
+                    PanelButton.setEnabled(false);
+                    PanelCounterText.setEnabled(false);
+                    CargoButton.setEnabled(false);
                     CargoCounterText.setEnabled(false);
+                    DroppedButton.setEnabled(false);
+                    DroppedCounterText.setEnabled(false);
+                    MissedButton.setEnabled(false);
+                    MissedCounterText.setEnabled(false);
+
                     disableScoringDiagram('A');
-                    setTextToColor(possessionTitle, "grey");
+                    /*setTextToColor(possessionTitle, "grey");
                     setTextToColor(panelOrCargoDirections, "grey");
                     setTextToColor(droppedDirection, "grey");
                     setTextToColor(scoringTitle, "grey");
                     setTextToColor(pOrCDirections, "grey");
-                    setTextToColor(missedDirections, "grey");
+                    setTextToColor(missedDirections, "grey");*/
 
 
-                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
-                        if (constraintLayout.getChildAt(i) instanceof CircleButton) {
-                            constraintLayout.getChildAt(i).setEnabled(false);
-                        }
-                        else if (constraintLayout.getChildAt(i) instanceof TextView) {
-                            if (constraintLayout.getChildAt(i).getTag() != null) {
-                                if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
-                                    String sandstorm = constraintLayout.getChildAt(i).getTag().toString().substring(0, 9);
-                                    if (sandstorm.equals("Sandstorm")) {
-                                        setTextToColor((TextView) constraintLayout.getChildAt(i), "grey");
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    color = "grey";
 
                 } else {
                     deadRobot = 0;
@@ -489,33 +474,29 @@ public class Sandstorm extends MainActivity {
                     DroppedCounterText.setEnabled(false);
                     MissedButton.setEnabled(false);
                     MissedCounterText.setEnabled(false);
-                    setTextToColor(possessionTitle, "white");
+                    /*setTextToColor(possessionTitle, "white");
                     setTextToColor(panelOrCargoDirections, "white");
                     setTextToColor(droppedDirection, "white");
                     setTextToColor(scoringTitle, "white");
                     setTextToColor(pOrCDirections, "white");
-                    setTextToColor(missedDirections, "white");
+                    setTextToColor(missedDirections, "white");*/
+                    color = "white";
 
-                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
-                        if (constraintLayout.getChildAt(i) instanceof CircleButton) {
-                            constraintLayout.getChildAt(i).setEnabled(true);
-                        }
-                        else if (constraintLayout.getChildAt(i) instanceof TextView) {
-                            if (constraintLayout.getChildAt(i).getTag() != null) {
-                                if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
-                                    String sandstorm = constraintLayout.getChildAt(i).getTag().toString().substring(0, 9);
-                                    if (sandstorm.equals("Sandstorm")) {
-                                        setTextToColor((TextView) constraintLayout.getChildAt(i), "white");
-                                    }
+
+
+                }
+                for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                    if ((constraintLayout.getChildAt(i) instanceof TextView) && (constraintLayout.getChildAt(i).getTag() != null)) {
+                            if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
+                                String tag = constraintLayout.getChildAt(i).getTag().toString();
+                                if (tag.equals("label")) {
+                                    setTextToColor((TextView) constraintLayout.getChildAt(i), color);
                                 }
                             }
                         }
                     }
-
-
                 }
 
-            }
         });
     }
     public void onWindowFocusChanged(boolean hasFocus) {

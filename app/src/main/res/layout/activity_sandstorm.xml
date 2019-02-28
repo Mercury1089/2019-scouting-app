@@ -420,7 +420,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/Possession"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
+        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -433,7 +433,7 @@
         android:fontFamily="sans-serif-black"
         android:text="@string/Scoring"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
+        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
 
@@ -445,7 +445,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/PossessionDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
+        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPossession" />
 
@@ -457,7 +457,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/POrCDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
+        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoring" />
 
@@ -470,7 +470,7 @@
         android:text="@string/MissedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textSize="13.2sp"
-        android:tag=""
+        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/IDScoringPOrCDirections" />
 
@@ -482,7 +482,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/DroppedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
+        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPanelOrCargoDirections" />
 
