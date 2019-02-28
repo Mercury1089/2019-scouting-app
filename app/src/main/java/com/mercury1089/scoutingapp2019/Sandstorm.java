@@ -386,9 +386,9 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
 
-        final CircleButton PanelCounterCircle = findViewById(R.id.PanelCounterCircle);
-        final CircleButton CargoCounterCircle = findViewById(R.id.CargoCounterCircle);
-        CircleButton DroppedCounterCircle = findViewById(R.id.DroppedCounterCircle);
+        CircleButton PanelCounterCircle = findViewById(R.id.PanelCounterCircle);
+        CircleButton CargoCounterCircle = findViewById(R.id.CargoCounterCircle);
+        final CircleButton DroppedCounterCircle = findViewById(R.id.DroppedCounterCircle);
         CircleButton MissedCounterCircle = findViewById(R.id.MissedCounterCircle);
 
         PanelCounterCircle.setEnabled(false);
@@ -432,13 +432,26 @@ public class Sandstorm extends MainActivity {
         FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+                ConstraintLayout constraintLayout = findViewById(R.id.layout);
+
                 if (isChecked) {
                     UNDO = "FellOver";
                     UndoButton.setEnabled(true);
                     deadRobot = 1;
+
                     PanelButton.setEnabled(false);
+                    defaultButtonState(PanelButton);
+
                     PanelCounterText.setEnabled(false);
                     CargoButton.setEnabled(false);
+                    defaultButtonState(CargoButton);
+
+                    DroppedButton.setEnabled(false);
+                    defaultButtonState(DroppedButton);
+
+                    MissedButton.setEnabled(false);
+                    defaultButtonState(MissedButton);
+
                     CargoCounterText.setEnabled(false);
                     disableScoringDiagram('A');
                     setTextToColor(possessionTitle, "grey");
@@ -447,6 +460,24 @@ public class Sandstorm extends MainActivity {
                     setTextToColor(scoringTitle, "grey");
                     setTextToColor(pOrCDirections, "grey");
                     setTextToColor(missedDirections, "grey");
+
+
+                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                        if (constraintLayout.getChildAt(i) instanceof CircleButton) {
+                            constraintLayout.getChildAt(i).setEnabled(false);
+                        }
+                        else if (constraintLayout.getChildAt(i) instanceof TextView) {
+                            if (constraintLayout.getChildAt(i).getTag() != null) {
+                                if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
+                                    String sandstorm = constraintLayout.getChildAt(i).getTag().toString().substring(0, 9);
+                                    if (sandstorm.equals("Sandstorm")) {
+                                        setTextToColor((TextView) constraintLayout.getChildAt(i), "grey");
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 } else {
                     deadRobot = 0;
                     PanelButton.setEnabled(true);
@@ -454,12 +485,34 @@ public class Sandstorm extends MainActivity {
                     CargoButton.setEnabled(true);
                     CargoCounterText.setEnabled(true);
                     enableScoringDiagram('A');
+                    DroppedButton.setEnabled(false);
+                    DroppedCounterText.setEnabled(false);
+                    MissedButton.setEnabled(false);
+                    MissedCounterText.setEnabled(false);
                     setTextToColor(possessionTitle, "white");
                     setTextToColor(panelOrCargoDirections, "white");
                     setTextToColor(droppedDirection, "white");
                     setTextToColor(scoringTitle, "white");
                     setTextToColor(pOrCDirections, "white");
                     setTextToColor(missedDirections, "white");
+
+                    for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                        if (constraintLayout.getChildAt(i) instanceof CircleButton) {
+                            constraintLayout.getChildAt(i).setEnabled(true);
+                        }
+                        else if (constraintLayout.getChildAt(i) instanceof TextView) {
+                            if (constraintLayout.getChildAt(i).getTag() != null) {
+                                if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
+                                    String sandstorm = constraintLayout.getChildAt(i).getTag().toString().substring(0, 9);
+                                    if (sandstorm.equals("Sandstorm")) {
+                                        setTextToColor((TextView) constraintLayout.getChildAt(i), "white");
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
                 }
 
             }
@@ -870,9 +923,6 @@ public class Sandstorm extends MainActivity {
     private void enableScoringDiagram (char c) {
         switch (c) {
             case 'A':
-
-
-
             case 'P':
                 LeftRocketPanelNearT3.setEnabled(true);
                 LeftRocketPanelNearT2.setEnabled(true);

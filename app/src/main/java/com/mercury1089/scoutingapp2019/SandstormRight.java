@@ -608,16 +608,16 @@ public class SandstormRight extends AppCompatActivity {
             textView.setTextColor(getResources().getColor(R.color.light));
     }
 
-    ConstraintLayout layout = findViewById(R.id.layout);
-
-    public void iterateThroughForm(ConstraintLayout layout) {
-        for (int i = 0; i < layout.getChildCount(); i++) {
-            View v = layout.getChildAt(i);
-            if (v instanceof TextView) {
-                scoreHashMap.put(v.getTag().toString(), "0");
-            } //etc. If it fails anywhere, just return false.
-        }
-    }
+//    ConstraintLayout layout = findViewById(R.id.);
+//
+//    public void iterateThroughForm(ConstraintLayout layout) {
+//        for (int i = 0; i < layout.getChildCount(); i++) {
+//            View v = layout.getChildAt(i);
+//            if (v instanceof TextView) {
+//                scoreHashMap.put(v.getTag().toString(), "0");
+//            } //etc. If it fails anywhere, just return false.
+//        }
+//    }
 
 
     private void disableScoringDiagram (char c) {

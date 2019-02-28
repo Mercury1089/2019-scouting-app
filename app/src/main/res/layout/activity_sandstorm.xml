@@ -734,7 +734,7 @@
         android:enabled="false"
         android:gravity="center"
         android:onClick="droppedClick"
-        android:tag="Sandstorm,Dropped,,,,"
+        android:tag=""
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/DroppedCounterCircle"
