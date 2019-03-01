@@ -109,6 +109,21 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
+        Level1Button.setEnabled(false);
+        Level2Button.setEnabled(false);
+        Level3Button.setEnabled(false);
+
+        OnYourOwnButton.setEnabled(false);
+        WithHelpButton.setEnabled(false);
+
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        GenerateQRButton.setEnabled(false);
+
         GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.light));
         GenerateQRButton.setTextColor(getResources().getColor(R.color.grey));
 

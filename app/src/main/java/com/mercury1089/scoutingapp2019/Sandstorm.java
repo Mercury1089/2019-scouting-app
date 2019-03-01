@@ -198,6 +198,8 @@ public class Sandstorm extends MainActivity {
     Timer timer;
     Switch FellOverSwitch;
     Switch HABLineSwitch;
+    int YELLOW = Color.rgb(248, 231, 28);
+    int ORANGE = Color.rgb(255, 152, 0);
 
 
     @Override
@@ -322,8 +324,464 @@ public class Sandstorm extends MainActivity {
 
         Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
 
-        if (scoreData != null)
+        if (scoreData != null) {
             scoreHashMap = (HashMap<String, String>) scoreData;
+            Object keySet[] = scoreHashMap.keySet().toArray();
+            String tag;
+            for (int i = 0; i < keySet.length; i++) {
+                tag = String.valueOf(keySet[i]);
+                char arr[] = tag.toCharArray();
+                String hashVal;
+
+                if (arr[1] == 'R')
+                {
+                    if (arr[0] == 'L')
+                    {
+                        if (arr[2] == 'P')
+                        {
+                            if (arr[3] == 'N')
+                            {
+                                if (arr[5] == '1')
+                                {
+                                    hashVal = scoreHashMap.get("LRPNT1");
+                                    LRPNT1.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        LeftRocketPanelNearT1.setColor(YELLOW);
+                                        LRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '2')
+                                {
+                                    hashVal = scoreHashMap.get("LRPNT2");
+                                    LRPNT2.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        LeftRocketPanelNearT2.setColor(YELLOW);
+                                        LRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '3')
+                                {
+                                    hashVal = scoreHashMap.get("LRPNT3");
+                                    LRPNT3.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        LeftRocketPanelNearT3.setColor(YELLOW);
+                                        LRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                            }
+                            else if (arr[3] == 'F')
+                            {
+                                if (arr[5] == '1')
+                                {
+                                    hashVal = scoreHashMap.get("LRPFT1");
+                                    LRPFT1.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        LeftRocketPanelFarT1.setColor(YELLOW);
+                                        LRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '2')
+                                {
+                                    hashVal = scoreHashMap.get("LRPFT2");
+                                    LRPFT2.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        LeftRocketPanelFarT2.setColor(YELLOW);
+                                        LRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '3')
+                                {
+                                    hashVal = scoreHashMap.get("LRPFT3");
+                                    LRPFT3.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        LeftRocketPanelFarT3.setColor(YELLOW);
+                                        LRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                            }
+                        }
+                        else if (arr[2] == 'C')
+                        {
+                            if (arr[4] == '1')
+                            {
+                                hashVal = scoreHashMap.get("LRCT1");
+                                LRCT1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    LeftRocketCargoT1.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '2')
+                            {
+                                hashVal = scoreHashMap.get("LRCT2");
+                                LRCT2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    LeftRocketCargoT2.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '3')
+                            {
+                                hashVal = scoreHashMap.get("LRCT3");
+                                LRCT3.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    LeftRocketCargoT3.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                    }
+                    else if (arr[0] == 'R') {
+                        if (arr[2] == 'P')
+                        {
+                            if (arr[3] == 'N')
+                            {
+                                if (arr[5] == '1')
+                                {
+                                    hashVal = scoreHashMap.get("RRPNT1");
+                                    RRPNT1.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        RightRocketPanelNearT1.setColor(YELLOW);
+                                        RRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '2')
+                                {
+                                    hashVal = scoreHashMap.get("RRPNT2");
+                                    RRPNT2.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        RightRocketPanelNearT2.setColor(YELLOW);
+                                        RRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '3')
+                                {
+                                    hashVal = scoreHashMap.get("RRPNT3");
+                                    RRPNT3.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        RightRocketPanelNearT3.setColor(YELLOW);
+                                        RRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                            }
+                            else if (arr[3] == 'F')
+                            {
+                                if (arr[5] == '1')
+                                {
+                                    hashVal = scoreHashMap.get("RRPFT1");
+                                    RRPFT1.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        RightRocketPanelFarT1.setColor(YELLOW);
+                                        RRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '2')
+                                {
+                                    hashVal = scoreHashMap.get("RRPFT2");
+                                    RRPFT2.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        RightRocketPanelFarT2.setColor(YELLOW);
+                                        RRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                                else if (arr[5] == '3')
+                                {
+                                    hashVal = scoreHashMap.get("RRPFT3");
+                                    RRPFT3.setText(hashVal);
+                                    if (Integer.parseInt(hashVal) > 0) {
+                                        RightRocketPanelFarT3.setColor(YELLOW);
+                                        RRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
+                                    }
+                                    else {
+                                        //panel disabled colors
+                                        //panel text set
+                                    }
+                                }
+                            }
+                        }
+                        else if (arr[2] == 'C')
+                        {
+                            if (arr[4] == '1')
+                            {
+                                hashVal = scoreHashMap.get("RRCT1");
+                                RRCT1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    RightRocketCargoT1.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '2')
+                            {
+                                hashVal = scoreHashMap.get("RRCT2");
+                                RRCT2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    RightRocketCargoT2.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '3')
+                            {
+                                hashVal = scoreHashMap.get("RRCT3");
+                                RRCT3.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    RightRocketCargoT3.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (tag.toCharArray()[1] == 'S') {
+                    if (arr[2] == 'P')
+                    {
+                        if (arr[3] == 'L') {
+                            if (arr[4] == '1') {
+                                hashVal = scoreHashMap.get("CSPL1");
+                                CSPL1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelLeft1.setColor(YELLOW);
+                                    CSPL1.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '2') {
+                                hashVal = scoreHashMap.get("CSPL2");
+                                CSPL2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelLeft2.setColor(YELLOW);
+                                    CSPL2.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '3') {
+                                hashVal = scoreHashMap.get("CSPL3");
+                                CSPL3.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelLeft3.setColor(YELLOW);
+                                    CSPL3.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                        else if (arr[3] == 'R') {
+                            if (arr[4] == '1') {
+                                hashVal = scoreHashMap.get("CSPR1");
+                                CSPR1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelRight1.setColor(YELLOW);
+                                    CSPR1.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '2') {
+                                hashVal = scoreHashMap.get("CSPR2");
+                                CSPR2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelRight2.setColor(YELLOW);
+                                    CSPR2.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '3') {
+                                hashVal = scoreHashMap.get("CSPR3");
+                                CSPR3.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelRight3.setColor(YELLOW);
+                                    CSPR3.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                        else if (arr[3] == 'F') {
+                            if (arr[4] == '1') {
+                                hashVal = scoreHashMap.get("CSPF1");
+                                CSPF1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelFront1.setColor(YELLOW);
+                                    CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '2') {
+                                hashVal = scoreHashMap.get("CSPF2");
+                                CSPF2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipPanelFront2.setColor(YELLOW);
+                                    CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                    }
+                    else if (arr[2] == 'C')
+                    {
+                        if (arr[3] == 'L') {
+                            if (arr[4] == '1') {
+                                hashVal = scoreHashMap.get("CSCL1");
+                                CSPL1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipCargoLeft1.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '2') {
+                                hashVal = scoreHashMap.get("CSCL2");
+                                CSPL2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipCargoLeft2.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                            else if (arr[4] == '3') {
+                                hashVal = scoreHashMap.get("CSCL3");
+                                CSPL3.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipCargoLeft3.setColor(ORANGE);
+                                    //panel text set
+                                }
+                                else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                        else if (arr[3] == 'R') {
+                            if (arr[4] == '1') {
+                                hashVal = scoreHashMap.get("CSCR1");
+                                CSPR1.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipCargoRight1.setColor(ORANGE);
+                                    //panel text set
+                                } else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            } else if (arr[4] == '2') {
+                                hashVal = scoreHashMap.get("CSCL2");
+                                CSPL2.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipCargoRight2.setColor(ORANGE);
+                                    //panel text set
+                                } else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            } else if (arr[4] == '3') {
+                                hashVal = scoreHashMap.get("CSCL3");
+                                CSPL3.setText(hashVal);
+                                if (Integer.parseInt(hashVal) > 0) {
+                                    CargoShipCargoRight3.setColor(ORANGE);
+                                    //panel text set
+                                } else {
+                                    //panel disabled colors
+                                    //panel text set
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         else
             scoreHashMap = new HashMap<>();
 
@@ -952,6 +1410,8 @@ public class Sandstorm extends MainActivity {
                 RRPFT1.setEnabled(true);
                 RRPFT2.setEnabled(true);
                 RRPFT3.setEnabled(true);
+
+
 
                 if (LRPNT3Counter > 0) {
                     LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));

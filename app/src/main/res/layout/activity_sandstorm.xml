@@ -82,9 +82,9 @@
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
+        android:tag=""
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT2"
         app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
 
@@ -94,9 +94,9 @@
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
+        android:tag=""
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT3"
         app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
 
@@ -105,9 +105,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:tag=""
         android:text="@string/T1"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT1"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT1" />
 
@@ -116,9 +116,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:tag=""
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT2"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT2" />
 
@@ -127,9 +127,9 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginEnd="16dp"
+        android:tag=""
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag=""
         app:layout_constraintBaseline_toBaselineOf="@+id/LRPNT3"
         app:layout_constraintEnd_toStartOf="@+id/LRPNT3" />
 
@@ -418,9 +418,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="84dp"
         android:fontFamily="sans-serif-black"
+        android:tag="label"
         android:text="@string/Possession"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -431,9 +431,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-black"
+        android:tag="label"
         android:text="@string/Scoring"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PanelOrCargo" />
 
@@ -443,9 +443,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tag="label"
         android:text="@string/PossessionDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPossession" />
 
@@ -455,9 +455,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tag="label"
         android:text="@string/POrCDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDScoring" />
 
@@ -467,10 +467,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
+        android:tag="label"
         android:text="@string/MissedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textSize="13.2sp"
-        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/IDScoringPOrCDirections" />
 
@@ -480,9 +480,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:tag="label"
         android:text="@string/DroppedDirections"
         android:textColor="@color/bootstrap_dropdown_divider"
-        android:tag="label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDPanelOrCargoDirections" />
 
@@ -1242,14 +1242,18 @@
 
     <TextView
         android:id="@+id/StartingSoon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/bootstrap_brand_warning"
         android:tag=""
         android:text="Starting Soon"
-        android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MissedButton" />
+        android:gravity="center"
+        android:textColor="@color/bootstrap_brand_secondary_text"
+        app:layout_constraintEnd_toStartOf="@+id/UndoButton"
+        app:layout_constraintStart_toEndOf="@+id/FellOverSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/RRCT3" />
 
 </android.support.constraint.ConstraintLayout>

@@ -518,7 +518,18 @@ public class MainActivity extends Activity {
 
                 if (isChecked) {
 
-                    checkToEnableQRButton();
+                    if (ScouterNameInput.getText().length() > 0
+
+                            && teamNumberInput.getText().length() > 0
+
+                            && matchNumberInput.getText().length() > 0
+
+                            && firstAlliancePartnerInput.getText().length() > 0
+
+                            && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                            setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                        startButton.setEnabled(true);
 
                     setupHashMap.put("NoShow", "True");
 
@@ -642,7 +653,18 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
-                checkToEnableQRButton();
+                if (ScouterNameInput.getText().length() > 0
+
+                        && teamNumberInput.getText().length() > 0
+
+                        && matchNumberInput.getText().length() > 0
+
+                        && firstAlliancePartnerInput.getText().length() > 0
+
+                        && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                    startButton.setEnabled(true);
 
                 setupHashMap.put(ScouterNameInput.getTag().toString(), ScouterNameInput.getText().toString());
 
@@ -670,7 +692,18 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
-                checkToEnableQRButton();
+                if (ScouterNameInput.getText().length() > 0
+
+                        && teamNumberInput.getText().length() > 0
+
+                        && matchNumberInput.getText().length() > 0
+
+                        && firstAlliancePartnerInput.getText().length() > 0
+
+                        && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                    startButton.setEnabled(true);
 
                 setupHashMap.put(matchNumberInput.getTag().toString(), matchNumberInput.getText().toString());
 
@@ -696,7 +729,18 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
-                checkToEnableQRButton();
+                if (ScouterNameInput.getText().length() > 0
+
+                        && teamNumberInput.getText().length() > 0
+
+                        && matchNumberInput.getText().length() > 0
+
+                        && firstAlliancePartnerInput.getText().length() > 0
+
+                        && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                    startButton.setEnabled(true);
 
                 setupHashMap.put(teamNumberInput.getTag().toString(), teamNumberInput.getText().toString());
 
@@ -724,7 +768,18 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
-                checkToEnableQRButton();
+                if (ScouterNameInput.getText().length() > 0
+
+                        && teamNumberInput.getText().length() > 0
+
+                        && matchNumberInput.getText().length() > 0
+
+                        && firstAlliancePartnerInput.getText().length() > 0
+
+                        && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                    startButton.setEnabled(true);
 
                 setupHashMap.put(firstAlliancePartnerInput.getTag().toString(), firstAlliancePartnerInput.getText().toString());
 
@@ -752,7 +807,18 @@ public class MainActivity extends Activity {
 
                 checkToEnableStartButton();
 
-                checkToEnableQRButton();
+                if (ScouterNameInput.getText().length() > 0
+
+                        && teamNumberInput.getText().length() > 0
+
+                        && matchNumberInput.getText().length() > 0
+
+                        && firstAlliancePartnerInput.getText().length() > 0
+
+                        && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                    startButton.setEnabled(true);
 
                 setupHashMap.put(secondAlliancePartnerInput.getTag().toString(), secondAlliancePartnerInput.getText().toString());
 
@@ -1401,7 +1467,18 @@ public class MainActivity extends Activity {
 
         if (isBlueAlliance == 0) {
 
-            checkToEnableQRButton();
+            if (ScouterNameInput.getText().length() > 0
+
+                    && teamNumberInput.getText().length() > 0
+
+                    && matchNumberInput.getText().length() > 0
+
+                    && firstAlliancePartnerInput.getText().length() > 0
+
+                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                startButton.setEnabled(true);
 
             redDefault();
 
@@ -1454,7 +1531,18 @@ public class MainActivity extends Activity {
 
             setupHashMap.put("AllianceColor", "Neither");
 
-            checkToEnableQRButton();
+            if (ScouterNameInput.getText().length() > 0
+
+                    && teamNumberInput.getText().length() > 0
+
+                    && matchNumberInput.getText().length() > 0
+
+                    && firstAlliancePartnerInput.getText().length() > 0
+
+                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                startButton.setEnabled(true);
 
             startButton.setEnabled(false);
 
@@ -1479,7 +1567,18 @@ public class MainActivity extends Activity {
 
         if (isRedAlliance == 0) {
 
-            checkToEnableQRButton();
+            if (ScouterNameInput.getText().length() > 0
+
+                    && teamNumberInput.getText().length() > 0
+
+                    && matchNumberInput.getText().length() > 0
+
+                    && firstAlliancePartnerInput.getText().length() > 0
+
+                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                startButton.setEnabled(true);
 
             blueDefault();
 
@@ -1531,7 +1630,18 @@ public class MainActivity extends Activity {
 
             setupHashMap.put("AllianceColor", "Neither");
 
-            checkToEnableQRButton();
+            if (ScouterNameInput.getText().length() > 0
+
+                    && teamNumberInput.getText().length() > 0
+
+                    && matchNumberInput.getText().length() > 0
+
+                    && firstAlliancePartnerInput.getText().length() > 0
+
+                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
+
+                startButton.setEnabled(true);
 
             startButton.setEnabled(false);
 
@@ -1696,28 +1806,6 @@ public class MainActivity extends Activity {
 
         }
 
-    }
-
-    public void checkToEnableQRButton () {
-        if (isQRButton == true) {
-            if (ScouterNameInput.getText().length() > 0
-
-                    && teamNumberInput.getText().length() > 0
-
-                    && matchNumberInput.getText().length() > 0
-
-                    && firstAlliancePartnerInput.getText().length() > 0
-
-                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked()) {
-
-                startButton.setEnabled(true);
-
-            }
-            else {
-                startButton.setEnabled(false);
-            }
-        }
     }
 
 
