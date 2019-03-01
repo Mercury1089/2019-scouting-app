@@ -17,8 +17,13 @@ import android.view.View;
 
 
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Set;
 
 public class Settings extends AppCompatActivity {
 
@@ -31,6 +36,7 @@ public class Settings extends AppCompatActivity {
     private boolean isLocalStorageClicked;
     public boolean hasBeenSaved;
     private String leftOrRight;
+    private Button CancelButton;
     private String mainLeftOrRight;
 
     @Override
@@ -43,6 +49,8 @@ public class Settings extends AppCompatActivity {
         fieldSideRightButton = findViewById(R.id.FieldSideRight);
         localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
         saveButton = findViewById(R.id.SaveButton);
+        CancelButton = findViewById(R.id.CancelButton);
+
         isLeft = false;
         isRight = false;
         isLocalStorageClicked = false;
@@ -53,7 +61,6 @@ public class Settings extends AppCompatActivity {
 
         isRight = false;
         isLeft = false;
-
 
         if (getIntent().getStringExtra("mainLeftOrRight") != null) {
             String mainLeftOrRight = getIntent().getStringExtra("mainLeftOrRight");
@@ -74,6 +81,10 @@ public class Settings extends AppCompatActivity {
                 localStorageResetDefault();
                 saveButton.setEnabled(true);
             }
+            CancelButton.setEnabled(true);
+        }
+        else {
+            CancelButton.setEnabled(false);
         }
     }
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -133,6 +144,8 @@ public class Settings extends AppCompatActivity {
             isLocalStorageClicked = true;
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
+            saveButton.setEnabled(false);
+            CancelButton.setEnabled(false);
         } else
             localStorageResetDefault();
     }
@@ -162,6 +175,22 @@ public class Settings extends AppCompatActivity {
         else if (isRight){
             leftOrRight = "Right";
         }
+        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+        Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
+        if (isLocalStorageClicked && setupData != null && scoreData != null) {
+            HashMap<String, String> setupHashMap = new HashMap<>();
+            HashMap<String, String> scoreHashMap = new HashMap<>();
+            Intent intent = new Intent(Settings.this, MainActivity.class);
+            intent.putExtra("setupHashMap", setupHashMap);
+            intent.putExtra("scoreHashMap", scoreHashMap);
+            intent.putExtra("LEFTORRIGHT", leftOrRight);
+            Toast.makeText(Settings.this, "All variables successfully reset.", Toast.LENGTH_SHORT).show();
+            startActivity(intent);
+        }
+
+
+
+
         hasBeenSaved = true;
         Intent intent = new Intent(Settings.this, MainActivity.class);
         intent.putExtra("LEFTORRIGHT", leftOrRight);

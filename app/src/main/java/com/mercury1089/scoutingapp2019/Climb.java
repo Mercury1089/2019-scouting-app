@@ -173,9 +173,7 @@ public class Climb extends AppCompatActivity {
     public void OffHABClick (View view) {
         selectedButtonColors(OffHABButton);
         defaultButtonState(OnHABButton);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
+        GenerateQRButton.setEnabled(true);
         OnHAB = 0;
     }
 
@@ -184,8 +182,7 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(Level2Button);
         defaultButtonState(Level3Button);
 
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
+        GenerateQRButton.setEnabled(true);
 
         level = 1;
     }
@@ -195,7 +192,8 @@ public class Climb extends AppCompatActivity {
         selectedButtonColors(Level2Button);
         defaultButtonState(Level3Button);
 
-        GenerateQRButton.setEnabled(true);
+        OnYourOwnButton.setEnabled(true);
+        WithHelpButton.setEnabled(true);
 
         level = 2;
     }
@@ -205,7 +203,8 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(Level2Button);
         selectedButtonColors(Level3Button);
 
-        GenerateQRButton.setEnabled(true);
+        OnYourOwnButton.setEnabled(true);
+        WithHelpButton.setEnabled(true);
 
         level = 3;
     }
@@ -243,8 +242,7 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(HasLiftedButton);
         selectedButtonColors(HasNotLiftedButton);
 
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
+        GenerateQRButton.setEnabled(true);
 
         HasLifted = 0;
     }
@@ -272,7 +270,7 @@ public class Climb extends AppCompatActivity {
                 Object keyset[] = setupHashMap.keySet().toArray();
                 for (int i = 0; i < keyset.length; i++) {
                     key = "" + keyset[i];
-                    QRString.append(key).append(",").append(setupHashMap.get(key)).append(",");
+                    QRString.append(setupHashMap.get(key)).append(",");
                 }
                     Object keySet[] = scoreHashMap.keySet().toArray();
                 for (int i = 0; i < keySet.length; i++) {
@@ -286,23 +284,18 @@ public class Climb extends AppCompatActivity {
                 ImageView imageView = view1.findViewById(R.id.imageView);
                 Button goBackToMain = view1.findViewById(R.id.GoBackButton);
 
-
                 imageView.setImageBitmap(bitmap);
-
                 qrDialog.setView(view1);
-
 
                 final AlertDialog dialog = qrDialog.create();
 
                 dialog.show();
-
                 goBackToMain.setOnClickListener(new View.OnClickListener() {
-
                     @Override
-
-                    public void onClick(View v) {
-
+                    public void onClick(View view) {
                         dialog.cancel();
+                        Intent intent = new Intent (Climb.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 });
             } catch (WriterException e) { e.printStackTrace(); }

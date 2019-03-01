@@ -195,7 +195,7 @@ public class Sandstorm extends MainActivity {
     private boolean isPanel = false;
     String UNDO;
     Button UndoButton;
-    Timer timer;
+    private Timer timer;
     Switch FellOverSwitch;
     Switch HABLineSwitch;
     int YELLOW = Color.rgb(248, 231, 28);
@@ -323,6 +323,37 @@ public class Sandstorm extends MainActivity {
         setupHashMap = (HashMap<String, String>)setupData;
 
         Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
+
+        TimerTask switchToTeleop = new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ConstraintLayout constraintLayout = findViewById(R.id.layout);
+                        for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                            if (constraintLayout.getChildAt(i) instanceof TextView) {
+                                TextView textView = (TextView) constraintLayout.getChildAt(i);
+                                if (textView.getTag() != null) {
+                                    if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
+                                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                    }
+                                }
+                            }
+                        }
+                        scoreHashMap.put("Sandstorm,Missed,Panel,,,", missedPanels + "");
+                        scoreHashMap.put("Sandstorm,Missed,Cargo,,,", missedCargo + "");
+                        scoreHashMap.put("Sandstorm,Dropped,Panel,,,", droppedPanels + "");
+                        scoreHashMap.put("Sandstorm,Dropped,Cargo,,,", droppedCargo + "");
+
+                        Intent intent = new Intent(Sandstorm.this, Teleop.class);
+                        intent.putExtra("scoreHashMap", scoreHashMap);
+                        startActivity(intent);
+                    }
+                });
+            }
+        };
+        timer.schedule(switchToTeleop, 15000);
 
         if (scoreData != null) {
             scoreHashMap = (HashMap<String, String>) scoreData;
@@ -782,39 +813,12 @@ public class Sandstorm extends MainActivity {
                 }
             }
         }
-        else
+        else {
             scoreHashMap = new HashMap<>();
 
-        TimerTask switchToTeleop = new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ConstraintLayout constraintLayout = findViewById(R.id.layout);
-                        for (int i = 0; i < constraintLayout.getChildCount(); i++) {
-                            if (constraintLayout.getChildAt(i) instanceof TextView) {
-                                TextView textView = (TextView) constraintLayout.getChildAt(i);
-                                if (textView.getTag() != null) {
-                                    if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
-                                    }
-                                }
-                            }
-                        }
-                        scoreHashMap.put("Sandstorm,Missed,Panel,,,", missedPanels + "");
-                        scoreHashMap.put("Sandstorm,Missed,Cargo,,,", missedCargo + "");
-                        scoreHashMap.put("Sandstorm,Dropped,Panel,,,", droppedPanels + "");
-                        scoreHashMap.put("Sandstorm,Dropped,Cargo,,,", droppedCargo + "");
+        }
 
-                        Intent intent = new Intent(Sandstorm.this, Teleop.class);
-                        intent.putExtra("scoreHashMap", scoreHashMap);
-                        startActivity(intent);
-                    }
-                });
-            }
-        };
-        timer.schedule(switchToTeleop, 15000);
+
          if (setupHashMap.get("StartingGameObject").charAt(0) == 'P') {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
@@ -1737,12 +1741,14 @@ public class Sandstorm extends MainActivity {
     public void setupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("setupHashMap", setupHashMap);
+        timer.cancel();
         startActivity(intent);
     }
     public void teleopClick (View view) {
         Intent intent = new Intent(this, Teleop.class);
         intent.putExtra("setupHashMap", setupHashMap);
         intent.putExtra("scoreHashMap", scoreHashMap);
+        timer.cancel();
         startActivity(intent);
     }
 
@@ -1750,6 +1756,7 @@ public class Sandstorm extends MainActivity {
         Intent intent = new Intent(this, Climb.class);
         intent.putExtra("setupHashMap", setupHashMap);
         intent.putExtra("scoreHashMap", scoreHashMap);
+        timer.cancel();
         startActivity(intent);
     }
 
@@ -2381,6 +2388,7 @@ public class Sandstorm extends MainActivity {
 
     //undo button
     public void UndoClick (View view) {
+        UndoButton.setEnabled(false);
         switch (UNDO) {
             case "Panel":
                 defaultButtonState(PanelButton);
@@ -2425,7 +2433,7 @@ public class Sandstorm extends MainActivity {
                     droppedCargo--;
                     selectedButtonColors(CargoButton);
                 }
-                DroppedCounterText.setText(droppedPanels+droppedCargo);
+                DroppedCounterText.setText(String.valueOf(droppedPanels+droppedCargo));
 
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
@@ -2447,7 +2455,7 @@ public class Sandstorm extends MainActivity {
                     selectedButtonColors(CargoButton);
                 }
 
-                MissedCounterText.setText(missedPanels+missedCargo);
+                MissedCounterText.setText(String.valueOf(missedPanels+missedCargo));
 
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
@@ -2458,6 +2466,7 @@ public class Sandstorm extends MainActivity {
                 MissedButton.setEnabled(true);
                 MissedCounterText.setEnabled(true);
                 enableScoringDiagram('A');
+                break;
             case "FellOver":
                 deadRobot = 0;
                 PanelButton.setEnabled(true);
@@ -2475,9 +2484,11 @@ public class Sandstorm extends MainActivity {
                 setTextToColor(pOrCDirections, "white");
                 setTextToColor(missedDirections, "white");
                 FellOverSwitch.setChecked(!FellOverSwitch.isChecked());
+                break;
             case "HAB":
                 crossedHABLine = abs(crossedHABLine-1);
                 HABLineSwitch.setChecked(!HABLineSwitch.isChecked());
+                break;
             case "LRPNT3": //undo for circle buttons aka locations
                 PanelButton.setEnabled(true);
                 PanelCounterText.setEnabled(true);

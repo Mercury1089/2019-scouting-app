@@ -204,6 +204,9 @@
         android:layout_marginStart="16dp"
 
 
+        android:background="@color/bootstrap_brand_secondary_fill"
+
+
         android:ems="10"
 
 
@@ -212,12 +215,8 @@
 
         android:tag="ScouterName"
 
-
-        android:textColor="@color/bootstrap_dropdown_divider"
-
-
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/IDScouterName" />
 
 
@@ -230,7 +229,7 @@
         android:layout_width="wrap_content"
 
 
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
 
 
         android:layout_marginStart="16dp"
@@ -266,6 +265,9 @@
         android:layout_marginStart="16dp"
 
 
+        android:background="@color/bootstrap_brand_secondary_fill"
+
+
         android:ems="10"
 
 
@@ -275,11 +277,9 @@
         android:tag="MatchNumber"
 
 
-        android:textColor="@color/bootstrap_dropdown_divider"
-
+        android:textColor="@color/black"
 
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/IDMatchNumber" />
 
 
@@ -292,10 +292,13 @@
         android:layout_width="wrap_content"
 
 
-        android:layout_height="17dp"
+        android:layout_height="25dp"
 
 
         android:layout_marginStart="16dp"
+
+
+        android:layout_marginTop="16dp"
 
 
         android:text="@string/TeamNumber"
@@ -305,8 +308,6 @@
 
 
         app:layout_constraintStart_toStartOf="parent"
-
-
         app:layout_constraintTop_toBottomOf="@+id/MatchNumberInput" />
 
 
@@ -319,13 +320,13 @@
         android:layout_width="211dp"
 
 
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
 
 
         android:layout_marginStart="16dp"
 
 
-        android:layout_marginTop="64dp"
+        android:background="@color/bootstrap_brand_secondary_fill"
 
 
         android:ems="10"
@@ -339,12 +340,10 @@
 
         android:tag="TeamNumber"
 
-
-        android:textColor="@color/bootstrap_dropdown_divider"
+        android:textColor="@color/black"
 
         app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toTopOf="@+id/MatchNumberInput" />
+        app:layout_constraintTop_toBottomOf="@+id/IDTeamNumber" />
 
 
     <Switch
@@ -386,10 +385,13 @@
         android:layout_width="wrap_content"
 
 
-        android:layout_height="wrap_content"
+        android:layout_height="25dp"
 
 
         android:layout_marginStart="16dp"
+
+
+        android:layout_marginTop="16dp"
 
 
         android:text="@string/AlliancePartners"
@@ -399,8 +401,6 @@
 
 
         app:layout_constraintStart_toStartOf="parent"
-
-
         app:layout_constraintTop_toBottomOf="@+id/TeamNumberInput" />
 
 
@@ -419,6 +419,12 @@
         android:layout_marginStart="16dp"
 
 
+        android:background="@color/bootstrap_brand_secondary_fill"
+
+
+        android:backgroundTint="@color/bootstrap_brand_secondary_fill"
+
+
         android:ems="10"
 
 
@@ -427,14 +433,10 @@
 
         android:maxLength="4"
 
-
         android:tag="Alliance1"
 
-
-        android:textColor="@color/bootstrap_dropdown_divider"
-
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
 
@@ -453,6 +455,9 @@
         android:layout_marginStart="32dp"
 
 
+        android:background="@color/bootstrap_brand_secondary_border"
+
+
         android:ems="10"
 
 
@@ -464,11 +469,9 @@
 
         android:tag="Alliance2"
 
-
-        android:textColor="@color/bootstrap_dropdown_divider"
+        android:textColor="@color/black"
 
         app:layout_constraintStart_toEndOf="@+id/FirstAlliancePartnerInput"
-
         app:layout_constraintTop_toBottomOf="@+id/IDAlliancePartners" />
 
 
@@ -484,7 +487,7 @@
         android:layout_height="wrap_content"
 
 
-        android:layout_marginStart="256dp"
+        android:layout_marginStart="296dp"
 
 
         android:text="@string/AllianceColor"
@@ -602,10 +605,13 @@
         android:layout_width="wrap_content"
 
 
-        android:layout_height="0dp"
+        android:layout_height="25dp"
 
 
         android:layout_marginStart="16dp"
+
+
+        android:layout_marginTop="16dp"
 
 
         android:fontFamily="sans-serif-black"
@@ -618,8 +624,6 @@
 
 
         app:layout_constraintStart_toStartOf="parent"
-
-
         app:layout_constraintTop_toBottomOf="@+id/SecondAlliancePartnerInput" />
 
 
@@ -968,6 +972,8 @@
 
         android:visibility="invisible"
 
+        android:tag="LL1"
+
 
         app:layout_constraintStart_toEndOf="@+id/LL2"
 
@@ -1018,6 +1024,8 @@
 
 
         android:visibility="invisible"
+
+        android:tag="LC1"
 
 
         app:layout_constraintStart_toEndOf="@+id/L2M1"
@@ -1445,6 +1453,18 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/IDStartButtonDirections" />
+
+    <TextView
+        android:id="@+id/DiagramMessage"
+        android:layout_width="603dp"
+        android:layout_height="295dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:gravity="center"
+        android:text="You must select an alliance color (above) before you can access the map."
+        android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections"
+        tools:layout_editor_absoluteX="-2dp" />
 
 
 </android.support.constraint.ConstraintLayout>
