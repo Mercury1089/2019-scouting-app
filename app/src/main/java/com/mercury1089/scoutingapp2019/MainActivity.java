@@ -597,6 +597,8 @@ public class MainActivity extends Activity {
                     isQRButton = true;
 
                     makeCirclesInvisible();
+                    DiagramMessage.setText("Scoring diagram is unavailable because the robot did not show up.");
+                    DiagramMessage.setVisibility(View.VISIBLE);
 
 
                     makeBoxesInvisible("Both");
