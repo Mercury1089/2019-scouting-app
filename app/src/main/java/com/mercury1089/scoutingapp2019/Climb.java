@@ -1,6 +1,7 @@
 package com.mercury1089.scoutingapp2019;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.zxing.BarcodeFormat;
@@ -353,6 +355,7 @@ public class Climb extends AppCompatActivity {
         public void run() {
             String key;
             StringBuilder QRString = new StringBuilder();
+
             try {
                 Object keyset[] = setupHashMap.keySet().toArray();
                 for (int i = 0; i < keyset.length; i++) {
@@ -364,23 +367,32 @@ public class Climb extends AppCompatActivity {
                     key = "" + keySet[i];
                     QRString.append(key).append(",").append(scoreHashMap.get(key)).append(",");
                 }
+
                 QRValue = QRString.toString();
+
                 final Bitmap bitmap = TextToImageEncode(QRValue);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         final AlertDialog.Builder qrDialog = new AlertDialog.Builder(Climb.this);
+                        final AlertDialog.Builder data = new AlertDialog.Builder(Climb.this);
+
                         View view1 = getLayoutInflater().inflate(R.layout.qr_popup,null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
+
                         Button goBackToMain = view1.findViewById(R.id.GoBackButton);
 
                         imageView.setImageBitmap(bitmap);
+
                         qrDialog.setView(view1);
+                        data.setMessage(QRValue);
 
                         final AlertDialog dialog = qrDialog.create();
+                        final AlertDialog dataShow = data.create();
 
                         progressDialog.cancel();
                         dialog.show();
+                        dataShow.show();
                         goBackToMain.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
