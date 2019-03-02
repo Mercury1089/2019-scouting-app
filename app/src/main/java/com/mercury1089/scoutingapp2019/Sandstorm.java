@@ -2498,11 +2498,9 @@ public class Sandstorm extends MainActivity {
                 DroppedCounterText.setEnabled(true);
                 MissedButton.setEnabled(true);
                 MissedCounterText.setEnabled(true);
-                LRPNT3.setText(String.valueOf(LRPNT3));
-                LRPNT3.setText(String.valueOf(LRPNT3));
                 enableScoringDiagram('P');
-                LRPNT3.setText(String.valueOf(LRPNT3Counter));
                 LRPNT3Counter--;
+                LRPNT3.setText(String.valueOf(LRPNT3Counter));
                 if (LRPNT3Counter == 0) {
                     LeftRocketPanelNearT3.setColor(Color.rgb(255, 255, 217));
                     LRPNT3.setTextColor(getResources().getColor(R.color.textdefault));
