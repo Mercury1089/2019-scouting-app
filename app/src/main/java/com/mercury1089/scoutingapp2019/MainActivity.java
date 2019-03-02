@@ -1919,7 +1919,7 @@ public class MainActivity extends Activity {
                     && firstAlliancePartnerInput.getText().length() > 0
 
                     && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) || NoShowSwitch.isChecked())
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
 
                 startButton.setEnabled(true);
             else
@@ -2038,7 +2038,7 @@ public class MainActivity extends Activity {
                     && firstAlliancePartnerInput.getText().length() > 0
 
                     && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) || NoShowSwitch.isChecked())
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked())
 
                 startButton.setEnabled(true);
             else
