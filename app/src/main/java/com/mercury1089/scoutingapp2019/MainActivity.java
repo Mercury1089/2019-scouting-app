@@ -1089,7 +1089,6 @@ public class MainActivity extends Activity {
 
 
     public void makeCirclesInvisible() {
-        setupHashMap.put("StartingPosition", null);
         LL1Circle.setVisibility(View.INVISIBLE);
 
         LC1Circle.setVisibility(View.INVISIBLE);
@@ -1859,8 +1858,6 @@ public class MainActivity extends Activity {
 
             isBlueAlliance = 1;
 
-            setupHashMap.put("StartingPosition", null);
-
             if (noShowStatus == 0) {
                 isQRButton = false;
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
@@ -1980,8 +1977,6 @@ public class MainActivity extends Activity {
             redButton.setTextColor(getResources().getColor(R.color.light));
 
             isRedAlliance = 1;
-
-            setupHashMap.put("StartingPosition", null);
 
             if (noShowStatus == 0) {
 

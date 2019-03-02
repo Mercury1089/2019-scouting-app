@@ -1130,6 +1130,7 @@
 
 
         app:layout_constraintTop_toTopOf="@+id/RR2" />
+        app:layout_constraintTop_toTopOf="@+id/RR2" />
 
 
     <com.mercury1089.scoutingapp2019.CustomView
