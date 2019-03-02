@@ -403,9 +403,18 @@ public class MainActivity extends Activity {
 
             if (setupData != null) {
                 setupHashMap = (HashMap<String, String>) setupData;
-            }
+                if (setupHashMap.size() == 0) {
+                    setupHashMap.put("StartingGameObject", "Neither");
 
-            if (setupHashMap == null) setupHashMap = new HashMap<>();
+                    setupHashMap.put("NoShow", "False");
+
+                    setupHashMap.put("LeftOrRight", getIntent().getStringExtra("LEFTORRIGHT"));
+
+                    setupHashMap.put("StartingPosition", "None");
+
+                    setupHashMap.put("AllianceColor", "Neither");
+                }
+            }
 
         }
 
@@ -526,8 +535,67 @@ public class MainActivity extends Activity {
                 }
 
             }
+            if (setupHashMap.get("NoShow").equals("True")) {
+                NoShowSwitch.setChecked(true);
+                if (ScouterNameInput.getText().length() > 0
+
+                        && teamNumberInput.getText().length() > 0
+
+                        && matchNumberInput.getText().length() > 0
+
+                        && firstAlliancePartnerInput.getText().length() > 0
+
+                        && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")))
+
+                    startButton.setEnabled(true);
+                else
+                    startButton.setEnabled(false);
+                if (ScouterNameInput.getText().length() > 0
+
+                        || teamNumberInput.getText().length() > 0
+
+                        || matchNumberInput.getText().length() > 0
+
+                        || firstAlliancePartnerInput.getText().length() > 0
+
+                        || secondAlliancePartnerInput.getText().length() > 0 || (setupHashMap.get("AllianceColor").equals("Blue") ||
+                        setupHashMap.get("AllianceColor").equals("Red")) || NoShowSwitch.isChecked())
+
+                    clearButton.setEnabled(true);
+                else
+                    clearButton.setEnabled(false);
+
+                setupHashMap.put("NoShow", "True");
+
+                noShowStatus = 1;
+
+                startButton.setText(R.string.GenerateQRCode);
+
+                isQRButton = true;
+
+                makeCirclesInvisible();
+                DiagramMessage.setText("Scoring diagram is unavailable because the robot did not show up.");
+                DiagramMessage.setVisibility(View.VISIBLE);
 
 
+                makeBoxesInvisible("Both");
+
+                panelButton.setEnabled(false);
+
+                panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+                panelButton.setTextColor(getResources().getColor(R.color.grey));
+
+                cargoButton.setEnabled(false);
+
+                cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+                cargoButton.setTextColor(getResources().getColor(R.color.grey));
+            }
+            else if(setupHashMap.get("NoShow").equals("False")) {
+                NoShowSwitch.setChecked(false);
+            }
 
             ConstraintLayout constraintLayout = findViewById(R.id.mainactivity);
 
@@ -1302,6 +1370,11 @@ public class MainActivity extends Activity {
     public void SettingsClick (View view) {
         Intent intent = new Intent(MainActivity.this, Settings.class);
         intent.putExtra("mainLeftOrRight", leftOrRight);
+        if (setupHashMap != null) {
+            if (setupHashMap.size() > 5) {
+                intent.putExtra("setupHashMap", setupHashMap);
+            }
+        }
         startActivity(intent);
     }
 

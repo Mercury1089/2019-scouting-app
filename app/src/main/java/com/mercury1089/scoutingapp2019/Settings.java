@@ -39,6 +39,8 @@ public class Settings extends AppCompatActivity {
     private Button CancelButton;
     private String mainLeftOrRight;
 
+    private HashMap<String, String> setupHashMap;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,13 @@ public class Settings extends AppCompatActivity {
         localStorageResetButton = findViewById(R.id.LocalStorageResetButton);
         saveButton = findViewById(R.id.SaveButton);
         CancelButton = findViewById(R.id.CancelButton);
+
+        setupHashMap = new HashMap<>();
+
+        if (setupHashMap != null) {
+                Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+                if (setupData != null) setupHashMap = (HashMap<String, String>) setupData;
+        }
 
         isLeft = false;
         isRight = false;
@@ -177,29 +186,29 @@ public class Settings extends AppCompatActivity {
         }
         Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
         Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
-        if (isLocalStorageClicked && setupData != null && scoreData != null) {
+
+        Intent intent = new Intent(Settings.this, MainActivity.class);
+        intent.putExtra("setupHashMap", setupHashMap);
+
+
             HashMap<String, String> setupHashMap = new HashMap<>();
             HashMap<String, String> scoreHashMap = new HashMap<>();
-            Intent intent = new Intent(Settings.this, MainActivity.class);
-            intent.putExtra("setupHashMap", setupHashMap);
-            intent.putExtra("scoreHashMap", scoreHashMap);
-            intent.putExtra("LEFTORRIGHT", leftOrRight);
+
+            if (setupData != null) setupHashMap = (HashMap<String, String>) setupData;
+
+                intent.putExtra("setupHashMap", setupHashMap);
+                intent.putExtra("LEFTORRIGHT", leftOrRight);
+
             Toast.makeText(Settings.this, "All variables successfully reset.", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
-        }
-
-
-
 
         hasBeenSaved = true;
-        Intent intent = new Intent(Settings.this, MainActivity.class);
-        intent.putExtra("LEFTORRIGHT", leftOrRight);
         startActivity(intent);
     }
 
     public void cancelClick (View view) {
         Intent intent = new Intent(Settings.this,MainActivity.class);
         intent.putExtra("LEFTORRIGHT", getIntent().getStringExtra("mainLeftOrRight"));
+        intent.putExtra("setupHashMap", setupHashMap);
         startActivity(intent);
     }
 }
