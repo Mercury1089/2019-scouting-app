@@ -12,6 +12,7 @@ import android.app.Activity;
 
 import android.app.AlertDialog;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 
 import android.graphics.Bitmap;
@@ -244,6 +245,8 @@ public class MainActivity extends Activity {
     boolean isQRButton = false;
 
     String leftOrRight;
+
+    private ProgressDialog progressDialog;
 
 
 
@@ -978,65 +981,18 @@ public class MainActivity extends Activity {
 
                 if (isQRButton) {
 
-                    String RedOrBlue = "";
-
-                    if (isBlueAlliance == 1)
-
-                        RedOrBlue = "Blue";
-
-                    else if (isRedAlliance == 1)
-
-                        RedOrBlue = "Red";
-
-                    QRValue = ScouterNameInput.getText().toString() + "," + teamNumberInput.getText().toString()
-
-                            + "," + matchNumberInput.getText().toString() + ","
-
-                            + firstAlliancePartnerInput.getText().toString() + ","
-
-                            + secondAlliancePartnerInput.getText().toString() + ","
-
-                            + RedOrBlue + "," + leftOrRight + ",,";
-
-                    try {
-
-                        bitmap = TextToImageEncode(QRValue);
-
-                        final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
-
-                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
-
-                        ImageView imageView = view1.findViewById(R.id.imageView);
-
-                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
-
-
-
-                        imageView.setImageBitmap(bitmap);
-
-                        qrDialog.setView(view1);
-
-
-
-                        final AlertDialog dialog = qrDialog.create();
-
-                        dialog.show();
-
-                        goBackToMain.setOnClickListener(new View.OnClickListener() {
-
-                            @Override
-
-                            public void onClick(View v) {
-
-                                dialog.cancel();
-
-                            }
-
-                        });
-
-
-
-                    } catch (WriterException e) { e.printStackTrace(); }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog = new ProgressDialog(MainActivity.this, R.style.LoadingDialogStyle);
+                            progressDialog.setMessage("Please Wait");
+                            progressDialog.setCancelable(false);
+                            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                            progressDialog.show();
+                        }
+                    });
+                    QRRunnable qrRunnable = new QRRunnable();
+                    new Thread(qrRunnable).start();
 
                 } else {
                     Intent intent = new Intent(MainActivity.this, Sandstorm.class);
@@ -2224,7 +2180,52 @@ public class MainActivity extends Activity {
     }
 
 
+    class QRRunnable implements Runnable {
 
+        @Override
+        public void run() {
+            QRValue = ScouterNameInput.getText().toString() + "," + matchNumberInput.getText().toString()
+
+                    + "," + teamNumberInput.getText().toString() + ","
+
+                    + firstAlliancePartnerInput.getText().toString() + ","
+
+                    + secondAlliancePartnerInput.getText().toString() + ","
+                    + isRedAlliance + "," + isBlueAlliance + "," + noShowStatus + "," + ' ' + ","
+                    + 0 + "," +  0 + "," + 0 + "," + 0 + "," + 0 + ",";
+
+            try {
+                bitmap = TextToImageEncode(QRValue);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
+                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
+                        ImageView imageView = view1.findViewById(R.id.imageView);
+                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+                        imageView.setImageBitmap(bitmap);
+                        qrDialog.setView(view1);
+                        final AlertDialog dialog = qrDialog.create();
+
+                        progressDialog.dismiss();
+
+                        dialog.show();
+
+                        goBackToMain.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.dismiss();
+                            }
+                        });
+                    }
+                });
+
+            } catch (WriterException e) {
+                e.printStackTrace();
+
+            }
+        }
+    }
 
 
 }

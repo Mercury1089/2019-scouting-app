@@ -20,6 +20,8 @@
 
     <color name="light"> @color/bootstrap_dropdown_divider </color>
 
+    <color name="white">#ffffff </color>
+
     <color name="grey"> @color/bootstrap_gray </color>
 
     <color name="blue">@color/bootstrap_brand_info</color>
@@ -27,6 +29,8 @@
     <color name="red"> @color/bootstrap_brand_danger </color>
 
     <color name="black">#000000</color>
+
+    <color name="darkgray">#2b2c2d</color>
 
     <color name="orange"> @android:color/holo_orange_dark </color>
 

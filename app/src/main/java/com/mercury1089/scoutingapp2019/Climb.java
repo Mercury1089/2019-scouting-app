@@ -1,6 +1,7 @@
 package com.mercury1089.scoutingapp2019;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,8 @@ public class Climb extends AppCompatActivity {
 
     private HashMap<String, String> setupHashMap;
     private HashMap<String, String> scoreHashMap;
+
+    private ProgressDialog progressDialog;
 
     public final static int QRCodeSize = 500;
 
@@ -264,41 +267,14 @@ public class Climb extends AppCompatActivity {
     }
 
     public void GenerateQRClick (View view) {
-        String key;
-        StringBuilder QRString = new StringBuilder();
-            try {
-                Object keyset[] = setupHashMap.keySet().toArray();
-                for (int i = 0; i < keyset.length; i++) {
-                    key = "" + keyset[i];
-                    QRString.append(setupHashMap.get(key)).append(",");
-                }
-                    Object keySet[] = scoreHashMap.keySet().toArray();
-                for (int i = 0; i < keySet.length; i++) {
-                    key = "" + keySet[i];
-                    QRString.append(key).append(",").append(scoreHashMap.get(key)).append(",");
-                }
-                QRValue = QRString.toString();
-                Bitmap bitmap = TextToImageEncode(QRValue);
-                final AlertDialog.Builder qrDialog = new AlertDialog.Builder(Climb.this);
-                View view1 = getLayoutInflater().inflate(R.layout.qr_popup,null);
-                ImageView imageView = view1.findViewById(R.id.imageView);
-                Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+        progressDialog = new ProgressDialog(Climb.this, R.style.LoadingDialogStyle);
+        progressDialog.setMessage("Please Wait");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
 
-                imageView.setImageBitmap(bitmap);
-                qrDialog.setView(view1);
-
-                final AlertDialog dialog = qrDialog.create();
-
-                dialog.show();
-                goBackToMain.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.cancel();
-                        Intent intent = new Intent (Climb.this, MainActivity.class);
-                        startActivity(intent);
-                    }
-                });
-            } catch (WriterException e) { e.printStackTrace(); }
+        QRRunnable qrRunnable = new QRRunnable();
+        new Thread(qrRunnable).start();
     }
     Bitmap TextToImageEncode(String Value) throws WriterException {
         BitMatrix bitMatrix;
@@ -344,5 +320,55 @@ public class Climb extends AppCompatActivity {
 
         return bitmap;
 
+    }
+    class QRRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            String key;
+            StringBuilder QRString = new StringBuilder();
+            try {
+                Object keyset[] = setupHashMap.keySet().toArray();
+                for (int i = 0; i < keyset.length; i++) {
+                    key = "" + keyset[i];
+                    QRString.append(setupHashMap.get(key)).append(",");
+                }
+                Object keySet[] = scoreHashMap.keySet().toArray();
+                for (int i = 0; i < keySet.length; i++) {
+                    key = "" + keySet[i];
+                    QRString.append(key).append(",").append(scoreHashMap.get(key)).append(",");
+                }
+                QRValue = QRString.toString();
+                final Bitmap bitmap = TextToImageEncode(QRValue);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final AlertDialog.Builder qrDialog = new AlertDialog.Builder(Climb.this);
+                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup,null);
+                        ImageView imageView = view1.findViewById(R.id.imageView);
+                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+
+                        imageView.setImageBitmap(bitmap);
+                        qrDialog.setView(view1);
+
+                        final AlertDialog dialog = qrDialog.create();
+
+                        progressDialog.cancel();
+                        dialog.show();
+                        goBackToMain.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.cancel();
+                                Intent intent = new Intent (Climb.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }
+                });
+            }
+            catch (WriterException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
