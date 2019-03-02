@@ -619,6 +619,10 @@ public class MainActivity extends Activity {
 
                     setupHashMap.put("NoShow", "False");
 
+                    DiagramMessage.setVisibility(View.INVISIBLE);
+
+                    DiagramMessage.setText("You must select an alliance color (above) before you can access the map.");
+
                     noShowStatus = 0;
 
                     isQRButton = false;
@@ -1822,7 +1826,6 @@ public class MainActivity extends Activity {
 
     public void blueClick (View view) {
         setupHashMap.put("AllianceColor", "Blue");
-        DiagramMessage.setVisibility(View.INVISIBLE);
         if (isBlueAlliance == 0) {
             if (ScouterNameInput.getText().length() > 0
 
@@ -1860,8 +1863,9 @@ public class MainActivity extends Activity {
 
             isBlueAlliance = 1;
 
-            if (noShowStatus == 0) {
+            if (!NoShowSwitch.isChecked()) {
                 isQRButton = false;
+                DiagramMessage.setVisibility(View.INVISIBLE);
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
 
                     makeBoxesBlue("Left");
@@ -1889,6 +1893,7 @@ public class MainActivity extends Activity {
 
             else {
 
+                DiagramMessage.setVisibility(View.VISIBLE);
                 makeBoxesInvisible("Both");
 
                 makeCirclesInvisible();
@@ -1953,8 +1958,6 @@ public class MainActivity extends Activity {
 
         setupHashMap.put("AllianceColor", "Red");
 
-        DiagramMessage.setVisibility(View.INVISIBLE);
-
         if (isRedAlliance == 0) {
 
             if (ScouterNameInput.getText().length() > 0
@@ -1980,7 +1983,8 @@ public class MainActivity extends Activity {
 
             isRedAlliance = 1;
 
-            if (noShowStatus == 0) {
+            if (!NoShowSwitch.isChecked()) {
+                DiagramMessage.setVisibility(View.INVISIBLE);
 
                 if (setupHashMap.get("LeftOrRight").equals("Left")) {
 
@@ -2007,6 +2011,7 @@ public class MainActivity extends Activity {
             }
 
             else {
+                DiagramMessage.setVisibility(View.VISIBLE);
 
                 makeBoxesInvisible("Both");
 

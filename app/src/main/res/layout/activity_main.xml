@@ -455,7 +455,7 @@
         android:layout_marginStart="32dp"
 
 
-        android:background="@color/bootstrap_brand_secondary_border"
+        android:background="@color/bootstrap_brand_secondary_fill"
 
 
         android:ems="10"
