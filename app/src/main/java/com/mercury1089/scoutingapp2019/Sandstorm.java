@@ -1752,6 +1752,7 @@ public class Sandstorm extends MainActivity {
         startActivity(intent);
     }
 
+    //called when a hatch panel is scored
     public void panelCounterClick (View view) {
         UNDO = "Panel";
         UndoButton.setEnabled(true);
@@ -1772,6 +1773,8 @@ public class Sandstorm extends MainActivity {
         enableScoringDiagram('P');
         disableScoringDiagram('C');
     }
+
+    //called when a cargo is scored
     public void cargoCounterClick (View view) {
         UNDO = "Cargo";
         UndoButton.setEnabled(true);
@@ -1792,6 +1795,7 @@ public class Sandstorm extends MainActivity {
         enableScoringDiagram('C');
         disableScoringDiagram('P');
     }
+
     public void droppedClick (View view) {
         UNDO = "Dropped";
         UndoButton.setEnabled(true);
