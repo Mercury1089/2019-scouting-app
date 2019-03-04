@@ -34,10 +34,10 @@ public class Settings extends AppCompatActivity {
     private boolean isLeft;
     private boolean isRight;
     private boolean isLocalStorageClicked;
-    public boolean hasBeenSaved;
+    private boolean HasBeenCleared;
     private String leftOrRight;
     private Button CancelButton;
-    private String mainLeftOrRight;
+    private Serializable setupData;
 
     private HashMap<String, String> setupHashMap;
 
@@ -53,48 +53,46 @@ public class Settings extends AppCompatActivity {
         saveButton = findViewById(R.id.SaveButton);
         CancelButton = findViewById(R.id.CancelButton);
 
-        setupHashMap = new HashMap<>();
-
-        if (setupHashMap != null) {
-                Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
-                if (setupData != null) setupHashMap = (HashMap<String, String>) setupData;
-        }
-
         isLeft = false;
         isRight = false;
         isLocalStorageClicked = false;
-        hasBeenSaved = false;
+        HasBeenCleared = false;
         leftOrRight = "";
         leftDefault();
         rightDefault();
 
-        isRight = false;
-        isLeft = false;
+        String mainLeftOrRight = "";
 
-        if (getIntent().getStringExtra("mainLeftOrRight") != null) {
-            String mainLeftOrRight = getIntent().getStringExtra("mainLeftOrRight");
-            if (mainLeftOrRight.equals("Left")) {
-                isLeft = true;
-                leftOrRight = "Left";
-                rightDefault();
-                fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.orange));
-                fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
-                saveButton.setEnabled(true);
-                localStorageResetDefault();
-            } else if (mainLeftOrRight.equals("Right")) {
-                isRight = true;
-                leftOrRight = "Right";
-                fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
-                fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
-                leftDefault();
-                localStorageResetDefault();
-                saveButton.setEnabled(true);
-            }
-            CancelButton.setEnabled(true);
+        setupHashMap = new HashMap<>();
+        setupData = getIntent().getSerializableExtra("setupHashMap");
+        if (setupData != null) {
+            setupHashMap = (HashMap<String, String>) setupData;
+            mainLeftOrRight = setupHashMap.get("LeftOrRight");
+        }
+        else if (getIntent().getStringExtra("mainLeftOrRight") != null) {
+            mainLeftOrRight = getIntent().getStringExtra("mainLeftOrRight");
         }
         else {
             CancelButton.setEnabled(false);
         }
+        if (mainLeftOrRight.equals("Left")) {
+            isLeft = true;
+            leftOrRight = "Left";
+            rightDefault();
+            fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
+            saveButton.setEnabled(true);
+            localStorageResetDefault();
+        } else if (mainLeftOrRight.equals("Right")) {
+            isRight = true;
+            leftOrRight = "Right";
+            fieldSideRightButton.setBackgroundColor(getResources().getColor(R.color.orange));
+            fieldSideRightButton.setTextColor(getResources().getColor(R.color.light));
+            leftDefault();
+            localStorageResetDefault();
+            saveButton.setEnabled(true);
+        }
+        CancelButton.setEnabled(true);
     }
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
@@ -153,10 +151,12 @@ public class Settings extends AppCompatActivity {
             isLocalStorageClicked = true;
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
-            saveButton.setEnabled(false);
             CancelButton.setEnabled(false);
-        } else
+        } else {
             localStorageResetDefault();
+            CancelButton.setEnabled(true);
+        }
+
     }
 
     private void localStorageResetDefault () {
@@ -178,31 +178,45 @@ public class Settings extends AppCompatActivity {
     }
 
     public void saveClick (View view) {
-        if (isLeft) {
-            leftOrRight = "Left";
-        }
-        else if (isRight){
-            leftOrRight = "Right";
-        }
-        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
-        Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
-
-        Intent intent = new Intent(Settings.this, MainActivity.class);
-        intent.putExtra("setupHashMap", setupHashMap);
 
 
-            HashMap<String, String> setupHashMap = new HashMap<>();
-            HashMap<String, String> scoreHashMap = new HashMap<>();
+        if (isLocalStorageClicked) {
+            leftOrRight = "";
+            leftDefault();
+            rightDefault();
+            localStorageResetDefault();
+            saveButton.setEnabled(false);
 
-            if (setupData != null) setupHashMap = (HashMap<String, String>) setupData;
-
-                intent.putExtra("setupHashMap", setupHashMap);
-                intent.putExtra("LEFTORRIGHT", leftOrRight);
-
+            setupHashMap.clear();
+            setupHashMap.put("NoShow","0");
+            setupHashMap.put("AllianceColor","");
+            HasBeenCleared = true;
             Toast.makeText(Settings.this, "All variables successfully reset.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            if (isLeft)
+                leftOrRight = "Left";
+            else if (isRight)
+                leftOrRight = "Right";
 
-        hasBeenSaved = true;
-        startActivity(intent);
+            if (setupData == null) {
+                setupHashMap.put("NoShow","0");
+                setupHashMap.put("AllianceColor","");
+            }
+
+            setupHashMap.put("LeftOrRight",leftOrRight);
+
+            Intent intent = new Intent(Settings.this, MainActivity.class);
+            intent.putExtra("setupHashMap", setupHashMap);
+            Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
+            HashMap<String, String> scoreHashMap;
+            if (scoreData != null && !HasBeenCleared) {
+                scoreHashMap = (HashMap<String, String>) scoreData;
+                intent.putExtra("scoreHashMap", scoreHashMap);
+            }
+            startActivity(intent);
+        }
+
     }
 
     public void cancelClick (View view) {

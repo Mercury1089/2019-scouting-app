@@ -270,6 +270,8 @@
 
         android:ems="10"
 
+        android:inputType="number"
+
 
         android:maxLength="3"
 
@@ -355,7 +357,7 @@
         android:layout_width="148dp"
 
 
-        android:layout_height="55dp"
+        android:layout_height="53dp"
 
 
         android:layout_marginStart="128dp"
@@ -970,9 +972,9 @@
         android:onClick="LL1Click"
 
 
-        android:visibility="invisible"
-
         android:tag="LL1"
+
+        android:visibility="invisible"
 
 
         app:layout_constraintStart_toEndOf="@+id/LL2"
@@ -1023,9 +1025,9 @@
         android:onClick="LC1Click"
 
 
-        android:visibility="invisible"
-
         android:tag="LC1"
+
+        android:visibility="invisible"
 
 
         app:layout_constraintStart_toEndOf="@+id/L2M1"
@@ -1130,7 +1132,7 @@
 
 
         app:layout_constraintTop_toTopOf="@+id/RR2" />
-        app:layout_constraintTop_toTopOf="@+id/RR2" />
+    app:layout_constraintTop_toTopOf="@+id/RR2" />
 
 
     <com.mercury1089.scoutingapp2019.CustomView
@@ -1464,8 +1466,8 @@
         android:gravity="center"
         android:text="You must select an alliance color (above) before you can access the map."
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections"
-        tools:layout_editor_absoluteX="-2dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDStartingPositionDirections" />
 
 
 </android.support.constraint.ConstraintLayout>

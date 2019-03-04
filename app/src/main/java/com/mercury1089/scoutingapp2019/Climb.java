@@ -56,12 +56,6 @@ public class Climb extends AppCompatActivity {
 
     public String QRValue = "";
 
-    int OnHAB = 0;
-    int level = 0;
-    int OnTheirOwn = 0;
-    int HasLifted = 1;
-    int HowManyPartners = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,23 +165,60 @@ public class Climb extends AppCompatActivity {
         Level1Button.setEnabled(true);
         Level2Button.setEnabled(true);
         Level3Button.setEnabled(true);
-        OnHAB = 1;
     }
     public void OffHABClick (View view) {
         selectedButtonColors(OffHABButton);
         defaultButtonState(OnHABButton);
         GenerateQRButton.setEnabled(true);
-        OnHAB = 0;
+
+        Level1Button.setEnabled(false);
+        Level2Button.setEnabled(false);
+        Level3Button.setEnabled(false);
+        OnYourOwnButton.setEnabled(false);
+        WithHelpButton.setEnabled(false);
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        defaultButtonState(Level1Button);
+        defaultButtonState(Level2Button);
+        defaultButtonState(Level3Button);
+        defaultButtonState(OnYourOwnButton);
+        defaultButtonState(WithHelpButton);
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+        defaultButtonState(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
+
+        setupHashMap.put("ClimbLevel", String.valueOf(0));
+        setupHashMap.put("ClimbPartners", String.valueOf(0));
+        setupHashMap.put("SelfOrWithHelp", "");
     }
 
     public void Level1Click (View view) {
         selectedButtonColors(Level1Button);
         defaultButtonState(Level2Button);
         defaultButtonState(Level3Button);
-
         GenerateQRButton.setEnabled(true);
 
-        level = 1;
+        OnYourOwnButton.setEnabled(false);
+        WithHelpButton.setEnabled(false);
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        defaultButtonState(OnYourOwnButton);
+        defaultButtonState(WithHelpButton);
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+        defaultButtonState(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
+
+        setupHashMap.put("ClimbLevel", String.valueOf(1));
+        setupHashMap.put("ClimbPartners", String.valueOf(0));
+        setupHashMap.put("SelfOrWithHelp", "");
     }
 
     public void Level2Click (View view) {
@@ -198,7 +229,7 @@ public class Climb extends AppCompatActivity {
         OnYourOwnButton.setEnabled(true);
         WithHelpButton.setEnabled(true);
 
-        level = 2;
+        setupHashMap.put("ClimbLevel", String.valueOf(2));
     }
 
     public void Level3Click (View view) {
@@ -209,7 +240,7 @@ public class Climb extends AppCompatActivity {
         OnYourOwnButton.setEnabled(true);
         WithHelpButton.setEnabled(true);
 
-        level = 3;
+        setupHashMap.put("ClimbLevel", String.valueOf(3));
     }
 
     public void OnTheirOwnClick (View view) {
@@ -219,16 +250,27 @@ public class Climb extends AppCompatActivity {
         HasLiftedButton.setEnabled(true);
         HasNotLiftedButton.setEnabled(true);
 
-        OnTheirOwn = 1;
+        setupHashMap.put("SelfOrWithHelp", "S");
     }
 
     public void WithHelpClick (View view) {
-        selectedButtonColors(OnYourOwnButton);
-        defaultButtonState(WithHelpButton);
+        defaultButtonState(OnYourOwnButton);
+        selectedButtonColors(WithHelpButton);
 
         GenerateQRButton.setEnabled(true);
 
-        OnTheirOwn = 0;
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+        defaultButtonState(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
+
+        setupHashMap.put("SelfOrWithHelp", "H");
+        setupHashMap.put("ClimbPartners", String.valueOf(0));
     }
 
     public void HasLiftedClick (View view) {
@@ -237,33 +279,36 @@ public class Climb extends AppCompatActivity {
 
         OnePartnerButton.setEnabled(true);
         TwoPartnerButton.setEnabled(true);
-
-        HasLifted = 1;
     }
 
     public void HasNotLiftedClick (View view) {
         defaultButtonState(HasLiftedButton);
         selectedButtonColors(HasNotLiftedButton);
 
-        GenerateQRButton.setEnabled(true);
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
 
-        HasLifted = 0;
-    }
-
-    public void OnePartnerClick (View view) {
-        HowManyPartners = 1;
-        selectedButtonColors(OnePartnerButton);
+        defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
         GenerateQRButton.setEnabled(true);
     }
 
+    public void OnePartnerClick (View view) {
+        selectedButtonColors(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
+
+        GenerateQRButton.setEnabled(true);
+        setupHashMap.put("ClimbPartners", String.valueOf(1));
+
+    }
+
     public void TwoPartnerClick (View view) {
-        HowManyPartners = 2;
         defaultButtonState(OnePartnerButton);
         selectedButtonColors(TwoPartnerButton);
 
         GenerateQRButton.setEnabled(true);
+        setupHashMap.put("ClimbPartners", String.valueOf(2));
     }
 
     public void GenerateQRClick (View view) {
@@ -328,11 +373,24 @@ public class Climb extends AppCompatActivity {
             String key;
             StringBuilder QRString = new StringBuilder();
             try {
-                Object keyset[] = setupHashMap.keySet().toArray();
-                for (int i = 0; i < keyset.length; i++) {
-                    key = "" + keyset[i];
-                    QRString.append(setupHashMap.get(key)).append(",");
-                }
+                QRString.append(setupHashMap.get("ScouterName")).append(",");
+                QRString.append(setupHashMap.get("MatchNumber")).append(",");
+                QRString.append(setupHashMap.get("TeamNumber")).append(",");
+                QRString.append(setupHashMap.get("FirstAlliancePartner")).append(",");
+                QRString.append(setupHashMap.get("SecondAlliancePartner")).append(",");
+                QRString.append(setupHashMap.get("AllianceColor")).append(",");
+                QRString.append(setupHashMap.get("LeftOrRight")).append(",");
+                QRString.append(setupHashMap.get("StartingPosition")).append(",");
+                QRString.append(setupHashMap.get("HABLine")).append(",");
+                QRString.append(setupHashMap.get("StartingGameObject")).append(",");
+                QRString.append(setupHashMap.get("ClimbLevel")).append(",");
+                QRString.append(setupHashMap.get("ClimbPartners")).append(",");
+                QRString.append(setupHashMap.get("SelfOrWithHelp")).append(",");
+                QRString.append(setupHashMap.get("FellOver")).append(",");
+                QRString.append(setupHashMap.get("NoShow")).append(",");
+
+
+
                 Object keySet[] = scoreHashMap.keySet().toArray();
                 for (int i = 0; i < keySet.length; i++) {
                     key = "" + keySet[i];
@@ -360,6 +418,7 @@ public class Climb extends AppCompatActivity {
                             public void onClick(View view) {
                                 dialog.cancel();
                                 Intent intent = new Intent (Climb.this, MainActivity.class);
+                                intent.putExtra("LEFTORRIGHT",setupHashMap.get("LeftOrRight"));
                                 startActivity(intent);
                             }
                         });
