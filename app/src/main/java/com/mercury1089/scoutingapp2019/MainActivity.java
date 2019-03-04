@@ -1742,6 +1742,7 @@ public class MainActivity extends Activity {
 
         RR2Circle.setVisibility(View.VISIBLE);
 
+
     }
 
 
@@ -1750,6 +1751,7 @@ public class MainActivity extends Activity {
 
     public void blueClick (View view) {
         setupHashMap.put("AllianceColor", "Blue");
+        setupHashMap.put("StartingPosition", "");
         if (isBlueAlliance == 0) {
             if (ScouterNameInput.getText().length() > 0
 
@@ -1882,6 +1884,7 @@ public class MainActivity extends Activity {
     public void redClick (View view) {
 
         setupHashMap.put("AllianceColor", "Red");
+        setupHashMap.put("StartingPosition", "");
 
         if (isRedAlliance == 0) {
             if (ScouterNameInput.getText().length() > 0
