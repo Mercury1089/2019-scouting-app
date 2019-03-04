@@ -925,6 +925,7 @@ public class Sandstorm extends MainActivity {
 
                 } else {
                     setupHashMap.put("FellOver",String.valueOf(0));
+                    HABLineSwitch.setEnabled(true);
                     PanelButton.setEnabled(true);
                     PanelCounterText.setEnabled(true);
                     CargoButton.setEnabled(true);
@@ -1897,6 +1898,10 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
 
     }
@@ -1909,6 +1914,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1924,6 +1933,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1938,6 +1951,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1952,6 +1969,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1966,6 +1987,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1981,6 +2006,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -1996,6 +2025,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2011,6 +2044,10 @@ public class Sandstorm extends MainActivity {
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2027,6 +2064,10 @@ public class Sandstorm extends MainActivity {
         CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2042,6 +2083,10 @@ public class Sandstorm extends MainActivity {
         CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2056,6 +2101,10 @@ public class Sandstorm extends MainActivity {
         CSCF1.setText(String.valueOf(CSCF1Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2070,6 +2119,10 @@ public class Sandstorm extends MainActivity {
         CSCF2.setText(String.valueOf(CSCF2Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2085,6 +2138,10 @@ public class Sandstorm extends MainActivity {
         CSPL1.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2100,6 +2157,10 @@ public class Sandstorm extends MainActivity {
         CSPL2.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2115,6 +2176,10 @@ public class Sandstorm extends MainActivity {
         CSPL3.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2129,6 +2194,10 @@ public class Sandstorm extends MainActivity {
         CSCL1.setText(String.valueOf(CSCL1Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2143,6 +2212,10 @@ public class Sandstorm extends MainActivity {
         CSCL2.setText(String.valueOf(CSCL2Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2157,6 +2230,10 @@ public class Sandstorm extends MainActivity {
         CSCL3.setText(String.valueOf(CSCL3Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2171,6 +2248,10 @@ public class Sandstorm extends MainActivity {
         CSCR1.setText(String.valueOf(CSCR1Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2185,6 +2266,10 @@ public class Sandstorm extends MainActivity {
         CSCR2.setText(String.valueOf(CSCR2Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2199,6 +2284,10 @@ public class Sandstorm extends MainActivity {
         CSCR3.setText(String.valueOf(CSCR3Counter));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2214,6 +2303,10 @@ public class Sandstorm extends MainActivity {
         CSPR1.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2229,6 +2322,10 @@ public class Sandstorm extends MainActivity {
         CSPR2.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2244,6 +2341,10 @@ public class Sandstorm extends MainActivity {
         CSPR3.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
         PanelButton.setEnabled(true);
@@ -2263,6 +2364,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2278,6 +2383,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2293,6 +2402,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2307,6 +2420,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2321,6 +2438,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2335,6 +2456,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2350,6 +2475,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2365,6 +2494,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2380,6 +2513,10 @@ public class Sandstorm extends MainActivity {
         defaultButtonState(PanelButton);
         UndoButton.setEnabled(true);
         defaultButtonState(CargoButton);
+        MissedButton.setEnabled(false);
+        MissedCounterText.setEnabled(false);
+        DroppedButton.setEnabled(false);
+        DroppedCounterText.setEnabled(false);
         PanelButton.setEnabled(true);
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
@@ -2471,6 +2608,7 @@ public class Sandstorm extends MainActivity {
                 break;
             case "FellOver":
                 setupHashMap.put("FellOver",String.valueOf(0));
+                HABLineSwitch.setEnabled(true);
                 PanelButton.setEnabled(true);
                 PanelCounterText.setEnabled(true);
                 CargoButton.setEnabled(true);
@@ -2573,6 +2711,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "LRCT2":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2591,6 +2732,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "LRCT1":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2714,6 +2858,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCF1":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2732,6 +2879,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCF2":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2813,6 +2963,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCL1":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2831,6 +2984,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCL2":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2849,6 +3005,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCL3":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2867,6 +3026,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCR1":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2885,6 +3047,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCR2":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -2903,6 +3068,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "CSCR3":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -3047,6 +3215,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "RRCT3":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -3065,6 +3236,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "RRCT2":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
@@ -3083,6 +3257,9 @@ public class Sandstorm extends MainActivity {
                 }
                 break;
             case "RRCT1":
+                selectedButtonColors(CargoButton);
+                defaultButtonState(PanelButton);
+
                 PanelButton.setEnabled(false);
                 PanelCounterText.setEnabled(false);
                 CargoButton.setEnabled(false);
