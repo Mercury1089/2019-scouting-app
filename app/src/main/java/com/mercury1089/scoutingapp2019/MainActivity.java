@@ -2120,15 +2120,24 @@ public class MainActivity extends Activity {
 
         @Override
         public void run() {
-            QRValue = ScouterNameInput.getText().toString() + "," + matchNumberInput.getText().toString()
+            StringBuilder QRString = new StringBuilder();
+            QRString.append(setupHashMap.get("ScouterName")).append(",");
+            QRString.append(setupHashMap.get("MatchNumber")).append(",");
+            QRString.append(setupHashMap.get("TeamNumber")).append(",");
+            QRString.append(setupHashMap.get("FirstAlliancePartner")).append(",");
+            QRString.append(setupHashMap.get("SecondAlliancePartner")).append(",");
+            QRString.append(setupHashMap.get("AllianceColor")).append(",");
+            QRString.append(setupHashMap.get("LeftOrRight")).append(",");
+            QRString.append(",");
+            QRString.append(setupHashMap.get("HABLine")).append(",");
+            QRString.append(",");
+            QRString.append(",");
+            QRString.append(",");
+            QRString.append(",");
+            QRString.append(",");
+            QRString.append(setupHashMap.get("NoShow")).append(",");
 
-                    + "," + teamNumberInput.getText().toString() + ","
-
-                    + firstAlliancePartnerInput.getText().toString() + ","
-
-                    + secondAlliancePartnerInput.getText().toString() + ","
-                    + isRedAlliance + "," + isBlueAlliance + "," + noShowStatus + "," + ' ' + ","
-                    + 0 + "," +  0 + "," + 0 + "," + 0 + "," + 0 + ",";
+            QRValue = QRString.toString();
 
             try {
                 bitmap = TextToImageEncode(QRValue);

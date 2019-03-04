@@ -191,9 +191,10 @@ public class Sandstorm extends MainActivity {
     //other variables
     private boolean isCargo = false;
     private boolean isPanel = false;
-    String UNDO;
-    Button UndoButton;
     private Timer timer;
+    Button UndoButton;
+    ConstraintLayout constraintLayout;
+    String UNDO;
     Switch FellOverSwitch;
     Switch HABLineSwitch;
     int YELLOW = Color.rgb(248, 231, 28);
@@ -298,6 +299,8 @@ public class Sandstorm extends MainActivity {
         pOrCDirections = findViewById(R.id.IDScoringPOrCDirections);
         missedDirections = findViewById(R.id.IDScoringMissedDirections);
 
+        constraintLayout = findViewById(R.id.layout);
+
         //make Sandstorm button look active
         selectedButtonColors(SandstormButton);
 
@@ -328,7 +331,6 @@ public class Sandstorm extends MainActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ConstraintLayout constraintLayout = findViewById(R.id.layout);
                         for (int i = 0; i < constraintLayout.getChildCount(); i++) {
                             if (constraintLayout.getChildAt(i) instanceof TextView) {
                                 TextView textView = (TextView) constraintLayout.getChildAt(i);
@@ -356,6 +358,7 @@ public class Sandstorm extends MainActivity {
         Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
 
         if (scoreData != null) {
+            constraintLayout.setBackgroundColor(Color.rgb(91,24,24));
             scoreHashMap = (HashMap<String, String>) scoreData;
             Object keySet[] = scoreHashMap.keySet().toArray();
             String tag;
@@ -894,7 +897,7 @@ public class Sandstorm extends MainActivity {
         FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                ConstraintLayout constraintLayout = findViewById(R.id.layout);
+
                 String color;
                 if (isChecked) {
                     UNDO = "FellOver";
@@ -939,6 +942,7 @@ public class Sandstorm extends MainActivity {
 
 
                 }
+
                 for (int i = 0; i < constraintLayout.getChildCount(); i++) {
                     if ((constraintLayout.getChildAt(i) instanceof TextView) && (constraintLayout.getChildAt(i).getTag() != null)) {
                             if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
