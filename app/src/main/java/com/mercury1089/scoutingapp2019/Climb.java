@@ -78,8 +78,8 @@ public class Climb extends AppCompatActivity {
          OnYourOwnButton = findViewById(R.id.IsSoloButton);
          WithHelpButton = findViewById(R.id.WithHelpButton);
 
-         //HasLiftedButton = findViewById(R.id.HasLiftedButton);
-         //HasNotLiftedButton = findViewById(R.id.HasNotLiftedButton);
+         HasLiftedButton = findViewById(R.id.HasLiftedButton);
+         HasNotLiftedButton = findViewById(R.id.HasNotLiftedButton);
 
          OnePartnerButton = findViewById(R.id.OnePartnerButton);
          TwoPartnerButton = findViewById(R.id.TwoPartnersButton);
@@ -160,6 +160,10 @@ public class Climb extends AppCompatActivity {
         Level1Button.setEnabled(true);
         Level2Button.setEnabled(true);
         Level3Button.setEnabled(true);
+        OnYourOwnButton.setEnabled(true);
+        WithHelpButton.setEnabled(true);
+        OnePartnerButton.setEnabled(true);
+        TwoPartnerButton.setEnabled(true);
     }
     public void OffHABClick (View view) {
         selectedButtonColors(OffHABButton);
@@ -234,6 +238,9 @@ public class Climb extends AppCompatActivity {
         selectedButtonColors(OnYourOwnButton);
         defaultButtonState(WithHelpButton);
 
+        HasLiftedButton.setEnabled(true);
+        HasNotLiftedButton.setEnabled(true);
+
         setupHashMap.put("SelfOrWithHelp", "S");
     }
 
@@ -248,6 +255,12 @@ public class Climb extends AppCompatActivity {
 
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
+
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
 
         setupHashMap.put("SelfOrWithHelp", "H");
         setupHashMap.put("ClimbPartners", String.valueOf(0));
