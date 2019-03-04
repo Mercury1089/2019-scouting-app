@@ -171,6 +171,7 @@ public class Settings extends AppCompatActivity {
             isLocalStorageClicked = true;
             localStorageResetButton.setBackgroundColor(getResources().getColor(R.color.orange));
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
+            isFirstTime = true;
             CancelButton.setEnabled(false);
         } else {
             localStorageResetDefault();
