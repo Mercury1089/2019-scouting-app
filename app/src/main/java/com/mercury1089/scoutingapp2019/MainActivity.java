@@ -1770,7 +1770,7 @@ public class MainActivity extends Activity {
                     && firstAlliancePartnerInput.getText().length() > 0
 
                     && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition")!= null)
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked() || setupHashMap.get("StartingPosition")!= null)
                 startButton.setEnabled(true);
             else
                 startButton.setEnabled(false);
@@ -1903,7 +1903,7 @@ public class MainActivity extends Activity {
                     && firstAlliancePartnerInput.getText().length() > 0
 
                     && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red"))&& setupHashMap.get("StartingPosition")!= null)
+                    setupHashMap.get("AllianceColor").equals("Red")) && NoShowSwitch.isChecked() || setupHashMap.get("StartingPosition")!= null)
 
                 startButton.setEnabled(true);
             else
@@ -1973,6 +1973,7 @@ public class MainActivity extends Activity {
 
                     && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
                     setupHashMap.get("AllianceColor").equals("Red")))
+
 
                 startButton.setEnabled(true);
             else
@@ -2160,6 +2161,23 @@ public class MainActivity extends Activity {
                             @Override
                             public void onClick(View view) {
                                 dialog.dismiss();
+                                leftOrRight = setupHashMap.get("LeftOrRight");
+                                setupHashMap.clear();
+                                setupHashMap.put("LeftOrRight", leftOrRight);
+                                setupHashMap.put("NoShow","0");
+                                setupHashMap.put("AllianceColor","");
+                                setupHashMap.put("StartingPosition","");
+                                setupHashMap.put("StartingGameObject","");
+                                ScouterNameInput.setText("");
+                                matchNumberInput.setText("");
+                                teamNumberInput.setText("");
+                                firstAlliancePartnerInput.setText("");
+                                secondAlliancePartnerInput.setText("");
+                                NoShowSwitch.setChecked(false);
+                                blueDefault();
+                                redDefault();
+                                DiagramMessage.setText("You must select an alliance color (above) before you can access the map.");
+
                             }
                         });
                     }

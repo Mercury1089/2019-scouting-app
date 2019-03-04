@@ -1617,7 +1617,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     LeftRocketCargoT3.setColor(Color.rgb(221, 172, 107));
-                    LRCT3.setTextColor(getResources().getColor(R.color.textdefault));
+                    LRCT3.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (LRCT2Counter > 0) {
                     LeftRocketCargoT2.setColor(Color.rgb(255, 152, 0));
@@ -1625,7 +1625,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     LeftRocketCargoT2.setColor(Color.rgb(221, 172, 107));
-                    LRCT2.setTextColor(getResources().getColor(R.color.textdefault));
+                    LRCT2.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (LRCT1Counter > 0) {
                     LeftRocketCargoT1.setColor(Color.rgb(255, 152, 0));
@@ -1633,7 +1633,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     LeftRocketCargoT1.setColor(Color.rgb(221, 172, 107));
-                    LRCT1.setTextColor(getResources().getColor(R.color.textdefault));
+                    LRCT1.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
 
 
@@ -1643,7 +1643,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoFront1.setColor(Color.rgb(221, 172, 107));
-                    CSCF1.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCF1.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCF2Counter > 0) {
                     CargoShipCargoFront2.setColor(Color.rgb(255, 152, 0));
@@ -1651,7 +1651,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoFront2.setColor(Color.rgb(221, 172, 107));
-                    CSCF2.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCF2.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCL1Counter > 0) {
                     CargoShipCargoLeft1.setColor(Color.rgb(255, 152, 0));
@@ -1659,7 +1659,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoLeft1.setColor(Color.rgb(221, 172, 107));
-                    CSCL1.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCL1.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCL2Counter > 0) {
                     CargoShipCargoLeft2.setColor(Color.rgb(255, 152, 0));
@@ -1667,7 +1667,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoLeft2.setColor(Color.rgb(221, 172, 107));
-                    CSCL2.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCL2.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCL3Counter > 0) {
                     CargoShipCargoLeft3.setColor(Color.rgb(255, 152, 0));
@@ -1675,7 +1675,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoLeft3.setColor(Color.rgb(221, 172, 107));
-                    CSCL3.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCL3.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCR1Counter > 0) {
                     CargoShipCargoRight1.setColor(Color.rgb(255, 152, 0));
@@ -1683,7 +1683,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoRight1.setColor(Color.rgb(221, 172, 107));
-                    CSCR1.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCR1.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCR2Counter > 0) {
                     CargoShipCargoRight2.setColor(Color.rgb(255, 152, 0));
@@ -1691,7 +1691,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoRight2.setColor(Color.rgb(221, 172, 107));
-                    CSCR2.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCR2.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
                 if (CSCR3Counter > 0) {
                     CargoShipCargoRight3.setColor(Color.rgb(255, 152, 0));
@@ -1699,7 +1699,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     CargoShipCargoRight3.setColor(Color.rgb(221, 172, 107));
-                    CSCR3.setTextColor(getResources().getColor(R.color.textdefault));
+                    CSCR3.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
 
 
@@ -1726,7 +1726,7 @@ public class Sandstorm extends MainActivity {
                 }
                 else {
                     RightRocketCargoT1.setColor(Color.rgb(221, 172, 107));
-                    RRCT1.setTextColor(getResources().getColor(R.color.light));
+                    RRCT1.setTextColor(getResources().getColor(R.color.defaultdisabled));
                 }
         }
     }

@@ -20,7 +20,7 @@
 
     <color name="light"> @color/bootstrap_dropdown_divider </color>
 
-    <color name="white">#ffffff </color>
+    <color name="white">#FFFFFF</color>
 
     <color name="grey"> @color/bootstrap_gray </color>
 
@@ -33,6 +33,11 @@
     <color name="darkgray">#2b2c2d</color>
 
     <color name="orange"> @android:color/holo_orange_dark </color>
+
+    <!-- for settings save button -->
+    <color name="savetextdefault">#404344</color>
+    <color name="savedefault">#5A5D5E</color>
+    <color name="saveactive">#84C43C</color>
 
     <!-- for circle buttons -->
     

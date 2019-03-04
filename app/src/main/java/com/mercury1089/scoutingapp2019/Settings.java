@@ -63,6 +63,8 @@ public class Settings extends AppCompatActivity {
 
         String mainLeftOrRight = "";
 
+
+
         setupHashMap = new HashMap<>();
         setupData = getIntent().getSerializableExtra("setupHashMap");
         if (setupData != null) {
@@ -82,6 +84,8 @@ public class Settings extends AppCompatActivity {
             fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.orange));
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
             saveButton.setEnabled(true);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.saveactive)));
+            saveButton.setTextColor(getResources().getColor(R.color.light));
             localStorageResetDefault();
         } else if (mainLeftOrRight.equals("Right")) {
             isRight = true;
@@ -91,6 +95,8 @@ public class Settings extends AppCompatActivity {
             leftDefault();
             localStorageResetDefault();
             saveButton.setEnabled(true);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.saveactive)));
+            saveButton.setTextColor(getResources().getColor(R.color.light));
         }
         CancelButton.setEnabled(true);
     }
@@ -116,12 +122,16 @@ public class Settings extends AppCompatActivity {
             leftDefault();
             localStorageResetDefault();
             saveButton.setEnabled(true);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.saveactive)));
+            saveButton.setTextColor(getResources().getColor(R.color.light));
         }
         else {
             isRight = false;
             leftOrRight = "";
             rightDefault();
             saveButton.setEnabled(false);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.savedefault)));
+            saveButton.setTextColor(getResources().getColor(R.color.savetextdefault));
         }
     }
 
@@ -135,12 +145,16 @@ public class Settings extends AppCompatActivity {
             fieldSideLeftButton.setBackgroundColor(getResources().getColor(R.color.orange));
             fieldSideLeftButton.setTextColor(getResources().getColor(R.color.light));
             saveButton.setEnabled(true);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.saveactive)));
+            saveButton.setTextColor(getResources().getColor(R.color.light));
             localStorageResetDefault();
         } else {
             isLeft = false;
             leftOrRight = "";
             leftDefault();
             saveButton.setEnabled(false);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.savedefault)));
+            saveButton.setTextColor(getResources().getColor(R.color.savetextdefault));
         }
     }
 
@@ -186,6 +200,8 @@ public class Settings extends AppCompatActivity {
             rightDefault();
             localStorageResetDefault();
             saveButton.setEnabled(false);
+            saveButton.setBackgroundColor(getResources().getColor((R.color.savedefault)));
+            saveButton.setTextColor(getResources().getColor(R.color.savetextdefault));
 
             setupHashMap.clear();
             setupHashMap.put("NoShow","0");
