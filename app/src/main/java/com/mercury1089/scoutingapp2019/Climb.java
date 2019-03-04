@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -77,8 +78,8 @@ public class Climb extends AppCompatActivity {
          OnYourOwnButton = findViewById(R.id.IsSoloButton);
          WithHelpButton = findViewById(R.id.WithHelpButton);
 
-         HasLiftedButton = findViewById(R.id.HasLiftedButton);;
-         HasNotLiftedButton = findViewById(R.id.HasNotLiftedButton);;
+         //HasLiftedButton = findViewById(R.id.HasLiftedButton);
+         //HasNotLiftedButton = findViewById(R.id.HasNotLiftedButton);
 
          OnePartnerButton = findViewById(R.id.OnePartnerButton);
          TwoPartnerButton = findViewById(R.id.TwoPartnersButton);
@@ -100,9 +101,6 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(OnYourOwnButton);
         defaultButtonState(WithHelpButton);
 
-        defaultButtonState(HasLiftedButton);
-        defaultButtonState(HasNotLiftedButton);
-
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
@@ -112,9 +110,6 @@ public class Climb extends AppCompatActivity {
 
         OnYourOwnButton.setEnabled(false);
         WithHelpButton.setEnabled(false);
-
-        HasLiftedButton.setEnabled(false);
-        HasNotLiftedButton.setEnabled(false);
 
         OnePartnerButton.setEnabled(false);
         TwoPartnerButton.setEnabled(false);
@@ -176,8 +171,6 @@ public class Climb extends AppCompatActivity {
         Level3Button.setEnabled(false);
         OnYourOwnButton.setEnabled(false);
         WithHelpButton.setEnabled(false);
-        HasLiftedButton.setEnabled(false);
-        HasNotLiftedButton.setEnabled(false);
         OnePartnerButton.setEnabled(false);
         TwoPartnerButton.setEnabled(false);
 
@@ -186,8 +179,6 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(Level3Button);
         defaultButtonState(OnYourOwnButton);
         defaultButtonState(WithHelpButton);
-        defaultButtonState(HasLiftedButton);
-        defaultButtonState(HasNotLiftedButton);
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
@@ -204,15 +195,11 @@ public class Climb extends AppCompatActivity {
 
         OnYourOwnButton.setEnabled(false);
         WithHelpButton.setEnabled(false);
-        HasLiftedButton.setEnabled(false);
-        HasNotLiftedButton.setEnabled(false);
         OnePartnerButton.setEnabled(false);
         TwoPartnerButton.setEnabled(false);
 
         defaultButtonState(OnYourOwnButton);
         defaultButtonState(WithHelpButton);
-        defaultButtonState(HasLiftedButton);
-        defaultButtonState(HasNotLiftedButton);
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
@@ -247,9 +234,6 @@ public class Climb extends AppCompatActivity {
         selectedButtonColors(OnYourOwnButton);
         defaultButtonState(WithHelpButton);
 
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-
         setupHashMap.put("SelfOrWithHelp", "S");
     }
 
@@ -259,13 +243,9 @@ public class Climb extends AppCompatActivity {
 
         GenerateQRButton.setEnabled(true);
 
-        HasLiftedButton.setEnabled(false);
-        HasNotLiftedButton.setEnabled(false);
         OnePartnerButton.setEnabled(false);
         TwoPartnerButton.setEnabled(false);
 
-        defaultButtonState(HasLiftedButton);
-        defaultButtonState(HasNotLiftedButton);
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
@@ -387,16 +367,19 @@ public class Climb extends AppCompatActivity {
                 QRString.append(setupHashMap.get("ClimbPartners")).append(",");
                 QRString.append(setupHashMap.get("SelfOrWithHelp")).append(",");
                 QRString.append(setupHashMap.get("FellOver")).append(",");
-                QRString.append(setupHashMap.get("NoShow")).append(",");
+                QRString.append(setupHashMap.get("NoShow"));
 
 
 
                 Object keySet[] = scoreHashMap.keySet().toArray();
                 for (int i = 0; i < keySet.length; i++) {
                     key = "" + keySet[i];
-                    QRString.append(key).append(",").append(scoreHashMap.get(key)).append(",");
+                    QRString.append(",").append(key).append(",").append(scoreHashMap.get(key));
                 }
                 QRValue = QRString.toString();
+
+                Log.d("QRString",QRValue);
+
                 final Bitmap bitmap = TextToImageEncode(QRValue);
                 runOnUiThread(new Runnable() {
                     @Override

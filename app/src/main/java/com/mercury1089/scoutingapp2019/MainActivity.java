@@ -2208,6 +2208,7 @@ public class MainActivity extends Activity {
             QRString.append(setupHashMap.get("NoShow")).append(",");
 
             QRValue = QRString.toString();
+            Log.d("QRString",QRValue);
 
             try {
                 bitmap = TextToImageEncode(QRValue);
