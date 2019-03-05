@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/design_default_color_primary_dark"
+    android:minWidth="400dp"
+    android:minHeight="900dp">
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/GoToClimb"
+        android:layout_width="410dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="32dp"
+        android:text="Clear"
+        app:bootstrapBrand="danger"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:roundedCorners="true"
+        app:showOutline="false" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/cancelconfirm"
+        android:layout_width="410dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="16dp"
+        android:text="Cancel"
+        app:bootstrapBrand="primary"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        app:layout_constraintStart_toStartOf="@+id/GoToClimb"
+        app:layout_constraintTop_toBottomOf="@+id/GoToClimb"
+        app:roundedCorners="true" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:text="Are you sure that you want to clear everything?"
+        android:textColor="@color/bootstrap_brand_secondary_border"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

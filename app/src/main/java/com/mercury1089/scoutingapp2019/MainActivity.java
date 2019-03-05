@@ -368,6 +368,8 @@ public class MainActivity extends Activity {
 
             if (setupData != null) {
                 setupHashMap = (HashMap<String, String>) setupData;
+                if (setupHashMap.get("StartingGameObject") == null)
+                    setupHashMap.put("StartingGameObject", "");
                 if (setupHashMap.size() == 0) {
                     setupHashMap.put("StartingGameObject", "");
 
@@ -482,7 +484,7 @@ public class MainActivity extends Activity {
 
             }
 
-            if (!setupHashMap.get("StartingGameObject").equals("")) {
+            if (setupHashMap.get("StartingGameObject") != null && !setupHashMap.get("StartingGameObject").equals("")) {
 
                 if (setupHashMap.get("StartingGameObject").equals("Panel")) {
 
@@ -1274,32 +1276,46 @@ public class MainActivity extends Activity {
 
     public void ClearClick (View view) {
 
-        ScouterNameInput.setText("");
+        final AlertDialog.Builder cancelDialog = new AlertDialog.Builder(MainActivity.this);
+        View view1 = getLayoutInflater().inflate(R.layout.confirm_popup, null);
+        BootstrapButton clearconfirm = view1.findViewById(R.id.GoToClimb);
+        BootstrapButton cancelconfirm = view1.findViewById(R.id.cancelconfirm);
+        final AlertDialog dialog = cancelDialog.create();
 
-        matchNumberInput.setText("");
+        dialog.show();
 
-        teamNumberInput.setText("");
+        cancelconfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
 
-        firstAlliancePartnerInput.setText("");
+        clearconfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                ScouterNameInput.setText("");
+                matchNumberInput.setText("");
+                teamNumberInput.setText("");
+                firstAlliancePartnerInput.setText("");
+                secondAlliancePartnerInput.setText("");
+                NoShowSwitch.setChecked(false);
+                DiagramMessage.setVisibility(View.VISIBLE);
+                DiagramMessage.setText("You must select an alliance color (above) before you can access the map.");
 
-        secondAlliancePartnerInput.setText("");
+                blueDefault();
+                redDefault();
+                panelDefault();
+                cargoDefault();
 
-        NoShowSwitch.setChecked(false);
+                clearButton.setEnabled(false);
+                makeCirclesInvisible();
+                makeBoxesInvisible("Both");
+            }
+        });
 
 
-
-        blueDefault();
-
-        redDefault();
-
-        panelDefault();
-
-        cargoDefault();
-
-        clearButton.setEnabled(false);
-
-        makeCirclesInvisible();
-        makeBoxesInvisible("Both");
 
     }
 
@@ -1318,7 +1334,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1363,7 +1380,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1408,7 +1426,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1453,7 +1472,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1498,7 +1518,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1539,7 +1560,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1584,7 +1606,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1629,7 +1652,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1674,7 +1698,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1718,7 +1743,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -1752,21 +1778,22 @@ public class MainActivity extends Activity {
     public void blueClick (View view) {
         setupHashMap.put("AllianceColor", "Blue");
         setupHashMap.put("StartingPosition", "");
+        if (ScouterNameInput.getText().length() > 0
+
+                && teamNumberInput.getText().length() > 0
+
+                && matchNumberInput.getText().length() > 0
+
+                && firstAlliancePartnerInput.getText().length() > 0
+
+                && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
+
+            startButton.setEnabled(true);
+        else
+            startButton.setEnabled(false);
         if (isBlueAlliance == 0) {
-            if (ScouterNameInput.getText().length() > 0
-
-                    && teamNumberInput.getText().length() > 0
-
-                    && matchNumberInput.getText().length() > 0
-
-                    && firstAlliancePartnerInput.getText().length() > 0
-
-                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
-
-                startButton.setEnabled(true);
-            else
-                startButton.setEnabled(false);
             if (ScouterNameInput.getText().length() > 0
 
                     || teamNumberInput.getText().length() > 0
@@ -1836,21 +1863,6 @@ public class MainActivity extends Activity {
             setupHashMap.put("AllianceColor", "Neither");
 
             DiagramMessage.setVisibility(View.VISIBLE);
-
-            if (ScouterNameInput.getText().length() > 0
-
-                    && teamNumberInput.getText().length() > 0
-
-                    && matchNumberInput.getText().length() > 0
-
-                    && firstAlliancePartnerInput.getText().length() > 0
-
-                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
-
-                startButton.setEnabled(true);
-            else
-                startButton.setEnabled(false);
             if (ScouterNameInput.getText().length() > 0
 
                     || teamNumberInput.getText().length() > 0
@@ -1896,7 +1908,8 @@ public class MainActivity extends Activity {
                     && firstAlliancePartnerInput.getText().length() > 0
 
                     && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                    setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                    && !setupHashMap.get("StartingPosition").equals(""))
 
                 startButton.setEnabled(true);
             else
@@ -1972,20 +1985,6 @@ public class MainActivity extends Activity {
 
             if (ScouterNameInput.getText().length() > 0
 
-                    && teamNumberInput.getText().length() > 0
-
-                    && matchNumberInput.getText().length() > 0
-
-                    && firstAlliancePartnerInput.getText().length() > 0
-
-                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                    setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
-
-                startButton.setEnabled(true);
-            else
-                startButton.setEnabled(false);
-            if (ScouterNameInput.getText().length() > 0
-
                     || teamNumberInput.getText().length() > 0
 
                     || matchNumberInput.getText().length() > 0
@@ -2039,7 +2038,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else
@@ -2089,7 +2089,8 @@ public class MainActivity extends Activity {
                 && firstAlliancePartnerInput.getText().length() > 0
 
                 && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
-                setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+                setupHashMap.get("AllianceColor").equals("Red")) && setupHashMap.get("StartingPosition") != null
+                && !setupHashMap.get("StartingPosition").equals(""))
 
             startButton.setEnabled(true);
         else

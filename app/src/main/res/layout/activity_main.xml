@@ -5,22 +5,11 @@
 
 
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
     xmlns:tools="http://schemas.android.com/tools"
-
-
     android:id="@+id/mainactivity"
-
-
     android:layout_width="match_parent"
-
-
     android:layout_height="match_parent"
-
-
     android:background="@color/bootstrap_gray_dark"
-
     tools:context=".MainActivity">
 
 
@@ -424,13 +413,12 @@
         android:background="@color/bootstrap_brand_secondary_fill"
 
 
-        android:backgroundTint="@color/bootstrap_brand_secondary_fill"
-
-
         android:ems="10"
 
 
         android:inputType="number"
+
+        android:nextFocusDown="@+id/SecondAlliancePartnerInput"
 
 
         android:maxLength="4"

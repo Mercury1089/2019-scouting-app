@@ -101,6 +101,9 @@ public class Climb extends AppCompatActivity {
         defaultButtonState(OnYourOwnButton);
         defaultButtonState(WithHelpButton);
 
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+
         defaultButtonState(OnePartnerButton);
         defaultButtonState(TwoPartnerButton);
 
@@ -125,6 +128,19 @@ public class Climb extends AppCompatActivity {
 
         Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
         scoreHashMap = (HashMap<String, String>) scoreData;
+    }
+
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        View decorView = getWindow().getDecorView();
+        if (hasFocus) {
+            decorView.setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
     }
 
     private void defaultButtonState (BootstrapButton button) {
@@ -387,7 +403,11 @@ public class Climb extends AppCompatActivity {
                 Object keySet[] = scoreHashMap.keySet().toArray();
                 for (int i = 0; i < keySet.length; i++) {
                     key = "" + keySet[i];
-                    QRString.append(",").append(key).append(",").append(scoreHashMap.get(key));
+                    QRString.append(",").append(key).append(",");
+                    if (scoreHashMap.get(key) == null)
+                        QRString.append("0");
+                    else
+                        QRString.append(String.valueOf(scoreHashMap.get(key)));
                 }
                 QRValue = QRString.toString();
 

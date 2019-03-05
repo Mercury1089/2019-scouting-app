@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -22,6 +23,61 @@ import at.markushi.ui.CircleButton;
 import static java.lang.Math.abs;
 
 public class Sandstorm extends MainActivity {
+    private int CSPR2Counter = 0;
+    private int CSPR1Counter = 0;
+    private int CSPR3Counter = 0;
+
+    private int RRPNT1Counter = 0;
+    private int RRPNT2Counter = 0;
+    private int RRPNT3Counter = 0;
+    private int RRCT1Counter = 0;
+    private int RRCT2Counter = 0;
+    private int RRCT3Counter = 0;
+    private int RRPFT1Counter = 0;
+    private int RRPFT2Counter = 0;
+    private int RRPFT3Counter = 0;
+
+    private TextView LRPNT1;
+    private TextView LRPNT2;
+    private TextView LRPNT3;
+    private TextView LRCT1;
+    private TextView LRCT2;
+    private TextView LRCT3;
+    private TextView LRPFT1;
+    private TextView LRPFT2;
+    private TextView LRPFT3;
+
+    private TextView CSPF1;
+    private TextView CSPF2;
+    private TextView CSCF1;
+    private TextView CSCF2;
+    private TextView CSPL1;
+    private TextView CSPL2;
+    private TextView CSPL3;
+    private TextView CSCL1;
+    private TextView CSCL2;
+    private TextView CSCL3;
+    private TextView CSCR1;
+    private TextView CSCR2;
+    private TextView CSCR3;
+    private TextView CSPR1;
+    private TextView CSPR2;
+    private TextView CSPR3;
+
+    private TextView RRPNT1;
+    private TextView RRPNT2;
+    private TextView RRPNT3;
+    private TextView RRCT1;
+    private TextView RRCT2;
+    private TextView RRCT3;
+    private TextView RRPFT1;
+    private TextView RRPFT2;
+    private TextView RRPFT3;
+
+    //right rocket text
+    //cargo ship text
+    //left rocket text
+    //right rocket counters
     //LEFT ROCKET
     //panel variables
     CircleButton LeftRocketPanelNearT3;
@@ -33,8 +89,8 @@ public class Sandstorm extends MainActivity {
 
     //cargo variables
     CircleButton LeftRocketCargoT3;
-    CircleButton LeftRocketCargoT2;
     CircleButton LeftRocketCargoT1;
+    CircleButton LeftRocketCargoT2;
 
 
     //CARGO SHIP
@@ -105,61 +161,6 @@ public class Sandstorm extends MainActivity {
     private int CSCR1Counter = 0;
     private int CSCR2Counter = 0;
     private int CSCR3Counter = 0;
-    private int CSPR1Counter = 0;
-    private int CSPR2Counter = 0;
-    private int CSPR3Counter = 0;
-
-    //right rocket counters
-    private int RRPNT1Counter = 0;
-    private int RRPNT2Counter = 0;
-    private int RRPNT3Counter = 0;
-    private int RRCT1Counter = 0;
-    private int RRCT2Counter = 0;
-    private int RRCT3Counter = 0;
-    private int RRPFT1Counter = 0;
-    private int RRPFT2Counter = 0;
-    private int RRPFT3Counter = 0;
-
-    //left rocket text
-    private TextView LRPNT1;
-    private TextView LRPNT2;
-    private TextView LRPNT3;
-    private TextView LRCT1;
-    private TextView LRCT2;
-    private TextView LRCT3;
-    private TextView LRPFT1;
-    private TextView LRPFT2;
-    private TextView LRPFT3;
-
-    //cargo ship text
-    private TextView CSPF1;
-    private TextView CSPF2;
-    private TextView CSCF1;
-    private TextView CSCF2;
-    private TextView CSPL1;
-    private TextView CSPL2;
-    private TextView CSPL3;
-    private TextView CSCL1;
-    private TextView CSCL2;
-    private TextView CSCL3;
-    private TextView CSCR1;
-    private TextView CSCR2;
-    private TextView CSCR3;
-    private TextView CSPR1;
-    private TextView CSPR2;
-    private TextView CSPR3;
-
-    //right rocket text
-    private TextView RRPNT1;
-    private TextView RRPNT2;
-    private TextView RRPNT3;
-    private TextView RRCT1;
-    private TextView RRCT2;
-    private TextView RRCT3;
-    private TextView RRPFT1;
-    private TextView RRPFT2;
-    private TextView RRPFT3;
-
     private HashMap<String, String> setupHashMap;
     private HashMap<String, String> scoreHashMap;
 
@@ -320,7 +321,9 @@ public class Sandstorm extends MainActivity {
         //disable scoring diagram
         disableScoringDiagram('A');
 
-        Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
+        UndoButton.setEnabled(false);
+
+        final Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
         setupHashMap = (HashMap<String, String>)setupData;
 
 
@@ -346,8 +349,17 @@ public class Sandstorm extends MainActivity {
                         scoreHashMap.put("Sandstorm,Dropped,Panel,,,", droppedPanels + "");
                         scoreHashMap.put("Sandstorm,Dropped,Cargo,,,", droppedCargo + "");
 
+
+
                         Intent intent = new Intent(Sandstorm.this, Teleop.class);
+                        String POrC = " ";
+                        if (isPanel)
+                            POrC = "P";
+                        else if (isCargo)
+                            POrC = "C";
+                        intent.putExtra("setupHashMap", setupHashMap);
                         intent.putExtra("scoreHashMap", scoreHashMap);
+                        intent.putExtra("POrC", POrC);
                         startActivity(intent);
                     }
                 });
@@ -822,7 +834,7 @@ public class Sandstorm extends MainActivity {
         }
 
 
-         if (setupHashMap.get("StartingGameObject").charAt(0) == 'P') {
+         if (setupHashMap.get("StartingGameObject").equals("Panel")) {
             selectedButtonColors(PanelButton);
             PanelCounterText.setText("1");
             CargoButton.setEnabled(false);
@@ -830,7 +842,7 @@ public class Sandstorm extends MainActivity {
             isPanel = true;
             totalPanels++;
              enableScoringDiagram('P');
-         } else if (setupHashMap.get("StartingGameObject").charAt(0) == 'C'){
+         } else if (setupHashMap.get("StartingGameObject").equals("Cargo")){
              selectedButtonColors(CargoButton);
              CargoCounterText.setText("1");
              PanelButton.setEnabled(false);
@@ -893,13 +905,23 @@ public class Sandstorm extends MainActivity {
             }
         });
 
+
+
         FellOverSwitch = findViewById(R.id.FellOverSwitch);
         FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            boolean wasPanel = false;
+            boolean wasCargo = false;
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 
                 String color;
                 if (isChecked) {
+                    if (UNDO != null) {
+                        if (UNDO.equals("Panel"))
+                            wasPanel = true;
+                        else if (UNDO.equals("Cargo"))
+                            wasCargo = true;
+                    }
                     UNDO = "FellOver";
                     UndoButton.setEnabled(true);
                     setupHashMap.put("FellOver",String.valueOf(1));
@@ -934,9 +956,40 @@ public class Sandstorm extends MainActivity {
                     DroppedCounterText.setEnabled(false);
                     MissedButton.setEnabled(false);
                     MissedCounterText.setEnabled(false);
-
-                    disableScoringDiagram('A');
-
+                    if (wasPanel) {
+                        UNDO = "Panel";
+                        UndoButton.setEnabled(true);
+                        selectedButtonColors(PanelButton);
+                        defaultButtonState(CargoButton);
+                        PanelCounterText.setText(String.valueOf(totalPanels));
+                        PanelButton.setEnabled(false);
+                        PanelCounterText.setEnabled(false);
+                        CargoButton.setEnabled(false);
+                        CargoCounterText.setEnabled(false);
+                        DroppedButton.setEnabled(true);
+                        DroppedCounterText.setEnabled(true);
+                        MissedButton.setEnabled(true);
+                        MissedCounterText.setEnabled(true);
+                        enableScoringDiagram('P');
+                        disableScoringDiagram('C');
+                    }
+                    if (wasCargo) {
+                        UNDO = "Cargo";
+                        UndoButton.setEnabled(true);
+                        selectedButtonColors(CargoButton);
+                        defaultButtonState(PanelButton);
+                        CargoCounterText.setText(String.valueOf(totalCargo));
+                        PanelButton.setEnabled(false);
+                        PanelCounterText.setEnabled(false);
+                        CargoButton.setEnabled(false);
+                        CargoCounterText.setEnabled(false);
+                        DroppedButton.setEnabled(true);
+                        DroppedCounterText.setEnabled(true);
+                        MissedButton.setEnabled(true);
+                        MissedCounterText.setEnabled(true);
+                        enableScoringDiagram('C');
+                        disableScoringDiagram('P');
+                    }
                     color = "white";
 
 
@@ -991,6 +1044,8 @@ public class Sandstorm extends MainActivity {
     private void disableScoringDiagram (char c) {
         switch (c) {
             case 'A':
+                isCargo = false;
+                isPanel = false;
             case 'P':
                 LeftRocketPanelNearT3.setEnabled(false);
                 LeftRocketPanelNearT2.setEnabled(false);
@@ -1743,6 +1798,12 @@ public class Sandstorm extends MainActivity {
     }
     public void teleopClick (View view) {
         Intent intent = new Intent(this, Teleop.class);
+
+        if (isPanel)
+            intent.putExtra("prepopPOrC", 'P');
+        else if (isCargo)
+            intent.putExtra("prepopPOrC", 'C');
+
         intent.putExtra("setupHashMap", setupHashMap);
         intent.putExtra("scoreHashMap", scoreHashMap);
         timer.cancel();
@@ -1804,7 +1865,7 @@ public class Sandstorm extends MainActivity {
     public void droppedClick (View view) {
         UNDO = "Dropped";
         UndoButton.setEnabled(true);
-        
+
         selectedButtonColors(DroppedButton);
         TimerTask changeToDefault = new TimerTask() {
             @Override
@@ -1887,6 +1948,7 @@ public class Sandstorm extends MainActivity {
     //left rocket onClicks
     public void LRPNT3CounterClick (View view) {
         LRPNT3Counter++;
+        scoreHashMap.put(LRPNT3.getTag().toString(), String.valueOf(LRPNT3Counter));
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT3";
         LRPNT3.setText(String.valueOf(LRPNT3Counter));
@@ -1903,17 +1965,21 @@ public class Sandstorm extends MainActivity {
         MissedButton.setEnabled(false);
         MissedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
-
+        isPanel = false;
+        isCargo = false;
     }
     public void LRPNT2CounterClick (View view) {
         LRPNT2Counter++;
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(LRPNT2.getTag().toString(), String.valueOf(LRPNT2Counter));
         UNDO = "LRPNT2";
         LRPNT2.setText(String.valueOf(LRPNT2Counter));
         LRPNT2.setTextColor(getResources().getColor(R.color.textdefault));
         disableScoringDiagram('A');
         defaultButtonState(PanelButton);
         defaultButtonState(CargoButton);
+        isPanel = false;
+        isCargo = false;
         MissedButton.setEnabled(false);
         MissedCounterText.setEnabled(false);
         DroppedButton.setEnabled(false);
@@ -1923,10 +1989,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRPNT1CounterClick (View view) {
         LRPNT1Counter++;
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(LRPNT1.getTag().toString(), String.valueOf(LRPNT1Counter));
         UNDO = "LRPNT1";
         LRPNT1.setText(String.valueOf(LRPNT1Counter));
         LRPNT1.setTextColor(getResources().getColor(R.color.textdefault));
@@ -1942,10 +2011,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRCT3CounterClick (View view) {
         LRCT3Counter++;
         LeftRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
+        scoreHashMap.put(LRCT3.getTag().toString(), String.valueOf(LRCT3Counter));
         UNDO = "LRCT3";
         LRCT3.setText(String.valueOf(LRCT3Counter));
         disableScoringDiagram('A');
@@ -1960,10 +2032,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRCT2CounterClick (View view) {
         LRCT2Counter++;
         LeftRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
+        scoreHashMap.put(LRCT2.getTag().toString(), String.valueOf(LRCT2Counter));
         UNDO = "LRCT2";
         LRCT2.setText(String.valueOf(LRCT2Counter));
         disableScoringDiagram('A');
@@ -1978,10 +2053,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRCT1CounterClick (View view) {
         LRCT1Counter++;
         LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
+        scoreHashMap.put(LRCT1.getTag().toString(), String.valueOf(LRCT1Counter));
         UNDO = "LRCT1";
         LRCT1.setText(String.valueOf(LRCT1Counter));
         disableScoringDiagram('A');
@@ -1996,10 +2074,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRPFT3CounterClick (View view) {
         LRPFT3Counter++;
         LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(LRPFT3.getTag().toString(), String.valueOf(LRPFT3Counter));
         UNDO = "LRPFT3";
         LRPFT3.setText(String.valueOf(LRPFT3Counter));
         LRPFT3.setTextColor(getResources().getColor(R.color.textdefault));
@@ -2015,10 +2096,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRPFT2CounterClick (View view) {
         LRPFT2Counter++;
         LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(LRPFT2.getTag().toString(), String.valueOf(LRPFT2Counter));
         UNDO = "LRPFT2";
         LRPFT2.setText(String.valueOf(LRPFT2Counter));
         LRPFT2.setTextColor(getResources().getColor(R.color.textdefault));
@@ -2034,10 +2118,13 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void LRPFT1CounterClick (View view) {
         LRPFT1Counter++;
         LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(LRPFT1.getTag().toString(), String.valueOf(LRPFT1Counter));
         UNDO = "LRPFT1";
         LRPFT1.setText(String.valueOf(LRPFT1Counter));
         LRPFT1.setTextColor(getResources().getColor(R.color.textdefault));
@@ -2053,12 +2140,15 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
 
     //cargo ship onClicks
     public void CSPF1CounterClick (View view) {
         CSPF1Counter++;
         CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(CSPF1.getTag().toString(), String.valueOf(CSPF1Counter));
         UNDO = "CSPF1";
         CSPF1.setText(String.valueOf(CSPF1Counter));
         CSPF1.setTextColor(getResources().getColor(R.color.textdefault));
@@ -2074,10 +2164,13 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPF2CounterClick (View view) {
         CSPF2Counter++;
         CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
+        scoreHashMap.put(CSPF2.getTag().toString(), String.valueOf(CSPF2Counter));
         UNDO = "CSPF2";
         CSPF2.setText(String.valueOf(CSPF2Counter));
         CSPF2.setTextColor(getResources().getColor(R.color.textdefault));
@@ -2093,10 +2186,13 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCF1CounterClick (View view) {
         CSCF1Counter++;
         CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
+        scoreHashMap.put(CSCF1.getTag().toString(), String.valueOf(CSCF1Counter));
         UNDO = "CSCF1";
         CSCF1.setText(String.valueOf(CSCF1Counter));
         disableScoringDiagram('A');
@@ -2111,9 +2207,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCF2CounterClick (View view) {
         CSCF2Counter++;
+        scoreHashMap.put(CSCF2.getTag().toString(), String.valueOf(CSCF2Counter));
         CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCF2";
         CSCF2.setText(String.valueOf(CSCF2Counter));
@@ -2129,9 +2228,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPL1CounterClick (View view) {
         CSPL1Counter++;
+        scoreHashMap.put(CSPL1.getTag().toString(), String.valueOf(CSPL1Counter));
         CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL1";
         CSPL1.setText(String.valueOf(CSPL1Counter));
@@ -2148,9 +2250,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPL2CounterClick (View view) {
         CSPL2Counter++;
+        scoreHashMap.put(CSPL2.getTag().toString(), String.valueOf(CSPL2Counter));
         CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL2";
         CSPL2.setText(String.valueOf(CSPL2Counter));
@@ -2167,9 +2272,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPL3CounterClick (View view) {
         CSPL3Counter++;
+        scoreHashMap.put(CSPL3.getTag().toString(), String.valueOf(CSPL3Counter));
         CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL3";
         CSPL3.setText(String.valueOf(CSPL3Counter));
@@ -2186,9 +2294,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCL1CounterClick (View view) {
         CSCL1Counter++;
+        scoreHashMap.put(CSCL1.getTag().toString(), String.valueOf(CSCL1Counter));
         CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL1";
         CSCL1.setText(String.valueOf(CSCL1Counter));
@@ -2204,9 +2315,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCL2CounterClick (View view) {
         CSCL2Counter++;
+        scoreHashMap.put(CSCL2.getTag().toString(), String.valueOf(CSCL2Counter));
         CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL2";
         CSCL2.setText(String.valueOf(CSCL2Counter));
@@ -2222,9 +2336,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCL3CounterClick (View view) {
         CSCL3Counter++;
+        scoreHashMap.put(CSCL3.getTag().toString(), String.valueOf(CSCL3Counter));
         CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL3";
         CSCL3.setText(String.valueOf(CSCL3Counter));
@@ -2240,9 +2357,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCR1CounterClick (View view) {
         CSCR1Counter++;
+        scoreHashMap.put(CSCR1.getTag().toString(), String.valueOf(CSCR1Counter));
         CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR1";
         CSCR1.setText(String.valueOf(CSCR1Counter));
@@ -2258,9 +2378,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCR2CounterClick (View view) {
         CSCR2Counter++;
+        scoreHashMap.put(CSCR2.getTag().toString(), String.valueOf(CSCR2Counter));
         CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR2";
         CSCR2.setText(String.valueOf(CSCR2Counter));
@@ -2276,9 +2399,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSCR3CounterClick (View view) {
         CSCR3Counter++;
+        scoreHashMap.put(CSCR3.getTag().toString(), String.valueOf(CSCR3Counter));
         CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR3";
         CSCR3.setText(String.valueOf(CSCR3Counter));
@@ -2294,9 +2420,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPR1CounterClick (View view) {
         CSPR1Counter++;
+        scoreHashMap.put(CSPR1.getTag().toString(), String.valueOf(CSPR1Counter));
         CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR1";
         CSPR1.setText(String.valueOf(CSPR1Counter));
@@ -2313,9 +2442,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPR2CounterClick (View view) {
         CSPR2Counter++;
+        scoreHashMap.put(CSPR2.getTag().toString(), String.valueOf(CSPR2Counter));
         CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR2";
         CSPR2.setText(String.valueOf(CSPR2Counter));
@@ -2332,9 +2464,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void CSPR3CounterClick (View view) {
         CSPR3Counter++;
+        scoreHashMap.put(CSPR3.getTag().toString(), String.valueOf(CSPR3Counter));
         CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR3";
         CSPR3.setText(String.valueOf(CSPR3Counter));
@@ -2351,11 +2486,14 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
 
     //right rocket onClicks
     public void RRPNT3CounterClick (View view) {
         RRPNT3Counter++;
+        scoreHashMap.put(RRPNT3.getTag().toString(), String.valueOf(RRPNT3Counter));
         RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT3";
         RRPNT3.setText(String.valueOf(RRPNT3Counter));
@@ -2372,9 +2510,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRPNT2CounterClick (View view) {
         RRPNT2Counter++;
+        scoreHashMap.put(RRPNT2.getTag().toString(), String.valueOf(RRPNT2Counter));
         RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT2";
         RRPNT2.setText(String.valueOf(RRPNT2Counter));
@@ -2391,9 +2532,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRPNT1CounterClick (View view) {
         RRPNT1Counter++;
+        scoreHashMap.put(RRPNT1.getTag().toString(), String.valueOf(RRPNT1Counter));
         RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT1";
         RRPNT1.setText(String.valueOf(RRPNT1Counter));
@@ -2410,9 +2554,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRCT3CounterClick (View view) {
         RRCT3Counter++;
+        scoreHashMap.put(RRCT3.getTag().toString(), String.valueOf(RRCT3Counter));
         RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT3";
         RRCT3.setText(String.valueOf(RRCT3Counter));
@@ -2428,9 +2575,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRCT2CounterClick (View view) {
         RRCT2Counter++;
+        scoreHashMap.put(RRCT2.getTag().toString(), String.valueOf(RRCT2Counter));
         RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT2";
         RRCT2.setText(String.valueOf(RRCT2Counter));
@@ -2446,9 +2596,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRCT1CounterClick (View view) {
         RRCT1Counter++;
+        scoreHashMap.put(RRCT1.getTag().toString(), String.valueOf(RRCT1Counter));
         RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT1";
         RRCT1.setText(String.valueOf(RRCT1Counter));
@@ -2464,9 +2617,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRPFT3CounterClick (View view) {
         RRPFT3Counter++;
+        scoreHashMap.put(RRPFT3.getTag().toString(), String.valueOf(RRPFT3Counter));
         RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT3";
         RRPFT3.setText(String.valueOf(RRPFT3Counter));
@@ -2483,9 +2639,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRPFT2CounterClick (View view) {
         RRPFT2Counter++;
+        scoreHashMap.put(RRPFT2.getTag().toString(), String.valueOf(RRPFT2Counter));
         RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT2";
         RRPFT2.setText(String.valueOf(RRPFT2Counter));
@@ -2502,9 +2661,12 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
     public void RRPFT1CounterClick (View view) {
         RRPFT1Counter++;
+        scoreHashMap.put(RRPFT1.getTag().toString(), String.valueOf(RRPFT1Counter));
         RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT1";
         RRPFT1.setText(String.valueOf(RRPFT1Counter));
@@ -2521,6 +2683,8 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        isPanel = false;
+        isCargo = false;
     }
 
     //undo button

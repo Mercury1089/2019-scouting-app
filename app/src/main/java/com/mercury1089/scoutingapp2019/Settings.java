@@ -133,8 +133,8 @@ public class Settings extends AppCompatActivity {
             rightDefault();
             saveButton.setEnabled(false);
             CancelButton.setEnabled(false);
-            saveButton.setBackgroundColor(getResources().getColor((R.color.savedefault)));
-            saveButton.setTextColor(getResources().getColor(R.color.savetextdefault));
+            disabledStyle(saveButton);
+            disabledStyle(CancelButton);
         }
     }
 
@@ -159,8 +159,8 @@ public class Settings extends AppCompatActivity {
             leftDefault();
             saveButton.setEnabled(false);
             CancelButton.setEnabled(false);
-            saveButton.setBackgroundColor(getResources().getColor((R.color.savedefault)));
-            saveButton.setTextColor(getResources().getColor(R.color.savetextdefault));
+            disabledStyle(saveButton);
+            disabledStyle(CancelButton);
         }
     }
 
@@ -173,6 +173,7 @@ public class Settings extends AppCompatActivity {
             localStorageResetButton.setTextColor(getResources().getColor(R.color.light));
             isFirstTime = true;
             CancelButton.setEnabled(false);
+            disabledStyle(CancelButton);
         } else {
             localStorageResetDefault();
             if (!isFirstTime)
@@ -199,6 +200,11 @@ public class Settings extends AppCompatActivity {
         isLeft = false;
     }
 
+    private void disabledStyle (Button button) {
+        button.setBackgroundColor(getResources().getColor((R.color.savedefault)));
+        button.setTextColor(getResources().getColor(R.color.savetextdefault));
+    }
+
     public void saveClick (View view) {
 
 
@@ -208,6 +214,7 @@ public class Settings extends AppCompatActivity {
             rightDefault();
             localStorageResetDefault();
             saveButton.setEnabled(false);
+            disabledStyle(saveButton);
             saveButton.setBackgroundColor(getResources().getColor((R.color.savedefault)));
             saveButton.setTextColor(getResources().getColor(R.color.savetextdefault));
 
