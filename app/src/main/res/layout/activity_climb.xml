@@ -139,8 +139,8 @@
 
     <TextView
         android:id="@+id/IDLiftingDirections"
-        android:layout_width="534dp"
-        android:layout_height="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Tap “YES” or “NO” to mark if the robot helped OTHER robots on their alliance climb the HAB. Tap “1” or “2” to mark how many OTHER robots the robot elevated."
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="@+id/IDLiftingPartners"
@@ -440,5 +440,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NumberPartners" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
 
 </android.support.constraint.ConstraintLayout>

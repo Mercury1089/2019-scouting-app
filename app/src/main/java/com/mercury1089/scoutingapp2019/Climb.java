@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.zxing.BarcodeFormat;
@@ -418,17 +420,38 @@ public class Climb extends AppCompatActivity {
                     @Override
                     public void run() {
                         final AlertDialog.Builder qrDialog = new AlertDialog.Builder(Climb.this);
-                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup,null);
+                        View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
-                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
-
+                        Switch CheckSwitch = view1.findViewById(R.id.checkSwitch);
+                        final Button goBackToMain = view1.findViewById(R.id.GoBackButton);
                         imageView.setImageBitmap(bitmap);
                         qrDialog.setView(view1);
-
                         final AlertDialog dialog = qrDialog.create();
 
-                        progressDialog.cancel();
+                        progressDialog.dismiss();
+                        goBackToMain.setEnabled(false);
+                        goBackToMain.setBackgroundColor(getResources().getColor((R.color.savedefault)));
+                        goBackToMain.setTextColor(getResources().getColor(R.color.savetextdefault));
+
                         dialog.show();
+
+                        CheckSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked) {
+                                    goBackToMain.setEnabled(true);
+                                    goBackToMain.setBackgroundColor(getResources().getColor((R.color.blue)));
+                                    goBackToMain.setTextColor(getResources().getColor(R.color.light));
+                                }
+                                else{
+                                    goBackToMain.setEnabled(false);
+                                    goBackToMain.setBackgroundColor(getResources().getColor((R.color.defaultdisabled)));
+                                    goBackToMain.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+
+                            }
+
+                        });
                         goBackToMain.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

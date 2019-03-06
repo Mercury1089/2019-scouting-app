@@ -360,6 +360,10 @@ public class Sandstorm extends MainActivity {
                         intent.putExtra("setupHashMap", setupHashMap);
                         intent.putExtra("scoreHashMap", scoreHashMap);
                         intent.putExtra("POrC", POrC);
+                        if (FellOverSwitch.isChecked())
+                            intent.putExtra("fellOver","True");
+                        else
+                            intent.putExtra("fellOver","");
                         startActivity(intent);
                     }
                 });
@@ -840,6 +844,7 @@ public class Sandstorm extends MainActivity {
             CargoButton.setEnabled(false);
             CargoCounterText.setEnabled(false);
             isPanel = true;
+            isCargo = false;
             totalPanels++;
              enableScoringDiagram('P');
          } else if (setupHashMap.get("StartingGameObject").equals("Cargo")){
@@ -848,6 +853,7 @@ public class Sandstorm extends MainActivity {
              PanelButton.setEnabled(false);
              PanelCounterText.setEnabled(false);
              isCargo = true;
+             isPanel = false;
              totalCargo++;
              enableScoringDiagram('C');
          }
@@ -1800,10 +1806,14 @@ public class Sandstorm extends MainActivity {
         Intent intent = new Intent(this, Teleop.class);
 
         if (isPanel)
-            intent.putExtra("prepopPOrC", 'P');
+            intent.putExtra("prepopPOrC", "P");
         else if (isCargo)
-            intent.putExtra("prepopPOrC", 'C');
+            intent.putExtra("prepopPOrC", "C");
 
+        if (FellOverSwitch.isChecked())
+            intent.putExtra("fellOver","True");
+        else
+            intent.putExtra("fellOver","");
         intent.putExtra("setupHashMap", setupHashMap);
         intent.putExtra("scoreHashMap", scoreHashMap);
         timer.cancel();

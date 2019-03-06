@@ -28,9 +28,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 
-
-
-
+import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 
 import android.text.TextWatcher;
@@ -1276,8 +1274,29 @@ public class MainActivity extends Activity {
 
     public void ClearClick (View view) {
 
+        ScouterNameInput.setText("");
+        matchNumberInput.setText("");
+        teamNumberInput.setText("");
+        firstAlliancePartnerInput.setText("");
+        secondAlliancePartnerInput.setText("");
+        NoShowSwitch.setChecked(false);
+        DiagramMessage.setVisibility(View.VISIBLE);
+        DiagramMessage.setText("You must select an alliance color (above) before you can access the map.");
+
+        blueDefault();
+        redDefault();
+        panelDefault();
+        cargoDefault();
+
+        clearButton.setEnabled(false);
+        makeCirclesInvisible();
+        makeBoxesInvisible("Both");
+
+        /*
         final AlertDialog.Builder cancelDialog = new AlertDialog.Builder(MainActivity.this);
         View view1 = getLayoutInflater().inflate(R.layout.confirm_popup, null);
+        int width = ConstraintLayout.LayoutParams.WRAP_CONTENT;
+        int height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
         BootstrapButton clearconfirm = view1.findViewById(R.id.GoToClimb);
         BootstrapButton cancelconfirm = view1.findViewById(R.id.cancelconfirm);
         final AlertDialog dialog = cancelDialog.create();
@@ -1315,7 +1334,7 @@ public class MainActivity extends Activity {
             }
         });
 
-
+        */
 
     }
 
@@ -2222,14 +2241,35 @@ public class MainActivity extends Activity {
                         final AlertDialog.Builder qrDialog = new AlertDialog.Builder(MainActivity.this);
                         View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
-                        Button goBackToMain = view1.findViewById(R.id.GoBackButton);
+                        Switch CheckSwitch = view1.findViewById(R.id.checkSwitch);
+                        final Button goBackToMain = view1.findViewById(R.id.GoBackButton);
                         imageView.setImageBitmap(bitmap);
                         qrDialog.setView(view1);
                         final AlertDialog dialog = qrDialog.create();
 
                         progressDialog.dismiss();
+                        goBackToMain.setEnabled(false);
+                        goBackToMain.setBackgroundColor(getResources().getColor((R.color.savedefault)));
+                        goBackToMain.setTextColor(getResources().getColor(R.color.savetextdefault));
 
                         dialog.show();
+
+                        CheckSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                if (isChecked) {
+                                    goBackToMain.setEnabled(true);
+                                    goBackToMain.setBackgroundColor(getResources().getColor((R.color.blue)));
+                                    goBackToMain.setTextColor(getResources().getColor(R.color.light));
+                                }
+                                else{
+                                    goBackToMain.setEnabled(false);
+                                    goBackToMain.setBackgroundColor(getResources().getColor((R.color.defaultdisabled)));
+                                    goBackToMain.setTextColor(getResources().getColor(R.color.textdefault));
+                                }
+                            }
+
+                        });
 
                         goBackToMain.setOnClickListener(new View.OnClickListener() {
                             @Override

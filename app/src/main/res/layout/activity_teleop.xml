@@ -394,20 +394,11 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
         android:text="@string/FellOver"
         android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/GoToClimb"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RRPNT3" />
-
-    <Switch
-        android:id="@+id/CrossedHABLineSwitch"
-        android:layout_width="195dp"
-        android:layout_height="50dp"
-        android:text="@string/HABLine"
-        android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toTopOf="@+id/FellOverSwitch"
-        app:layout_constraintStart_toStartOf="@+id/FellOverSwitch" />
+        app:layout_constraintTop_toTopOf="@+id/GoToClimb" />
 
     <TextView
         android:id="@+id/IDPossession"
@@ -1238,16 +1229,15 @@
         android:id="@+id/GoToClimb"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
         android:onClick="climbClick"
         android:text="Go To Climb"
         app:bootstrapBrand="warning"
         app:bootstrapSize="lg"
         app:buttonMode="regular"
-        app:layout_constraintBottom_toBottomOf="@+id/CrossedHABLineSwitch"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/CrossedHABLineSwitch"
-        app:layout_constraintTop_toBottomOf="@+id/CrossedHABLineSwitch"
+        app:layout_constraintEnd_toEndOf="@+id/IDDroppedDirections"
+        app:layout_constraintTop_toBottomOf="@+id/RRCT3"
         app:roundedCorners="true"
         app:showOutline="false" />
 

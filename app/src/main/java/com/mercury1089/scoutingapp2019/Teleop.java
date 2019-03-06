@@ -195,7 +195,6 @@ public class Teleop extends AppCompatActivity {
     ConstraintLayout constraintLayout;
     String UNDO;
     Switch FellOverSwitch;
-    Switch HABLineSwitch;
     int YELLOW = Color.rgb(248, 231, 28);
     int ORANGE = Color.rgb(255, 152, 0);
     @Override
@@ -297,6 +296,8 @@ public class Teleop extends AppCompatActivity {
 
             constraintLayout = findViewById(R.id.layout);
 
+            FellOverSwitch = findViewById(R.id.FellOverSwitch);
+
             //make Sandstorm button look active
             selectedButtonColors(TeleopButton);
 
@@ -330,6 +331,11 @@ public class Teleop extends AppCompatActivity {
                 CargoButton.setEnabled(false);
                 selectedButtonColors(PanelButton);
                 defaultButtonState(CargoButton);
+                totalPanels++;
+                PanelCounterText.setText(String.valueOf(totalPanels));
+                PanelCounterText.setEnabled(false);
+                CargoCounterText.setEnabled(false);
+
                 isPanel = true;
                 isCargo = false;
                 enableScoringDiagram('P');
@@ -339,10 +345,48 @@ public class Teleop extends AppCompatActivity {
                 CargoButton.setEnabled(false);
                 selectedButtonColors(CargoButton);
                 defaultButtonState(PanelButton);
+                totalCargo++;
+                PanelCounterText.setText(String.valueOf(totalCargo));
+                PanelCounterText.setEnabled(false);
+                CargoCounterText.setEnabled(false);
                 isPanel = false;
                 isCargo = true;
                 enableScoringDiagram('C');
             } }
+
+        String fellOver = getIntent().getStringExtra("fellOver");
+            if (fellOver != null && fellOver.equals("True")) {
+                UNDO = "FellOver";
+                UndoButton.setEnabled(true);
+                setupHashMap.put("FellOver",String.valueOf(1));
+                FellOverSwitch.setChecked(true);
+                defaultButtonState(PanelButton);
+                defaultButtonState(CargoButton);
+                defaultButtonState(DroppedButton);
+                defaultButtonState(MissedButton);
+                PanelButton.setEnabled(false);
+                PanelCounterText.setEnabled(false);
+                CargoButton.setEnabled(false);
+                CargoCounterText.setEnabled(false);
+                DroppedButton.setEnabled(false);
+                DroppedCounterText.setEnabled(false);
+                MissedButton.setEnabled(false);
+                MissedCounterText.setEnabled(false);
+
+                disableScoringDiagram('A');
+
+
+                for (int i = 0; i < constraintLayout.getChildCount(); i++) {
+                    if ((constraintLayout.getChildAt(i) instanceof TextView) && (constraintLayout.getChildAt(i).getTag() != null)) {
+                        if (constraintLayout.getChildAt(i).getTag().toString().length() > 9) {
+                            String tag = constraintLayout.getChildAt(i).getTag().toString();
+                            if (tag.equals("label")) {
+                                setTextToColor((TextView) constraintLayout.getChildAt(i), "grey");
+                            }
+                        }
+                    }
+                }
+            }
 
 
 
@@ -812,25 +856,6 @@ public class Teleop extends AppCompatActivity {
 
             }
 
-            if (setupHashMap.get("StartingGameObject") != null) {
-            if (setupHashMap.get("StartingGameObject").equals("Panel")) {
-                selectedButtonColors(PanelButton);
-                PanelCounterText.setText("1");
-                CargoButton.setEnabled(false);
-                CargoCounterText.setEnabled(false);
-                isPanel = true;
-                totalPanels++;
-                enableScoringDiagram('P');
-            } else if (setupHashMap.get("StartingGameObject").equals("Panel")){
-                selectedButtonColors(CargoButton);
-                CargoCounterText.setText("1");
-                PanelButton.setEnabled(false);
-                PanelCounterText.setEnabled(false);
-                isCargo = true;
-                totalCargo++;
-                enableScoringDiagram('C');
-            }}
-
             PanelCounterText.bringToFront();
             CargoCounterText.bringToFront();
             DroppedCounterText.bringToFront();
@@ -871,22 +896,9 @@ public class Teleop extends AppCompatActivity {
             DroppedButton.setEnabled(true);
             DroppedCounterText.setEnabled(true);
 
-            HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
-            HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        UNDO = "HAB";
-                        UndoButton.setEnabled(true);
-                        setupHashMap.put("HABLine",String.valueOf(1));
-                    }
-                    else
-                        setupHashMap.put("HABLine",String.valueOf(0));
-                }
-            });
 
 
 
-            FellOverSwitch = findViewById(R.id.FellOverSwitch);
             FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 boolean wasPanel = false;
                 boolean wasCargo = false;
@@ -908,7 +920,6 @@ public class Teleop extends AppCompatActivity {
                         defaultButtonState(CargoButton);
                         defaultButtonState(DroppedButton);
                         defaultButtonState(MissedButton);
-                        HABLineSwitch.setEnabled(false);
 
                         PanelButton.setEnabled(false);
                         PanelCounterText.setEnabled(false);
@@ -926,7 +937,6 @@ public class Teleop extends AppCompatActivity {
 
                     } else {
                         setupHashMap.put("FellOver",String.valueOf(0));
-                        HABLineSwitch.setEnabled(true);
                         PanelButton.setEnabled(true);
                         PanelCounterText.setEnabled(true);
                         CargoButton.setEnabled(true);
@@ -2725,7 +2735,6 @@ public class Teleop extends AppCompatActivity {
                     break;
                 case "FellOver":
                     setupHashMap.put("FellOver",String.valueOf(0));
-                    HABLineSwitch.setEnabled(true);
                     PanelButton.setEnabled(true);
                     PanelCounterText.setEnabled(true);
                     CargoButton.setEnabled(true);
@@ -2741,10 +2750,6 @@ public class Teleop extends AppCompatActivity {
                     setTextToColor(pOrCDirections, "white");
                     setTextToColor(missedDirections, "white");
                     FellOverSwitch.setChecked(!FellOverSwitch.isChecked());
-                    break;
-                case "HAB":
-                    setupHashMap.put("HABLine",String.valueOf(0));
-                    HABLineSwitch.setChecked(!HABLineSwitch.isChecked());
                     break;
                 case "LRPNT3": //undo for circle buttons aka locations
                     selectedButtonColors(PanelButton);
