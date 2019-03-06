@@ -645,6 +645,7 @@
 
     <TextView
         android:id="@+id/MissedCounterText"
+        android:tag=""
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
@@ -657,6 +658,7 @@
 
     <TextView
         android:id="@+id/PanelCounterText"
+        android:tag="S,P,P,,,"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="78dp"
@@ -670,6 +672,7 @@
 
     <TextView
         android:id="@+id/CargoCounterText"
+        android:tag="S,P,C,,,"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
@@ -707,6 +710,7 @@
 
     <TextView
         android:id="@+id/DroppedCounterText"
+        android:tag=""
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
@@ -785,7 +789,7 @@
 
     <TextView
         android:id="@+id/LRPNT3"
-        android:tag="Sandstorm,Rocket,Panel,Left,Near,T3"
+        android:tag="S,R,P,L,N,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
@@ -798,7 +802,7 @@
 
     <TextView
         android:id="@+id/LRPNT2"
-        android:tag="Sandstorm,Rocket,Panel,Left,Near,T2"
+        android:tag="S,R,P,L,N,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -810,7 +814,7 @@
 
     <TextView
         android:id="@+id/LRPNT1"
-        android:tag="Sandstorm,Rocket,Panel,Left,Near,T1"
+        android:tag="S,R,P,L,N,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -822,7 +826,7 @@
 
     <TextView
         android:id="@+id/LRCT1"
-        android:tag="Sandstorm,Rocket,Cargo,Left,,T1"
+        android:tag="S,R,C,L,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -834,7 +838,7 @@
 
     <TextView
         android:id="@+id/LRCT2"
-        android:tag="Sandstorm,Rocket,Cargo,Left,,T2"
+        android:tag="S,R,C,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -845,7 +849,7 @@
 
     <TextView
         android:id="@+id/LRCT3"
-        android:tag="Sandstorm,Rocket,Cargo,Left,,T3"
+        android:tag="S,R,C,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -856,7 +860,7 @@
 
     <TextView
         android:id="@+id/LRPFT3"
-        android:tag="Sandstorm,Rocket,Panel,Left,Far,T3"
+        android:tag="S,R,P,L,F,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -868,7 +872,7 @@
 
     <TextView
         android:id="@+id/LRPFT2"
-        android:tag="Sandstorm,Rocket,Panel,Left,Far,T2"
+        android:tag="S,R,P,L,F,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -880,7 +884,7 @@
 
     <TextView
         android:id="@+id/LRPFT1"
-        android:tag="Sandstorm,Rocket,Panel,Left,Far,T1"
+        android:tag="S,R,P,L,F,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -891,7 +895,7 @@
 
     <TextView
         android:id="@+id/CSPL1"
-        android:tag="Sandstorm,CargoShip,Panel,Left,,1"
+        android:tag="S,C,P,L,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -902,7 +906,7 @@
 
     <TextView
         android:id="@+id/CSPL2"
-        android:tag="Sandstorm,CargoShip,Panel,Left,,2"
+        android:tag="S,C,P,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -914,7 +918,7 @@
 
     <TextView
         android:id="@+id/CSPL3"
-        android:tag="Sandstorm,CargoShip,Panel,Left,,3"
+        android:tag="S,C,P,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -927,7 +931,7 @@
 
     <TextView
         android:id="@+id/CSCL3"
-        android:tag="Sandstorm,CargoShip,Cargo,Left,,3"
+        android:tag="S,C,C,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -938,7 +942,7 @@
 
     <TextView
         android:id="@+id/CSCR3"
-        android:tag="Sandstorm,CargoShip,Cargo,Right,,3"
+        android:tag="S,C,C,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -949,7 +953,7 @@
 
     <TextView
         android:id="@+id/CSPR3"
-        android:tag="Sandstorm,CargoShip,Panel,Right,,3"
+        android:tag="S,C,P,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -960,7 +964,7 @@
 
     <TextView
         android:id="@+id/CSPR2"
-        android:tag="Sandstorm,CargoShip,Panel,Right,,2"
+        android:tag="S,C,P,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -971,7 +975,7 @@
 
     <TextView
         android:id="@+id/CSCR2"
-        android:tag="Sandstorm,CargoShip,Cargo,Right,,2"
+        android:tag="S,C,C,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -982,7 +986,7 @@
 
     <TextView
         android:id="@+id/CSCL2"
-        android:tag="Sandstorm,CargoShip,Cargo,Left,,2"
+        android:tag="S,C,C,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -993,7 +997,7 @@
 
     <TextView
         android:id="@+id/CSCL1"
-        android:tag="Sandstorm,CargoShip,Cargo,Left,,1"
+        android:tag="S,C,C,L,,1"
         android:layout_width="50dp"
         android:layout_height="52dp"
         android:gravity="center"
@@ -1006,7 +1010,7 @@
 
     <TextView
         android:id="@+id/CSCR1"
-        android:tag="Sandstorm,CargoShip,Cargo,Right,,1"
+        android:tag="S,C,C,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1019,7 +1023,7 @@
 
     <TextView
         android:id="@+id/CSPR1"
-        android:tag="Sandstorm,CargoShip,Panel,Right,,1"
+        android:tag="S,C,P,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1030,7 +1034,7 @@
 
     <TextView
         android:id="@+id/CSCF1"
-        android:tag="Sandstorm,CargoShip,Cargo,Front,,1"
+        android:tag="S,C,C,F,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1041,7 +1045,7 @@
 
     <TextView
         android:id="@+id/CSCF2"
-        android:tag="Sandstorm,CargoShip,Cargo,Front,,2"
+        android:tag="S,C,C,F,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1054,7 +1058,7 @@
 
     <TextView
         android:id="@+id/CSPF2"
-        android:tag="Sandstorm,CargoShip,Panel,Front,,2"
+        android:tag="S,C,P,F,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1065,7 +1069,7 @@
 
     <TextView
         android:id="@+id/CSPF1"
-        android:tag="Sandstorm,CargoShip,Panel,Front,,1"
+        android:tag="S,C,P,F,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1076,7 +1080,7 @@
 
     <TextView
         android:id="@+id/RRPNT1"
-        android:tag="Sandstorm,Rocket,Panel,Right,Near,T1"
+        android:tag="S,R,P,R,N,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1087,10 +1091,10 @@
 
     <TextView
         android:id="@+id/RRPNT2"
+        android:tag="S,R,P,R,N,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:tag="Sandstorm,Rocket,Panel,Right,Near,T2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RRPNT3"
@@ -1098,7 +1102,7 @@
 
     <TextView
         android:id="@+id/RRPNT3"
-        android:tag="Sandstorm,Rocket,Panel,Right,Near,T3"
+        android:tag="S,R,P,R,N,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1109,7 +1113,7 @@
 
     <TextView
         android:id="@+id/RRCT1"
-        android:tag="Sandstorm,Rocket,Cargo,Right,,T1"
+        android:tag="S,R,C,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1120,7 +1124,7 @@
 
     <TextView
         android:id="@+id/RRCT2"
-        android:tag="Sandstorm,Rocket,Cargo,Right,,T2"
+        android:tag="S,R,C,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1131,7 +1135,7 @@
 
     <TextView
         android:id="@+id/RRCT3"
-        android:tag="Sandstorm,Rocket,Cargo,Right,,T3"
+        android:tag="S,R,C,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1142,7 +1146,7 @@
 
     <TextView
         android:id="@+id/RRPFT3"
-        android:tag="Sandstorm,Rocket,Panel,Right,Far,T3"
+        android:tag="S,R,P,R,F,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1153,7 +1157,7 @@
 
     <TextView
         android:id="@+id/RRPFT2"
-        android:tag="Sandstorm,Rocket,Panel,Right,Far,T2"
+        android:tag="S,R,P,R,F,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
@@ -1164,7 +1168,7 @@
 
     <TextView
         android:id="@+id/RRPFT1"
-        android:tag="Sandstorm,Rocket,Panel,Right,Far,T1"
+        android:tag="S,R,P,R,F,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"

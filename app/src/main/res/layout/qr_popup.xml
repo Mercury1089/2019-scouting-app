@@ -20,6 +20,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/MatchNumberQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:text="Match Number: XX"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TeamNumberQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="204dp"
+        android:text="Team Number: XXXX"
+        android:textColor="@color/bootstrap_dropdown_divider"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/MatchNumberQR"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="450dp"

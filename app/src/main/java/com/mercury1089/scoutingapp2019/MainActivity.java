@@ -28,7 +28,6 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 
-import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 
 import android.text.TextWatcher;
@@ -89,7 +88,6 @@ import com.google.zxing.WriterException;
 
 
 import com.google.zxing.common.BitMatrix;
-
 
 
 import java.io.Serializable;
@@ -2242,12 +2240,16 @@ public class MainActivity extends Activity {
                         View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
                         Switch CheckSwitch = view1.findViewById(R.id.checkSwitch);
+                        TextView teamNumber = view1.findViewById(R.id.TeamNumber);
+                        TextView matchNumber = view1.findViewById(R.id.MatchNumberQR);
                         final Button goBackToMain = view1.findViewById(R.id.GoBackButton);
                         imageView.setImageBitmap(bitmap);
                         qrDialog.setView(view1);
                         final AlertDialog dialog = qrDialog.create();
 
                         progressDialog.dismiss();
+                        teamNumber.setText("Team Number: " + setupHashMap.get("TeamNumber"));
+                        matchNumber.setText("Match Number: " + setupHashMap.get("MatchNumber"));
                         goBackToMain.setEnabled(false);
                         goBackToMain.setBackgroundColor(getResources().getColor((R.color.savedefault)));
                         goBackToMain.setTextColor(getResources().getColor(R.color.savetextdefault));

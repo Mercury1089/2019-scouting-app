@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.beardedhen.androidbootstrap.BootstrapButton;
 import com.google.zxing.BarcodeFormat;
@@ -423,6 +424,8 @@ public class Climb extends AppCompatActivity {
                         View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
                         Switch CheckSwitch = view1.findViewById(R.id.checkSwitch);
+                        TextView teamNumber = view1.findViewById(R.id.TeamNumberQR);
+                        TextView matchNumber = view1.findViewById(R.id.MatchNumberQR);
                         final Button goBackToMain = view1.findViewById(R.id.GoBackButton);
                         imageView.setImageBitmap(bitmap);
                         qrDialog.setView(view1);
@@ -432,6 +435,8 @@ public class Climb extends AppCompatActivity {
                         goBackToMain.setEnabled(false);
                         goBackToMain.setBackgroundColor(getResources().getColor((R.color.savedefault)));
                         goBackToMain.setTextColor(getResources().getColor(R.color.savetextdefault));
+                        teamNumber.setText("Team Number: " + setupHashMap.get("TeamNumber"));
+                        matchNumber.setText("Match Number: " + setupHashMap.get("MatchNumber"));
 
                         dialog.show();
 
