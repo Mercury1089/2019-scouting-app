@@ -2240,7 +2240,7 @@ public class MainActivity extends Activity {
                         View view1 = getLayoutInflater().inflate(R.layout.qr_popup, null);
                         ImageView imageView = view1.findViewById(R.id.imageView);
                         Switch CheckSwitch = view1.findViewById(R.id.checkSwitch);
-                        TextView teamNumber = view1.findViewById(R.id.TeamNumber);
+                        TextView teamNumber = view1.findViewById(R.id.TeamNumberQR);
                         TextView matchNumber = view1.findViewById(R.id.MatchNumberQR);
                         final Button goBackToMain = view1.findViewById(R.id.GoBackButton);
                         imageView.setImageBitmap(bitmap);

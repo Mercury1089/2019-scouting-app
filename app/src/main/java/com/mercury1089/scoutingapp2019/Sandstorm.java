@@ -837,27 +837,6 @@ public class Sandstorm extends MainActivity {
 
         }
 
-
-         if (setupHashMap.get("StartingGameObject").equals("Panel")) {
-            selectedButtonColors(PanelButton);
-            PanelCounterText.setText("1");
-            CargoButton.setEnabled(false);
-            CargoCounterText.setEnabled(false);
-            isPanel = true;
-            isCargo = false;
-            totalPanels++;
-             enableScoringDiagram('P');
-         } else if (setupHashMap.get("StartingGameObject").equals("Cargo")){
-             selectedButtonColors(CargoButton);
-             CargoCounterText.setText("1");
-             PanelButton.setEnabled(false);
-             PanelCounterText.setEnabled(false);
-             isCargo = true;
-             isPanel = false;
-             totalCargo++;
-             enableScoringDiagram('C');
-         }
-
          PanelCounterText.bringToFront();
          CargoCounterText.bringToFront();
          DroppedCounterText.bringToFront();
