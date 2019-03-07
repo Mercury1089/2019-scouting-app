@@ -1785,9 +1785,9 @@ public class Sandstorm extends MainActivity {
         Intent intent = new Intent(this, Teleop.class);
 
         if (isPanel)
-            intent.putExtra("prepopPOrC", "P");
+            intent.putExtra("POrC", "P");
         else if (isCargo)
-            intent.putExtra("prepopPOrC", "C");
+            intent.putExtra("POrC", "C");
 
         if (FellOverSwitch.isChecked())
             intent.putExtra("fellOver","True");

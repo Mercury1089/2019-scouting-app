@@ -1272,32 +1272,12 @@ public class MainActivity extends Activity {
 
     public void ClearClick (View view) {
 
-        ScouterNameInput.setText("");
-        matchNumberInput.setText("");
-        teamNumberInput.setText("");
-        firstAlliancePartnerInput.setText("");
-        secondAlliancePartnerInput.setText("");
-        NoShowSwitch.setChecked(false);
-        DiagramMessage.setVisibility(View.VISIBLE);
-        DiagramMessage.setText("You must select an alliance color (above) before you can access the map.");
-
-        blueDefault();
-        redDefault();
-        panelDefault();
-        cargoDefault();
-
-        clearButton.setEnabled(false);
-        makeCirclesInvisible();
-        makeBoxesInvisible("Both");
-
-        /*
         final AlertDialog.Builder cancelDialog = new AlertDialog.Builder(MainActivity.this);
         View view1 = getLayoutInflater().inflate(R.layout.confirm_popup, null);
-        int width = ConstraintLayout.LayoutParams.WRAP_CONTENT;
-        int height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
         BootstrapButton clearconfirm = view1.findViewById(R.id.GoToClimb);
         BootstrapButton cancelconfirm = view1.findViewById(R.id.cancelconfirm);
         final AlertDialog dialog = cancelDialog.create();
+        dialog.setView(view1);
 
         dialog.show();
 
@@ -1331,8 +1311,6 @@ public class MainActivity extends Activity {
                 makeBoxesInvisible("Both");
             }
         });
-
-        */
 
     }
 
