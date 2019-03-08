@@ -228,6 +228,7 @@ public class MainActivity extends Activity {
 
 
 
+
     @Override
 
 
@@ -449,7 +450,6 @@ public class MainActivity extends Activity {
                     redButton.setTextColor(getResources().getColor(R.color.light));
 
                 }
-
             }
 
             else if (setupHashMap.get("LeftOrRight").equals("Right")){
@@ -499,6 +499,37 @@ public class MainActivity extends Activity {
                 }
 
             }
+
+            if (ScouterNameInput.getText().length() > 0
+
+                    && teamNumberInput.getText().length() > 0
+
+                    && matchNumberInput.getText().length() > 0
+
+                    && firstAlliancePartnerInput.getText().length() > 0
+
+                    && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+
+                startButton.setEnabled(true);
+            else
+                startButton.setEnabled(false);
+            if (ScouterNameInput.getText().length() > 0
+
+                    || teamNumberInput.getText().length() > 0
+
+                    || matchNumberInput.getText().length() > 0
+
+                    || firstAlliancePartnerInput.getText().length() > 0
+
+                    || secondAlliancePartnerInput.getText().length() > 0 || (setupHashMap.get("AllianceColor").equals("Blue") ||
+                    setupHashMap.get("AllianceColor").equals("Red")) || NoShowSwitch.isChecked() || isSetupPanel == 1 || isSetupCargo == 1)
+
+                clearButton.setEnabled(true);
+            else
+                clearButton.setEnabled(false);
+
+
             if (setupHashMap != null && setupHashMap.get("NoShow").equals("1")) {
                 NoShowSwitch.setChecked(true);
                 prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));

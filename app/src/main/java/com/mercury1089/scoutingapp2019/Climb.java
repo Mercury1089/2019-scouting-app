@@ -618,7 +618,8 @@ public class Climb extends AppCompatActivity {
                 QRString.append(setupHashMap.get("ClimbPartners")).append(",");
                 QRString.append(setupHashMap.get("SelfOrWithHelp")).append(",");
                 QRString.append(setupHashMap.get("FellOver")).append(",");
-                QRString.append(setupHashMap.get("NoShow"));
+                QRString.append(setupHashMap.get("NoShow")).append(",");
+                QRString.append(setupHashMap.get("TeleopPrepop"));
 
                 Object keySet[] = scoreHashMap.keySet().toArray();
                 for (int i = 0; i < keySet.length; i++) {
