@@ -50,5 +50,14 @@
     <color name="panelscoredenabled">#F8E71C</color>
     <color name="cargoscoredenabled">#FF9800</color>
 
+    <!-- theme change -->
+    <color name="darkerblue">#292E52</color>
+    <color name="darkblue">#232C5A</color>
+    <color name="lightblue">#7186B3</color>
+    <color name="lightpurple">#7C7EAF</color>
+    <color name="disabledlightpurple">#5D5F86</color>
+    <color name="scarletorange">#FA5347</color>
+    <color name="lightscarletorange">#D66C63</color>
+
 
 </resources>

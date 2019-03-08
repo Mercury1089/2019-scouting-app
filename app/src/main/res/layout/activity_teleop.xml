@@ -552,7 +552,6 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="setupClick"
             android:text="@string/Setup"
             android:textSize="36sp" />
 

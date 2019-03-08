@@ -35,12 +35,12 @@
         android:id="@+id/TeamNumberQR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="8dp"
         android:text="Team Number: XXXX"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/MatchNumberQR"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/MatchNumberQR" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -70,7 +70,7 @@
         android:layout_width="337dp"
         android:layout_height="64dp"
         android:backgroundTint="@color/blue"
-        android:text="Scanned?"
+        android:text="Liftoff?"
         android:textColor="@color/blue"
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/GoBackButton"

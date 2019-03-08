@@ -877,6 +877,35 @@ public class Sandstorm extends MainActivity {
         DroppedButton.setEnabled(true);
         DroppedCounterText.setEnabled(true);
 
+        if (setupHashMap.get("StartingGameObject").equals("Panel")) {
+            PanelButton.setEnabled(false);
+            CargoButton.setEnabled(false);
+            selectedButtonColors(PanelButton);
+            defaultButtonState(CargoButton);
+            totalPanels++;
+            PanelCounterText.setText(String.valueOf(totalPanels));
+            PanelCounterText.setEnabled(false);
+            CargoCounterText.setEnabled(false);
+
+            isPanel = true;
+            isCargo = false;
+            enableScoringDiagram('P');
+        }
+        else if (setupHashMap.get("StartingGameObject").equals("Cargo")) {
+            PanelButton.setEnabled(false);
+            CargoButton.setEnabled(false);
+            selectedButtonColors(CargoButton);
+            defaultButtonState(PanelButton);
+            totalCargo++;
+            CargoCounterText.setText(String.valueOf(totalCargo));
+            PanelCounterText.setEnabled(false);
+            CargoCounterText.setEnabled(false);
+            isPanel = false;
+            isCargo = true;
+            enableScoringDiagram('C');
+        }
+
+
         HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
         HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -894,8 +923,8 @@ public class Sandstorm extends MainActivity {
 
         FellOverSwitch = findViewById(R.id.FellOverSwitch);
         FellOverSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            boolean wasPanel = false;
-            boolean wasCargo = false;
+        boolean wasPanel = false;
+        boolean wasCargo = false;
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 
@@ -941,7 +970,7 @@ public class Sandstorm extends MainActivity {
                     DroppedCounterText.setEnabled(false);
                     MissedButton.setEnabled(false);
                     MissedCounterText.setEnabled(false);
-                    if (wasPanel) {
+                    if (wasPanel && isPanel) {
                         UNDO = "Panel";
                         UndoButton.setEnabled(true);
                         selectedButtonColors(PanelButton);
@@ -958,7 +987,7 @@ public class Sandstorm extends MainActivity {
                         enableScoringDiagram('P');
                         disableScoringDiagram('C');
                     }
-                    if (wasCargo) {
+                    if (wasCargo && isPanel) {
                         UNDO = "Cargo";
                         UndoButton.setEnabled(true);
                         selectedButtonColors(CargoButton);
@@ -1785,9 +1814,9 @@ public class Sandstorm extends MainActivity {
         Intent intent = new Intent(this, Teleop.class);
 
         if (isPanel)
-            intent.putExtra("prepopPOrC", "P");
+            intent.putExtra("POrC", "P");
         else if (isCargo)
-            intent.putExtra("prepopPOrC", "C");
+            intent.putExtra("POrC", "C");
 
         if (FellOverSwitch.isChecked())
             intent.putExtra("fellOver","True");
@@ -1954,6 +1983,7 @@ public class Sandstorm extends MainActivity {
         MissedButton.setEnabled(false);
         MissedCounterText.setEnabled(false);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -1978,6 +2008,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2000,6 +2031,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2021,6 +2053,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2042,6 +2075,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2063,6 +2097,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2085,6 +2120,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2107,6 +2143,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2129,6 +2166,7 @@ public class Sandstorm extends MainActivity {
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
         UndoButton.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2153,6 +2191,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2175,6 +2214,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2196,6 +2236,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2217,6 +2258,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2239,6 +2281,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2261,6 +2304,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2283,6 +2327,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2304,6 +2349,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2325,6 +2371,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2346,6 +2393,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2367,6 +2415,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2388,6 +2437,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2409,6 +2459,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2431,6 +2482,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2453,6 +2505,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2475,6 +2528,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2499,6 +2553,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2521,6 +2576,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2543,6 +2599,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2564,6 +2621,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2585,6 +2643,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2606,6 +2665,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2628,6 +2688,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2650,6 +2711,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }
@@ -2672,6 +2734,7 @@ public class Sandstorm extends MainActivity {
         PanelCounterText.setEnabled(true);
         CargoButton.setEnabled(true);
         CargoCounterText.setEnabled(true);
+        HABLineSwitch.setChecked(true);
         isPanel = false;
         isCargo = false;
     }

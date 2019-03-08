@@ -5,7 +5,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bootstrap_brand_secondary_text"
+    android:background="@color/darkblue"
     tools:context=".Sandstorm">
 
     <at.markushi.ui.CircleButton
@@ -500,8 +500,9 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="panelCounterClick"
+            android:background="@color/lightblue"
 
+            android:onClick="panelCounterClick"
             android:text="Panel     "
             android:textSize="36sp" />
 
@@ -513,6 +514,7 @@
 
             android:layout_height="match_parent"
 
+            android:background="@color/lightpurple"
             android:onClick="cargoCounterClick"
             android:text="Cargo     "
             android:textSize="36sp" />
@@ -645,12 +647,12 @@
 
     <TextView
         android:id="@+id/MissedCounterText"
-        android:tag=""
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
         android:onClick="missedClick"
+        android:tag=""
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/MissedCounterCircle"
@@ -659,13 +661,13 @@
 
     <TextView
         android:id="@+id/PanelCounterText"
-        android:tag="S,P,P,,,"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="78dp"
         android:enabled="false"
         android:gravity="center"
         android:onClick="panelCounterClick"
+        android:tag="S,P,P,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/PanelCounterCircle"
@@ -674,12 +676,12 @@
 
     <TextView
         android:id="@+id/CargoCounterText"
-        android:tag="S,P,C,,,"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
         android:onClick="cargoCounterClick"
+        android:tag="S,P,C,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoCounterCircle"
@@ -714,12 +716,12 @@
 
     <TextView
         android:id="@+id/DroppedCounterText"
-        android:tag=""
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
         android:onClick="droppedClick"
+        android:tag=""
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/DroppedCounterCircle"
@@ -794,12 +796,12 @@
 
     <TextView
         android:id="@+id/LRPNT3"
-        android:tag="S,R,P,L,N,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
         android:onClick="LRPNT3CounterClick"
+        android:tag="S,R,P,L,N,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:visibility="visible"
@@ -808,11 +810,11 @@
 
     <TextView
         android:id="@+id/LRPNT2"
-        android:tag="S,R,P,L,N,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRPNT2CounterClick"
+        android:tag="S,R,P,L,N,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:visibility="visible"
@@ -821,11 +823,11 @@
 
     <TextView
         android:id="@+id/LRPNT1"
-        android:tag="S,R,P,L,N,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRPNT1CounterClick"
+        android:tag="S,R,P,L,N,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelNearT1"
@@ -834,11 +836,11 @@
 
     <TextView
         android:id="@+id/LRCT1"
-        android:tag="S,R,C,L,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRCT1CounterClick"
+        android:tag="S,R,C,L,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketCargoT1"
@@ -847,11 +849,11 @@
 
     <TextView
         android:id="@+id/LRCT2"
-        android:tag="S,R,C,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRCT2CounterClick"
+        android:tag="S,R,C,L,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT2"
@@ -859,11 +861,11 @@
 
     <TextView
         android:id="@+id/LRCT3"
-        android:tag="S,R,C,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRCT3CounterClick"
+        android:tag="S,R,C,L,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT3"
@@ -871,11 +873,11 @@
 
     <TextView
         android:id="@+id/LRPFT3"
-        android:tag="S,R,P,L,F,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRPFT3CounterClick"
+        android:tag="S,R,P,L,F,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT3"
@@ -884,11 +886,11 @@
 
     <TextView
         android:id="@+id/LRPFT2"
-        android:tag="S,R,P,L,F,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRPFT2CounterClick"
+        android:tag="S,R,P,L,F,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT2"
@@ -897,11 +899,11 @@
 
     <TextView
         android:id="@+id/LRPFT1"
-        android:tag="S,R,P,L,F,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="LRPFT1CounterClick"
+        android:tag="S,R,P,L,F,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/LeftRocketPanelFarT1"
@@ -909,11 +911,11 @@
 
     <TextView
         android:id="@+id/CSPL1"
-        android:tag="S,C,P,L,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPL1CounterClick"
+        android:tag="S,C,P,L,,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/CargoShipPanelLeft1"
@@ -921,11 +923,11 @@
 
     <TextView
         android:id="@+id/CSPL2"
-        android:tag="S,C,P,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPL2CounterClick"
+        android:tag="S,C,P,L,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft2"
@@ -933,11 +935,11 @@
 
     <TextView
         android:id="@+id/CSPL3"
-        android:tag="S,C,P,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPL3CounterClick"
+        android:tag="S,C,P,L,,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toTopOf="@+id/CSCL3"
@@ -946,11 +948,11 @@
 
     <TextView
         android:id="@+id/CSCL3"
-        android:tag="S,C,C,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCL3CounterClick"
+        android:tag="S,C,C,L,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft3"
@@ -958,11 +960,11 @@
 
     <TextView
         android:id="@+id/CSCR3"
-        android:tag="S,C,C,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCR3CounterClick"
+        android:tag="S,C,C,R,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight3"
@@ -970,11 +972,11 @@
 
     <TextView
         android:id="@+id/CSPR3"
-        android:tag="S,C,P,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPR3CounterClick"
+        android:tag="S,C,P,R,,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight3"
@@ -982,11 +984,11 @@
 
     <TextView
         android:id="@+id/CSPR2"
-        android:tag="S,C,P,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPR2CounterClick"
+        android:tag="S,C,P,R,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight2"
@@ -994,11 +996,11 @@
 
     <TextView
         android:id="@+id/CSCR2"
-        android:tag="S,C,C,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCR2CounterClick"
+        android:tag="S,C,C,R,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight2"
@@ -1006,11 +1008,11 @@
 
     <TextView
         android:id="@+id/CSCL2"
-        android:tag="S,C,C,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCL2CounterClick"
+        android:tag="S,C,C,L,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft2"
@@ -1018,11 +1020,11 @@
 
     <TextView
         android:id="@+id/CSCL1"
-        android:tag="S,C,C,L,,1"
         android:layout_width="50dp"
         android:layout_height="52dp"
         android:gravity="center"
         android:onClick="CSCL1CounterClick"
+        android:tag="S,C,C,L,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoLeft1"
@@ -1032,11 +1034,11 @@
 
     <TextView
         android:id="@+id/CSCR1"
-        android:tag="S,C,C,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCR1CounterClick"
+        android:tag="S,C,C,R,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoRight1"
@@ -1046,11 +1048,11 @@
 
     <TextView
         android:id="@+id/CSPR1"
-        android:tag="S,C,P,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPR1CounterClick"
+        android:tag="S,C,P,R,,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight1"
@@ -1058,11 +1060,11 @@
 
     <TextView
         android:id="@+id/CSCF1"
-        android:tag="S,C,C,F,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCF1CounterClick"
+        android:tag="S,C,C,F,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoFront1"
@@ -1070,11 +1072,11 @@
 
     <TextView
         android:id="@+id/CSCF2"
-        android:tag="S,C,C,F,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSCF2CounterClick"
+        android:tag="S,C,C,F,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoFront2"
@@ -1084,11 +1086,11 @@
 
     <TextView
         android:id="@+id/CSPF2"
-        android:tag="S,C,P,F,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPF2CounterClick"
+        android:tag="S,C,P,F,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelFront2"
@@ -1096,11 +1098,11 @@
 
     <TextView
         android:id="@+id/CSPF1"
-        android:tag="S,C,P,F,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="CSPF1CounterClick"
+        android:tag="S,C,P,F,,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelFront1"
@@ -1108,11 +1110,11 @@
 
     <TextView
         android:id="@+id/RRPNT1"
-        android:tag="S,R,P,R,N,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRPNT1CounterClick"
+        android:tag="S,R,P,R,N,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT1"
@@ -1120,11 +1122,11 @@
 
     <TextView
         android:id="@+id/RRPNT2"
-        android:tag="S,R,P,R,N,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRPNT2CounterClick"
+        android:tag="S,R,P,R,N,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT2"
@@ -1132,11 +1134,11 @@
 
     <TextView
         android:id="@+id/RRPNT3"
-        android:tag="S,R,P,R,N,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRPNT3CounterClick"
+        android:tag="S,R,P,R,N,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT3"
@@ -1144,11 +1146,11 @@
 
     <TextView
         android:id="@+id/RRCT1"
-        android:tag="S,R,C,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRCT1CounterClick"
+        android:tag="S,R,C,R,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT1"
@@ -1156,11 +1158,11 @@
 
     <TextView
         android:id="@+id/RRCT2"
-        android:tag="S,R,C,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRCT2CounterClick"
+        android:tag="S,R,C,R,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT2"
@@ -1168,11 +1170,11 @@
 
     <TextView
         android:id="@+id/RRCT3"
-        android:tag="S,R,C,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRCT3CounterClick"
+        android:tag="S,R,C,R,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT3"
@@ -1180,11 +1182,11 @@
 
     <TextView
         android:id="@+id/RRPFT3"
-        android:tag="S,R,P,R,F,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRPFT3CounterClick"
+        android:tag="S,R,P,R,F,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT3"
@@ -1192,11 +1194,11 @@
 
     <TextView
         android:id="@+id/RRPFT2"
-        android:tag="S,R,P,R,F,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRPFT2CounterClick"
+        android:tag="S,R,P,R,F,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT2"
@@ -1204,11 +1206,11 @@
 
     <TextView
         android:id="@+id/RRPFT1"
-        android:tag="S,R,P,R,F,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
         android:onClick="RRPFT1CounterClick"
+        android:tag="S,R,P,R,F,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT1"

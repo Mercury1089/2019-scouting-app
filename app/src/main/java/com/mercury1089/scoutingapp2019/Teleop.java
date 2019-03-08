@@ -331,7 +331,6 @@ public class Teleop extends AppCompatActivity {
                 CargoButton.setEnabled(false);
                 selectedButtonColors(PanelButton);
                 defaultButtonState(CargoButton);
-                totalPanels++;
                 PanelCounterText.setText(String.valueOf(totalPanels));
                 PanelCounterText.setEnabled(false);
                 CargoCounterText.setEnabled(false);
@@ -345,7 +344,6 @@ public class Teleop extends AppCompatActivity {
                 CargoButton.setEnabled(false);
                 selectedButtonColors(CargoButton);
                 defaultButtonState(PanelButton);
-                totalCargo++;
                 PanelCounterText.setText(String.valueOf(totalCargo));
                 PanelCounterText.setEnabled(false);
                 CargoCounterText.setEnabled(false);

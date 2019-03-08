@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 
 import android.graphics.Bitmap;
@@ -28,6 +29,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 
 
+import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
 
 import android.text.TextWatcher;
@@ -37,9 +39,7 @@ import android.util.Log;
 import android.view.View;
 
 
-
-
-
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 
@@ -987,7 +987,6 @@ public class MainActivity extends Activity {
                     intent.putExtra("setupHashMap", setupHashMap);
                     startActivity(intent);
                 }
-
             }
 
         });
@@ -1255,12 +1254,7 @@ public class MainActivity extends Activity {
 
     }
 
-
-
     //click methods
-
-
-
     public void SettingsClick (View view) {
         Intent intent = new Intent(MainActivity.this, Settings.class);
         intent.putExtra("mainLeftOrRight", leftOrRight);
@@ -1268,43 +1262,200 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-
-
     public void ClearClick (View view) {
-
-        ScouterNameInput.setText("");
-        matchNumberInput.setText("");
-        teamNumberInput.setText("");
-        firstAlliancePartnerInput.setText("");
-        secondAlliancePartnerInput.setText("");
-        NoShowSwitch.setChecked(false);
-        DiagramMessage.setVisibility(View.VISIBLE);
-        DiagramMessage.setText("You must select an alliance color (above) before you can access the map.");
-
-        blueDefault();
-        redDefault();
-        panelDefault();
-        cargoDefault();
-
-        clearButton.setEnabled(false);
-        makeCirclesInvisible();
-        makeBoxesInvisible("Both");
-
-        /*
         final AlertDialog.Builder cancelDialog = new AlertDialog.Builder(MainActivity.this);
         View view1 = getLayoutInflater().inflate(R.layout.confirm_popup, null);
-        int width = ConstraintLayout.LayoutParams.WRAP_CONTENT;
-        int height = ConstraintLayout.LayoutParams.WRAP_CONTENT;
+
         BootstrapButton clearconfirm = view1.findViewById(R.id.GoToClimb);
         BootstrapButton cancelconfirm = view1.findViewById(R.id.cancelconfirm);
         final AlertDialog dialog = cancelDialog.create();
 
+        dialog.setView(view1);
         dialog.show();
 
         cancelconfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
+                makeCirclesInvisible();
+                if (setupHashMap.get("StartingPosition") != null && !setupHashMap.get("StartingPosition").equals("")) {
+                    if (setupHashMap.get("StartingPosition").equals("LL1"))
+                        LL1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("LC1"))
+                        LC1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("LR1"))
+                        LR1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("LL2"))
+                        LR1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("LR2"))
+                        LR1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("RL1"))
+                        RL1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("RC1"))
+                        RC1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("RR1"))
+                        RR1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("RL2"))
+                        RR1Circle.setVisibility(View.VISIBLE);
+                    else if (setupHashMap.get("StartingPosition").equals("RR2"))
+                        RR1Circle.setVisibility(View.VISIBLE);
+                }
+                ScouterNameInput.setText(setupHashMap.get(ScouterNameInput.getTag().toString()));
+
+                matchNumberInput.setText(setupHashMap.get(matchNumberInput.getTag().toString()));
+
+                teamNumberInput.setText(setupHashMap.get(teamNumberInput.getTag().toString()));
+
+                firstAlliancePartnerInput.setText(setupHashMap.get(firstAlliancePartnerInput.getTag().toString()));
+
+                secondAlliancePartnerInput.setText(setupHashMap.get(secondAlliancePartnerInput.getTag().toString()));
+
+                DiagramMessage.setVisibility(View.INVISIBLE);
+
+
+
+                if (setupHashMap.get("LeftOrRight").equals("Left")) {
+
+                    if (setupHashMap.get("AllianceColor").equals("Blue")) {
+
+                        makeBoxesBlue("Left");
+
+                        makeBoxesVisible("Left");
+
+                        blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
+
+                        blueButton.setTextColor(getResources().getColor(R.color.light));
+
+                    }
+
+                    else if (setupHashMap.get("AllianceColor").equals("Red")) {
+
+                        makeBoxesRed("Right");
+
+                        makeBoxesVisible("Right");
+
+                        redButton.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        redButton.setTextColor(getResources().getColor(R.color.light));
+
+                    }
+
+                }
+
+                else if (setupHashMap.get("LeftOrRight").equals("Right")){
+
+                    if (setupHashMap.get("AllianceColor").equals("Blue")) {
+
+                        makeBoxesBlue("Right");
+
+                        makeBoxesVisible("Right");
+
+                        blueButton.setBackgroundColor(getResources().getColor(R.color.blue));
+
+                        blueButton.setTextColor(getResources().getColor(R.color.light));
+
+                    }
+
+                    else if (setupHashMap.get("AllianceColor").equals("Red")) {
+
+                        makeBoxesRed("Left");
+
+                        makeBoxesVisible("Left");
+
+                        redButton.setBackgroundColor(getResources().getColor(R.color.red));
+
+                        redButton.setTextColor(getResources().getColor(R.color.light));
+
+                    }
+
+                }
+
+                if (setupHashMap.get("StartingGameObject") != null && !setupHashMap.get("StartingGameObject").equals("")) {
+
+                    if (setupHashMap.get("StartingGameObject").equals("Panel")) {
+
+                        panelButton.setBackgroundColor(getResources().getColor(R.color.orange));
+
+                        panelButton.setTextColor(getResources().getColor(R.color.light));
+
+                    }
+
+                    else if (setupHashMap.get("StartingGameObject").equals("Cargo")) {
+
+                        cargoButton.setBackgroundColor(getResources().getColor(R.color.orange));
+
+                        cargoButton.setTextColor(getResources().getColor(R.color.light));
+
+                    }
+
+                }
+                if (setupHashMap != null && setupHashMap.get("NoShow").equals("1")) {
+                    NoShowSwitch.setChecked(true);
+                    prepopulatedTitle.setTextColor(getResources().getColor(R.color.grey));
+                    prepopulatedDirections.setTextColor(getResources().getColor(R.color.grey));
+                    if (ScouterNameInput.getText().length() > 0
+
+                            && teamNumberInput.getText().length() > 0
+
+                            && matchNumberInput.getText().length() > 0
+
+                            && firstAlliancePartnerInput.getText().length() > 0
+
+                            && secondAlliancePartnerInput.getText().length() > 0 && (setupHashMap.get("AllianceColor").equals("Blue") ||
+                            setupHashMap.get("AllianceColor").equals("Red")) && (isSetupPanel == 1 || isSetupCargo == 1))
+
+                        startButton.setEnabled(true);
+                    else
+                        startButton.setEnabled(false);
+                    if (ScouterNameInput.getText().length() > 0
+
+                            || teamNumberInput.getText().length() > 0
+
+                            || matchNumberInput.getText().length() > 0
+
+                            || firstAlliancePartnerInput.getText().length() > 0
+
+                            || secondAlliancePartnerInput.getText().length() > 0 || (setupHashMap.get("AllianceColor").equals("Blue") ||
+                            setupHashMap.get("AllianceColor").equals("Red")) || NoShowSwitch.isChecked() || isSetupPanel == 1 || isSetupCargo == 1)
+
+                        clearButton.setEnabled(true);
+                    else
+                        clearButton.setEnabled(false);
+
+                    setupHashMap.put("NoShow", "1");
+
+                    noShowStatus = 1;
+
+                    startButton.setText(R.string.GenerateQRCode);
+
+                    isQRButton = true;
+
+                    makeCirclesInvisible();
+                    DiagramMessage.setText("Scoring diagram is unavailable because the robot did not show up.");
+                    DiagramMessage.setVisibility(View.VISIBLE);
+
+
+                    makeBoxesInvisible("Both");
+
+                    panelButton.setEnabled(false);
+
+                    panelButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+                    panelButton.setTextColor(getResources().getColor(R.color.grey));
+
+                    cargoButton.setEnabled(false);
+
+                    cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
+
+                    cargoButton.setTextColor(getResources().getColor(R.color.grey));
+                }
+                else if(setupHashMap.get("NoShow") != null && setupHashMap.get("NoShow").equals("0")) {
+                    NoShowSwitch.setChecked(false);
+                    prepopulatedTitle.setTextColor(getResources().getColor(R.color.light));
+
+                    prepopulatedDirections.setTextColor(getResources().getColor(R.color.light));
+                }
+
             }
         });
 
@@ -1331,9 +1482,6 @@ public class MainActivity extends Activity {
                 makeBoxesInvisible("Both");
             }
         });
-
-        */
-
     }
 
 
@@ -1795,6 +1943,11 @@ public class MainActivity extends Activity {
     public void blueClick (View view) {
         setupHashMap.put("AllianceColor", "Blue");
         setupHashMap.put("StartingPosition", "");
+        View v = this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
         if (ScouterNameInput.getText().length() > 0
 
                 && teamNumberInput.getText().length() > 0
@@ -1915,6 +2068,12 @@ public class MainActivity extends Activity {
         setupHashMap.put("AllianceColor", "Red");
         setupHashMap.put("StartingPosition", "");
 
+        View v = this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
         if (isRedAlliance == 0) {
             if (ScouterNameInput.getText().length() > 0
 
@@ -2029,6 +2188,12 @@ public class MainActivity extends Activity {
 
     public void panelClick (View view) {
 
+        View v = this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+
         if (isSetupPanel == 0) {
 
             setupHashMap.put("StartingGameObject", "Panel");
@@ -2079,6 +2244,12 @@ public class MainActivity extends Activity {
     }
 
     public void cargoClick (View view) {
+
+        View v = this.getCurrentFocus();
+        if (v != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
 
         if (isSetupCargo == 0) {
 
@@ -2230,6 +2401,8 @@ public class MainActivity extends Activity {
 
             QRValue = QRString.toString();
             Log.d("QRString",QRValue);
+
+            QRValue = "ScouterX,1,254,1738,2495,Red,Right,1L,C,1,1,0,S,0,0,T,R,P,L,N,1,1,T,R,P,L,N,2,P,T,R,P,L,N,3,C,T,R,P,L,F,1,1,T,R,P,L,F,2,1,T,R,P,L,F,3,1,T,R,C,L,,1,1,T,R,C,L,,2,1,T,R,C,L,,3,1,T,R,P,R,N,1,1,T,R,P,R,N,2,1,T,R,P,R,N,3,1,T,R,P,R,F,1,1,T,R,P,R,F,2,1,T,R,P,R,F,3,1,T,R,C,R,,1,1,T,R,C,R,,2,1,T,R,C,R,,3,1,T,C,P,L,,1,1,T,C,P,L,,2,1";
 
             try {
                 bitmap = TextToImageEncode(QRValue);

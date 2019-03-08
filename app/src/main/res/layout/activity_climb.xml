@@ -36,7 +36,6 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="SetupClick"
             android:text="@string/Setup"
             android:textSize="36sp" />
 
@@ -48,7 +47,6 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="SandstormClick"
             android:text="@string/Sandstorm"
             android:textSize="36sp" />
 
