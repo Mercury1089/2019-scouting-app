@@ -627,8 +627,6 @@ public class Climb extends AppCompatActivity {
                     QRString.append(",").append(key).append(",");
                     if (scoreHashMap.get(key) != null) {
                         QRString.append(String.valueOf(scoreHashMap.get(key)));
-                        Log.d("QR_DATA", "Key: " + key + ":" + String.valueOf(scoreHashMap.get(key)));
-                    }
                     else
                         continue;
                 }
