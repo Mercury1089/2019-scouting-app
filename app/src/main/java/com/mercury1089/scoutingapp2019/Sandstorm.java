@@ -325,6 +325,8 @@ public class Sandstorm extends MainActivity {
         final Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
         setupHashMap = (HashMap<String, String>)setupData;
 
+        setupHashMap.put("FellOver",String.valueOf(0));
+
 
 
         TimerTask switchToTeleop = new TimerTask() {
@@ -338,15 +340,17 @@ public class Sandstorm extends MainActivity {
                                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                                 if (textView.getTag() != null) {
                                     if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                        if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                        }
                                     }
                                 }
                             }
                         }
-                        scoreHashMap.put("Sandstorm,Missed,Panel,,,", missedPanels + "");
-                        scoreHashMap.put("Sandstorm,Missed,Cargo,,,", missedCargo + "");
-                        scoreHashMap.put("Sandstorm,Dropped,Panel,,,", droppedPanels + "");
-                        scoreHashMap.put("Sandstorm,Dropped,Cargo,,,", droppedCargo + "");
+                        scoreHashMap.put("S,M,P,,,", missedPanels + "");
+                        scoreHashMap.put("S,M,C,,,", missedCargo + "");
+                        scoreHashMap.put("S,D,P,,,", droppedPanels + "");
+                        scoreHashMap.put("S,D,C,,,", droppedCargo + "");
 
 
 

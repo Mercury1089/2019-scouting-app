@@ -607,8 +607,8 @@ public class Climb extends AppCompatActivity {
                 QRString.append(setupHashMap.get("ScouterName")).append(",");
                 QRString.append(setupHashMap.get("MatchNumber")).append(",");
                 QRString.append(setupHashMap.get("TeamNumber")).append(",");
-                QRString.append(setupHashMap.get("FirstAlliancePartner")).append(",");
-                QRString.append(setupHashMap.get("SecondAlliancePartner")).append(",");
+                QRString.append(setupHashMap.get("Alliance1")).append(",");
+                QRString.append(setupHashMap.get("Alliance2")).append(",");
                 QRString.append(setupHashMap.get("AllianceColor")).append(",");
                 QRString.append(setupHashMap.get("LeftOrRight")).append(",");
                 QRString.append(setupHashMap.get("StartingPosition")).append(",");
@@ -625,8 +625,10 @@ public class Climb extends AppCompatActivity {
                 for (int i = 0; i < keySet.length; i++) {
                     key = "" + keySet[i];
                     QRString.append(",").append(key).append(",");
-                    if (scoreHashMap.get(key) != null)
+                    if (scoreHashMap.get(key) != null) {
                         QRString.append(String.valueOf(scoreHashMap.get(key)));
+                        Log.d("QR_DATA", "Key: " + key + ":" + String.valueOf(scoreHashMap.get(key)));
+                    }
                     else
                         continue;
                 }

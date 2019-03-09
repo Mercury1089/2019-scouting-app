@@ -1789,16 +1789,18 @@ public class Teleop extends AppCompatActivity {
                     TextView textView = (TextView) constraintLayout.getChildAt(i);
                     if (textView.getTag() != null) {
                         if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                            if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                                scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                            }
                         }
                     }
                 }
             }
 
-            scoreHashMap.put("Teleop,Missed,Panel,,,", missedPanels + "");
-            scoreHashMap.put("Teleop,Missed,Cargo,,,", missedCargo + "");
-            scoreHashMap.put("Teleop,Dropped,Panel,,,", droppedPanels + "");
-            scoreHashMap.put("Teleop,Dropped,Cargo,,,", droppedCargo + "");
+            scoreHashMap.put("T,M,P,,,", missedPanels + "");
+            scoreHashMap.put("T,M,C,,,", missedCargo + "");
+            scoreHashMap.put("T,D,P,,,", droppedPanels + "");
+            scoreHashMap.put("T,D,C,,,", droppedCargo + "");
             intent.putExtra("scoreHashMap", scoreHashMap);
             startActivity(intent);
         }
@@ -1812,16 +1814,18 @@ public class Teleop extends AppCompatActivity {
                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                 if (textView.getTag() != null) {
                     if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        }
                     }
                 }
             }
         }
 
-        scoreHashMap.put("Teleop,Missed,Panel,,,", missedPanels + "");
-        scoreHashMap.put("Teleop,Missed,Cargo,,,", missedCargo + "");
-        scoreHashMap.put("Teleop,Dropped,Panel,,,", droppedPanels + "");
-        scoreHashMap.put("Teleop,Dropped,Cargo,,,", droppedCargo + "");
+        scoreHashMap.put("T,M,P,,,", missedPanels + "");
+        scoreHashMap.put("T,M,C,,,", missedCargo + "");
+        scoreHashMap.put("T,D,P,,,", droppedPanels + "");
+        scoreHashMap.put("T,D,C,,,", droppedCargo + "");
         intent.putExtra("scoreHashMap", scoreHashMap);
         startActivity(intent);
     }
@@ -1835,16 +1839,18 @@ public class Teleop extends AppCompatActivity {
                     TextView textView = (TextView) constraintLayout.getChildAt(i);
                     if (textView.getTag() != null) {
                         if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                            if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                                scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                            }
                         }
                     }
                 }
             }
 
-            scoreHashMap.put("Teleop,Missed,Panel,,,", missedPanels + "");
-            scoreHashMap.put("Teleop,Missed,Cargo,,,", missedCargo + "");
-            scoreHashMap.put("Teleop,Dropped,Panel,,,", droppedPanels + "");
-            scoreHashMap.put("Teleop,Dropped,Cargo,,,", droppedCargo + "");
+            scoreHashMap.put("T,M,P,,,", missedPanels + "");
+            scoreHashMap.put("T,M,C,,,", missedCargo + "");
+            scoreHashMap.put("T,D,P,,,", droppedPanels + "");
+            scoreHashMap.put("T,D,C,,,", droppedCargo + "");
             intent.putExtra("scoreHashMap", scoreHashMap);
             startActivity(intent);
         }
