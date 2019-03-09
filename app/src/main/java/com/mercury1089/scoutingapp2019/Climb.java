@@ -625,7 +625,7 @@ public class Climb extends AppCompatActivity {
                 for (int i = 0; i < keySet.length; i++) {
                     key = "" + keySet[i];
                     QRString.append(",").append(key).append(",");
-                    if (scoreHashMap.get(key) != null)
+                    if (scoreHashMap.get(key) != null || (Character.isDigit((scoreHashMap.get(key) + "").charAt(scoreHashMap.get(key).length() - 1))))
                         QRString.append(String.valueOf(scoreHashMap.get(key)));
                     else
                         continue;
