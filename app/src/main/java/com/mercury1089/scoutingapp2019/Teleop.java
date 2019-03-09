@@ -863,8 +863,12 @@ public class Teleop extends AppCompatActivity {
             MissedCounterText.bringToFront();
 
             //setting buttons to default state
+            SetupButton.setEnabled(false);
             defaultButtonState(SetupButton);
+
+            SandstormButton.setEnabled(false);
             defaultButtonState(SandstormButton);
+
             selectedButtonColors(TeleopButton);
             defaultButtonState(ClimbButton);
 

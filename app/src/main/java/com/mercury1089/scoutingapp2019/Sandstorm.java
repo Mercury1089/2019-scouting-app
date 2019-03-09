@@ -305,7 +305,8 @@ public class Sandstorm extends MainActivity {
         selectedButtonColors(SandstormButton);
 
         //make other buttons look default
-        defaultButtonState(SetupButton);
+        SetupButton.setEnabled(false);
+
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
         defaultButtonState(PanelButton);
