@@ -2429,6 +2429,7 @@ public class MainActivity extends Activity {
             QRString.append(",");
             QRString.append(",");
             QRString.append(setupHashMap.get("NoShow")).append(",");
+            QRString.append(",");
 
             QRValue = QRString.toString();
             Log.d("QRString",QRValue);
