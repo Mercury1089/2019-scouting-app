@@ -2,55 +2,51 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bootstrap_brand_secondary_text"
-    tools:context=".Sandstorm">
+    tools:context=".TeleopRight">
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoLeft3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSCL3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoLeft2"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoLeft2" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL3"
+        app:layout_constraintTop_toBottomOf="@+id/CSPL3" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipPanelLeft3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSPL3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/CSCL3"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelLeft2" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL3"
+        app:layout_constraintTop_toTopOf="@+id/CSPL2" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoRight3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSCR3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoRight2"
-        app:layout_constraintTop_toTopOf="@+id/CSCR3" />
+        app:layout_constraintStart_toStartOf="@+id/CSCL3"
+        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoLeft3" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipPanelFront1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="82dp"
         android:onClick="CSPF1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/CargoShipPanelRight1"
-        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelLeft1" />
+        app:layout_constraintStart_toStartOf="@+id/CSPF1"
+        app:layout_constraintTop_toTopOf="@+id/CSPF1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketPanelFarT2"
@@ -67,34 +63,31 @@
         android:id="@+id/T1Bottom"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/T1"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT1"
-        app:layout_constraintEnd_toStartOf="@+id/RRPNT1" />
+        app:layout_constraintEnd_toEndOf="@+id/T1Top" />
 
     <TextView
         android:id="@+id/T2Bottom"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/T2"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT2"
-        app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
+        app:layout_constraintEnd_toEndOf="@+id/T2Top" />
 
     <TextView
         android:id="@+id/T3Bottom"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif-medium"
         android:text="@string/T3"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBaseline_toBaselineOf="@+id/RRPNT3"
-        app:layout_constraintEnd_toStartOf="@+id/RRPNT2" />
+        app:layout_constraintEnd_toEndOf="@+id/T3Top" />
 
     <TextView
         android:id="@+id/T1Top"
@@ -130,149 +123,131 @@
         android:id="@+id/CargoShipCargoLeft2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:onClick="CSCL2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoRight3"
+        app:layout_constraintStart_toStartOf="@+id/CSCL2"
         app:layout_constraintTop_toTopOf="@+id/CSCL2" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketCargoT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="RRCT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/RightRocketPanelNearT1"
-        app:layout_constraintTop_toTopOf="@+id/RRCT2" />
+        app:layout_constraintStart_toStartOf="@+id/RRCT2"
+        app:layout_constraintTop_toBottomOf="@+id/RRPFT1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketCargoT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:onClick="RRCT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/RightRocketPanelNearT1"
-        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelRight1" />
+        app:layout_constraintStart_toStartOf="@+id/RRCT1"
+        app:layout_constraintTop_toTopOf="@+id/RRPFT1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketPanelNearT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
         android:onClick="RRPNT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront2"
-        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelRight1" />
+        app:layout_constraintStart_toStartOf="@+id/RRPNT1"
+        app:layout_constraintTop_toTopOf="@+id/RRCT1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketPanelFarT1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:onClick="RRPFT1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT1"
-        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelRight1" />
+        app:layout_constraintStart_toStartOf="@+id/LRPFT1"
+        app:layout_constraintTop_toTopOf="@+id/RRCT1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketPanelFarT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="RRPFT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/RightRocketCargoT2"
-        app:layout_constraintTop_toBottomOf="@+id/RRPFT2" />
+        app:layout_constraintStart_toStartOf="@+id/RRPFT3"
+        app:layout_constraintTop_toTopOf="@+id/RRCT3" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoRight2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSCR2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoRight1"
+        app:layout_constraintStart_toStartOf="@+id/CSCL2"
         app:layout_constraintTop_toBottomOf="@+id/CSCL2" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketCargoT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:onClick="RRCT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/RightRocketPanelFarT3"
+        app:layout_constraintEnd_toEndOf="@+id/RRCT3"
         app:layout_constraintTop_toTopOf="@+id/RRCT3" />
+
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketPanelNearT2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:onClick="RRPNT2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/RightRocketCargoT2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/RightRocketPanelNearT1"
+        app:layout_constraintEnd_toEndOf="@+id/RRPNT2"
         app:layout_constraintTop_toTopOf="@+id/RRPNT2" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipPanelLeft1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
         android:onClick="CSPL1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/CargoShipPanelLeft2"
-        app:layout_constraintTop_toBottomOf="@+id/LeftRocketCargoT1" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL1"
+        app:layout_constraintTop_toTopOf="@+id/CSPL1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoRight1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSCR1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipCargoFront2"
-        app:layout_constraintTop_toBottomOf="@+id/CSCL1" />
+        app:layout_constraintStart_toStartOf="@+id/CSCR1"
+        app:layout_constraintTop_toTopOf="@+id/CSCR1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/RightRocketPanelNearT3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:onClick="RRPNT3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/RightRocketCargoT3"
-        app:layout_constraintStart_toStartOf="@+id/RightRocketPanelNearT2"
+        app:layout_constraintEnd_toEndOf="@+id/RRPNT3"
         app:layout_constraintTop_toTopOf="@+id/RRPNT3" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoLeft1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:onClick="CSCL1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoLeft2"
+        app:layout_constraintStart_toStartOf="@+id/CSCL1"
         app:layout_constraintTop_toBottomOf="@+id/CSPL1" />
 
     <at.markushi.ui.CircleButton
@@ -282,7 +257,7 @@
         android:onClick="CSPR2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toStartOf="@+id/CargoShipCargoRight2"
+        app:layout_constraintStart_toStartOf="@+id/CSCR2"
         app:layout_constraintTop_toBottomOf="@+id/CSCR2" />
 
     <at.markushi.ui.CircleButton
@@ -292,31 +267,28 @@
         android:onClick="CSPR1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toStartOf="@+id/CargoShipPanelLeft1"
-        app:layout_constraintTop_toBottomOf="@+id/CargoShipCargoRight1" />
+        app:layout_constraintStart_toStartOf="@+id/CSPR1"
+        app:layout_constraintTop_toTopOf="@+id/CSPR1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipPanelRight3"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSPR3CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelRight2"
+        app:layout_constraintStart_toStartOf="@+id/CSCR3"
         app:layout_constraintTop_toTopOf="@+id/CSPR3" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoFront1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:onClick="CSCF1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront1"
-        app:layout_constraintTop_toBottomOf="@+id/CargoShipPanelLeft1" />
+        app:layout_constraintStart_toStartOf="@+id/CSCF1"
+        app:layout_constraintTop_toTopOf="@+id/CSCF1" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/LeftRocketCargoT3"
@@ -355,43 +327,42 @@
         android:id="@+id/CargoShipCargoFront2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSCF2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/CargoShipPanelFront2"
-        app:layout_constraintTop_toBottomOf="@+id/CSCF1" />
+        app:layout_constraintBottom_toBottomOf="@+id/CSCF2"
+        app:layout_constraintStart_toStartOf="@+id/CSCF2" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipPanelFront2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="16dp"
         android:onClick="CSPF2CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/CargoShipCargoFront1"
-        app:layout_constraintTop_toBottomOf="@+id/CSPF1" />
+        app:layout_constraintStart_toStartOf="@+id/CSPF2"
+        app:layout_constraintTop_toTopOf="@+id/CSPF2" />
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipPanelLeft2"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
         android:onClick="CSPL1CounterClick"
         app:cb_color="@color/defaultdisabled"
         app:cb_pressedRingWidth="10dp"
-        app:layout_constraintStart_toEndOf="@+id/LRCT1"
+        app:layout_constraintEnd_toEndOf="@+id/CSPL2"
+        app:layout_constraintStart_toStartOf="@+id/CSPL2"
         app:layout_constraintTop_toTopOf="@+id/CSPL1" />
 
     <Switch
         android:id="@+id/FellOverSwitch"
         android:layout_width="188dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/FellOver"
         android:textColor="@color/bootstrap_dropdown_divider"
+        app:layout_constraintBottom_toBottomOf="@+id/UndoButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/RRPNT3" />
 
@@ -443,8 +414,8 @@
 
     <TextView
         android:id="@+id/IDScoringMissedDirections"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="568dp"
+        android:layout_height="39dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/MissedDirections"
@@ -636,11 +607,11 @@
 
     <TextView
         android:id="@+id/MissedCounterText"
-        android:tag=""
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag=""
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/MissedCounterCircle"
@@ -649,12 +620,12 @@
 
     <TextView
         android:id="@+id/PanelCounterText"
-        android:tag="T,P,P,,,"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="78dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag="T,P,P,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/PanelCounterCircle"
@@ -663,11 +634,11 @@
 
     <TextView
         android:id="@+id/CargoCounterText"
-        android:tag="T,P,C,,,"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag="T,P,C,,,"
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoCounterCircle"
@@ -701,11 +672,11 @@
 
     <TextView
         android:id="@+id/DroppedCounterText"
-        android:tag=""
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:enabled="false"
         android:gravity="center"
+        android:tag=""
         android:text="@string/zero"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/DroppedCounterCircle"
@@ -780,11 +751,11 @@
 
     <TextView
         android:id="@+id/LRPNT3"
-        android:tag="T,R,P,L,N,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
+        android:tag="T,R,P,L,N,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:visibility="visible"
@@ -793,10 +764,10 @@
 
     <TextView
         android:id="@+id/LRPNT2"
-        android:tag="T,R,P,L,N,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,L,N,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         android:visibility="visible"
@@ -805,10 +776,10 @@
 
     <TextView
         android:id="@+id/LRPNT1"
-        android:tag="T,R,P,L,N,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,L,N,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelNearT1"
@@ -817,10 +788,10 @@
 
     <TextView
         android:id="@+id/LRCT1"
-        android:tag="T,R,C,L,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,C,L,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketCargoT1"
@@ -829,10 +800,10 @@
 
     <TextView
         android:id="@+id/LRCT2"
-        android:tag="T,R,C,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,C,L,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT2"
@@ -840,10 +811,10 @@
 
     <TextView
         android:id="@+id/LRCT3"
-        android:tag="T,R,C,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,C,L,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintStart_toStartOf="@+id/LeftRocketCargoT3"
@@ -851,10 +822,10 @@
 
     <TextView
         android:id="@+id/LRPFT3"
-        android:tag="T,R,P,L,F,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,L,F,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT3"
@@ -863,10 +834,10 @@
 
     <TextView
         android:id="@+id/LRPFT2"
-        android:tag="T,R,P,L,F,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,L,F,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintBottom_toBottomOf="@+id/LeftRocketPanelFarT2"
@@ -875,10 +846,10 @@
 
     <TextView
         android:id="@+id/LRPFT1"
-        android:tag="T,R,P,L,F,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,L,F,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/LeftRocketPanelFarT1"
@@ -886,90 +857,93 @@
 
     <TextView
         android:id="@+id/CSPL1"
-        android:tag="T,C,P,L,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
+        android:tag="T,C,P,L,,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toBottomOf="@+id/CargoShipPanelLeft1"
-        app:layout_constraintStart_toStartOf="@+id/CargoShipPanelLeft1" />
+        app:layout_constraintStart_toStartOf="@+id/LRPNT1"
+        app:layout_constraintTop_toBottomOf="@+id/LRCT1" />
 
     <TextView
         android:id="@+id/CSPL2"
-        android:tag="T,C,P,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:onClick="CSPL2CounterClick"
+        android:tag="T,C,P,L,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft2"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelLeft2" />
+        app:layout_constraintEnd_toStartOf="@+id/CSPL1"
+        app:layout_constraintTop_toTopOf="@+id/CSPL1" />
 
     <TextView
         android:id="@+id/CSPL3"
-        android:tag="T,C,P,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
         android:gravity="center"
         android:onClick="CSPL3CounterClick"
+        android:tag="T,C,P,L,,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toTopOf="@+id/CSCL3"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelLeft3"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelLeft3" />
+        app:layout_constraintEnd_toStartOf="@+id/CSPL2"
+        app:layout_constraintTop_toTopOf="@+id/CSPL2" />
 
     <TextView
         android:id="@+id/CSCL3"
-        android:tag="T,C,C,L,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,L,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft3"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoLeft3" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL3"
+        app:layout_constraintTop_toTopOf="@+id/CSCL2" />
 
     <TextView
         android:id="@+id/CSCR3"
-        android:tag="T,C,C,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,R,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight3"
-        app:layout_constraintTop_toBottomOf="@+id/CSCL3" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL3"
+        app:layout_constraintTop_toBottomOf="@+id/CSCL2" />
 
     <TextView
         android:id="@+id/CSPR3"
-        android:tag="T,C,P,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,P,R,,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight3"
-        app:layout_constraintTop_toBottomOf="@+id/CSCR3" />
+        app:layout_constraintStart_toStartOf="@+id/CargoShipPanelLeft3"
+        app:layout_constraintTop_toBottomOf="@+id/CSCR2" />
 
     <TextView
         android:id="@+id/CSPR2"
-        android:tag="T,C,P,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,P,R,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight2"
+        app:layout_constraintStart_toStartOf="@+id/CSCR2"
         app:layout_constraintTop_toBottomOf="@+id/CSCR2" />
 
     <TextView
         android:id="@+id/CSCR2"
-        android:tag="T,C,C,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,R,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
         app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight2"
@@ -977,205 +951,223 @@
 
     <TextView
         android:id="@+id/CSCL2"
-        android:tag="T,C,C,L,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,L,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft2"
+        app:layout_constraintStart_toStartOf="@+id/CSPL2"
         app:layout_constraintTop_toBottomOf="@+id/CSPL2" />
 
     <TextView
         android:id="@+id/CSCL1"
-        android:tag="T,C,C,L,,1"
         android:layout_width="50dp"
         android:layout_height="52dp"
         android:gravity="center"
+        android:tag="T,C,C,L,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoLeft1"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoLeft1"
-        app:layout_constraintTop_toBottomOf="@+id/CSPL1"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL1"
+        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoLeft1" />
 
     <TextView
         android:id="@+id/CSCR1"
-        android:tag="T,C,C,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,R,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoRight1"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoRight1"
-        app:layout_constraintTop_toBottomOf="@+id/CSCL1"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL1"
+        app:layout_constraintTop_toBottomOf="@+id/CSCL2" />
 
     <TextView
         android:id="@+id/CSPR1"
-        android:tag="T,C,P,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,P,R,,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelRight1"
-        app:layout_constraintTop_toBottomOf="@+id/CSCR1" />
+        app:layout_constraintStart_toStartOf="@+id/CSPL1"
+        app:layout_constraintTop_toBottomOf="@+id/CSCR2" />
 
     <TextView
         android:id="@+id/CSCF1"
-        android:tag="T,C,C,F,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,F,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoFront1"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipCargoFront1" />
+        app:layout_constraintBottom_toTopOf="@+id/CSCR1"
+        app:layout_constraintEnd_toStartOf="@+id/CSPF1"
+        app:layout_constraintTop_toTopOf="@+id/CSCL1"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/CSCF2"
-        android:tag="T,C,C,F,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,C,F,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintBottom_toBottomOf="@+id/CargoShipCargoFront2"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipCargoFront2"
-        app:layout_constraintTop_toBottomOf="@+id/CSCF1"
+        app:layout_constraintBottom_toTopOf="@+id/CSPR1"
+        app:layout_constraintStart_toStartOf="@+id/CSCF1"
+        app:layout_constraintTop_toTopOf="@+id/CSPF2"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/CSPF2"
-        android:tag="T,C,P,F,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,C,P,F,,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelFront2"
-        app:layout_constraintTop_toBottomOf="@+id/CSPF1" />
+        app:layout_constraintStart_toStartOf="@+id/CSPF1"
+        app:layout_constraintTop_toTopOf="@+id/CSCR1" />
 
     <TextView
         android:id="@+id/CSPF1"
-        android:tag="T,C,P,F,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginStart="64dp"
         android:gravity="center"
+        android:tag="T,C,P,F,,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/CargoShipPanelFront1"
-        app:layout_constraintTop_toTopOf="@+id/CargoShipPanelFront1" />
+        app:layout_constraintStart_toEndOf="@+id/CSCL1"
+        app:layout_constraintTop_toTopOf="@+id/CSCL1" />
 
     <TextView
         android:id="@+id/RRPNT1"
-        android:tag="T,R,P,R,N,1"
-        android:layout_width="50dp"
+        android:layout_width="52dp"
         android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
+        android:tag="T,R,P,R,N,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT1"
-        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelNearT1" />
+        app:layout_constraintStart_toStartOf="@+id/LRPNT2"
+        app:layout_constraintTop_toBottomOf="@+id/CSPR1" />
 
     <TextView
         android:id="@+id/RRPNT2"
-        android:tag="T,R,P,R,N,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,R,N,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RRPNT3"
+        app:layout_constraintStart_toStartOf="@+id/RRPNT1"
         app:layout_constraintTop_toBottomOf="@+id/RRPNT1" />
 
     <TextView
         android:id="@+id/RRPNT3"
-        android:tag="T,R,P,R,N,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,R,N,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelNearT3"
-        app:layout_constraintTop_toBottomOf="@+id/RightRocketPanelNearT2" />
+        app:layout_constraintEnd_toEndOf="@+id/RRPNT2"
+        app:layout_constraintTop_toBottomOf="@+id/RRPNT2" />
 
     <TextView
         android:id="@+id/RRCT1"
-        android:tag="T,R,C,R,,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
+        android:tag="T,R,C,R,,1"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT1"
-        app:layout_constraintTop_toTopOf="@+id/RightRocketCargoT1" />
+        app:layout_constraintStart_toStartOf="@+id/LRCT1"
+        app:layout_constraintTop_toBottomOf="@+id/CSPR2" />
 
     <TextView
         android:id="@+id/RRCT2"
-        android:tag="T,R,C,R,,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,C,R,,2"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT2"
-        app:layout_constraintTop_toBottomOf="@+id/RRCT1" />
+        app:layout_constraintStart_toStartOf="@+id/RRCT1"
+        app:layout_constraintTop_toTopOf="@+id/RRPNT2" />
 
     <TextView
         android:id="@+id/RRCT3"
-        android:tag="T,R,C,R,,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,C,R,,3"
         android:text="@string/C"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketCargoT3"
+        app:layout_constraintEnd_toEndOf="@+id/RRCT2"
         app:layout_constraintTop_toBottomOf="@+id/RRCT2" />
 
     <TextView
         android:id="@+id/RRPFT3"
-        android:tag="T,R,P,R,F,3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,R,F,3"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT3"
-        app:layout_constraintTop_toBottomOf="@+id/RRPFT2" />
+        app:layout_constraintStart_toStartOf="@+id/RRPFT2"
+        app:layout_constraintTop_toTopOf="@+id/RRCT3" />
 
     <TextView
         android:id="@+id/RRPFT2"
-        android:tag="T,R,P,R,F,2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
+        android:tag="T,R,P,R,F,2"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT2"
-        app:layout_constraintTop_toBottomOf="@+id/RRPFT1" />
+        app:layout_constraintStart_toStartOf="@+id/RRPFT1"
+        app:layout_constraintTop_toTopOf="@+id/RRCT2" />
 
     <TextView
         android:id="@+id/RRPFT1"
-        android:tag="T,R,P,R,F,1"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginTop="16dp"
         android:gravity="center"
+        android:tag="T,R,P,R,F,1"
         android:text="@string/P"
         android:textColor="@color/bootstrap_dropdown_divider"
-        app:layout_constraintEnd_toEndOf="@+id/RightRocketPanelFarT1"
-        app:layout_constraintTop_toTopOf="@+id/RightRocketPanelFarT1" />
+        app:layout_constraintStart_toStartOf="@+id/LRPFT1"
+        app:layout_constraintTop_toBottomOf="@+id/CSPR1" />
 
     <Button
         android:id="@+id/UndoButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
         android:onClick="UndoClick"
         android:text="UNDO"
-        app:layout_constraintStart_toStartOf="@+id/RRPFT3"
-        tools:layout_editor_absoluteY="870dp" />
+        app:layout_constraintStart_toEndOf="@+id/RRPFT3"
+        app:layout_constraintTop_toBottomOf="@+id/RRPFT2" />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:id="@+id/GoToClimb"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:onClick="climbClick"
+        android:text="Go To Climb"
+        app:bootstrapBrand="warning"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        app:layout_constraintEnd_toEndOf="@+id/IDDroppedDirections"
+        app:layout_constraintTop_toBottomOf="@+id/RRCT3"
+        app:roundedCorners="true"
+        app:showOutline="false" />
 
 </android.support.constraint.ConstraintLayout>

@@ -980,93 +980,57 @@ public class MainActivity extends Activity {
                     new Thread(qrRunnable).start();
 
                 } else {
-
-                    Intent intent = new Intent(MainActivity.this, Sandstorm.class);
-                    intent.putExtra("setupHashMap", setupHashMap);
-                    startActivity(intent);
+                    if (LC1.getVisibility() == View.VISIBLE)
+                    {
+                        Intent intent = new Intent(MainActivity.this, Sandstorm.class);
+                        intent.putExtra("setupHashMap", setupHashMap);
+                        startActivity(intent);
+                    }
+                    else {
+                        Intent intent = new Intent(MainActivity.this, SandstormRight.class);
+                        intent.putExtra("setupHashMap", setupHashMap);
+                        startActivity(intent);}
                 }
             }
-
         });
-
     }
-
-
 
     public void onWindowFocusChanged(boolean hasFocus) {
-
         super.onWindowFocusChanged(hasFocus);
-
         View decorView = getWindow().getDecorView();
-
         if (hasFocus) {
-
             decorView.setSystemUiVisibility(
-
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-
                             | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-
                             | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
-
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
-
     }
-
-
-
-
 
     //call methods
-
     public void blueDefault () {
-
         isBlueAlliance = 0;
-
         blueButton.setBackgroundColor(getResources().getColor(R.color.light));
-
         blueButton.setTextColor(getResources().getColor(R.color.grey));
-
     }
-
-
 
     public void redDefault () {
-
         isRedAlliance = 0;
-
         redButton.setBackgroundColor(getResources().getColor(R.color.light));
-
         redButton.setTextColor(getResources().getColor(R.color.grey));
-
     }
-
-
 
     public void panelDefault () {
-
         panelButton.setBackgroundColor(getResources().getColor(R.color.light));
-
         panelButton.setTextColor(getResources().getColor(R.color.grey));
-
         isSetupPanel = 0;
-
     }
 
-
-
     public void cargoDefault () {
-
         cargoButton.setBackgroundColor(getResources().getColor(R.color.light));
-
         cargoButton.setTextColor(getResources().getColor(R.color.grey));
-
         isSetupCargo = 0;
-
     }
 
 

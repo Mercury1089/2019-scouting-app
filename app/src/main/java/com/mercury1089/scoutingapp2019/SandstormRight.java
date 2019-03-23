@@ -191,6 +191,7 @@ public class SandstormRight extends MainActivity {
     private boolean isCargo = false;
     private boolean isPanel = false;
     private Timer timer;
+    private int eventCounter;
     Button UndoButton;
     ConstraintLayout constraintLayout;
     String UNDO;
@@ -304,7 +305,8 @@ public class SandstormRight extends MainActivity {
         selectedButtonColors(SandstormButton);
 
         //make other buttons look default
-        defaultButtonState(SetupButton);
+        SetupButton.setEnabled(false);
+
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
         defaultButtonState(PanelButton);
@@ -324,6 +326,8 @@ public class SandstormRight extends MainActivity {
         final Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
         setupHashMap = (HashMap<String, String>)setupData;
 
+        setupHashMap.put("FellOver",String.valueOf(0));
+
 
 
         TimerTask switchToTeleop = new TimerTask() {
@@ -337,19 +341,21 @@ public class SandstormRight extends MainActivity {
                                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                                 if (textView.getTag() != null) {
                                     if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                        if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                                        }
                                     }
                                 }
                             }
                         }
-                        scoreHashMap.put("Sandstorm,Missed,Panel,,,", missedPanels + "");
-                        scoreHashMap.put("Sandstorm,Missed,Cargo,,,", missedCargo + "");
-                        scoreHashMap.put("Sandstorm,Dropped,Panel,,,", droppedPanels + "");
-                        scoreHashMap.put("Sandstorm,Dropped,Cargo,,,", droppedCargo + "");
+                        scoreHashMap.put("S,M,P,,,", missedPanels + "");
+                        scoreHashMap.put("S,M,C,,,", missedCargo + "");
+                        scoreHashMap.put("S,D,P,,,", droppedPanels + "");
+                        scoreHashMap.put("S,D,C,,,", droppedCargo + "");
 
 
 
-                        Intent intent = new Intent(SandstormRight.this, Teleop.class);
+                        Intent intent = new Intent(SandstormRight.this, TeleopRight.class);
                         String POrC = " ";
                         if (isPanel)
                             POrC = "P";
@@ -1963,6 +1969,7 @@ public class SandstormRight extends MainActivity {
 
     //left rocket onClicks
     public void LRPNT3CounterClick (View view) {
+        eventCounter++;
         LRPNT3Counter++;
         scoreHashMap.put(LRPNT3.getTag().toString(), String.valueOf(LRPNT3Counter));
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
@@ -1986,6 +1993,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRPNT2CounterClick (View view) {
+        eventCounter++;
         LRPNT2Counter++;
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPNT2.getTag().toString(), String.valueOf(LRPNT2Counter));
@@ -2011,6 +2019,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRPNT1CounterClick (View view) {
+        eventCounter++;
         LRPNT1Counter++;
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPNT1.getTag().toString(), String.valueOf(LRPNT1Counter));
@@ -2034,6 +2043,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRCT3CounterClick (View view) {
+        eventCounter++;
         LRCT3Counter++;
         LeftRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(LRCT3.getTag().toString(), String.valueOf(LRCT3Counter));
@@ -2056,6 +2066,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRCT2CounterClick (View view) {
+        eventCounter++;
         LRCT2Counter++;
         LeftRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(LRCT2.getTag().toString(), String.valueOf(LRCT2Counter));
@@ -2078,6 +2089,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRCT1CounterClick (View view) {
+        eventCounter++;
         LRCT1Counter++;
         LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(LRCT1.getTag().toString(), String.valueOf(LRCT1Counter));
@@ -2100,6 +2112,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRPFT3CounterClick (View view) {
+        eventCounter++;
         LRPFT3Counter++;
         LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPFT3.getTag().toString(), String.valueOf(LRPFT3Counter));
@@ -2123,6 +2136,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRPFT2CounterClick (View view) {
+        eventCounter++;
         LRPFT2Counter++;
         LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPFT2.getTag().toString(), String.valueOf(LRPFT2Counter));
@@ -2146,6 +2160,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void LRPFT1CounterClick (View view) {
+        eventCounter++;
         LRPFT1Counter++;
         LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPFT1.getTag().toString(), String.valueOf(LRPFT1Counter));
@@ -2171,6 +2186,7 @@ public class SandstormRight extends MainActivity {
 
     //cargo ship onClicks
     public void CSPF1CounterClick (View view) {
+        eventCounter++;
         CSPF1Counter++;
         CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(CSPF1.getTag().toString(), String.valueOf(CSPF1Counter));
@@ -2194,6 +2210,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPF2CounterClick (View view) {
+        eventCounter++;
         CSPF2Counter++;
         CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(CSPF2.getTag().toString(), String.valueOf(CSPF2Counter));
@@ -2217,6 +2234,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCF1CounterClick (View view) {
+        eventCounter++;
         CSCF1Counter++;
         CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(CSCF1.getTag().toString(), String.valueOf(CSCF1Counter));
@@ -2239,6 +2257,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCF2CounterClick (View view) {
+        eventCounter++;
         CSCF2Counter++;
         scoreHashMap.put(CSCF2.getTag().toString(), String.valueOf(CSCF2Counter));
         CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
@@ -2261,6 +2280,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPL1CounterClick (View view) {
+        eventCounter++;
         CSPL1Counter++;
         scoreHashMap.put(CSPL1.getTag().toString(), String.valueOf(CSPL1Counter));
         CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
@@ -2284,6 +2304,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPL2CounterClick (View view) {
+        eventCounter++;
         CSPL2Counter++;
         scoreHashMap.put(CSPL2.getTag().toString(), String.valueOf(CSPL2Counter));
         CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
@@ -2307,6 +2328,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPL3CounterClick (View view) {
+        eventCounter++;
         CSPL3Counter++;
         scoreHashMap.put(CSPL3.getTag().toString(), String.valueOf(CSPL3Counter));
         CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
@@ -2330,6 +2352,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCL1CounterClick (View view) {
+        eventCounter++;
         CSCL1Counter++;
         scoreHashMap.put(CSCL1.getTag().toString(), String.valueOf(CSCL1Counter));
         CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
@@ -2352,6 +2375,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCL2CounterClick (View view) {
+        eventCounter++;
         CSCL2Counter++;
         scoreHashMap.put(CSCL2.getTag().toString(), String.valueOf(CSCL2Counter));
         CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
@@ -2374,6 +2398,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCL3CounterClick (View view) {
+        eventCounter++;
         CSCL3Counter++;
         scoreHashMap.put(CSCL3.getTag().toString(), String.valueOf(CSCL3Counter));
         CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
@@ -2396,6 +2421,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCR1CounterClick (View view) {
+        eventCounter++;
         CSCR1Counter++;
         scoreHashMap.put(CSCR1.getTag().toString(), String.valueOf(CSCR1Counter));
         CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
@@ -2418,6 +2444,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCR2CounterClick (View view) {
+        eventCounter++;
         CSCR2Counter++;
         scoreHashMap.put(CSCR2.getTag().toString(), String.valueOf(CSCR2Counter));
         CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
@@ -2440,6 +2467,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSCR3CounterClick (View view) {
+        eventCounter++;
         CSCR3Counter++;
         scoreHashMap.put(CSCR3.getTag().toString(), String.valueOf(CSCR3Counter));
         CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
@@ -2462,6 +2490,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPR1CounterClick (View view) {
+        eventCounter++;
         CSPR1Counter++;
         scoreHashMap.put(CSPR1.getTag().toString(), String.valueOf(CSPR1Counter));
         CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
@@ -2485,6 +2514,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPR2CounterClick (View view) {
+        eventCounter++;
         CSPR2Counter++;
         scoreHashMap.put(CSPR2.getTag().toString(), String.valueOf(CSPR2Counter));
         CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
@@ -2508,6 +2538,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void CSPR3CounterClick (View view) {
+        eventCounter++;
         CSPR3Counter++;
         scoreHashMap.put(CSPR3.getTag().toString(), String.valueOf(CSPR3Counter));
         CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
@@ -2533,6 +2564,7 @@ public class SandstormRight extends MainActivity {
 
     //right rocket onClicks
     public void RRPNT3CounterClick (View view) {
+        eventCounter++;
         RRPNT3Counter++;
         scoreHashMap.put(RRPNT3.getTag().toString(), String.valueOf(RRPNT3Counter));
         RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
@@ -2556,6 +2588,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRPNT2CounterClick (View view) {
+        eventCounter++;
         RRPNT2Counter++;
         scoreHashMap.put(RRPNT2.getTag().toString(), String.valueOf(RRPNT2Counter));
         RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
@@ -2579,6 +2612,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRPNT1CounterClick (View view) {
+        eventCounter++;
         RRPNT1Counter++;
         scoreHashMap.put(RRPNT1.getTag().toString(), String.valueOf(RRPNT1Counter));
         RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
@@ -2602,6 +2636,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRCT3CounterClick (View view) {
+        eventCounter++;
         RRCT3Counter++;
         scoreHashMap.put(RRCT3.getTag().toString(), String.valueOf(RRCT3Counter));
         RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
@@ -2624,6 +2659,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRCT2CounterClick (View view) {
+        eventCounter++;
         RRCT2Counter++;
         scoreHashMap.put(RRCT2.getTag().toString(), String.valueOf(RRCT2Counter));
         RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
@@ -2646,6 +2682,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRCT1CounterClick (View view) {
+        eventCounter++;
         RRCT1Counter++;
         scoreHashMap.put(RRCT1.getTag().toString(), String.valueOf(RRCT1Counter));
         RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
@@ -2668,6 +2705,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRPFT3CounterClick (View view) {
+        eventCounter++;
         RRPFT3Counter++;
         scoreHashMap.put(RRPFT3.getTag().toString(), String.valueOf(RRPFT3Counter));
         RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
@@ -2691,6 +2729,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRPFT2CounterClick (View view) {
+        eventCounter++;
         RRPFT2Counter++;
         scoreHashMap.put(RRPFT2.getTag().toString(), String.valueOf(RRPFT2Counter));
         RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
@@ -2714,6 +2753,7 @@ public class SandstormRight extends MainActivity {
         isCargo = false;
     }
     public void RRPFT1CounterClick (View view) {
+        eventCounter++;
         RRPFT1Counter++;
         scoreHashMap.put(RRPFT1.getTag().toString(), String.valueOf(RRPFT1Counter));
         RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
