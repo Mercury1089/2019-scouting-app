@@ -67,13 +67,13 @@ public class Climb extends AppCompatActivity {
         setContentView(R.layout.activity_climb);
 
          SetupButton = findViewById(R.id.ClimbSetupButton);
-         SetupButton.setEnabled(false);
+         //SetupButton.setEnabled(false);
 
          SandstormButton = findViewById(R.id.ClimbSandstormButton);
-         SandstormButton.setEnabled(false);
+         //SandstormButton.setEnabled(false);
 
          TeleopButton = findViewById(R.id.ClimbTeleopButton);
-         TeleopButton.setEnabled(false);
+         //TeleopButton.setEnabled(false);
 
          ClimbButton = findViewById(R.id.ClimbClimbButton);
 
@@ -95,6 +95,8 @@ public class Climb extends AppCompatActivity {
 
          GenerateQRButton = findViewById(R.id.ClimbGenerateQRButton);
 
+        defaultButtonState(SetupButton);
+        defaultButtonState(SandstormButton);
         defaultButtonState(TeleopButton);
         selectedButtonColors(ClimbButton);
 
@@ -496,15 +498,25 @@ public class Climb extends AppCompatActivity {
                 QRString.append(setupHashMap.get("Alliance2")).append(",");
                 QRString.append(setupHashMap.get("AllianceColor")).append(",");
                 QRString.append(setupHashMap.get("LeftOrRight")).append(",");
-                QRString.append(setupHashMap.get("StartingPosition")).append(",");
-                QRString.append(setupHashMap.get("HABLine")).append(",");
+                if (setupHashMap.get("StartingPosition").length() > 0)
+                    QRString.append(setupHashMap.get("StartingPosition").substring(1)).append(",");
+                else
+                    QRString.append(setupHashMap.get("StartingPosition")).append(",");
                 QRString.append(setupHashMap.get("StartingGameObject")).append(",");
+                QRString.append(setupHashMap.get("HABLine")).append(",");
                 QRString.append(setupHashMap.get("ClimbLevel")).append(",");
                 QRString.append(setupHashMap.get("ClimbPartners")).append(",");
                 QRString.append(setupHashMap.get("SelfOrWithHelp")).append(",");
                 QRString.append(setupHashMap.get("FellOver")).append(",");
                 QRString.append(setupHashMap.get("NoShow")).append(",");
                 QRString.append(setupHashMap.get("TeleopPrepop"));
+
+                /*
+                    flip hab and startinggameobject
+                    noshow is 0 or 1
+                    hab line is 0 or 1
+                    prepop teleop needs to be set to empty string if not populated
+                 */
 
                 Object keySet[] = scoreHashMap.keySet().toArray();
                 for (int i = 0; i < keySet.length; i++) {

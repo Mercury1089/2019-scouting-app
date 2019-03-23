@@ -101,6 +101,7 @@ public class MainActivity extends Activity {
 
     //variables that should be outputted
 
+
     private int noShowStatus = 0; //0 or 1
 
     private int isBlueAlliance = 0; //0 or 1
@@ -305,7 +306,7 @@ public class MainActivity extends Activity {
 
         setupHashMap.put("StartingGameObject", "");
 
-        setupHashMap.put("NoShow", "False");
+        setupHashMap.put("NoShow", "0");
 
         setupHashMap.put("LeftOrRight", getIntent().getStringExtra("LEFTORRIGHT"));
 
@@ -890,7 +891,7 @@ public class MainActivity extends Activity {
                 else
                     clearButton.setEnabled(false);
 
-                setupHashMap.put(firstAlliancePartnerInput.getTag().toString(), firstAlliancePartnerInput.getText().toString());
+                setupHashMap.put("FirstAlliancePartner", firstAlliancePartnerInput.getText().toString());
 
             }
 
@@ -945,7 +946,7 @@ public class MainActivity extends Activity {
                 else
                     clearButton.setEnabled(false);
 
-                setupHashMap.put(secondAlliancePartnerInput.getTag().toString(), secondAlliancePartnerInput.getText().toString());
+                setupHashMap.put("SecondAlliancePartner", secondAlliancePartnerInput.getText().toString());
 
             }
 
@@ -2364,16 +2365,15 @@ public class MainActivity extends Activity {
             QRString.append(setupHashMap.get("SecondAlliancePartner")).append(",");
             QRString.append(setupHashMap.get("AllianceColor")).append(",");
             QRString.append(setupHashMap.get("LeftOrRight")).append(",");
-            QRString.append(",");
-            QRString.append(setupHashMap.get("HABLine")).append(",");
-            QRString.append(",");
-            QRString.append(",");
-            QRString.append(",");
-            QRString.append(",");
-            QRString.append(",");
+            QRString.append("").append(",");
+            QRString.append("").append(",");
+            QRString.append("").append(",");
+            QRString.append("").append(",");
+            QRString.append("").append(",");
+            QRString.append("").append(",");
+            QRString.append("").append(",");
             QRString.append(setupHashMap.get("NoShow")).append(",");
-            QRString.append(",");
-
+            QRString.append("").append(",");
             QRValue = QRString.toString();
             Log.d("QRString",QRValue);
 

@@ -353,7 +353,11 @@ public class TeleopRight extends AppCompatActivity {
                 isPanel = false;
                 isCargo = true;
                 enableScoringDiagram('C');
-            } }
+            }
+            else {
+                setupHashMap.put("TeleopPrepop", "");
+            }
+        }
 
         String fellOver = getIntent().getStringExtra("fellOver");
         if (fellOver != null && fellOver.equals("True")) {

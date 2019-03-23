@@ -305,7 +305,7 @@ public class SandstormRight extends MainActivity {
         selectedButtonColors(SandstormButton);
 
         //make other buttons look default
-        SetupButton.setEnabled(false);
+        //SetupButton.setEnabled(false);
 
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
@@ -909,7 +909,7 @@ public class SandstormRight extends MainActivity {
             enableScoringDiagram('C');
         }
 
-
+        setupHashMap.put("HABLine",String.valueOf(0));
         HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
         HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
