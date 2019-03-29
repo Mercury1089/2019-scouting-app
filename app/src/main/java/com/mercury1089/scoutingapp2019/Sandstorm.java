@@ -305,7 +305,7 @@ public class Sandstorm extends MainActivity {
         selectedButtonColors(SandstormButton);
 
         //make other buttons look default
-        SetupButton.setEnabled(false);
+        //SetupButton.setEnabled(false);
 
         defaultButtonState(TeleopButton);
         defaultButtonState(ClimbButton);
@@ -327,6 +327,8 @@ public class Sandstorm extends MainActivity {
         setupHashMap = (HashMap<String, String>)setupData;
 
         setupHashMap.put("FellOver",String.valueOf(0));
+        setupHashMap.put("HABLine",String.valueOf(0));
+
 
 
 
@@ -909,7 +911,7 @@ public class Sandstorm extends MainActivity {
             enableScoringDiagram('C');
         }
 
-
+        setupHashMap.put("HABLine",String.valueOf(0));
         HABLineSwitch = findViewById(R.id.CrossedHABLineSwitch);
         HABLineSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -1046,10 +1048,12 @@ public class Sandstorm extends MainActivity {
     private void defaultButtonState (BootstrapButton button) {
         button.setBackgroundColor(getResources().getColor(R.color.light));
         button.setTextColor(getResources().getColor(R.color.grey));
+        button.setRounded(true);
     }
     public void selectedButtonColors(BootstrapButton button) {
         button.setBackgroundColor(getResources().getColor(R.color.orange));
         button.setTextColor(getResources().getColor(R.color.light));
+        button.setRounded(true);
     }
     private void setTextToColor (TextView textView, String color) {
         if (color.equals("grey"))

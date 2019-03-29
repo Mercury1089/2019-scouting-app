@@ -473,6 +473,7 @@
 
     <com.beardedhen.androidbootstrap.BootstrapButtonGroup
 
+
         android:id="@+id/PanelOrCargo"
 
         android:layout_width="wrap_content"
@@ -485,7 +486,9 @@
 
         android:orientation="horizontal"
 
-        app:bootstrapBrand="success"
+
+
+        app:bootstrapBrand="secondary"
         app:bootstrapSize="lg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDDroppedDirections"
@@ -534,7 +537,7 @@
 
         android:orientation="horizontal"
 
-        app:bootstrapBrand="success"
+        app:bootstrapBrand="secondary"
         app:bootstrapSize="lg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

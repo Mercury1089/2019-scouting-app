@@ -197,6 +197,7 @@ public class TeleopRight extends AppCompatActivity {
     Switch FellOverSwitch;
     int YELLOW = Color.rgb(248, 231, 28);
     int ORANGE = Color.rgb(255, 152, 0);
+    int eventCounter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -352,7 +353,11 @@ public class TeleopRight extends AppCompatActivity {
                 isPanel = false;
                 isCargo = true;
                 enableScoringDiagram('C');
-            } }
+            }
+            else {
+                setupHashMap.put("TeleopPrepop", "");
+            }
+        }
 
         String fellOver = getIntent().getStringExtra("fellOver");
         if (fellOver != null && fellOver.equals("True")) {
@@ -862,8 +867,12 @@ public class TeleopRight extends AppCompatActivity {
         MissedCounterText.bringToFront();
 
         //setting buttons to default state
+        SetupButton.setEnabled(false);
         defaultButtonState(SetupButton);
+
+        SandstormButton.setEnabled(false);
         defaultButtonState(SandstormButton);
+
         selectedButtonColors(TeleopButton);
         defaultButtonState(ClimbButton);
 
@@ -1788,16 +1797,18 @@ public class TeleopRight extends AppCompatActivity {
                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                 if (textView.getTag() != null) {
                     if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        }
                     }
                 }
             }
         }
 
-        scoreHashMap.put("Teleop,Missed,Panel,,,", missedPanels + "");
-        scoreHashMap.put("Teleop,Missed,Cargo,,,", missedCargo + "");
-        scoreHashMap.put("Teleop,Dropped,Panel,,,", droppedPanels + "");
-        scoreHashMap.put("Teleop,Dropped,Cargo,,,", droppedCargo + "");
+        scoreHashMap.put("T,M,P,,,", missedPanels + "");
+        scoreHashMap.put("T,M,C,,,", missedCargo + "");
+        scoreHashMap.put("T,D,P,,,", droppedPanels + "");
+        scoreHashMap.put("T,D,C,,,", droppedCargo + "");
         intent.putExtra("scoreHashMap", scoreHashMap);
         startActivity(intent);
     }
@@ -1811,16 +1822,18 @@ public class TeleopRight extends AppCompatActivity {
                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                 if (textView.getTag() != null) {
                     if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        }
                     }
                 }
             }
         }
 
-        scoreHashMap.put("Teleop,Missed,Panel,,,", missedPanels + "");
-        scoreHashMap.put("Teleop,Missed,Cargo,,,", missedCargo + "");
-        scoreHashMap.put("Teleop,Dropped,Panel,,,", droppedPanels + "");
-        scoreHashMap.put("Teleop,Dropped,Cargo,,,", droppedCargo + "");
+        scoreHashMap.put("T,M,P,,,", missedPanels + "");
+        scoreHashMap.put("T,M,C,,,", missedCargo + "");
+        scoreHashMap.put("T,D,P,,,", droppedPanels + "");
+        scoreHashMap.put("T,D,C,,,", droppedCargo + "");
         intent.putExtra("scoreHashMap", scoreHashMap);
         startActivity(intent);
     }
@@ -1834,16 +1847,18 @@ public class TeleopRight extends AppCompatActivity {
                 TextView textView = (TextView) constraintLayout.getChildAt(i);
                 if (textView.getTag() != null) {
                     if (!textView.getTag().equals("") && !textView.getTag().equals("label")) {
-                        scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        if (!textView.getText().toString().equals("P") && !textView.getText().toString().equals("C")) {
+                            scoreHashMap.put(textView.getTag().toString(), textView.getText().toString());
+                        }
                     }
                 }
             }
         }
 
-        scoreHashMap.put("Teleop,Missed,Panel,,,", missedPanels + "");
-        scoreHashMap.put("Teleop,Missed,Cargo,,,", missedCargo + "");
-        scoreHashMap.put("Teleop,Dropped,Panel,,,", droppedPanels + "");
-        scoreHashMap.put("Teleop,Dropped,Cargo,,,", droppedCargo + "");
+        scoreHashMap.put("T,M,P,,,", missedPanels + "");
+        scoreHashMap.put("T,M,C,,,", missedCargo + "");
+        scoreHashMap.put("T,D,P,,,", droppedPanels + "");
+        scoreHashMap.put("T,D,C,,,", droppedCargo + "");
         intent.putExtra("scoreHashMap", scoreHashMap);
         startActivity(intent);
     }
@@ -1978,6 +1993,7 @@ public class TeleopRight extends AppCompatActivity {
     //left rocket onClicks
     public void LRPNT3CounterClick (View view) {
         LRPNT3Counter++;
+        eventCounter++;
         scoreHashMap.put(LRPNT3.getTag().toString(), String.valueOf(LRPNT3Counter));
         LeftRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "LRPNT3";
@@ -1999,6 +2015,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRPNT2CounterClick (View view) {
         LRPNT2Counter++;
+        eventCounter++;
         LeftRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPNT2.getTag().toString(), String.valueOf(LRPNT2Counter));
         UNDO = "LRPNT2";
@@ -2021,6 +2038,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRPNT1CounterClick (View view) {
         LRPNT1Counter++;
+        eventCounter++;
         LeftRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPNT1.getTag().toString(), String.valueOf(LRPNT1Counter));
         UNDO = "LRPNT1";
@@ -2041,6 +2059,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRCT3CounterClick (View view) {
         LRCT3Counter++;
+        eventCounter++;
         LeftRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(LRCT3.getTag().toString(), String.valueOf(LRCT3Counter));
         UNDO = "LRCT3";
@@ -2060,6 +2079,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRCT2CounterClick (View view) {
         LRCT2Counter++;
+        eventCounter++;
         LeftRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(LRCT2.getTag().toString(), String.valueOf(LRCT2Counter));
         UNDO = "LRCT2";
@@ -2079,6 +2099,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRCT1CounterClick (View view) {
         LRCT1Counter++;
+        eventCounter++;
         LeftRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(LRCT1.getTag().toString(), String.valueOf(LRCT1Counter));
         UNDO = "LRCT1";
@@ -2098,6 +2119,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRPFT3CounterClick (View view) {
         LRPFT3Counter++;
+        eventCounter++;
         LeftRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPFT3.getTag().toString(), String.valueOf(LRPFT3Counter));
         UNDO = "LRPFT3";
@@ -2118,6 +2140,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRPFT2CounterClick (View view) {
         LRPFT2Counter++;
+        eventCounter++;
         LeftRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPFT2.getTag().toString(), String.valueOf(LRPFT2Counter));
         UNDO = "LRPFT2";
@@ -2138,6 +2161,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void LRPFT1CounterClick (View view) {
         LRPFT1Counter++;
+        eventCounter++;
         LeftRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(LRPFT1.getTag().toString(), String.valueOf(LRPFT1Counter));
         UNDO = "LRPFT1";
@@ -2160,6 +2184,7 @@ public class TeleopRight extends AppCompatActivity {
     //cargo ship onClicks
     public void CSPF1CounterClick (View view) {
         CSPF1Counter++;
+        eventCounter++;
         CargoShipPanelFront1.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(CSPF1.getTag().toString(), String.valueOf(CSPF1Counter));
         UNDO = "CSPF1";
@@ -2180,6 +2205,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPF2CounterClick (View view) {
         CSPF2Counter++;
+        eventCounter++;
         CargoShipPanelFront2.setColor(Color.rgb(248, 231, 28));
         scoreHashMap.put(CSPF2.getTag().toString(), String.valueOf(CSPF2Counter));
         UNDO = "CSPF2";
@@ -2200,6 +2226,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCF1CounterClick (View view) {
         CSCF1Counter++;
+        eventCounter++;
         CargoShipCargoFront1.setColor(Color.argb(100, 255, 152, 0));
         scoreHashMap.put(CSCF1.getTag().toString(), String.valueOf(CSCF1Counter));
         UNDO = "CSCF1";
@@ -2219,6 +2246,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCF2CounterClick (View view) {
         CSCF2Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCF2.getTag().toString(), String.valueOf(CSCF2Counter));
         CargoShipCargoFront2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCF2";
@@ -2238,6 +2266,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPL1CounterClick (View view) {
         CSPL1Counter++;
+        eventCounter++;
         scoreHashMap.put(CSPL1.getTag().toString(), String.valueOf(CSPL1Counter));
         CargoShipPanelLeft1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL1";
@@ -2258,6 +2287,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPL2CounterClick (View view) {
         CSPL2Counter++;
+        eventCounter++;
         scoreHashMap.put(CSPL2.getTag().toString(), String.valueOf(CSPL2Counter));
         CargoShipPanelLeft2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL2";
@@ -2278,6 +2308,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPL3CounterClick (View view) {
         CSPL3Counter++;
+        eventCounter++;
         scoreHashMap.put(CSPL3.getTag().toString(), String.valueOf(CSPL3Counter));
         CargoShipPanelLeft3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPL3";
@@ -2298,6 +2329,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCL1CounterClick (View view) {
         CSCL1Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCL1.getTag().toString(), String.valueOf(CSCL1Counter));
         CargoShipCargoLeft1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL1";
@@ -2317,6 +2349,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCL2CounterClick (View view) {
         CSCL2Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCL2.getTag().toString(), String.valueOf(CSCL2Counter));
         CargoShipCargoLeft2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL2";
@@ -2336,6 +2369,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCL3CounterClick (View view) {
         CSCL3Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCL3.getTag().toString(), String.valueOf(CSCL3Counter));
         CargoShipCargoLeft3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCL3";
@@ -2355,6 +2389,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCR1CounterClick (View view) {
         CSCR1Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCR1.getTag().toString(), String.valueOf(CSCR1Counter));
         CargoShipCargoRight1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR1";
@@ -2374,6 +2409,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCR2CounterClick (View view) {
         CSCR2Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCR2.getTag().toString(), String.valueOf(CSCR2Counter));
         CargoShipCargoRight2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR2";
@@ -2393,6 +2429,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSCR3CounterClick (View view) {
         CSCR3Counter++;
+        eventCounter++;
         scoreHashMap.put(CSCR3.getTag().toString(), String.valueOf(CSCR3Counter));
         CargoShipCargoRight3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "CSCR3";
@@ -2412,6 +2449,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPR1CounterClick (View view) {
         CSPR1Counter++;
+        eventCounter++;
         scoreHashMap.put(CSPR1.getTag().toString(), String.valueOf(CSPR1Counter));
         CargoShipPanelRight1.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR1";
@@ -2432,6 +2470,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPR2CounterClick (View view) {
         CSPR2Counter++;
+        eventCounter++;
         scoreHashMap.put(CSPR2.getTag().toString(), String.valueOf(CSPR2Counter));
         CargoShipPanelRight2.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR2";
@@ -2452,6 +2491,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void CSPR3CounterClick (View view) {
         CSPR3Counter++;
+        eventCounter++;
         scoreHashMap.put(CSPR3.getTag().toString(), String.valueOf(CSPR3Counter));
         CargoShipPanelRight3.setColor(Color.rgb(248, 231, 28));
         UNDO = "CSPR3";
@@ -2474,6 +2514,7 @@ public class TeleopRight extends AppCompatActivity {
     //right rocket onClicks
     public void RRPNT3CounterClick (View view) {
         RRPNT3Counter++;
+        eventCounter++;
         scoreHashMap.put(RRPNT3.getTag().toString(), String.valueOf(RRPNT3Counter));
         RightRocketPanelNearT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT3";
@@ -2494,6 +2535,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRPNT2CounterClick (View view) {
         RRPNT2Counter++;
+        eventCounter++;
         scoreHashMap.put(RRPNT2.getTag().toString(), String.valueOf(RRPNT2Counter));
         RightRocketPanelNearT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT2";
@@ -2514,6 +2556,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRPNT1CounterClick (View view) {
         RRPNT1Counter++;
+        eventCounter++;
         scoreHashMap.put(RRPNT1.getTag().toString(), String.valueOf(RRPNT1Counter));
         RightRocketPanelNearT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPNT1";
@@ -2534,6 +2577,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRCT3CounterClick (View view) {
         RRCT3Counter++;
+        eventCounter++;
         scoreHashMap.put(RRCT3.getTag().toString(), String.valueOf(RRCT3Counter));
         RightRocketCargoT3.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT3";
@@ -2553,6 +2597,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRCT2CounterClick (View view) {
         RRCT2Counter++;
+        eventCounter++;
         scoreHashMap.put(RRCT2.getTag().toString(), String.valueOf(RRCT2Counter));
         RightRocketCargoT2.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT2";
@@ -2572,6 +2617,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRCT1CounterClick (View view) {
         RRCT1Counter++;
+        eventCounter++;
         scoreHashMap.put(RRCT1.getTag().toString(), String.valueOf(RRCT1Counter));
         RightRocketCargoT1.setColor(Color.argb(100, 255, 152, 0));
         UNDO = "RRCT1";
@@ -2591,6 +2637,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRPFT3CounterClick (View view) {
         RRPFT3Counter++;
+        eventCounter++;
         scoreHashMap.put(RRPFT3.getTag().toString(), String.valueOf(RRPFT3Counter));
         RightRocketPanelFarT3.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT3";
@@ -2611,6 +2658,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRPFT2CounterClick (View view) {
         RRPFT2Counter++;
+        eventCounter++;
         scoreHashMap.put(RRPFT2.getTag().toString(), String.valueOf(RRPFT2Counter));
         RightRocketPanelFarT2.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT2";
@@ -2631,6 +2679,7 @@ public class TeleopRight extends AppCompatActivity {
     }
     public void RRPFT1CounterClick (View view) {
         RRPFT1Counter++;
+        eventCounter++;
         scoreHashMap.put(RRPFT1.getTag().toString(), String.valueOf(RRPFT1Counter));
         RightRocketPanelFarT1.setColor(Color.rgb(248, 231, 28));
         UNDO = "RRPFT1";
