@@ -51,6 +51,21 @@ public class Climb extends AppCompatActivity {
 
     private Button GenerateQRButton;
 
+    //boolean variables
+    private boolean isOnHAB = false;
+    private boolean isOffHAB = false;
+    private boolean isLevel1HAB = false;
+    private boolean isLevel2HAB = false;
+    private boolean isLevel3HAB = false;
+    private boolean isOnYourOwn = false;
+    private boolean isWithHelp = false;
+    private boolean isLifting = false;
+    private boolean isNotLifting = false;
+    private boolean isOnePartner = false;
+    private boolean isTwoPartner = false;
+
+
+
     private HashMap<String, String> setupHashMap;
     private HashMap<String, String> scoreHashMap;
 
@@ -95,6 +110,8 @@ public class Climb extends AppCompatActivity {
 
          GenerateQRButton = findViewById(R.id.ClimbGenerateQRButton);
 
+
+
         defaultButtonState(TeleopButton);
         selectedButtonColors(ClimbButton);
 
@@ -130,8 +147,16 @@ public class Climb extends AppCompatActivity {
         GenerateQRButton.setTextColor(getResources().getColor(R.color.grey));
 
         Serializable setupData = getIntent().getSerializableExtra("setupHashMap");
-
+        disableAllButtons();
         setupHashMap = (HashMap<String, String>) setupData;
+        if (Integer.parseInt(setupHashMap.get("FellOver")) == 1) {
+            GenerateQRButton.setEnabled(true);
+        }
+        else {
+            OnHABButton.setEnabled(true);
+            OffHABButton.setEnabled(true);
+        }
+
 
         Serializable scoreData = getIntent().getSerializableExtra("scoreHashMap");
         scoreHashMap = (HashMap<String, String>) scoreData;
@@ -166,6 +191,33 @@ public class Climb extends AppCompatActivity {
         button.setBackgroundColor(getResources().getColor(R.color.saveactive));
         button.setTextColor(getResources().getColor(R.color.light));
     }
+    public void enableAllButtons() {
+        OnHABButton.setEnabled(true);
+        OffHABButton.setEnabled(true);
+        Level1Button.setEnabled(true);
+        Level2Button.setEnabled(true);
+        Level3Button.setEnabled(true);
+        OnYourOwnButton.setEnabled(true);
+        WithHelpButton.setEnabled(true);
+        HasLiftedButton.setEnabled(true);
+        HasNotLiftedButton.setEnabled(true);
+        OnePartnerButton.setEnabled(true);
+        TwoPartnerButton.setEnabled(true);
+
+    }
+    public void disableAllButtons() {
+        OnHABButton.setEnabled(false);
+        OffHABButton.setEnabled(false);
+        Level1Button.setEnabled(false);
+        Level2Button.setEnabled(false);
+        Level3Button.setEnabled(false);
+        OnYourOwnButton.setEnabled(false);
+        WithHelpButton.setEnabled(false);
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+    }
 
     public void SetupClick (View view) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -186,66 +238,91 @@ public class Climb extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+
     public void OnHABClick (View view) {
-        OnHABButton.setEnabled(true);
-        OffHABButton.setEnabled(true);
+        isOnHAB = !isOnHAB;
         Level1Button.setEnabled(true);
         Level2Button.setEnabled(true);
         Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
 
         defaultButtonState(OffHABButton);
-
         selectedButtonColors(OnHABButton);
 
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        defaultButtonState(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
+
         setupHashMap.put("ClimbLevel", String.valueOf(0));
         setupHashMap.put("ClimbPartners", String.valueOf(0));
         setupHashMap.put("SelfOrWithHelp", "");
     }
+
+
 
     public void OffHABClick (View view) {
-        OnHABButton.setEnabled(true);
-        OffHABButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
+        isOffHAB = !isOffHAB;
+        defaultButtonState(OnHABButton);
+        selectedButtonColors(OffHABButton);
+
         HasLiftedButton.setEnabled(true);
         HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
 
-        defaultButtonState(OnHABButton);
+        Level1Button.setEnabled(false);
+        Level2Button.setEnabled(false);
+        Level3Button.setEnabled(false);
 
-        selectedButtonColors(OffHABButton);
+        defaultButtonState(Level1Button);
+        defaultButtonState(Level2Button);
+        defaultButtonState(Level3Button);
+
+        OnYourOwnButton.setEnabled(false);
+        WithHelpButton.setEnabled(false);
+
+        defaultButtonState(OnYourOwnButton);
+        defaultButtonState(WithHelpButton);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
 
         setupHashMap.put("ClimbLevel", String.valueOf(0));
         setupHashMap.put("ClimbPartners", String.valueOf(0));
         setupHashMap.put("SelfOrWithHelp", "");
     }
 
-    public void Level1Click (View view) {
-        OnHABButton.setEnabled(true);
-        OffHABButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
 
+
+    public void Level1Click (View view) {
+        isLevel1HAB = !isLevel1HAB;
         selectedButtonColors(Level1Button);
         defaultButtonState(Level2Button);
         defaultButtonState(Level3Button);
+
+        HasLiftedButton.setEnabled(true);
+        HasNotLiftedButton.setEnabled(true);
+
+        OnYourOwnButton.setEnabled(false);
+        WithHelpButton.setEnabled(false);
+
+        defaultButtonState(OnYourOwnButton);
+        defaultButtonState(WithHelpButton);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
 
         setupHashMap.put("ClimbLevel", String.valueOf(1));
         setupHashMap.put("ClimbPartners", String.valueOf(0));
@@ -253,59 +330,61 @@ public class Climb extends AppCompatActivity {
     }
 
     public void Level2Click (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
-
+        isLevel2HAB = !isLevel2HAB;
         defaultButtonState(Level1Button);
         defaultButtonState(Level3Button);
 
-        selectedButtonColors(Level2Button);
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
 
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
+
+        OnYourOwnButton.setEnabled(true);
+        WithHelpButton.setEnabled(true);
+
+        selectedButtonColors(Level2Button);
         setupHashMap.put("ClimbLevel", String.valueOf(2));
     }
 
+
+
     public void Level3Click (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
-
+        isLevel3HAB = !isLevel3HAB;
         selectedButtonColors(Level3Button);
-
         defaultButtonState(Level1Button);
         defaultButtonState(Level2Button);
+
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
+
+        OnYourOwnButton.setEnabled(true);
+        WithHelpButton.setEnabled(true);
 
         setupHashMap.put("ClimbLevel", String.valueOf(3));
     }
 
+
+
     public void OnTheirOwnClick (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
+        isOnYourOwn = !isOnYourOwn;
         HasLiftedButton.setEnabled(true);
         HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
 
         defaultButtonState(WithHelpButton);
         selectedButtonColors(OnYourOwnButton);
@@ -313,18 +392,23 @@ public class Climb extends AppCompatActivity {
         setupHashMap.put("SelfOrWithHelp", "S");
     }
 
+
+
     public void WithHelpClick (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
+        isWithHelp = !isWithHelp;
+        HasLiftedButton.setEnabled(false);
+        HasNotLiftedButton.setEnabled(false);
+        defaultButtonState(HasLiftedButton);
+        defaultButtonState(HasNotLiftedButton);
+
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        defaultButtonState(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
+
+        activeButtonColors(GenerateQRButton);
+        GenerateQRButton.setEnabled(true);
 
         selectedButtonColors(WithHelpButton);
         defaultButtonState(OnYourOwnButton);
@@ -333,37 +417,28 @@ public class Climb extends AppCompatActivity {
         setupHashMap.put("ClimbPartners", String.valueOf(0));
     }
 
+
     public void HasLiftedClick (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
+        isLifting = !isLifting;
         OnePartnerButton.setEnabled(true);
         TwoPartnerButton.setEnabled(true);
+
+        GenerateQRButton.setEnabled(false);
+        GenerateQRButton.setBackgroundColor(getResources().getColor(R.color.bootstrap_edittext_disabled));
+        GenerateQRButton.setTextColor(getResources().getColor(R.color.bootstrap_gray_light));
 
         selectedButtonColors(HasLiftedButton);
         defaultButtonState(HasNotLiftedButton);
     }
 
 
-
     public void HasNotLiftedClick (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
+        isNotLifting = !isNotLifting;
+        OnePartnerButton.setEnabled(false);
+        TwoPartnerButton.setEnabled(false);
+
+        defaultButtonState(OnePartnerButton);
+        defaultButtonState(TwoPartnerButton);
 
         selectedButtonColors(HasNotLiftedButton);
         defaultButtonState(HasLiftedButton);
@@ -372,47 +447,27 @@ public class Climb extends AppCompatActivity {
         GenerateQRButton.setEnabled(true);
     }
 
-    public void OnePartnerClick (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
 
+
+    public void OnePartnerClick (View view) {
+        isOnePartner = !isOnePartner;
         defaultButtonState(TwoPartnerButton);
         selectedButtonColors(OnePartnerButton);
 
         activeButtonColors(GenerateQRButton);
-
         GenerateQRButton.setEnabled(true);
 
         setupHashMap.put("ClimbPartners", String.valueOf(1));
     }
 
-    public void TwoPartnerClick (View view) {
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        Level1Button.setEnabled(true);
-        Level2Button.setEnabled(true);
-        Level3Button.setEnabled(true);
-        OnYourOwnButton.setEnabled(true);
-        WithHelpButton.setEnabled(true);
-        HasLiftedButton.setEnabled(true);
-        HasNotLiftedButton.setEnabled(true);
-        OnePartnerButton.setEnabled(true);
-        TwoPartnerButton.setEnabled(true);
 
+
+    public void TwoPartnerClick (View view) {
+        isTwoPartner = !isTwoPartner;
         selectedButtonColors(TwoPartnerButton);
         defaultButtonState(OnePartnerButton);
 
         activeButtonColors(GenerateQRButton);
-
         GenerateQRButton.setEnabled(true);
 
         setupHashMap.put("ClimbPartners", String.valueOf(2));
@@ -445,36 +500,22 @@ public class Climb extends AppCompatActivity {
 
 
         int bitMatrixWidth = bitMatrix.getWidth();
-
         int bitMatrixHeight = bitMatrix.getHeight();
-
         int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
-
         for (int y = 0; y < bitMatrixHeight; y++) {
-
             int offset = y * bitMatrixWidth;
-
             for (int x = 0; x < bitMatrixWidth; x++) {
-
                 pixels[offset + x] = bitMatrix.get(x, y) ?
-
                         getResources().getColor(R.color.colorPrimaryDark) : getResources().getColor(R.color.bootstrap_dropdown_divider);
-
             }
-
         }
 
-
-
         Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
-
         bitmap.setPixels(pixels, 0, 500, 0, 0, bitMatrixWidth, bitMatrixHeight);
-
         return bitmap;
-
     }
-    class QRRunnable implements Runnable {
 
+    class QRRunnable implements Runnable {
         @Override
         public void run() {
             String key;
@@ -540,9 +581,12 @@ public class Climb extends AppCompatActivity {
                                     goBackToMain.setBackgroundColor(getResources().getColor((R.color.blue)));
                                     goBackToMain.setTextColor(getResources().getColor(R.color.light));
                                 }
-
+                                else {
+                                    goBackToMain.setEnabled(false);
+                                    goBackToMain.setBackgroundColor(getResources().getColor((R.color.light)));
+                                    goBackToMain.setTextColor(getResources().getColor(R.color.grey));
+                                }
                             }
-
                         });
                         goBackToMain.setOnClickListener(new View.OnClickListener() {
                             @Override
