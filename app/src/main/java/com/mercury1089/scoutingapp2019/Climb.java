@@ -155,6 +155,7 @@ public class Climb extends AppCompatActivity {
         else {
             disableAllButtons();
             yesOrNOButtons('E');
+            generateQR('D');
         }
 
 
@@ -375,14 +376,21 @@ public class Climb extends AppCompatActivity {
 
     public void OnHABClick (View view) {
         isOnHAB = !isOnHAB;
-        if (!isOnHAB)
+        if (!isOnHAB) {
             defaultButtonState(OnHABButton);
+            yesOrNOButtons('E');
+            levelButtons('D');
+            isOnHAB = false;
+        }
         else {
             defaultButtonState(OffHABButton);
             selectedButtonColors(OnHABButton);
+            isOnHAB = true;
+            isOffHAB = false;
+            levelButtons('E');
         }
 
-        levelButtons('E');
+
         onYourOwnOrWithHelp('D');
         liftingPartners('D');
         howManyPartners('D');
@@ -397,16 +405,23 @@ public class Climb extends AppCompatActivity {
 
     public void OffHABClick (View view) {
         isOffHAB = !isOffHAB;
-        if (!isOffHAB)
+        if (!isOffHAB) {
             defaultButtonState(OnHABButton);
+            isOffHAB = false;
+            yesOrNOButtons('E');
+            liftingPartners('D');
+        }
         else {
             defaultButtonState(OnHABButton);
             selectedButtonColors(OffHABButton);
+            isOnHAB = false;
+            isOffHAB = true;
+            liftingPartners('E');
         }
 
         levelButtons('D');
         onYourOwnOrWithHelp('D');
-        liftingPartners('E');
+
         howManyPartners('D');
         generateQR('D');
 
@@ -419,17 +434,24 @@ public class Climb extends AppCompatActivity {
 
     public void Level1Click (View view) {
         isLevel1HAB = !isLevel1HAB;
-
-        if (!isLevel1HAB)
+        if (!isLevel1HAB) {
             defaultButtonState(Level1Button);
+            isLevel1HAB = false;
+            levelButtons('E');
+            liftingPartners('D');
+        }
         else {
             selectedButtonColors(Level1Button);
             defaultButtonState(Level2Button);
             defaultButtonState(Level3Button);
+            isLevel1HAB = true;
+            isLevel2HAB = false;
+            isLevel3HAB = false;
+            liftingPartners('E');
         }
 
         onYourOwnOrWithHelp('D');
-        liftingPartners('E');
+
         howManyPartners('D');
         generateQR('D');
 
@@ -441,20 +463,28 @@ public class Climb extends AppCompatActivity {
     public void Level2Click (View view) {
         isLevel2HAB = !isLevel2HAB;
 
-        if (!isLevel2HAB)
+        if (!isLevel2HAB) {
             defaultButtonState(Level2Button);
+            isLevel2HAB = false;
+            levelButtons('E');
+            onYourOwnOrWithHelp('D');
+        }
         else {
             defaultButtonState(Level1Button);
             selectedButtonColors(Level2Button);
             defaultButtonState(Level3Button);
+
+            isLevel1HAB = false;
+            isLevel2HAB = true;
+            isLevel3HAB = false;
+
+            onYourOwnOrWithHelp('E');
         }
 
-        onYourOwnOrWithHelp('E');
         liftingPartners('D');
         howManyPartners('D');
         generateQR('D');
 
-        selectedButtonColors(Level2Button);
         setupHashMap.put("ClimbLevel", String.valueOf(2));
     }
 
@@ -462,15 +492,26 @@ public class Climb extends AppCompatActivity {
 
     public void Level3Click (View view) {
         isLevel3HAB = !isLevel3HAB;
-        if (!isLevel3HAB)
+        if (!isLevel3HAB) {
             defaultButtonState(Level3Button);
+            isLevel3HAB = false;
+
+            levelButtons('E');
+            onYourOwnOrWithHelp('D');
+        }
         else {
             defaultButtonState(Level1Button);
             defaultButtonState(Level2Button);
             selectedButtonColors(Level3Button);
+
+            isLevel1HAB = false;
+            isLevel2HAB = false;
+            isLevel3HAB = true;
+
+            onYourOwnOrWithHelp('E');
         }
 
-        onYourOwnOrWithHelp('E');
+
         liftingPartners('D');
         howManyPartners('D');
         generateQR('D');
@@ -482,14 +523,19 @@ public class Climb extends AppCompatActivity {
 
     public void OnTheirOwnClick (View view) {
         isOnYourOwn = !isOnYourOwn;
-        if (!isOnYourOwn)
-            defaultButtonState(OnYourOwnButton);
+        if (!isOnYourOwn) {
+            onYourOwnOrWithHelp('E');
+            liftingPartners('D');
+        }
         else {
             defaultButtonState(WithHelpButton);
             selectedButtonColors(OnYourOwnButton);
+            isWithHelp = false;
+            isOnYourOwn = true;
+            liftingPartners('E');
         }
 
-        liftingPartners('E');
+
         howManyPartners('D');
         generateQR('D');
 
@@ -501,16 +547,21 @@ public class Climb extends AppCompatActivity {
     public void WithHelpClick (View view) {
         isWithHelp = !isWithHelp;
 
-        if (!isWithHelp)
-            defaultButtonState(WithHelpButton);
+        if (!isWithHelp) {
+            onYourOwnOrWithHelp('E');
+            generateQR('D');
+        }
         else {
             selectedButtonColors(WithHelpButton);
             defaultButtonState(OnYourOwnButton);
+            isWithHelp = true;
+            isOnYourOwn = false;
+            generateQR('E');
         }
 
         liftingPartners('D');
         howManyPartners('D');
-        generateQR('E'); //asked question
+
 
         setupHashMap.put("SelfOrWithHelp", "H");
         setupHashMap.put("ClimbPartners", String.valueOf(0));
@@ -520,14 +571,19 @@ public class Climb extends AppCompatActivity {
     public void HasLiftedClick (View view) {
         isLifting = !isLifting;
 
-        if (!isLifting)
-            defaultButtonState(HasLiftedButton);
+        if (!isLifting) {
+            liftingPartners('E');
+            howManyPartners('D');
+        }
         else {
             selectedButtonColors(HasLiftedButton);
             defaultButtonState(HasNotLiftedButton);
+            isLifting = true;
+            isNotLifting = false;
+            howManyPartners('E');
         }
 
-        howManyPartners('E');
+
         generateQR('D');
 
     }
@@ -536,29 +592,37 @@ public class Climb extends AppCompatActivity {
     public void HasNotLiftedClick (View view) {
         isNotLifting = !isNotLifting;
 
-        if (!isNotLifting)
-            defaultButtonState(HasNotLiftedButton);
+        if (!isNotLifting) {
+            liftingPartners('E');
+            generateQR('D');
+        }
         else {
             defaultButtonState(HasLiftedButton);
             selectedButtonColors(HasNotLiftedButton);
+            isLifting = false;
+            isNotLifting = true;
+            generateQR('E');
         }
 
         howManyPartners('D');
-        generateQR('E');
     }
 
 
 
     public void OnePartnerClick (View view) {
         isOnePartner = !isOnePartner;
-        if (!isOnePartner)
-            defaultButtonState(OnePartnerButton);
+        if (!isOnePartner) {
+            howManyPartners('E');
+            generateQR('D');
+        }
         else {
             selectedButtonColors(OnePartnerButton);
             defaultButtonState(TwoPartnerButton);
+            isOnePartner = true;
+            isTwoPartner = false;
+            generateQR('E');
         }
 
-        generateQR('E');
 
         setupHashMap.put("ClimbPartners", String.valueOf(1));
     }
@@ -567,14 +631,19 @@ public class Climb extends AppCompatActivity {
 
     public void TwoPartnerClick (View view) {
         isTwoPartner = !isTwoPartner;
-        if (!isTwoPartner)
-            defaultButtonState(TwoPartnerButton);
+        if (!isTwoPartner) {
+            howManyPartners('E');
+            generateQR('D');
+        }
         else {
             defaultButtonState(OnePartnerButton);
             selectedButtonColors(TwoPartnerButton);
+            isOnePartner = false;
+            isTwoPartner = true;
+            generateQR('E');
         }
 
-        generateQR('E');
+
 
         setupHashMap.put("ClimbPartners", String.valueOf(2));
     }

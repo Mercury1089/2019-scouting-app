@@ -574,8 +574,7 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="cargoCounterClick"
-
+            android:onClick="teleopClick"
             android:text="@string/Teleop"
             android:textSize="36sp" />
 
@@ -587,7 +586,7 @@
 
             android:layout_height="match_parent"
 
-            android:onClick="cargoCounterClick"
+            android:onClick="climbClick"
 
             android:text="@string/Climb"
             android:textSize="36sp" />
