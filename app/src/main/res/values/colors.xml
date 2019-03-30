@@ -30,7 +30,7 @@
 
     <color name="black">#000000</color>
 
-    <color name="darkgray">#2b2c2d</color>
+    <color name="darkgray">#2B2B2E</color>
 
     <color name="orange"> @android:color/holo_orange_dark </color>
 
