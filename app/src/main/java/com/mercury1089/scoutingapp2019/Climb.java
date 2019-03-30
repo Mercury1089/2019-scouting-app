@@ -112,6 +112,8 @@ public class Climb extends AppCompatActivity {
 
 
 
+        defaultButtonState(SetupButton);
+        defaultButtonState(SandstormButton);
         defaultButtonState(TeleopButton);
         selectedButtonColors(ClimbButton);
 

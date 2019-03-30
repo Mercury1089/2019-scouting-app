@@ -19,7 +19,7 @@
 
         android:orientation="horizontal"
 
-        app:bootstrapBrand="success"
+        app:bootstrapBrand="secondary"
         app:bootstrapSize="lg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,9 +38,7 @@
 
             android:onClick="SetupClick"
             android:text="@string/Setup"
-            android:textSize="36sp"
-            app:bootstrapBrand="secondary"
-            app:roundedCorners="true" />
+            android:textSize="36sp" />
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
@@ -52,9 +50,7 @@
 
             android:onClick="SandstormClick"
             android:text="@string/Sandstorm"
-            android:textSize="36sp"
-            app:bootstrapBrand="secondary"
-            app:roundedCorners="true" />
+            android:textSize="36sp"/>
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
@@ -67,9 +63,7 @@
             android:onClick="TeleopClick"
 
             android:text="@string/Teleop"
-            android:textSize="36sp"
-            app:bootstrapBrand="secondary"
-            app:roundedCorners="true" />
+            android:textSize="36sp"/>
 
         <com.beardedhen.androidbootstrap.BootstrapButton
 
@@ -81,9 +75,7 @@
 
             android:saveEnabled="false"
             android:text="@string/Climb"
-            android:textSize="36sp"
-            app:bootstrapBrand="secondary"
-            app:roundedCorners="true"/>
+            android:textSize="36sp"/>
 
 
     </com.beardedhen.androidbootstrap.BootstrapButtonGroup>

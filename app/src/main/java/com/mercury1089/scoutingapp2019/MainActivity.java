@@ -990,7 +990,8 @@ public class MainActivity extends Activity {
                     else {
                         Intent intent = new Intent(MainActivity.this, SandstormRight.class);
                         intent.putExtra("setupHashMap", setupHashMap);
-                        startActivity(intent);}
+                        startActivity(intent);
+                    }
                 }
             }
         });

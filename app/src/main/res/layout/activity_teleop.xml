@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bootstrap_brand_secondary_text"
-    tools:context=".Sandstorm">
+    tools:context=".Teleop">
 
     <at.markushi.ui.CircleButton
         android:id="@+id/CargoShipCargoLeft3"
@@ -523,7 +523,7 @@
 
         android:orientation="horizontal"
 
-        app:bootstrapBrand="success"
+        app:bootstrapBrand="secondary"
         app:bootstrapSize="lg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

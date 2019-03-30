@@ -1815,7 +1815,7 @@ public class SandstormRight extends MainActivity {
         startActivity(intent);
     }
     public void teleopClick (View view) {
-        Intent intent = new Intent(this, Teleop.class);
+        Intent intent = new Intent(this, TeleopRight.class);
 
         if (isPanel)
             intent.putExtra("POrC", "P");

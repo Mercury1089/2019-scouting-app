@@ -386,7 +386,7 @@
     <Switch
         android:id="@+id/FellOverSwitch"
         android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:text="@string/FellOver"
@@ -396,7 +396,7 @@
 
     <Switch
         android:id="@+id/CrossedHABLineSwitch"
-        android:layout_width="195dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:text="@string/HABLine"
         android:textColor="@color/bootstrap_dropdown_divider"
